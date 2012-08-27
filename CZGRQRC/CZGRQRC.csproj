@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DF09DD38-9B47-4C2D-A76F-07255DD165E8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CZGRQRC</RootNamespace>
+    <AssemblyName>wlmqgrqrc</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <StartupObject>
+    </StartupObject>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/CZGRQRC/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FlexCel, Version=4.9.6.0, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\FlexCel.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xdgk.Common, Version=0.8.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GlobalAssembly\Xdgk.Common\Xdgk.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xdgk.Common.Export, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GlobalAssembly\Xdgk.Common.Export\Xdgk.Common.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="ZedGraph, Version=5.1.5.21173, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalcColumnInfo.cs" />
+    <Compile Include="CalcColumnInfoCollection.cs" />
+    <Compile Include="CCCFactory.cs" />
+    <Compile Include="CommandLineOptions.cs" />
+    <Compile Include="Configs\Config.cs" />
+    <Compile Include="CurveStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurveStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CZGRQRCApp.cs" />
+    <Compile Include="DataColumnFormulas.cs" />
+    <Compile Include="DataColumnNames.cs" />
+    <Compile Include="DataGridViewCellFormatter.cs" />
+    <Compile Include="DataGridViewFormatters.cs" />
+    <Compile Include="DGVColumnConfig.cs" />
+    <Compile Include="DGVColumnConfigCollection.cs" />
+    <Compile Include="DGVColumnConfigs.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Forms\frmCalcHeat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCalcHeat.Designer.cs">
+      <DependentUpon>frmCalcHeat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmContrastCurveSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmContrastCurveSelect.Designer.cs">
+      <DependentUpon>frmContrastCurveSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEMDataQR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEMDataQR.Designer.cs">
+      <DependentUpon>frmEMDataQR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRAlarm.Designer.cs">
+      <DependentUpon>frmGRAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRAlarmPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRAlarmPopup.Designer.cs">
+      <DependentUpon>frmGRAlarmPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRDataLast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRDataLast.Designer.cs">
+      <DependentUpon>frmGRDataLast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRDataQR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRDataQR.Designer.cs">
+      <DependentUpon>frmGRDataQR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRFlow.Designer.cs">
+      <DependentUpon>frmGRFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRFlowJG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRFlowJG.Designer.cs">
+      <DependentUpon>frmGRFlowJG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRFlowZG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRFlowZG.Designer.cs">
+      <DependentUpon>frmGRFlowZG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPressCurve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPressCurve.Designer.cs">
+      <DependentUpon>frmPressCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRecruitCurve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRecruitCurve.Designer.cs">
+      <DependentUpon>frmRecruitCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRecruitDataQR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRecruitDataQR.Designer.cs">
+      <DependentUpon>frmRecruitDataQR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmStationGather.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmStationGather.Designer.cs">
+      <DependentUpon>frmStationGather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTempCurve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTempCurve.Designer.cs">
+      <DependentUpon>frmTempCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmXGDataQR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmXGDataQR.Designer.cs">
+      <DependentUpon>frmXGDataQR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRGW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRGW.designer.cs">
+      <DependentUpon>frmGRGW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOneStationCalcHeat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOneStationCalcHeat.Designer.cs">
+      <DependentUpon>frmOneStationCalcHeat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGRAlarmPopup2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGRAlarmPopup2.Designer.cs">
+      <DependentUpon>frmGRAlarmPopup2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmContrastCurve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmContrastCurve.Designer.cs">
+      <DependentUpon>frmContrastCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCurveInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCurveInfo.Designer.cs">
+      <DependentUpon>frmCurveInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOT.Designer.cs">
+      <DependentUpon>frmOT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanHeat\frmPlanHeat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanHeat\frmPlanHeat.Designer.cs">
+      <DependentUpon>frmPlanHeat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanHeat\frmPlanHeatItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlanHeat\frmPlanHeatItem.Designer.cs">
+      <DependentUpon>frmPlanHeatItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlanHeat\PlanHeatItem.cs" />
+    <Compile Include="Forms\frmEMCurve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEMCurve.Designer.cs">
+      <DependentUpon>frmEMCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GatherClass.cs" />
+    <Compile Include="GRAlarmData.cs" />
+    <Compile Include="GRAlarmDataCollection.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Interface.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CurveStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CurveStrings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCalcHeat.resx">
+      <DependentUpon>frmCalcHeat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmContrastCurveSelect.resx">
+      <DependentUpon>frmContrastCurveSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCurveInfo.resx">
+      <DependentUpon>frmCurveInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEMCurve.resx">
+      <DependentUpon>frmEMCurve.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEMDataQR.resx">
+      <DependentUpon>frmEMDataQR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRAlarm.resx">
+      <DependentUpon>frmGRAlarm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRAlarmPopup.resx">
+      <DependentUpon>frmGRAlarmPopup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRDataLast.resx">
+      <DependentUpon>frmGRDataLast.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRDataQR.resx">
+      <DependentUpon>frmGRDataQR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRFlow.resx">
+      <DependentUpon>frmGRFlow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRFlowJG.resx">
+      <DependentUpon>frmGRFlowJG.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRFlowZG.resx">
+      <DependentUpon>frmGRFlowZG.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOneStationCalcHeat.resx">
+      <DependentUpon>frmOneStationCalcHeat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOT.resx">
+      <DependentUpon>frmOT.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPressCurve.resx">
+      <DependentUpon>frmPressCurve.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRecruitCurve.resx">
+      <DependentUpon>frmRecruitCurve.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRecruitDataQR.resx">
+      <DependentUpon>frmRecruitDataQR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmStationGather.resx">
+      <DependentUpon>frmStationGather.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTempCurve.resx">
+      <DependentUpon>frmTempCurve.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmXGDataQR.resx">
+      <DependentUpon>frmXGDataQR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRGW.resx">
+      <DependentUpon>frmGRGW.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGRAlarmPopup2.resx">
+      <DependentUpon>frmGRAlarmPopup2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmContrastCurve.resx">
+      <DependentUpon>frmContrastCurve.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlanHeat\frmPlanHeat.resx">
+      <DependentUpon>frmPlanHeat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlanHeat\frmPlanHeatItem.resx">
+      <DependentUpon>frmPlanHeatItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>strings1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCAlarm.resx">
+      <DependentUpon>UCAlarm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCCalcHeatCondition.resx">
+      <DependentUpon>UCCalcHeatCondition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCCalcHeatCondition2.resx">
+      <DependentUpon>UCCalcHeatCondition2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCCurveSelectCondition.resx">
+      <DependentUpon>UCCurveSelectCondition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCGather.resx">
+      <DependentUpon>UCGather.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCGatherDataView.resx">
+      <DependentUpon>UCGatherDataView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCOTCondition.resx">
+      <DependentUpon>UCOTCondition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCSelectCondition.resx">
+      <DependentUpon>UCSelectCondition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Render\BackColorRenderer.cs" />
+    <Compile Include="Render\ColorConfig.cs" />
+    <Compile Include="Render\CompareResult.cs" />
+    <Compile Include="Render\CompareResultEnum.cs" />
+    <Compile Include="Render\AlarmDefine.cs" />
+    <Compile Include="Render\AlarmDefineCollection.cs" />
+    <Compile Include="Render\ControlBackForeColor.cs" />
+    <Compile Include="Render\ForeColorRenderer.cs" />
+    <Compile Include="Render\RangeAlarmDefine.cs" />
+    <Compile Include="Render\Renderer.cs" />
+    <Compile Include="SoundPlayer.cs" />
+    <Compile Include="StationDevice.cs" />
+    <Compile Include="StationDeviceCollection.cs" />
+    <Compile Include="StationNameFiller.cs" />
+    <Compile Include="StationNameFilter.cs" />
+    <Compile Include="strings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="T.cs" />
+    <Compile Include="UC\UCCurveSelectCondition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\UCCurveSelectCondition.Designer.cs">
+      <DependentUpon>UCCurveSelectCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCAlarm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCAlarm.Designer.cs">
+      <DependentUpon>UCAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCCalcHeatCondition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCCalcHeatCondition.Designer.cs">
+      <DependentUpon>UCCalcHeatCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCCalcHeatCondition2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCCalcHeatCondition2.Designer.cs">
+      <DependentUpon>UCCalcHeatCondition2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCGather.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCGather.Designer.cs">
+      <DependentUpon>UCGather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCGatherDataView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCGatherDataView.Designer.cs">
+      <DependentUpon>UCGatherDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCOTCondition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCOTCondition.Designer.cs">
+      <DependentUpon>UCOTCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCSelectCondition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCSelectCondition.Designer.cs">
+      <DependentUpon>UCSelectCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\DataGridViewColumnFactory.cs" />
+    <Compile Include="WavePlayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CZGRWEBPROJECT\8.Src\CZGRWEBDBI\CZGRWEBDBI.csproj">
+      <Project>{7D7F3FFA-435A-4CF3-A22B-5FCF3661A115}</Project>
+      <Name>CZGRWEBDBI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZGRCommon\CZGRCommon.csproj">
+      <Project>{4B9EE343-54D3-4851-AF24-EA7CD946F846}</Project>
+      <Name>CZGRCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xdgk.GRCommon\Xdgk.GRCommon.csproj">
+      <Project>{D77EF345-878C-449E-8485-E559B5908949}</Project>
+      <Name>Xdgk.GRCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\dbconfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\zgstation.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\History.txt" />
+    <Content Include="doc\Request.txt" />
+    <Content Include="doc\Todo.txt" />
+    <Content Include="Resources\bg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\ico\split.ico" />
+    <None Include="Resources\pictureBox1.Image.jpg" />
+    <None Include="Resources\zg.jpg" />
+    <None Include="Resources\jg.jpg" />
+    <Content Include="Sound\Alarm.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config" />
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ico\Pipe.ico" />
+    <None Include="Resources\ico\tree.ico" />
+    <None Include="Resources\ico\GisMap.ico" />
+    <None Include="Resources\grflow.jpg" />
+    <None Include="Resources\logo.jpg" />
+    <None Include="Resources\ico\Exclamation32.ico" />
+    <None Include="Resources\ico\Exclamation16.ico" />
+    <None Include="Resources\ico\empty.ico" />
+    <None Include="Resources\ico\History.ico" />
+    <None Include="Resources\ico\Graph.ICO" />
+    <None Include="Resources\ico\Delete.ico" />
+    <None Include="Resources\ico\Alarm.ICO" />
+    <None Include="Resources\ico\Map.ICO" />
+    <None Include="Resources\ico\Last.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
