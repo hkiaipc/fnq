@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsAutoRefreshGRDataLast>false</IsAutoRefreshGRDataLast>
+  <AutoRefreshGRDataLastTimeSpan>00:10:00</AutoRefreshGRDataLastTimeSpan>
+  <CalcHeatStartTime>2000-01-01T08:00:00</CalcHeatStartTime>
+  <IsShowDateTimeCurveTitle>true</IsShowDateTimeCurveTitle>
+  <CalcHeatFormula>s1 * (gt1 - bt1) * 4.1868 / dayrate / 1000</CalcHeatFormula>
+  <Show2DataGather>false</Show2DataGather>
+  <Digits>2</Digits>
+  <DataGridViewFont>
+    <Style>Regular</Style>
+    <Size>9</Size>
+  </DataGridViewFont>
+  <IsDebug>false</IsDebug>
+  <AlarmDefineCollection />
+  <ColorConifg>
+    <NormalColor>
+      <Argb>-16777216</Argb>
+    </NormalColor>
+    <ExceptionColor>
+      <Argb>-65536</Argb>
+    </ExceptionColor>
+    <LowColor>
+      <Argb>-65536</Argb>
+    </LowColor>
+    <LowLowColor>
+      <Argb>-65536</Argb>
+    </LowLowColor>
+    <HighColor>
+      <Argb>-65536</Argb>
+    </HighColor>
+    <HighHighColor>
+      <Argb>-65536</Argb>
+    </HighHighColor>
+  </ColorConifg>
+  <RendererType>Fore</RendererType>
+  <GRAlarmMaxCount>7</GRAlarmMaxCount>
+  <EnableGRExceptionValueColor>false</EnableGRExceptionValueColor>
+  <EnableGRAlarmValueColor>false</EnableGRAlarmValueColor>
+  <EnableGRAlarmPopup>false</EnableGRAlarmPopup>
+</Config>

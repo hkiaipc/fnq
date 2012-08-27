@@ -1,0 +1,56 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<a1:ZedConfigValues id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<TemperatureCurveConfig href="#ref-3"/>
+<PressCurveConfig href="#ref-4"/>
+<GT1Config href="#ref-5"/>
+<BT1Config href="#ref-6"/>
+<GT2Config href="#ref-7"/>
+<BT2Config href="#ref-8"/>
+<GP1Config href="#ref-9"/>
+<BP1Config href="#ref-10"/>
+<GP2Config href="#ref-11"/>
+<BP2Config href="#ref-12"/>
+</a1:ZedConfigValues>
+<a1:YAxisConfig id="ref-3" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Min>0</Min>
+<Max>100</Max>
+<MajorStep>5</MajorStep>
+<MinorStep>5</MinorStep>
+<MajorGridVisible>true</MajorGridVisible>
+<MinorGridVisible>false</MinorGridVisible>
+</a1:YAxisConfig>
+<a1:YAxisConfig id="ref-4" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Min>0</Min>
+<Max>1</Max>
+<MajorStep>0.1</MajorStep>
+<MinorStep>5</MinorStep>
+<MajorGridVisible>true</MajorGridVisible>
+<MinorGridVisible>false</MinorGridVisible>
+</a1:YAxisConfig>
+<a1:LineConfig id="ref-5" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+<a1:LineConfig id="ref-6" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+<a1:LineConfig id="ref-7" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+<a1:LineConfig id="ref-8" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+<a1:LineConfig id="ref-9" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+<a1:LineConfig id="ref-10" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+<a1:LineConfig id="ref-11" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+<a1:LineConfig id="ref-12" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/CZGRCommon/CZGRCommon%2C%20Version%3D1.0.3.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<Width>1</Width>
+</a1:LineConfig>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
