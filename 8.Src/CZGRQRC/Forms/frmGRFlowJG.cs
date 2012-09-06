@@ -74,9 +74,9 @@ namespace CZGRQRC
             this.lblI1.Text = GetIValue(row[DataColumnNames.I1]);
 
             this.lblWL.Text = Convert.ToSingle(row[DataColumnNames.WL]).ToString("f2") +" m";
-            this.lblCMBusPress.Text = Convert.ToSingle(row["CMBusPress"]).ToString ("f2") + " MPa";
+            //this.lblCMBusPress.Text = Convert.ToSingle(row["CMBusPress"]).ToString ("f2") + " MPa";
 
-            this.lblBusVolt.Text = Convert.ToInt32(row["Busvolt"]) + " V";
+            //this.lblBusVolt.Text = Convert.ToInt32(row["Busvolt"]) + " V";
 
             //FillListView();
         }
@@ -141,22 +141,24 @@ namespace CZGRQRC
         private string GetCyclePumpState(DataRow row)
         {
             bool CM1 = Convert.ToBoolean(row["CM1"]);
-            float cm1hz = Convert.ToSingle(row["cm1hz"]);
-            float cm1ampere = Convert.ToSingle(row["cm1ampere"]);
+            //float cm1hz = Convert.ToSingle(row["cm1hz"]);
+            //float cm1ampere = Convert.ToSingle(row["cm1ampere"]);
 
             bool CM2 = Convert.ToBoolean(row["CM2"]);
-            float cm2hz = Convert.ToSingle(row["cm2hz"]);
-            float cm2ampere = Convert.ToSingle(row["cm2ampere"]);
+            //float cm2hz = Convert.ToSingle(row["cm2hz"]);
+            //float cm2ampere = Convert.ToSingle(row["cm2ampere"]);
 
-            string s1 = string.Format("1# {0} {1}Hz {2}A",
-                CM1 ? "运行" : "停止",
-                cm1hz,
-                cm1ampere);
+            string s1 = string.Format("1# {0}",
+                CM1 ? "运行" : "停止"
+                //cm1hz,
+                //cm1ampere);
+                );
 
-            string s2 = string.Format("2# {0} {1}Hz {2}A",
-                CM2 ? "运行" : "停止",
-                cm2hz,
-                cm2ampere);
+            string s2 = string.Format("2# {0}",
+                CM2 ? "运行" : "停止"
+                //cm2hz,
+                //cm2ampere);
+                );
 
             return s1 + Environment.NewLine + s2;
 
