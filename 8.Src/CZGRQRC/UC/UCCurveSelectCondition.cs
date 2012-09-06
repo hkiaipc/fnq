@@ -21,7 +21,7 @@ namespace CZGRQRC
         /// </summary>
         public event EventHandler OKEvent;
 
-        private ADEState _adeState;
+        private ADEStatus _adeState;
         /// <summary>
         /// 
         /// </summary>
@@ -29,7 +29,7 @@ namespace CZGRQRC
         {
             InitializeComponent();
             InitControls();
-            _adeState = ADEState.Add;
+            _adeState = ADEStatus.Add;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace CZGRQRC
             InitializeComponent();
             InitControls();
             this.StationCurveInfo = info;
-            _adeState = ADEState.Edit;
+            _adeState = ADEStatus.Edit;
         }
 
 
@@ -207,7 +207,7 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (_adeState == ADEState.Add)
+            if (_adeState == ADEStatus.Add)
             {
                 _stationCurveInfo = new GRStationCurveInfo();
             }

@@ -12,8 +12,6 @@ namespace CZGRQRC
 {
     public partial class frmTempCurve : Form
     {
-
-
         #region frmTempCurve
         /// <summary>
         /// 

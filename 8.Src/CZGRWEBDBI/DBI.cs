@@ -6,7 +6,6 @@ using System.Data;
 using System.Data.SqlClient;
 using Xdgk.Common;
 
-
 namespace CZGRWEBDBI
 {
     public class DBI
@@ -106,17 +105,17 @@ namespace CZGRWEBDBI
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="displayName">displayName = stationname + devicename</param>
+        /// <param name="stationName">stationName = stationname + devicename</param>
         /// <param name="begin"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public DataTable ExecuteGRDataTable(string displayName, DateTime begin, DateTime end)
+        public DataTable ExecuteGRDataTable(string stationName, DateTime begin, DateTime end)
         {
-            string sql = "SELECT * FROM vGRData WHERE (DisplayName = @n) AND (DT BETWEEN @b AND @e) ORDER BY DT";
+            string sql = "SELECT * FROM vGRData WHERE (StationName = @n) AND (DT BETWEEN @b AND @e) ORDER BY DT";
             SqlCommand cmd = new SqlCommand(sql);
 
             SqlParameter p = null;
-            p = new SqlParameter("n", displayName);
+            p = new SqlParameter("n", stationName);
             cmd.Parameters.Add(p);
 
             p = new SqlParameter("b", begin);
@@ -245,9 +244,9 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteStationName(string[] deviceTypes)
         {
-            string selectCommand = "SELECT [StationID], [StationName], [DeviceName] FROM [vStationDevice] " +
+            string selectCommand = "SELECT [StationID], [StationName], [DeviceName] FROM [vStationGRDevice] " +
                 //"WHERE (DeviceType = 'grdevice' OR DeviceType = 'grdeviceModbus') AND StationDeleted = 0 AND DeviceDeleted = 0 " +
-                "WHERE (" + CreateDeviceCondition(deviceTypes) + ") AND StationDeleted = 0 AND DeviceDeleted = 0 " +
+                //"WHERE (" + CreateDeviceCondition(deviceTypes) + ") AND StationDeleted = 0 AND DeviceDeleted = 0 " +
                 "ORDER BY [StationName], [DeviceName]";
             return ExecuteDataTable(selectCommand);
         }
@@ -277,10 +276,10 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteGRDeviceTable()
         {
-            string s = "SELECT StationID, DeviceID, StationName, DisplayName, Street " +
+            string s = "SELECT StationID, DeviceID, StationName, Street " +
                 "FROM vStationGRDevice " +
-                "WHERE (StationDeleted = 0) AND (DeviceDeleted = 0) " +
-                "ORDER BY DisplayName";
+                //"WHERE (StationDeleted = 0) AND (DeviceDeleted = 0) " +
+                "ORDER BY StationName";
             return ExecuteDataTable(s);
         }
 
@@ -294,7 +293,7 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteDataTable(DateTime b, DateTime e, string st)
         {
-            string s = string.Format("select * from vGRData where (DisplayName = '{0}') and ( DT between '{1}' and '{2}') order by dt",
+            string s = string.Format("select * from vGRData where (StationName = '{0}') and ( DT between '{1}' and '{2}') order by dt",
                st, b, e);
 
             return ExecuteDataTable(s);
@@ -407,7 +406,7 @@ namespace CZGRWEBDBI
         public DataTable ExecutePressTable(DateTime b, DateTime e, string st)
         {
             string s = @"SELECT DT, GP1, BP1, GP2, BP2 FROM vGRData
-                WHERE ( DisplayName = @st ) AND ( DT BETWEEN @b AND @e )
+                WHERE ( StationName = @st ) AND ( DT BETWEEN @b AND @e )
                 ORDER BY DT";
 
             SqlCommand sql = new SqlCommand(s);
@@ -443,7 +442,7 @@ namespace CZGRWEBDBI
             // add i1 for draw temp line with I1 H1
             // 
             string s = @"select DT, GT1, BT1, GT2, BT2, OT, I1 from vGRData 
-                where (DisplayName = @st) and ( DT between @b and @e) 
+                where (StationName = @st) and ( DT between @b and @e) 
                 order by dt";
 
             SqlCommand sql = new SqlCommand(s);
@@ -479,12 +478,12 @@ namespace CZGRWEBDBI
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="displayName"></param>
+        /// <param name="stationName"></param>
         /// <returns></returns>
-        public DataTable ExecuteGRLastDataTable(string displayName)
+        public DataTable ExecuteGRLastDataTable(string stationName)
         {
-            string s = string.Format("select * from vGRDataLast where DisplayName = '{0}'", 
-                displayName);
+            string s = string.Format("select * from vGRDataLast where StationName = '{0}'", 
+                stationName);
             return ExecuteDataTable(s);
         }
         #endregion //ExecuteGRLastDataTable
@@ -651,7 +650,7 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteGRAlarmDataTable(string dispalyName, DateTime b, DateTime e)
         {
-            string s = "select * from vGRAlarmData where DisplayName = @n and dt between @b and @e";
+            string s = "select * from vGRAlarmData where StationName = @n and dt between @b and @e";
             SqlCommand cmd = new SqlCommand(s);
 
             SqlParameter p;
@@ -688,17 +687,17 @@ namespace CZGRWEBDBI
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="displayName"></param>
+        /// <param name="stationName"></param>
         /// <param name="begin"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public DataTable ExecuteCalcHeat(string displayName, DateTime begin, DateTime end)
+        public DataTable ExecuteCalcHeat(string stationName, DateTime begin, DateTime end)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "StationCalcHeat";
 
-            cmd.Parameters.Add(new SqlParameter("@displayName", displayName));
+            cmd.Parameters.Add(new SqlParameter("@stationName", stationName));
             cmd.Parameters.Add(new SqlParameter("@beginDT", begin));
             cmd.Parameters.Add(new SqlParameter("@endDT", end));
 
@@ -706,73 +705,73 @@ namespace CZGRWEBDBI
         }
 
 
-        /// <summary>
-        /// 读取热量计算中需要删除的行的名称(DisplayName)
-        /// </summary>
-        /// <returns></returns>
-        public string[] ReadCalcHeatRemovedNames()
-        {
-            string DELETE = "Delete";
+        ///// <summary>
+        ///// 读取热量计算中需要删除的行的名称()
+        ///// </summary>
+        ///// <returns></returns>
+        //public string[] ReadCalcHeatRemovedNames()
+        //{
+        //    string DELETE = "Delete";
 
-            string sql = string.Format("select * from tblConfig where Name = '{0}'", DELETE);
+        //    string sql = string.Format("select * from tblConfig where Name = '{0}'", DELETE);
 
-            List<string> list = new List<string>();
-            DataTable tbl = this.ExecuteDataTable(sql);
-            foreach (DataRow row in tbl.Rows)
-            {
-                list.Add( row["Content"].ToString().Trim() );
-            }
+        //    List<string> list = new List<string>();
+        //    DataTable tbl = this.ExecuteDataTable(sql);
+        //    foreach (DataRow row in tbl.Rows)
+        //    {
+        //        list.Add( row["Content"].ToString().Trim() );
+        //    }
 
-            return list.ToArray();
-        }
+        //    return list.ToArray();
+        //}
 
-        /// <summary>
-        /// 获取站点的供热设备名称
-        /// </summary>
-        /// <param name="stationName"></param>
-        /// <remarks>
-        /// 单控制器站点返回站点名称
-        /// 多控制器站点返回接一次数据线控制器名称
-        /// </remarks>
-        /// <returns></returns>
-        public string GetGRDeviceDisplayName(string stationName)
-        {
-            foreach (DictionaryEntry de in StationNameDisplayNameHashtable)
-            {
-                if (StringHelper.Equal(de.Key.ToString(), stationName))
-                {
-                    return de.Value.ToString();
-                }
-            }
-            return stationName;
-        }
+        ///// <summary>
+        ///// 获取站点的供热设备名称
+        ///// </summary>
+        ///// <param name="stationName"></param>
+        ///// <remarks>
+        ///// 单控制器站点返回站点名称
+        ///// 多控制器站点返回接一次数据线控制器名称
+        ///// </remarks>
+        ///// <returns></returns>
+        //public string GetGRDeviceDisplayName(string stationName)
+        //{
+        //    foreach (DictionaryEntry de in StationNameDisplayNameHashtable)
+        //    {
+        //        if (StringHelper.Equal(de.Key.ToString(), stationName))
+        //        {
+        //            return de.Value.ToString();
+        //        }
+        //    }
+        //    return stationName;
+        //}
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private Hashtable StationNameDisplayNameHashtable
-        {
-            get 
-            {
-                if (_stationNameDisplayNameHashtable == null)
-                {
-                    _stationNameDisplayNameHashtable = new Hashtable();
-                    Hashtable ht = ReadCalcHeatReplaceNames();
-                    foreach (DictionaryEntry de in ht )
-                    {
-                        string v = de.Value.ToString();
-                        string k = de.Key.ToString();
-                        if (_stationNameDisplayNameHashtable[v] == null)
-                        {
-                            _stationNameDisplayNameHashtable[v] = k;
-                        }
-                    }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //private Hashtable StationNameDisplayNameHashtable
+        //{
+        //    get 
+        //    {
+        //        if (_stationNameDisplayNameHashtable == null)
+        //        {
+        //            _stationNameDisplayNameHashtable = new Hashtable();
+        //            Hashtable ht = ReadCalcHeatReplaceNames();
+        //            foreach (DictionaryEntry de in ht )
+        //            {
+        //                string v = de.Value.ToString();
+        //                string k = de.Key.ToString();
+        //                if (_stationNameDisplayNameHashtable[v] == null)
+        //                {
+        //                    _stationNameDisplayNameHashtable[v] = k;
+        //                }
+        //            }
 
-                }
-                return _stationNameDisplayNameHashtable;
-            }
-        } private Hashtable _stationNameDisplayNameHashtable = null;
+        //        }
+        //        return _stationNameDisplayNameHashtable;
+        //    }
+        //} private Hashtable _stationNameDisplayNameHashtable = null;
 
         
         /// <summary>
@@ -926,7 +925,7 @@ namespace CZGRWEBDBI
         private double GetGRDeviceTotalSupportArea()
         {
             string sql = "select sum(supportarea) as total from vStationDevice " +
-                "where StationDeleted = 0 and DeviceDeleted = 0 and " +
+                //"where StationDeleted = 0 and DeviceDeleted = 0 and " +
                 "(devicetype = 'grdevice' OR devicetype = 'grdeviceModbus') and supportarea > 1";
             object obj = this.ExecuteScalar(sql);
             return ConvertToDouble(obj);
@@ -1204,12 +1203,12 @@ namespace CZGRWEBDBI
         /// <param name="b"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        public DataTable ExecuteRecruitData(string displayName, DateTime b, DateTime e)
+        public DataTable ExecuteRecruitData(string stationName, DateTime b, DateTime e)
         {
-            string s = "select * from vgrdata where (displayname = @stationName) and (dt between @b and @e) order by dt";
+            string s = "select * from vgrdata where (StationName = @stationName) and (dt between @b and @e) order by dt";
             SqlCommand cmd = new SqlCommand(s);
 
-            DBIBase.AddSqlParameter(cmd, "stationName", displayName);
+            DBIBase.AddSqlParameter(cmd, "stationName", stationName);
             DBIBase.AddSqlParameter(cmd, "b", b);
             DBIBase.AddSqlParameter(cmd, "e", e);
 

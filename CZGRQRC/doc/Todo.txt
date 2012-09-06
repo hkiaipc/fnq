@@ -1,2 +1,0 @@
-﻿1. configfile dir
-2. grdatalast form: esc key restore alarm icon

@@ -1,3 +1,6 @@
-
+bin
+obj
+*.dll
+*.exe
 /CZGRQRC/bin
 /CZGRQRC/obj

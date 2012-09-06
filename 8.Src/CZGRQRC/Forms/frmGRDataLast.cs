@@ -148,7 +148,6 @@ namespace CZGRQRC
         #endregion //MarkLastDateTime
 
 
-
         #region HasExceptionValue
         /// <summary>
         /// 
@@ -204,7 +203,7 @@ namespace CZGRQRC
 
             AddDataTableIconColumn(tbl);
             AddGRAlarmDataCollectionColumn(tbl);
-            AddDataColumns(tbl);
+            //AddDataColumns(tbl);
 
             // TODO:
             //
@@ -349,10 +348,10 @@ namespace CZGRQRC
         {
             foreach (DataRow row in gralarmTbl.Rows)
             {
-                string displayName = row[DataColumnNames.DisplayName].ToString();
+                string displayName = row[DataColumnNames.StationName].ToString();
                 //this.dataGridView1.
                 //int displayNameColumnIndex = 2;
-                //DataGridViewRow dgvrow = GetDataGridViewRow(displayNameColumnIndex, displayName);
+                //DataGridViewRow dgvrow = GetDataGridViewRow(displayNameColumnIndex, stationName);
                 
                 //if (dgvrow != null)
                 //{
@@ -364,7 +363,7 @@ namespace CZGRQRC
                 //    GRAlarmDataCollection gralarmdatas = GetDataGirdViewRowGRAlarmDataCollection(dgvrow);
                 //    gralarmdatas.Add(CreateGRAlarmData(row));
                 //}
-                string expression = string.Format("DisplayName = '{0}'", displayName);
+                string expression = string.Format("StationName = '{0}'", displayName);
                 DataTable tbl = DataGridViewDataSource;
                 DataRow[] selrows = tbl.Select(expression);
                 if (selrows.Length > 0)
@@ -401,7 +400,7 @@ namespace CZGRQRC
         {
             GRAlarmData a = new GRAlarmData(
                 Convert.ToDateTime(row["DT"]),
-                row[DataColumnNames.DisplayName].ToString(),
+                row[DataColumnNames.StationName].ToString(),
                 row["Content"].ToString());
             return a;
         }
@@ -468,7 +467,8 @@ namespace CZGRQRC
         /// <param name="destination"></param>
         private void UpdateDataTable(DataTable source, DataTable destination)
         {
-            string columnName = "DisplayName";
+            //string columnName = "StationName";
+            string columnName = "StationName";
             foreach (DataRow row in source.Rows)
             {
                 string expression = string.Format("{0} = '{1}'",columnName, row[columnName].ToString());
@@ -533,8 +533,8 @@ namespace CZGRQRC
                 DataGridViewFormatters.DefaultDataFormatterCollection);
 
             ee.ExportedEvent += new EventHandler(ee_ExportedEvent);
-            CCC ccc = CCCFactory.CreateGRDataCCC(this.dataGridView1);
-            ee.Export(this.dataGridView1, ccc);
+            //CCC ccc = CCCFactory.CreateGRDataCCC(this.dataGridView1);
+            ee.Export(this.dataGridView1);
 
             ProcessStartInfo si = new ProcessStartInfo(filename);
             si.ErrorDialog = true;
@@ -623,7 +623,7 @@ namespace CZGRQRC
             {
                 int rowIndex = this.dataGridView1.SelectedCells[0].RowIndex;
                 DataGridViewRow row = this.dataGridView1.Rows[rowIndex];
-                string name = row.Cells[DataColumnNames.DisplayName].Value.ToString();
+                string name = row.Cells[DataColumnNames.StationName].Value.ToString();
                 return name;
             }
             return null;

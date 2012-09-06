@@ -129,7 +129,7 @@ namespace CZGRQRC.UC
                 if (row.RowState != DataRowState.Deleted)
                 {
                     string content = row["content"].ToString();
-                    string displayName2 = row["displayName"].ToString();
+                    string displayName2 = row["stationName"].ToString();
                     if (Xdgk.Common.StringHelper.Equal(displayName, displayName2))
                     {
                         int index = content.IndexOf(dataDisplay);

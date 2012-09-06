@@ -152,8 +152,8 @@ namespace CZGRQRC
             //
             string f = ExcelExporter.GenerateFileName();
             ExcelExporter ee = new ExcelExporter(f, DataGridViewFormatters.DefaultDataFormatterCollection);
-            CCC ccc = CCCFactory.CreateGRDataCCC(this.dataGridView1);
-            ee.Export(dataGridView1, ccc);
+            //CCC ccc = CCCFactory.CreateGRDataCCC(this.dataGridView1);
+            //ee.Export(dataGridView1, ccc);
             //Process.Execute(f);
             ProcessStartInfo si = new ProcessStartInfo(f);
             si.ErrorDialog = true;

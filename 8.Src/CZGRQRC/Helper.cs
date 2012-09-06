@@ -36,13 +36,13 @@ namespace CZGRQRC
         /// <param name="tbl"></param>
         static public void FillSupportArea(DataTable tbl)
         {
-            string sql = "select DisplayName, SupportArea from vStationDevice";
+            string sql = "select StationName, SupportArea from vStationDevice";
             DataTable areatbl = CZGRQRCApp.Default.DBI.ExecuteDataTable(sql);
             foreach( DataRow row in tbl.Rows )
             {
                 //row["supportarea"] = 100F;
-                string displayname = row[DataColumnNames.DisplayName].ToString();
-                DataRow[] rows = areatbl.Select(string.Format("DisplayName = '{0}'", displayname));
+                string displayname = row[DataColumnNames.StationName].ToString();
+                DataRow[] rows = areatbl.Select(string.Format("StationName = '{0}'", displayname));
                 if (rows.Length > 0)
                 {
                     row[DataColumnNames.SupportArea] = rows[0][DataColumnNames.SupportArea];

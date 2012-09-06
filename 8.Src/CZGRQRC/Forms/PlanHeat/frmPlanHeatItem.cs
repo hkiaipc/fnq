@@ -15,7 +15,7 @@ namespace CZGRQRC
     /// </summary>
     public partial class frmPlanHeatItem : NUnit.UiKit.SettingsDialogBase
     {
-        private ADEState _adeState;
+        private ADEStatus _adeState;
 
         private PlanHeatItem _planHeatItem;
         private int _grDeviceID;
@@ -52,7 +52,7 @@ namespace CZGRQRC
             this._grDeviceID = grdeviceID;
             this._planHeatID = planHeatID;
             this._editMonth = planHeatItem.Month;
-            this._adeState = ADEState.Edit;
+            this._adeState = ADEStatus.Edit;
 
 
             this.numMonth.Value = this._planHeatItem.Month;
@@ -69,7 +69,7 @@ namespace CZGRQRC
             InitControls();
 
             this._grDeviceID = grDeviceID;
-            this._adeState = ADEState.Add;
+            this._adeState = ADEStatus.Add;
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace CZGRQRC
                 return;
             }
 
-            if (_adeState == ADEState.Add)
+            if (_adeState == ADEStatus.Add)
             {
                 //_planHeatItem = new DBGRPlanHeat();
                 //_planHeatItem.DBGRDevice = this._grDeviceID;
@@ -111,7 +111,7 @@ namespace CZGRQRC
                     (int)this.numMonth.Value,
                     (int)this.numPlanHeat.Value);
             }
-            else if (_adeState == ADEState.Edit)
+            else if (_adeState == ADEStatus.Edit)
             {
                 //_planHeatItem.Month = (int)this.numMonth.Value;
                 //_planHeatItem.PlanHeat = (int)this.numPlanHeat.Value;

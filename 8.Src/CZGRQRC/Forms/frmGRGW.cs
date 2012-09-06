@@ -730,11 +730,11 @@ namespace CZGRQRC
         private void RefreshDatas()
         {
             DataTable tbl = CZGRQRCApp.Default.DBI.ExecuteGRLastDataTable();
-            StationNameFilter.Default.Process(tbl);
+            //StationNameFilter.Default.Process(tbl);
 
             foreach (DataRow row in tbl.Rows)
             {
-                string name = row["DisplayName"].ToString();
+                string name = row["StationName"].ToString();
                 string value1 = GetValue1(row);
                 string value2 = GetValue2(row);
                 SetValue1(name, value1);

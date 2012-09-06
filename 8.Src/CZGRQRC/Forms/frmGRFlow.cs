@@ -22,7 +22,7 @@ namespace CZGRQRC
         public frmGRFlow()
         {
             InitializeComponent();
-            //this.StationName = displayName;
+            //this.StationName = stationName;
         }
         #endregion //frmGRFlow
 
@@ -58,7 +58,7 @@ namespace CZGRQRC
             this.lblGP2.Text = FormatPressValue(row[DataColumnNames.GP2]);
             this.lblBP2.Text = FormatPressValue(row[DataColumnNames.BP2]);
 
-            this.lblDisplayName.Text = row[DataColumnNames.DisplayName].ToString();
+            this.lblDisplayName.Text = row[DataColumnNames.StationName].ToString();
             this.lblDT.Text = row[DataColumnNames.DT].ToString();
 
             this.lblValve.Text = Convert.ToInt32(row["OD"]).ToString() + " %";

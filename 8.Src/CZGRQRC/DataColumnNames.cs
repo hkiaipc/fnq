@@ -14,7 +14,6 @@ namespace CZGRQRC
             Street = "Street",
             StationName = "StationName",
             DeviceName = "DeviceName",
-            DisplayName = "DisplayName",
             DT = "DT",
             DTBegin = "dtbegin",
             DTEnd = "dtend",

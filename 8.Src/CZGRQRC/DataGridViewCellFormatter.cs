@@ -88,8 +88,8 @@ namespace CZGRQRC
         //    string name = dgv.Columns[e.ColumnIndex].DataPropertyName;
         //    //if (name == "BP2")
         //    {
-        //        string displayName = dgv.Rows[e.RowIndex].Cells[DataColumnNames.DisplayName].Value.ToString();
-        //        bool b = CZGRQRCApp.Default.UCAlarm.HasAlarm(displayName, name);
+        //        string stationName = dgv.Rows[e.RowIndex].Cells[DataColumnNames.StationName].Value.ToString();
+        //        bool b = CZGRQRCApp.Default.UCAlarm.HasAlarm(stationName, name);
         //        CompareResult cr = new CompareResult(!b);
         //        //cr = new CompareResult(false);
         //        ForeColorRenderer render = new ForeColorRenderer();

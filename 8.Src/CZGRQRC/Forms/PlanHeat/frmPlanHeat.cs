@@ -61,7 +61,7 @@ namespace CZGRQRC
         private void RefreshGRDeviceNameListbox()
         {
             DataTable tbl = CZGRQRCApp.Default.DBI.ExecuteGRDeviceTable();
-            this.lstDeviceName.DisplayMember = "DisplayName";
+            this.lstDeviceName.DisplayMember = "StationName";
             this.lstDeviceName.ValueMember = "DeviceID";
             this.lstDeviceName.DataSource = tbl;
         }

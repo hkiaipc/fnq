@@ -191,7 +191,7 @@ namespace CZGRQRC
         //    //}
 
         //    stationCombox.DataSource = sds;
-        //    stationCombox.DisplayMember = "DisplayName";
+        //    stationCombox.DisplayMember = "StationName";
         //    stationCombox.ValueMember = "This";
         //}
         //#endregion //FillStationName

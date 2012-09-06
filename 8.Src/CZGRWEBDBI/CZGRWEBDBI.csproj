@@ -40,7 +40,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConfig.cs" />
     <Compile Include="DBI.cs" />
     <Compile Include="DBInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -58,11 +58,11 @@
   <ItemGroup>
     <Reference Include="FlexCel, Version=4.9.6.0, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\FlexCel.dll</HintPath>
+      <HintPath>..\..\..\GlobalAssembly\FlexCel\FlexCel.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\NLog.dll</HintPath>
+      <HintPath>..\..\..\GlobalAssembly\NLog\.NET Framework 2.0\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -71,17 +71,13 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xdgk.Common, Version=0.8.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\GlobalAssembly\Xdgk.Common\Xdgk.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Xdgk.Common.Export, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\GlobalAssembly\Xdgk.Common.Export\Xdgk.Common.Export.dll</HintPath>
     </Reference>
     <Reference Include="ZedGraph, Version=5.1.5.21173, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\ZedGraph.dll</HintPath>
+      <HintPath>..\..\..\GlobalAssembly\Zed\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -523,13 +519,17 @@
     <Compile Include="WavePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CZGRWEBPROJECT\8.Src\CZGRWEBDBI\CZGRWEBDBI.csproj">
-      <Project>{7D7F3FFA-435A-4CF3-A22B-5FCF3661A115}</Project>
-      <Name>CZGRWEBDBI</Name>
+    <ProjectReference Include="..\..\..\C3\8.Src\Xdgk.Common\Xdgk.Common.csproj">
+      <Project>{34919A7B-E237-4412-90B0-6BB2D4DCBF8E}</Project>
+      <Name>Xdgk.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\CZGRCommon\CZGRCommon.csproj">
       <Project>{4B9EE343-54D3-4851-AF24-EA7CD946F846}</Project>
       <Name>CZGRCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZGRWEBDBI\CZGRWEBDBI.csproj">
+      <Project>{7D7F3FFA-435A-4CF3-A22B-5FCF3661A115}</Project>
+      <Name>CZGRWEBDBI</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xdgk.GRCommon\Xdgk.GRCommon.csproj">
       <Project>{D77EF345-878C-449E-8485-E559B5908949}</Project>

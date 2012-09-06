@@ -48,7 +48,7 @@ namespace CZGRQRC
             foreach (DataRow row in this.GRAlarmDataTable.Rows)
             {
                 string s = string.Format("{0}\t{1}\t{2}",
-                    row["DisplayName"], row["DT"], row["Content"]);
+                    row["StationName"], row["DT"], row["Content"]);
                 this.lstAlarm.Items.Add(s);
             }
         }

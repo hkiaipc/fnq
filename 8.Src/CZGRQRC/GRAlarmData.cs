@@ -13,7 +13,7 @@ namespace CZGRQRC
         /// 
         /// </summary>
         /// <param name="dt"></param>
-        /// <param name="displayName"></param>
+        /// <param name="stationName"></param>
         /// <param name="content"></param>
         public GRAlarmData(DateTime dt, string displayName, string content)
         {
@@ -32,7 +32,7 @@ namespace CZGRQRC
         } private DateTime _dT;
         #endregion //DT
 
-        #region DisplayName
+        #region StationName
         /// <summary>
         /// 
         /// </summary>
@@ -41,7 +41,7 @@ namespace CZGRQRC
             get { return _displayName; }
             set { _displayName = value; }
         } private string _displayName;
-        #endregion //DisplayName
+        #endregion //StationName
 
         #region Content
         /// <summary>

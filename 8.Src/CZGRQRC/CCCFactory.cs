@@ -19,7 +19,7 @@ namespace CZGRQRC
         /// </summary>
         /// <param name="dgv"></param>
         /// <returns></returns>
-        static public CCC CreateGRDataCCC(DataGridView dgv)
+        static private CCC CreateGRDataCCC(DataGridView dgv)
         {
             return CreateGRDataLastCCC(dgv);
         }

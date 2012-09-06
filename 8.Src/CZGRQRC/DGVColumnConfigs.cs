@@ -29,7 +29,7 @@ namespace CZGRQRC
                 {
                     _alarm = new DGVColumnConfigCollection();
                     _alarm.Add(new DGVColumnConfig("Street", noFormat, "街道"));
-                    _alarm.Add(new DGVColumnConfig("DisplayName", noFormat, "站名"));
+                    _alarm.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                     _alarm.Add(new DGVColumnConfig("DT", noFormat, "时间"));
                     _alarm.Add(new DGVColumnConfig("Content", noFormat, "报警"));
                 }
@@ -72,7 +72,7 @@ namespace CZGRQRC
                 {
                     _recruit = new DGVColumnConfigCollection();
                     _recruit.Add(new DGVColumnConfig("Street", noFormat, "街道"));
-                    _recruit.Add(new DGVColumnConfig("DisplayName", noFormat, "站名"));
+                    _recruit.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                     _recruit.Add(new DGVColumnConfig("DT", noFormat, "时间"));
                     _recruit.Add(new DGVColumnConfig("IR", floatFormat, "补水瞬时流量"));
                     _recruit.Add(new DGVColumnConfig("SR", noFormat, "补水累计流量"));
@@ -117,7 +117,7 @@ namespace CZGRQRC
                     _gr = new DGVColumnConfigCollection();
 
                     _gr.Add(new DGVColumnConfig("Street", noFormat, "街道"));
-                    _gr.Add(new DGVColumnConfig("DisplayName", noFormat, "站名"));
+                    _gr.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                     _gr.Add(new DGVColumnConfig("DT", noFormat, "时间"));
 
                     _gr.Add(new DGVColumnConfig("GT1", floatFormat, "一次供温"));
@@ -184,7 +184,7 @@ namespace CZGRQRC
                                     _grHistory = new DGVColumnConfigCollection();
 
                                     _grHistory.Add(new DGVColumnConfig("Street", noFormat, "街道"));
-                                    _grHistory.Add(new DGVColumnConfig("DisplayName", noFormat, "站名"));
+                                    _grHistory.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                                     _grHistory.Add(new DGVColumnConfig("DT", noFormat, "时间"));
 
                                     _grHistory.Add(new DGVColumnConfig("GT1", floatFormat, "一次供温"));
@@ -247,7 +247,7 @@ namespace CZGRQRC
                 {
                     _heat = new DGVColumnConfigCollection();
                     _heat.Add(new DGVColumnConfig(DataColumnNames.Street, noFormat, "街道"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.DisplayName, noFormat, "站名"));
+                    _heat.Add(new DGVColumnConfig(DataColumnNames.StationName, noFormat, "站名"));
                     _heat.Add(new DGVColumnConfig(DataColumnNames.DTBegin, noFormat, "起始时间"));
                     _heat.Add(new DGVColumnConfig(DataColumnNames.DTEnd, noFormat, "结束时间"));
 
@@ -301,7 +301,7 @@ namespace CZGRQRC
                 {
                     _stationHeat = new DGVColumnConfigCollection();
                     _stationHeat.Add(new DGVColumnConfig(DataColumnNames.Street, noFormat, "街道"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.DisplayName, noFormat, "站名"));
+                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.StationName, noFormat, "站名"));
                     _stationHeat.Add(new DGVColumnConfig(DataColumnNames.DTBegin, noFormat, "起始时间"));
                     _stationHeat.Add(new DGVColumnConfig(DataColumnNames.DTEnd, noFormat, "结束时间"));
 

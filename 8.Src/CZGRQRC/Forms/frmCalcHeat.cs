@@ -195,11 +195,11 @@ namespace CZGRQRC
 
             //FillCalcColumns(tbl);
 
-            StationNameFilter.Default.InitRemoveReplaceNames();
+            //StationNameFilter.Default.InitRemoveReplaceNames();
             // remove
             //
-            StationNameFilter.Default.RemoveRows(tbl);
-            StationNameFilter.Default.ReplaceDisplayNames(tbl);
+            //StationNameFilter.Default.RemoveRows(tbl);
+            //StationNameFilter.Default.ReplaceDisplayNames(tbl);
 
             EMDataCalculator.Fill(tbl, begin, end);
 
@@ -245,7 +245,8 @@ namespace CZGRQRC
 
             ee.AttacheCollection.Add(aaa);
 
-            ee.Export(this.dataGridView1, ccc);
+            //ee.Export(this.dataGridView1, ccc);
+            ee.Export(this.dataGridView1);
 
             ProcessStartInfo si = new ProcessStartInfo(filename);
             si.ErrorDialog = true;
@@ -561,7 +562,7 @@ namespace CZGRQRC
             {
                 // displayname ?
                 //
-                string stationName = row[DataColumnNames.DisplayName].ToString();
+                string stationName = row[DataColumnNames.StationName].ToString();
                 int energy = CalcEnergy(emTable, stationName, timeRange);
                 row[ColumnName] = energy;
             }

@@ -185,7 +185,7 @@
             this.lblDisplayName.Name = "lblDisplayName";
             this.lblDisplayName.Size = new System.Drawing.Size(96, 16);
             this.lblDisplayName.TabIndex = 12;
-            this.lblDisplayName.Text = "DisplayName";
+            this.lblDisplayName.Text = "StationName";
             this.lblDisplayName.Click += new System.EventHandler(this.lblDisplayName_Click);
             // 
             // lblDT
