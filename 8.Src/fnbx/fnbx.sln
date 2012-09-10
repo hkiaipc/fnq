@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fnbx", "fnbx\fnbx.csproj", "{73871F3E-83A3-4A73-986B-3E56BA0DA722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BXDB", "BXDB\BXDB.csproj", "{C8097522-7C96-4ADD-9F84-288E64B0757D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73871F3E-83A3-4A73-986B-3E56BA0DA722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73871F3E-83A3-4A73-986B-3E56BA0DA722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73871F3E-83A3-4A73-986B-3E56BA0DA722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73871F3E-83A3-4A73-986B-3E56BA0DA722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8097522-7C96-4ADD-9F84-288E64B0757D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8097522-7C96-4ADD-9F84-288E64B0757D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8097522-7C96-4ADD-9F84-288E64B0757D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8097522-7C96-4ADD-9F84-288E64B0757D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
