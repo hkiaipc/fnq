@@ -20,7 +20,8 @@ namespace fnbx
         {
             //frmML f = new frmML();
             //frmMLList f = new frmMLList();
-            frmOperatorList f = new frmOperatorList();
+            //frmOperatorList f = new frmOperatorList();
+            frmMTList f = new frmMTList();
             f.ShowDialog();
         }
     }

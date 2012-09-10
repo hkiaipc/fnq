@@ -28,7 +28,7 @@ namespace CZGRQRC
                 if (_alarm == null)
                 {
                     _alarm = new DGVColumnConfigCollection();
-                    _alarm.Add(new DGVColumnConfig("Street", noFormat, "街道"));
+                    //_alarm.Add(new DGVColumnConfig("Street", noFormat, "街道"));
                     _alarm.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                     _alarm.Add(new DGVColumnConfig("DT", noFormat, "时间"));
                     _alarm.Add(new DGVColumnConfig("Content", noFormat, "报警"));
@@ -38,26 +38,26 @@ namespace CZGRQRC
         } static private DGVColumnConfigCollection _alarm;
         #endregion //Alarm
 
-        #region EM
-        /// <summary>
-        /// 
-        /// </summary>
-        static public DGVColumnConfigCollection EM
-        {
-            get 
-            {
-                if (_em == null)
-                {
-                    _em = new DGVColumnConfigCollection();
-                    _em.Add(new DGVColumnConfig("Street", noFormat, "街道"));
-                    _em.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
-                    _em.Add(new DGVColumnConfig("DT", noFormat, "时间"));
-                    _em.Add (new DGVColumnConfig ("ElectricValue", noFormat , "电量"));
-                }
-                return _em;
-            }
-        } static private DGVColumnConfigCollection _em;
-        #endregion //EM
+        //#region EM
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //static public DGVColumnConfigCollection EM
+        //{
+        //    get 
+        //    {
+        //        if (_em == null)
+        //        {
+        //            _em = new DGVColumnConfigCollection();
+        //            //_em.Add(new DGVColumnConfig("Street", noFormat, "街道"));
+        //            _em.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
+        //            _em.Add(new DGVColumnConfig("DT", noFormat, "时间"));
+        //            _em.Add (new DGVColumnConfig ("ElectricValue", noFormat , "电量"));
+        //        }
+        //        return _em;
+        //    }
+        //} static private DGVColumnConfigCollection _em;
+        //#endregion //EM
 
 
         #region Recruit
@@ -71,7 +71,7 @@ namespace CZGRQRC
                 if (_recruit == null)
                 {
                     _recruit = new DGVColumnConfigCollection();
-                    _recruit.Add(new DGVColumnConfig("Street", noFormat, "街道"));
+                    //_recruit.Add(new DGVColumnConfig("Street", noFormat, "街道"));
                     _recruit.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                     _recruit.Add(new DGVColumnConfig("DT", noFormat, "时间"));
                     _recruit.Add(new DGVColumnConfig("IR", floatFormat, "补水瞬时流量"));
@@ -116,7 +116,7 @@ namespace CZGRQRC
                 {
                     _gr = new DGVColumnConfigCollection();
 
-                    _gr.Add(new DGVColumnConfig("Street", noFormat, "街道"));
+                    //_gr.Add(new DGVColumnConfig("Street", noFormat, "街道"));
                     _gr.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                     _gr.Add(new DGVColumnConfig("DT", noFormat, "时间"));
 
@@ -235,110 +235,110 @@ namespace CZGRQRC
         } static private DGVColumnConfigCollection _grHistory;
         #endregion //GRHistory
 
-        #region Heat
-        /// <summary>
-        /// 
-        /// </summary>
-        static public DGVColumnConfigCollection Heat
-        {
-            get
-            {
-                if (_heat == null)
-                {
-                    _heat = new DGVColumnConfigCollection();
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.Street, noFormat, "街道"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.StationName, noFormat, "站名"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.DTBegin, noFormat, "起始时间"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.DTEnd, noFormat, "结束时间"));
+        //#region Heat
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //static public DGVColumnConfigCollection Heat
+        //{
+        //    get
+        //    {
+        //        if (_heat == null)
+        //        {
+        //            _heat = new DGVColumnConfigCollection();
+        //            //_heat.Add(new DGVColumnConfig(DataColumnNames.Street, noFormat, "街道"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.StationName, noFormat, "站名"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.DTBegin, noFormat, "起始时间"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.DTEnd, noFormat, "结束时间"));
 
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.GT1, floatFormat, "一次供温"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.BT1, floatFormat, "一次回温"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.GT1, floatFormat, "一次供温"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.BT1, floatFormat, "一次回温"));
 
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.GT2, floatFormat, "二次供温"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.BT2, floatFormat, "二次回温"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.GT2, floatFormat, "二次供温"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.BT2, floatFormat, "二次回温"));
 
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.GP1, floatFormat, "一次供压"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.BP1, floatFormat, "一次回压"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.GP2, floatFormat, "二次供压"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.BP2, floatFormat, "二次回压"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.GP1, floatFormat, "一次供压"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.BP1, floatFormat, "一次回压"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.GP2, floatFormat, "二次供压"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.BP2, floatFormat, "二次回压"));
 
-                    DGVColumnConfig dgvcc = new DGVColumnConfig(DataColumnNames.S1Begin, noFormat, "起始流量");
-                    dgvcc.Visible = false;
-                    _heat.Add(dgvcc);
+        //            DGVColumnConfig dgvcc = new DGVColumnConfig(DataColumnNames.S1Begin, noFormat, "起始流量");
+        //            dgvcc.Visible = false;
+        //            _heat.Add(dgvcc);
 
-                    dgvcc = new DGVColumnConfig(DataColumnNames.S1End, noFormat, "结束流量");
-                    dgvcc.Visible = false;
-                    _heat.Add(dgvcc);
-                    //_heat.Add(new DGVColumnConfig(DataColumnNames.S1, noFormat, "阶段流量"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.RegisteredArea, floatFormat, "入网面积"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.SupportArea, floatFormat, "实供面积"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.I1, floatFormat, "瞬时流量"));
+        //            dgvcc = new DGVColumnConfig(DataColumnNames.S1End, noFormat, "结束流量");
+        //            dgvcc.Visible = false;
+        //            _heat.Add(dgvcc);
+        //            //_heat.Add(new DGVColumnConfig(DataColumnNames.S1, noFormat, "阶段流量"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.RegisteredArea, floatFormat, "入网面积"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.SupportArea, floatFormat, "实供面积"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.I1, floatFormat, "瞬时流量"));
 
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.Heat, floatFormat, "日耗热量"));
-                    //_heat.Add(new DGVColumnConfig(DataColumnNames.InstantHeat, floatFormat, "瞬时耗热量" ));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.PlanHeat, floatFormat, "日计划耗热量"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.ItemHeat, floatFormat, "单位耗热量"));
-                    //_heat.Add(new DGVColumnConfig("haodianliang", floatFormat , "耗电量"));
-                    _heat.Add(new DGVColumnConfig("em", floatFormat , "耗电量"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.Heat, floatFormat, "日耗热量"));
+        //            //_heat.Add(new DGVColumnConfig(DataColumnNames.InstantHeat, floatFormat, "瞬时耗热量" ));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.PlanHeat, floatFormat, "日计划耗热量"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.ItemHeat, floatFormat, "单位耗热量"));
+        //            //_heat.Add(new DGVColumnConfig("haodianliang", floatFormat , "耗电量"));
+        //            _heat.Add(new DGVColumnConfig("em", floatFormat , "耗电量"));
 
-                    //_heat.Add(new DGVColumnConfig("shishuiliang", floatFormat, "失水量"));
-                    _heat.Add(new DGVColumnConfig(DataColumnNames.ShiShuiLiang, noFormat, "失水量"));
-                }
-                return _heat;
-            }
-        } static private DGVColumnConfigCollection _heat;
-        #endregion //Heat
+        //            //_heat.Add(new DGVColumnConfig("shishuiliang", floatFormat, "失水量"));
+        //            _heat.Add(new DGVColumnConfig(DataColumnNames.ShiShuiLiang, noFormat, "失水量"));
+        //        }
+        //        return _heat;
+        //    }
+        //} static private DGVColumnConfigCollection _heat;
+        //#endregion //Heat
 
-        #region StationHeat
-        /// <summary>
-        /// 
-        /// </summary>
-        static public DGVColumnConfigCollection StationHeat
-        {
-            get
-            {
-                if (_stationHeat == null)
-                {
-                    _stationHeat = new DGVColumnConfigCollection();
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.Street, noFormat, "街道"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.StationName, noFormat, "站名"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.DTBegin, noFormat, "起始时间"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.DTEnd, noFormat, "结束时间"));
+        //#region StationHeat
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //static public DGVColumnConfigCollection StationHeat
+        //{
+        //    get
+        //    {
+        //        if (_stationHeat == null)
+        //        {
+        //            _stationHeat = new DGVColumnConfigCollection();
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.Street, noFormat, "街道"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.StationName, noFormat, "站名"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.DTBegin, noFormat, "起始时间"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.DTEnd, noFormat, "结束时间"));
 
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GT1, floatFormat, "一次供温"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BT1, floatFormat, "一次回温"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GT1, floatFormat, "一次供温"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BT1, floatFormat, "一次回温"));
 
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GT2, floatFormat, "二次供温"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BT2, floatFormat, "二次回温"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GT2, floatFormat, "二次供温"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BT2, floatFormat, "二次回温"));
 
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GP1, floatFormat, "一次供压"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BP1, floatFormat, "一次回压"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GP2, floatFormat, "二次供压"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BP2, floatFormat, "二次回压"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GP1, floatFormat, "一次供压"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BP1, floatFormat, "一次回压"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.GP2, floatFormat, "二次供压"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.BP2, floatFormat, "二次回压"));
 
-                    DGVColumnConfig dgvcc = new DGVColumnConfig(DataColumnNames.S1Begin, noFormat, "起始流量");
-                    dgvcc.Visible = false;
-                    _stationHeat.Add(dgvcc);
+        //            DGVColumnConfig dgvcc = new DGVColumnConfig(DataColumnNames.S1Begin, noFormat, "起始流量");
+        //            dgvcc.Visible = false;
+        //            _stationHeat.Add(dgvcc);
 
-                    dgvcc = new DGVColumnConfig(DataColumnNames.S1End, noFormat, "结束流量");
-                    dgvcc.Visible = false;
-                    _stationHeat.Add(dgvcc);
-                    //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.S1, noFormat, "阶段流量"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.RegisteredArea, floatFormat, "入网面积"));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.SupportArea, floatFormat, "实供面积"));
-                    //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.I1, floatFormat, "瞬时流量"));
+        //            dgvcc = new DGVColumnConfig(DataColumnNames.S1End, noFormat, "结束流量");
+        //            dgvcc.Visible = false;
+        //            _stationHeat.Add(dgvcc);
+        //            //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.S1, noFormat, "阶段流量"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.RegisteredArea, floatFormat, "入网面积"));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.SupportArea, floatFormat, "实供面积"));
+        //            //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.I1, floatFormat, "瞬时流量"));
 
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.Heat, floatFormat, "日耗热量"));
-                    //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.InstantHeat, floatFormat, "瞬时耗热量" ));
-                    _stationHeat.Add(new DGVColumnConfig(DataColumnNames.PlanHeat, floatFormat, "日计划耗热量"));
-                    //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.ItemHeat, floatFormat, "单位耗热量"));
-                    //_stationHeat.Add(new DGVColumnConfig("shishuiliang", floatFormat, "失水量"));
-                    //_stationHeat.Add(new DGVColumnConfig("haodianliang", floatFormat , "耗电量"));
-                }
-                return _stationHeat;
-            }
-        } static private DGVColumnConfigCollection _stationHeat;
-        #endregion //StationHeat
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.Heat, floatFormat, "日耗热量"));
+        //            //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.InstantHeat, floatFormat, "瞬时耗热量" ));
+        //            _stationHeat.Add(new DGVColumnConfig(DataColumnNames.PlanHeat, floatFormat, "日计划耗热量"));
+        //            //_stationHeat.Add(new DGVColumnConfig(DataColumnNames.ItemHeat, floatFormat, "单位耗热量"));
+        //            //_stationHeat.Add(new DGVColumnConfig("shishuiliang", floatFormat, "失水量"));
+        //            //_stationHeat.Add(new DGVColumnConfig("haodianliang", floatFormat , "耗电量"));
+        //        }
+        //        return _stationHeat;
+        //    }
+        //} static private DGVColumnConfigCollection _stationHeat;
+        //#endregion //StationHeat
 
 
 
@@ -348,7 +348,7 @@ namespace CZGRQRC
         /// </summary>
         static public DGVColumnConfigCollection OT
         {
-            get 
+            get
             {
                 if (_ot == null)
                 {

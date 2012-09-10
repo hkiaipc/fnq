@@ -178,7 +178,6 @@
             // 
             this.mnuXG.Index = 3;
             this.mnuXG.Text = "巡更数据(&X)";
-            this.mnuXG.Visible = false;
             this.mnuXG.Click += new System.EventHandler(this.mnuXG_Click);
             // 
             // mnuOT
@@ -362,7 +361,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(838, 51);
+            this.toolStrip1.Size = new System.Drawing.Size(838, 52);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -372,7 +371,7 @@
             this.tsbGis.Image = ((System.Drawing.Image)(resources.GetObject("tsbGis.Image")));
             this.tsbGis.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGis.Name = "tsbGis";
-            this.tsbGis.Size = new System.Drawing.Size(45, 48);
+            this.tsbGis.Size = new System.Drawing.Size(41, 49);
             this.tsbGis.Text = "地  图";
             this.tsbGis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbGis.Visible = false;
@@ -382,7 +381,7 @@
             this.tsbMap.Image = global::CZGRQRC.Properties.Resources.Pipe;
             this.tsbMap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMap.Name = "tsbMap";
-            this.tsbMap.Size = new System.Drawing.Size(57, 48);
+            this.tsbMap.Size = new System.Drawing.Size(59, 49);
             this.tsbMap.Text = "管网示意";
             this.tsbMap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbMap.Visible = false;
@@ -390,7 +389,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 51);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 52);
             this.toolStripSeparator4.Visible = false;
             // 
             // tsbGRDataLast
@@ -398,7 +397,7 @@
             this.tsbGRDataLast.Image = global::CZGRQRC.Properties.Resources.Last;
             this.tsbGRDataLast.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGRDataLast.Name = "tsbGRDataLast";
-            this.tsbGRDataLast.Size = new System.Drawing.Size(57, 48);
+            this.tsbGRDataLast.Size = new System.Drawing.Size(59, 49);
             this.tsbGRDataLast.Text = "最新数据";
             this.tsbGRDataLast.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -407,7 +406,7 @@
             this.tsbGRDataHistory.Image = global::CZGRQRC.Properties.Resources.History;
             this.tsbGRDataHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGRDataHistory.Name = "tsbGRDataHistory";
-            this.tsbGRDataHistory.Size = new System.Drawing.Size(57, 48);
+            this.tsbGRDataHistory.Size = new System.Drawing.Size(59, 49);
             this.tsbGRDataHistory.Text = "历史数据";
             this.tsbGRDataHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -416,21 +415,21 @@
             this.tsbGRAlarm.Image = ((System.Drawing.Image)(resources.GetObject("tsbGRAlarm.Image")));
             this.tsbGRAlarm.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGRAlarm.Name = "tsbGRAlarm";
-            this.tsbGRAlarm.Size = new System.Drawing.Size(57, 48);
+            this.tsbGRAlarm.Size = new System.Drawing.Size(59, 49);
             this.tsbGRAlarm.Text = "报警数据";
             this.tsbGRAlarm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 51);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 52);
             // 
             // tsbTempCurve
             // 
             this.tsbTempCurve.Image = ((System.Drawing.Image)(resources.GetObject("tsbTempCurve.Image")));
             this.tsbTempCurve.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbTempCurve.Name = "tsbTempCurve";
-            this.tsbTempCurve.Size = new System.Drawing.Size(57, 48);
+            this.tsbTempCurve.Size = new System.Drawing.Size(59, 49);
             this.tsbTempCurve.Text = "温度曲线";
             this.tsbTempCurve.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbTempCurve.Click += new System.EventHandler(this.tsbTempCurve_Click);
@@ -440,7 +439,7 @@
             this.tsbPressCurve.Image = ((System.Drawing.Image)(resources.GetObject("tsbPressCurve.Image")));
             this.tsbPressCurve.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPressCurve.Name = "tsbPressCurve";
-            this.tsbPressCurve.Size = new System.Drawing.Size(57, 48);
+            this.tsbPressCurve.Size = new System.Drawing.Size(59, 49);
             this.tsbPressCurve.Text = "压力曲线";
             this.tsbPressCurve.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbPressCurve.Click += new System.EventHandler(this.tsbPressCurve_Click);
@@ -448,14 +447,14 @@
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 51);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 52);
             // 
             // tsbExit1
             // 
             this.tsbExit1.Image = ((System.Drawing.Image)(resources.GetObject("tsbExit1.Image")));
             this.tsbExit1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbExit1.Name = "tsbExit1";
-            this.tsbExit1.Size = new System.Drawing.Size(57, 48);
+            this.tsbExit1.Size = new System.Drawing.Size(59, 49);
             this.tsbExit1.Text = "退出系统";
             this.tsbExit1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 

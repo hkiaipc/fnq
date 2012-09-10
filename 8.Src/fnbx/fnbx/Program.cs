@@ -15,7 +15,15 @@ namespace fnbx
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            /*
+            frmLogin f = new frmLogin();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Form1());
+            }
+            */
+
+                Application.Run(new Form1());
         }
     }
 }

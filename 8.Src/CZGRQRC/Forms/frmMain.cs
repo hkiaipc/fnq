@@ -358,30 +358,30 @@ namespace CZGRQRC
         /// </summary>
         private void ShowMapForm()
         {
-            frmCZGRMap f = GetCZGRMapForm();
-            f.Show();
-            f.Activate();
+            //frmCZGRMap f = GetCZGRMapForm();
+            //f.Show();
+            //f.Activate();
             //f.TopLevel = true;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private frmCZGRMap GetCZGRMapForm()
-        {
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f is frmCZGRMap)
-                {
-                    return (frmCZGRMap)f;
-                }
-            }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //private frmCZGRMap GetCZGRMapForm()
+        //{
+        //    foreach (Form f in this.MdiChildren)
+        //    {
+        //        if (f is frmCZGRMap)
+        //        {
+        //            return (frmCZGRMap)f;
+        //        }
+        //    }
 
-            frmCZGRMap nf = new frmCZGRMap();
-            nf.MdiParent = this;
-            return nf;
-        }
+        //    frmCZGRMap nf = new frmCZGRMap();
+        //    nf.MdiParent = this;
+        //    return nf;
+        //}
 
         /// <summary>
         /// 
@@ -442,9 +442,9 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void mnuHeat_Click(object sender, EventArgs e)
         {
-            frmCalcHeat f = GetCalcHeatForm();
-            f.Show();
-            f.Activate();
+            //frmCalcHeat f = GetCalcHeatForm();
+            //f.Show();
+            //f.Activate();
         }
 
         ///// <summary>
@@ -509,41 +509,41 @@ namespace CZGRQRC
         //    }
         //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private frmCalcHeat GetCalcHeatForm()
-        {
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f is frmCalcHeat)
-                {
-                    return (frmCalcHeat)f;
-                }
-            }
-            frmCalcHeat nf = new frmCalcHeat();
-            nf.MdiParent = this;
-            return nf;
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //private frmCalcHeat GetCalcHeatForm()
+        //{
+        //    foreach (Form f in this.MdiChildren)
+        //    {
+        //        if (f is frmCalcHeat)
+        //        {
+        //            return (frmCalcHeat)f;
+        //        }
+        //    }
+        //    frmCalcHeat nf = new frmCalcHeat();
+        //    nf.MdiParent = this;
+        //    return nf;
+        //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private frmOneStationCalcHeat GetOneStationCalcHeat()
-        {
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f is frmOneStationCalcHeat)
-                {
-                    return (frmOneStationCalcHeat)f;
-                }
-            }
-            frmOneStationCalcHeat nf = new frmOneStationCalcHeat();
-            nf.MdiParent = this;
-            return nf;
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //private frmOneStationCalcHeat GetOneStationCalcHeat()
+        //{
+        //    foreach (Form f in this.MdiChildren)
+        //    {
+        //        if (f is frmOneStationCalcHeat)
+        //        {
+        //            return (frmOneStationCalcHeat)f;
+        //        }
+        //    }
+        //    frmOneStationCalcHeat nf = new frmOneStationCalcHeat();
+        //    nf.MdiParent = this;
+        //    return nf;
+        //}
 
         /// <summary>
         /// 
@@ -552,8 +552,8 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void mnu2Data_Click(object sender, EventArgs e)
         {
-            frmStationGather f = new frmStationGather();
-            f.ShowDialog();
+            //frmStationGather f = new frmStationGather();
+            //f.ShowDialog();
         }
 
         /// <summary>
@@ -786,9 +786,9 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void mnuStationHeat_Click(object sender, EventArgs e)
         {
-            frmOneStationCalcHeat f = GetOneStationCalcHeat();
-            f.Show();
-            f.Activate();
+            //frmOneStationCalcHeat f = GetOneStationCalcHeat();
+            //f.Show();
+            //f.Activate();
         }
 
         /// <summary>
@@ -850,24 +850,24 @@ namespace CZGRQRC
             return nf;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private frmEMDataQR GetEMDataForm()
-        {
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f is frmEMDataQR)
-                {
-                    return (frmEMDataQR)f;
-                }
-            }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //private frmEMDataQR GetEMDataForm()
+        //{
+        //    foreach (Form f in this.MdiChildren)
+        //    {
+        //        if (f is frmEMDataQR)
+        //        {
+        //            return (frmEMDataQR)f;
+        //        }
+        //    }
 
-            frmEMDataQR nf = new frmEMDataQR();
-            nf.MdiParent = this;
-            return nf;
-        }
+        //    frmEMDataQR nf = new frmEMDataQR();
+        //    nf.MdiParent = this;
+        //    return nf;
+        //}
 
         /// <summary>
         /// 
@@ -887,9 +887,9 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void mnuEM_Click(object sender, EventArgs e)
         {
-            frmEMDataQR f = this.GetEMDataForm();
-            f.Show();
-            f.Activate();
+            //frmEMDataQR f = this.GetEMDataForm();
+            //f.Show();
+            //f.Activate();
         }
 
         /// <summary>
@@ -899,29 +899,29 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void mnuEMCurve_Click(object sender, EventArgs e)
         {
-            frmEMCurve f = GetEMCurveForm();
-            f.Show();
-            f.Activate();
+            //frmEMCurve f = GetEMCurveForm();
+            //f.Show();
+            //f.Activate();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private frmEMCurve GetEMCurveForm()
-        {
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f is frmEMCurve)
-                {
-                    return (frmEMCurve)f;
-                }
-            }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //private frmEMCurve GetEMCurveForm()
+        //{
+        //    foreach (Form f in this.MdiChildren)
+        //    {
+        //        if (f is frmEMCurve)
+        //        {
+        //            return (frmEMCurve)f;
+        //        }
+        //    }
 
-            frmEMCurve nf = new frmEMCurve();
-            nf.MdiParent = this;
-            return nf;
-        }
+        //    frmEMCurve nf = new frmEMCurve();
+        //    nf.MdiParent = this;
+        //    return nf;
+        //}
 
         /// <summary>
         /// 

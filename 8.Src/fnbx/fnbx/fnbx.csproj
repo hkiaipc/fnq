@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,18 +74,37 @@
     <Compile Include="Forms\frmMLList.Designer.cs">
       <DependentUpon>frmMLList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOperator.cs">
+    <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOperator.Designer.cs">
+    <Compile Include="Forms\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmOperator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOperator.Designer.cs">
       <DependentUpon>frmOperator.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOperatorList.cs">
+    <Compile Include="Forms\frmOperatorList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOperatorList.Designer.cs">
+    <Compile Include="Forms\frmOperatorList.Designer.cs">
       <DependentUpon>frmOperatorList.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMT.Designer.cs">
+      <DependentUpon>frmMT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMTList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMTList.Designer.cs">
+      <DependentUpon>frmMTList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaintainFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="app.config" />
@@ -100,17 +120,37 @@
       <DependentUpon>frmMLList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOperator.resx">
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOperator.resx">
       <DependentUpon>frmOperator.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOperatorList.resx">
+    <EmbeddedResource Include="Forms\frmOperatorList.resx">
       <DependentUpon>frmOperatorList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMT.resx">
+      <DependentUpon>frmMT.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMTList.resx">
+      <DependentUpon>frmMTList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCMt.resx">
+      <DependentUpon>UCMt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCRp.resx">
+      <DependentUpon>UCRp.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\UCTimespan.resx">
@@ -121,6 +161,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\BXDB.tblMaintain.datasource" />
     <None Include="Properties\DataSources\BXDB.tblMaintainLevel.datasource" />
     <None Include="Properties\DataSources\BXDB.tblOperator.datasource" />
     <None Include="Properties\Settings.settings">
@@ -131,6 +172,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UCMt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCMt.Designer.cs">
+      <DependentUpon>UCMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCRp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCRp.Designer.cs">
+      <DependentUpon>UCRp.cs</DependentUpon>
     </Compile>
     <Compile Include="UC\UCTimespan.cs">
       <SubType>UserControl</SubType>

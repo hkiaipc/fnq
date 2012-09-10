@@ -100,23 +100,11 @@
     <Compile Include="DGVColumnConfigCollection.cs" />
     <Compile Include="DGVColumnConfigs.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Forms\frmCalcHeat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmCalcHeat.Designer.cs">
-      <DependentUpon>frmCalcHeat.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmContrastCurveSelect.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmContrastCurveSelect.Designer.cs">
       <DependentUpon>frmContrastCurveSelect.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmEMDataQR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmEMDataQR.Designer.cs">
-      <DependentUpon>frmEMDataQR.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmGRAlarm.cs">
       <SubType>Form</SubType>
@@ -193,12 +181,6 @@
     <Compile Include="Forms\frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmStationGather.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmStationGather.Designer.cs">
-      <DependentUpon>frmStationGather.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmTempCurve.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,18 +192,6 @@
     </Compile>
     <Compile Include="Forms\frmXGDataQR.Designer.cs">
       <DependentUpon>frmXGDataQR.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmGRGW.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmGRGW.designer.cs">
-      <DependentUpon>frmGRGW.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmOneStationCalcHeat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmOneStationCalcHeat.Designer.cs">
-      <DependentUpon>frmOneStationCalcHeat.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmGRAlarmPopup2.cs">
       <SubType>Form</SubType>
@@ -260,12 +230,6 @@
       <DependentUpon>frmPlanHeatItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PlanHeat\PlanHeatItem.cs" />
-    <Compile Include="Forms\frmEMCurve.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmEMCurve.Designer.cs">
-      <DependentUpon>frmEMCurve.cs</DependentUpon>
-    </Compile>
     <Compile Include="GatherClass.cs" />
     <Compile Include="GRAlarmData.cs" />
     <Compile Include="GRAlarmDataCollection.cs" />
@@ -278,24 +242,12 @@
       <LastGenOutput>CurveStrings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCalcHeat.resx">
-      <DependentUpon>frmCalcHeat.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmContrastCurveSelect.resx">
       <DependentUpon>frmContrastCurveSelect.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCurveInfo.resx">
       <DependentUpon>frmCurveInfo.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmEMCurve.resx">
-      <DependentUpon>frmEMCurve.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmEMDataQR.resx">
-      <DependentUpon>frmEMDataQR.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGRAlarm.resx">
@@ -334,10 +286,6 @@
       <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmOneStationCalcHeat.resx">
-      <DependentUpon>frmOneStationCalcHeat.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmOT.resx">
       <DependentUpon>frmOT.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -358,20 +306,12 @@
       <DependentUpon>frmSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmStationGather.resx">
-      <DependentUpon>frmStationGather.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTempCurve.resx">
       <DependentUpon>frmTempCurve.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmXGDataQR.resx">
       <DependentUpon>frmXGDataQR.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGRGW.resx">
-      <DependentUpon>frmGRGW.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGRAlarmPopup2.resx">
