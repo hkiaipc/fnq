@@ -24,6 +24,13 @@ namespace fnbx
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            Right rt = App.Default.GetLoginOperatorRight();
+            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Add, MTStatus.Created))
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("cannot add tm");
+                return;
+            }
+
             tblMaintain mt = MaintainFactory.Create();
 
             frmMT f = new frmMT();
@@ -55,15 +62,24 @@ namespace fnbx
         }
 
         /// <summary>
-        /// 
+        /// delete
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             tblMaintain mt = this.GetSelectedMaintain();
+
+            Right rt = App.Default.GetLoginOperatorRight();
+            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, mt.GetMtStatus()))
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("cannot edit");
+                return;
+            }
+
             frmMT f = new frmMT();
             f.AdeStatus = Xdgk.Common.ADEState.Edit;
+            f.IsViewMode = true;
             f.Maintain = mt;
             if (f.ShowDialog() == DialogResult.OK)
             {
@@ -85,15 +101,47 @@ namespace fnbx
             }
         }
 
+        /// <summary>
+        /// del
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             tblMaintain mt = this.GetSelectedMaintain();
+
+            Right rt = App.Default.GetLoginOperatorRight();
+            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, mt.GetMtStatus()))
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("cannot delete.");
+                return ;
+            }
+
             if (NUnit.UiKit.UserMessage.Ask("delete?") == DialogResult.Yes)
             {
                 BxdbDataContext dc = Class1.GetBxdbDataContext();
                 dc.tblMaintain.DeleteOnSubmit(mt);
 
                 dc.SubmitChanges();
+                Fill();
+            }
+        }
+
+        /// <summary>
+        /// jie dan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click(object sender, EventArgs e)
+        {
+            tblMaintain mt = this.GetSelectedMaintain();
+            // TOOD: mt == null
+            //
+
+            frmMT f = new frmMT();
+            f.Maintain = mt;
+            if (f.ShowDialog() == DialogResult.OK)
+            {
                 Fill();
             }
         }

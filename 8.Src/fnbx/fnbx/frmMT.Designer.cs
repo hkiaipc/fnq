@@ -30,16 +30,16 @@
         {
             this.lblStatus = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpMT = new System.Windows.Forms.TabPage();
+            this.tpRP = new System.Windows.Forms.TabPage();
             this.btnModifyStatus = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTMStatus = new System.Windows.Forms.TextBox();
             this.ucMt1 = new fnbx.UCMt();
             this.ucRp1 = new fnbx.UCRp();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpMT.SuspendLayout();
+            this.tpRP.SuspendLayout();
             this.SuspendLayout();
             // 
             // okButton
@@ -69,35 +69,35 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tpMT);
+            this.tabControl1.Controls.Add(this.tpRP);
             this.tabControl1.Location = new System.Drawing.Point(2, 21);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(633, 388);
             this.tabControl1.TabIndex = 39;
             // 
-            // tabPage1
+            // tpMT
             // 
-            this.tabPage1.Controls.Add(this.ucMt1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(625, 363);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpMT.Controls.Add(this.ucMt1);
+            this.tpMT.Location = new System.Drawing.Point(4, 21);
+            this.tpMT.Name = "tpMT";
+            this.tpMT.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMT.Size = new System.Drawing.Size(625, 363);
+            this.tpMT.TabIndex = 0;
+            this.tpMT.Text = "维修";
+            this.tpMT.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tpRP
             // 
-            this.tabPage2.Controls.Add(this.ucRp1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 21);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(625, 363);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpRP.Controls.Add(this.ucRp1);
+            this.tpRP.Location = new System.Drawing.Point(4, 21);
+            this.tpRP.Name = "tpRP";
+            this.tpRP.Padding = new System.Windows.Forms.Padding(3);
+            this.tpRP.Size = new System.Drawing.Size(625, 363);
+            this.tpRP.TabIndex = 1;
+            this.tpRP.Text = "回单";
+            this.tpRP.UseVisualStyleBackColor = true;
             // 
             // btnModifyStatus
             // 
@@ -161,8 +161,8 @@
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtTMStatus, 0);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tpMT.ResumeLayout(false);
+            this.tpRP.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,8 +172,8 @@
 
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpMT;
+        private System.Windows.Forms.TabPage tpRP;
         private UCMt ucMt1;
         private UCRp ucRp1;
         private System.Windows.Forms.Button btnModifyStatus;

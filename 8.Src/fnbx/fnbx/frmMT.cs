@@ -41,7 +41,7 @@ namespace fnbx
             this.lblStatus.Text = _maintain.mt_status.ToString();
             this.ucMt1.Maintain = _maintain;
             this.txtTMStatus.Text = _maintain.mt_status.ToString();
-        } 
+        }
 
         /// <summary>
         /// 
@@ -59,6 +59,27 @@ namespace fnbx
         private void frmMT_Load(object sender, EventArgs e)
         {
             //this.ucMt1.Enabled = false;
+
+            // set enable status
+            //
+            Right rt = App.Default.GetLoginOperatorRight();
+            if (rt.CanActivateForTm(ADEState.Edit, this.Maintain.GetMtStatus()))
+            {
+                this.ucMt1.Enabled = true;
+            }
+            else
+            {
+                this.ucMt1.Enabled = false;
+            }
+
+            if (rt.CanActivateForRp(ADEState.Edit, this.Maintain.GetMtStatus()))
+            {
+                this.ucRp1.Enabled = true;
+            }
+            else
+            {
+                this.ucRp1.Enabled = false;
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -88,7 +109,7 @@ namespace fnbx
 
             }
 
-            if ( this.AdeStatus == ADEState.Edit )
+            if (this.AdeStatus == ADEState.Edit)
             {
                 BxdbDataContext dc = Class1.GetBxdbDataContext();
                 ucMt1.UpdateMaintain();
@@ -124,7 +145,18 @@ namespace fnbx
         {
             Right right = App.Default.GetLoginOperatorRight();
             //right.
-            return right.CanModifyTMStatus(TMStatus.Closed);
+            return right.CanModifyTMStatus(MTStatus.Closed);
         }
+
+        public bool IsViewMode
+        {
+            get { return _isViewMode; }
+            set
+            {
+                _isViewMode = value;
+                //this.Enabled = !_isViewMode;
+
+            }
+        } private bool _isViewMode;
     }
 }
