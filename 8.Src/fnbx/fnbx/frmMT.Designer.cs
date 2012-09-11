@@ -56,13 +56,12 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblStatus.Location = new System.Drawing.Point(0, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(635, 18);
             this.lblStatus.TabIndex = 38;
-            this.lblStatus.Text = "状态 ...";
+            this.lblStatus.Text = "...";
             // 
             // tabControl1
             // 
@@ -85,7 +84,7 @@
             this.tpMT.Padding = new System.Windows.Forms.Padding(3);
             this.tpMT.Size = new System.Drawing.Size(625, 363);
             this.tpMT.TabIndex = 0;
-            this.tpMT.Text = "维修";
+            this.tpMT.Text = "报修信息";
             this.tpMT.UseVisualStyleBackColor = true;
             // 
             // tpRP
@@ -96,16 +95,16 @@
             this.tpRP.Padding = new System.Windows.Forms.Padding(3);
             this.tpRP.Size = new System.Drawing.Size(625, 363);
             this.tpRP.TabIndex = 1;
-            this.tpRP.Text = "回单";
+            this.tpRP.Text = "回单信息";
             this.tpRP.UseVisualStyleBackColor = true;
             // 
             // btnModifyStatus
             // 
-            this.btnModifyStatus.Location = new System.Drawing.Point(211, 415);
+            this.btnModifyStatus.Location = new System.Drawing.Point(273, 416);
             this.btnModifyStatus.Name = "btnModifyStatus";
             this.btnModifyStatus.Size = new System.Drawing.Size(75, 23);
             this.btnModifyStatus.TabIndex = 40;
-            this.btnModifyStatus.Text = "*";
+            this.btnModifyStatus.Text = "修改";
             this.btnModifyStatus.UseVisualStyleBackColor = true;
             this.btnModifyStatus.Click += new System.EventHandler(this.btnModifyStatus_Click);
             // 
@@ -114,14 +113,16 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 421);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 41;
-            this.label1.Text = "label1";
+            this.label1.Text = "状态:";
             // 
             // txtTMStatus
             // 
-            this.txtTMStatus.Location = new System.Drawing.Point(59, 417);
+            this.txtTMStatus.BackColor = System.Drawing.Color.White;
+            this.txtTMStatus.Location = new System.Drawing.Point(121, 416);
             this.txtTMStatus.Name = "txtTMStatus";
+            this.txtTMStatus.ReadOnly = true;
             this.txtTMStatus.Size = new System.Drawing.Size(146, 21);
             this.txtTMStatus.TabIndex = 42;
             // 

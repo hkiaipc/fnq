@@ -27,7 +27,7 @@ namespace fnbx
             Right rt = App.Default.GetLoginOperatorRight();
             if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Add, MTStatus.Created))
             {
-                NUnit.UiKit.UserMessage.DisplayFailure("cannot add tm");
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotCreateMT);
                 return;
             }
 
@@ -43,6 +43,11 @@ namespace fnbx
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMTList_Load(object sender, EventArgs e)
         {
             Fill();

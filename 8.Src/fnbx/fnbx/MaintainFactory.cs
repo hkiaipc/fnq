@@ -40,8 +40,12 @@ namespace fnbx
             tblMaintain mt = new tblMaintain();
             mt.tblMaintainLevel = MaintainLevelFactory.Default;
             mt.tblOperator = App.Default.LoginOperator;
+
+            mt.mt_create_dt = DateTime.Now;
             mt.mt_pose_dt = DateTime.Now;
             mt.mt_begin_dt = DateTime.Now;
+            mt.SetMTStatus(MTStatus.Created);
+
             return mt;
         }
     }

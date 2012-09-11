@@ -76,6 +76,11 @@ namespace fnbx
             return "»Øµ¥Ô±";
         }
 
+
+        public override List<KeyValuePair<MTStatus, MTStatus>> GetStatusPairList()
+        {
+            return GetReceiverList();
+        }
     }
 
 }

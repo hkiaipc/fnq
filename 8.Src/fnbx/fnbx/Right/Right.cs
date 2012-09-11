@@ -8,6 +8,12 @@ using Xdgk.Common;
 
 namespace fnbx
 {
+
+    using TMStatusPair = KeyValuePair<MTStatus, MTStatus>;
+
+    /// <summary>
+    /// 
+    /// </summary>
     abstract public class Right
     {
         public const int
@@ -42,6 +48,7 @@ namespace fnbx
             throw new NotSupportedException();
         }
 
+        abstract public List<TMStatusPair> GetStatusPairList();
 
         private int _value;
 
@@ -60,6 +67,27 @@ namespace fnbx
         abstract public bool CanModifyTMStatus(MTStatus current);
         abstract public bool CanActivateForTm(ADEState ade, MTStatus current);
         abstract public bool CanActivateForRp(ADEState ade, MTStatus current);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns></returns>
+        public MTStatus[] GetPossibles(MTStatus current)
+        {
+            List<TMStatusPair> list = this.GetStatusPairList();
+
+            List<MTStatus> r = new List<MTStatus>();
+            foreach (TMStatusPair item in list)
+            {
+                if (item.Key == current)
+                {
+                    r.Add(item.Value);
+                }
+            }
+
+            return r.ToArray();
+        }
     }
 
 }

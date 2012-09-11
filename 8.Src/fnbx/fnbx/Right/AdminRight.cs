@@ -102,6 +102,15 @@ namespace fnbx
         {
             return "π‹¿Ì‘±";
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override List<KeyValuePair<MTStatus, MTStatus>> GetStatusPairList()
+        {
+            return GetList();
+        }
     }
 
 }

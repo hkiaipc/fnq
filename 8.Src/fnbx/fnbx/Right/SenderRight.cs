@@ -9,6 +9,10 @@ using Xdgk.Common;
 namespace fnbx
 {
     using TMStatusPair = KeyValuePair<MTStatus, MTStatus>;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class SenderRight : Right
     {
         /// <summary>
@@ -82,6 +86,15 @@ namespace fnbx
         public override string ToString()
         {
             return "Ω”œﬂ‘±";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override List<KeyValuePair<MTStatus, MTStatus>> GetStatusPairList()
+        {
+            return GetSenderList();
         }
     }
 

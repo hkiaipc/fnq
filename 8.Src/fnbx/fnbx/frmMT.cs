@@ -40,7 +40,7 @@ namespace fnbx
         {
             this.lblStatus.Text = _maintain.mt_status.ToString();
             this.ucMt1.Maintain = _maintain;
-            this.txtTMStatus.Text = _maintain.mt_status.ToString();
+            this.txtTMStatus.Text = _maintain.GetMtStatusText();
         }
 
         /// <summary>
@@ -79,6 +79,11 @@ namespace fnbx
             else
             {
                 this.ucRp1.Enabled = false;
+            }
+
+            if ( this._maintain .GetMtStatus () == MTStatus.Created )
+            {
+                this.tabControl1.TabPages.Remove(this.tpRP);
             }
         }
 
@@ -129,11 +134,17 @@ namespace fnbx
             if (CanModify())
             {
                 frmTMStatusModify f = new frmTMStatusModify();
+                f.Current = _maintain.GetMtStatus();
+
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     // TODO: refresh tm status 
                     //
                 }
+            }
+            else
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotModifyMTStatus);
             }
         }
 
@@ -145,7 +156,7 @@ namespace fnbx
         {
             Right right = App.Default.GetLoginOperatorRight();
             //right.
-            return right.CanModifyTMStatus(MTStatus.Closed);
+            return right.CanModifyTMStatus(_maintain.GetMtStatus());
         }
 
         public bool IsViewMode
