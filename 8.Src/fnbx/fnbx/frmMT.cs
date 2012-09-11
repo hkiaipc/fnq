@@ -40,6 +40,7 @@ namespace fnbx
         {
             this.lblStatus.Text = _maintain.mt_status.ToString();
             this.ucMt1.Maintain = _maintain;
+            this.txtTMStatus.Text = _maintain.mt_status.ToString();
         } 
 
         /// <summary>
@@ -97,5 +98,33 @@ namespace fnbx
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModifyStatus_Click(object sender, EventArgs e)
+        {
+            if (CanModify())
+            {
+                frmTMStatusModify f = new frmTMStatusModify();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    // TODO: refresh tm status 
+                    //
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool CanModify()
+        {
+            Right right = App.Default.GetLoginOperatorRight();
+            //right.
+            return right.CanModifyTMStatus(TMStatus.Closed);
+        }
     }
 }

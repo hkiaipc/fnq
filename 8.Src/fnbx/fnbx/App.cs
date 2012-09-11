@@ -50,5 +50,22 @@ namespace fnbx
                 _loginOperator = value;
             }
         } private tblOperator _loginOperator;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Right  GetLoginOperatorRight()
+        {
+            return Right.GetRight(LoginOperator.tblRight.rt_value);
+        }
     }
+
+    //static class AAA
+    //{
+    //    public static void F(this string o, string p )
+    //    {
+    //        Console.WriteLine(o + p);
+    //    }
+    //}
 }

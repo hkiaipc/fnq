@@ -48,12 +48,6 @@
       <Association Name="tblMaintainLevel_tblMaintain" Member="tblMaintain" OtherKey="ml_id" Type="tblMaintain" />
     </Type>
   </Table>
-  <Table Name="dbo.tblRight" Member="tblRight">
-    <Type Name="tblRight">
-      <Column Name="rt_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="tblRight_tblOperator" Member="tblOperator" OtherKey="rt_id" Type="tblOperator" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblReply" Member="tblReply">
     <Type Name="tblReply">
       <Column Name="rp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -76,6 +70,13 @@
       <Association Name="tblOperator_tblMaintain" Member="tblMaintain" OtherKey="op_id" Type="tblMaintain" />
       <Association Name="tblOperator_tblReply" Member="tblReply" OtherKey="op_id" Type="tblReply" />
       <Association Name="tblRight_tblOperator" Member="tblRight" ThisKey="rt_id" Type="tblRight" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblRight" Member="tblRight">
+    <Type Name="tblRight">
+      <Column Name="rt_value" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rt_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="tblRight_tblOperator" Member="tblOperator" OtherKey="rt_id" Type="tblOperator" />
     </Type>
   </Table>
 </Database>

@@ -39,15 +39,15 @@ namespace BXDB
     partial void InserttblMaintainLevel(tblMaintainLevel instance);
     partial void UpdatetblMaintainLevel(tblMaintainLevel instance);
     partial void DeletetblMaintainLevel(tblMaintainLevel instance);
-    partial void InserttblRight(tblRight instance);
-    partial void UpdatetblRight(tblRight instance);
-    partial void DeletetblRight(tblRight instance);
     partial void InserttblReply(tblReply instance);
     partial void UpdatetblReply(tblReply instance);
     partial void DeletetblReply(tblReply instance);
     partial void InserttblOperator(tblOperator instance);
     partial void UpdatetblOperator(tblOperator instance);
     partial void DeletetblOperator(tblOperator instance);
+    partial void InserttblRight(tblRight instance);
+    partial void UpdatetblRight(tblRight instance);
+    partial void DeletetblRight(tblRight instance);
     #endregion
 		
 		public BxdbDataContext() : 
@@ -104,14 +104,6 @@ namespace BXDB
 			}
 		}
 		
-		public System.Data.Linq.Table<tblRight> tblRight
-		{
-			get
-			{
-				return this.GetTable<tblRight>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tblReply> tblReply
 		{
 			get
@@ -125,6 +117,14 @@ namespace BXDB
 			get
 			{
 				return this.GetTable<tblOperator>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblRight> tblRight
+		{
+			get
+			{
+				return this.GetTable<tblRight>();
 			}
 		}
 	}
@@ -1180,96 +1180,6 @@ namespace BXDB
 		}
 	}
 	
-	[Table(Name="dbo.tblRight")]
-	public partial class tblRight : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _rt_id;
-		
-		private EntitySet<tblOperator> _tblOperator;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onrt_idChanging(int value);
-    partial void Onrt_idChanged();
-    #endregion
-		
-		public tblRight()
-		{
-			this._tblOperator = new EntitySet<tblOperator>(new Action<tblOperator>(this.attach_tblOperator), new Action<tblOperator>(this.detach_tblOperator));
-			OnCreated();
-		}
-		
-		[Column(Storage="_rt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int rt_id
-		{
-			get
-			{
-				return this._rt_id;
-			}
-			set
-			{
-				if ((this._rt_id != value))
-				{
-					this.Onrt_idChanging(value);
-					this.SendPropertyChanging();
-					this._rt_id = value;
-					this.SendPropertyChanged("rt_id");
-					this.Onrt_idChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblRight_tblOperator", Storage="_tblOperator", OtherKey="rt_id")]
-		public EntitySet<tblOperator> tblOperator
-		{
-			get
-			{
-				return this._tblOperator;
-			}
-			set
-			{
-				this._tblOperator.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblOperator(tblOperator entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblRight = this;
-		}
-		
-		private void detach_tblOperator(tblOperator entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblRight = null;
-		}
-	}
-	
 	[Table(Name="dbo.tblReply")]
 	public partial class tblReply : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1773,6 +1683,120 @@ namespace BXDB
 		{
 			this.SendPropertyChanging();
 			entity.tblOperator = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblRight")]
+	public partial class tblRight : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _rt_value;
+		
+		private int _rt_id;
+		
+		private EntitySet<tblOperator> _tblOperator;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onrt_valueChanging(int value);
+    partial void Onrt_valueChanged();
+    partial void Onrt_idChanging(int value);
+    partial void Onrt_idChanged();
+    #endregion
+		
+		public tblRight()
+		{
+			this._tblOperator = new EntitySet<tblOperator>(new Action<tblOperator>(this.attach_tblOperator), new Action<tblOperator>(this.detach_tblOperator));
+			OnCreated();
+		}
+		
+		[Column(Storage="_rt_value", DbType="Int NOT NULL")]
+		public int rt_value
+		{
+			get
+			{
+				return this._rt_value;
+			}
+			set
+			{
+				if ((this._rt_value != value))
+				{
+					this.Onrt_valueChanging(value);
+					this.SendPropertyChanging();
+					this._rt_value = value;
+					this.SendPropertyChanged("rt_value");
+					this.Onrt_valueChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_rt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int rt_id
+		{
+			get
+			{
+				return this._rt_id;
+			}
+			set
+			{
+				if ((this._rt_id != value))
+				{
+					this.Onrt_idChanging(value);
+					this.SendPropertyChanging();
+					this._rt_id = value;
+					this.SendPropertyChanged("rt_id");
+					this.Onrt_idChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblRight_tblOperator", Storage="_tblOperator", OtherKey="rt_id")]
+		public EntitySet<tblOperator> tblOperator
+		{
+			get
+			{
+				return this._tblOperator;
+			}
+			set
+			{
+				this._tblOperator.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblOperator(tblOperator entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblRight = this;
+		}
+		
+		private void detach_tblOperator(tblOperator entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblRight = null;
 		}
 	}
 }

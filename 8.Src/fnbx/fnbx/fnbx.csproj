@@ -104,6 +104,12 @@
     <Compile Include="frmMTList.Designer.cs">
       <DependentUpon>frmMTList.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTMStatusModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTMStatusModify.Designer.cs">
+      <DependentUpon>frmTMStatusModify.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaintainFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +144,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMTList.resx">
       <DependentUpon>frmMTList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTMStatusModify.resx">
+      <DependentUpon>frmTMStatusModify.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -191,6 +201,7 @@
     <Compile Include="UC\UCTimespan.Designer.cs">
       <DependentUpon>UCTimespan.cs</DependentUpon>
     </Compile>
+    <Compile Include="_.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -200,6 +211,9 @@
       <Project>{C8097522-7C96-4ADD-9F84-288E64B0757D}</Project>
       <Name>BXDB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Right\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
