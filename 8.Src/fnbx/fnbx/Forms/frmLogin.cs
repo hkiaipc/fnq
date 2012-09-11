@@ -19,7 +19,7 @@ namespace fnbx
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         /// <summary>
@@ -41,6 +41,9 @@ namespace fnbx
             {
                 tblOperator op = r.ToArray()[0];
                 App.Default.LoginOperator = op;
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

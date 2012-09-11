@@ -71,6 +71,11 @@ namespace fnbx
             return false;
         }
 
+        public override string ToString()
+        {
+            return "»Øµ¥Ô±";
+        }
+
     }
 
 }

@@ -97,6 +97,11 @@ namespace fnbx
             }
             return r;
         }
+
+        public override string ToString()
+        {
+            return "π‹¿Ì‘±";
+        }
     }
 
 }

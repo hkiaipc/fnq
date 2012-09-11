@@ -39,7 +39,8 @@
             this.mnuMTQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLoginManage = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLogin = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuML = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,10 +62,11 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.tssLogin});
             this.statusStrip1.Location = new System.Drawing.Point(0, 412);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(718, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -116,11 +118,13 @@
             this.mnuMTQuery.Name = "mnuMTQuery";
             this.mnuMTQuery.Size = new System.Drawing.Size(152, 22);
             this.mnuMTQuery.Text = "查询(&Q)";
+            this.mnuMTQuery.Click += new System.EventHandler(this.mnuMTQuery_Click);
             // 
             // mnuSetting
             // 
             this.mnuSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuLoginManage});
+            this.mnuLoginManage,
+            this.mnuML});
             this.mnuSetting.Name = "mnuSetting";
             this.mnuSetting.Size = new System.Drawing.Size(57, 20);
             this.mnuSetting.Text = "设置(&S)";
@@ -131,11 +135,19 @@
             this.mnuLoginManage.Size = new System.Drawing.Size(152, 22);
             this.mnuLoginManage.Text = "登录管理(&L)";
             // 
-            // toolStripStatusLabel1
+            // tssLogin
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(109, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.tssLogin.Name = "tssLogin";
+            this.tssLogin.Size = new System.Drawing.Size(703, 17);
+            this.tssLogin.Spring = true;
+            this.tssLogin.Text = "toolStripStatusLabel1";
+            this.tssLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // mnuML
+            // 
+            this.mnuML.Name = "mnuML";
+            this.mnuML.Size = new System.Drawing.Size(152, 22);
+            this.mnuML.Text = "报修等级(&M)";
             // 
             // frmMain
             // 
@@ -144,9 +156,11 @@
             this.ClientSize = new System.Drawing.Size(718, 434);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -169,7 +183,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuLoginManage;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tssLogin;
+        private System.Windows.Forms.ToolStripMenuItem mnuML;
     }
 }
 

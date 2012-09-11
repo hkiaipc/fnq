@@ -10,7 +10,7 @@ using BXDB;
 
 namespace fnbx
 {
-    public partial class frmMLList : NUnit.UiKit.SettingsDialogBase
+    public partial class frmMLList : Form 
     {
         public frmMLList()
         {

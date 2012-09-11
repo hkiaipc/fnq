@@ -59,7 +59,6 @@
             // 
             // label9
             // 
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label9.Location = new System.Drawing.Point(300, 83);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 18);
@@ -129,7 +128,6 @@
             // 
             // label8
             // 
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label8.Location = new System.Drawing.Point(2, 30);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 18);
@@ -138,7 +136,6 @@
             // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label7.Location = new System.Drawing.Point(2, 188);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 18);
@@ -147,7 +144,6 @@
             // 
             // label6
             // 
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label6.Location = new System.Drawing.Point(2, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 18);
@@ -156,7 +152,6 @@
             // 
             // label5
             // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label5.Location = new System.Drawing.Point(2, 57);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 18);
@@ -165,7 +160,6 @@
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label4.Location = new System.Drawing.Point(300, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 18);
@@ -174,7 +168,6 @@
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label3.Location = new System.Drawing.Point(300, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 21);
@@ -183,7 +176,6 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label2.Location = new System.Drawing.Point(300, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
@@ -192,7 +184,6 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(2, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 18);

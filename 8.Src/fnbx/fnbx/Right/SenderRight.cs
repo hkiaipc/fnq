@@ -78,6 +78,11 @@ namespace fnbx
             }
             return r;
         }
+
+        public override string ToString()
+        {
+            return "Ω”œﬂ‘±";
+        }
     }
 
 }

@@ -40,14 +40,14 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(358, 393);
-            this.okButton.Text = "修改";
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(446, 393);
-            this.cancelButton.Text = "关闭";
+            //this.okButton.Location = new System.Drawing.Point(358, 393);
+            //this.okButton.Text = "修改";
+            //this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            //// 
+            //// cancelButton
+            //// 
+            //this.cancelButton.Location = new System.Drawing.Point(446, 393);
+            //this.cancelButton.Text = "关闭";
             // 
             // dataGridView1
             // 
@@ -103,8 +103,8 @@
             this.Name = "frmMLList";
             this.Text = "报修等级";
             this.Load += new System.EventHandler(this.frmMLList_Load);
-            this.Controls.SetChildIndex(this.okButton, 0);
-            this.Controls.SetChildIndex(this.cancelButton, 0);
+            //this.Controls.SetChildIndex(this.okButton, 0);
+            //this.Controls.SetChildIndex(this.cancelButton, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblMaintainLevelBindingSource)).EndInit();

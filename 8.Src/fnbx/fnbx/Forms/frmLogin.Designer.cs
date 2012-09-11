@@ -35,11 +35,13 @@
             // okButton
             // 
             this.okButton.Location = new System.Drawing.Point(136, 151);
+            this.okButton.TabIndex = 2;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
             this.cancelButton.Location = new System.Drawing.Point(224, 151);
+            this.cancelButton.TabIndex = 3;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // txtOperatorName
@@ -47,7 +49,7 @@
             this.txtOperatorName.Location = new System.Drawing.Point(109, 90);
             this.txtOperatorName.Name = "txtOperatorName";
             this.txtOperatorName.Size = new System.Drawing.Size(177, 21);
-            this.txtOperatorName.TabIndex = 19;
+            this.txtOperatorName.TabIndex = 0;
             // 
             // txtPwd
             // 
@@ -55,7 +57,7 @@
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(177, 21);
-            this.txtPwd.TabIndex = 20;
+            this.txtPwd.TabIndex = 1;
             // 
             // frmLogin
             // 
