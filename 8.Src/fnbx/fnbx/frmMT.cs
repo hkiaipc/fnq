@@ -38,7 +38,7 @@ namespace fnbx
         /// </summary>
         private void RefreshMaintain()
         {
-            this.lblStatus.Text = _maintain.mt_status.ToString();
+            //this.lblStatus.Text = _maintain.mt_status.ToString();
             this.ucMt1.Maintain = _maintain;
             this.txtTMStatus.Text = _maintain.GetMtStatusText();
 
@@ -51,6 +51,16 @@ namespace fnbx
         public frmMT()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetModifyStatusButtonStyle()
+        {
+            Right rt = App.Default.GetLoginOperatorRight();
+            bool b = rt.CanModifyTMStatus(this._maintain.GetMtStatus());
+            this.btnModifyStatus.Enabled = b;
         }
 
         /// <summary>
@@ -83,10 +93,13 @@ namespace fnbx
                 this.ucRp1.Enabled = false;
             }
 
-            if ( this._maintain .GetMtStatus () == MTStatus.Created )
-            {
-                this.tabControl1.TabPages.Remove(this.tpRP);
-            }
+            //
+            //
+            this.SetReplyVisibleStyle();
+
+            //
+            //
+            this.SetModifyStatusButtonStyle();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -166,16 +179,37 @@ namespace fnbx
                     // TODO: refresh tm status 
                     //
                     //_maintain.mt_status =(int) f.NewMtStatus;
-                    _maintain.SetMTStatus(f.NewMtStatus);
+                    this.Maintain.SetMTStatus(f.NewMtStatus);
 
                     this.txtTMStatus.Text = MTStatusHelper.GetMtStatusText(f.NewMtStatus);
 
                     Class1.GetBxdbDataContext().SubmitChanges();
+
+                    this.SetModifyStatusButtonStyle();
+                    SetReplyVisibleStyle();
                 }
             }
             else
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotModifyMTStatus);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetReplyVisibleStyle()
+        {
+            if (this.Maintain.GetMtStatus() == MTStatus.Created)
+            {
+                this.tabControl1.TabPages.Remove(this.tpRP);
+            }
+            else
+            {
+                if (!this.tabControl1.TabPages.Contains(this.tpRP))
+                {
+                    this.tabControl1.TabPages.Add(this.tpRP);
+                }
             }
         }
 
@@ -200,5 +234,31 @@ namespace fnbx
 
             }
         } private bool _isViewMode;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            MTStatus status = this.Maintain.GetMtStatus();
+            if (status == MTStatus.Created ||
+                status == MTStatus.Received)
+            {
+                TimeSpan ts = (DateTime)this.Maintain.mt_timeout_dt - DateTime.Now;
+                string tsString = string.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
+                string s = string.Format(Strings.RemainTimespan, tsString); 
+                this.tssTimeout.Text = s;
+            }
+            else if (status == MTStatus.Timeouted)
+            {
+                this.tssTimeout.Text = Strings.Timeouted;
+            }
+            else
+            {
+                this.tssTimeout.Text = string.Empty;
+            }
+        }
     }
 }

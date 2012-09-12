@@ -33,9 +33,6 @@ namespace BXDB
     partial void InserttblIntroducer(tblIntroducer instance);
     partial void UpdatetblIntroducer(tblIntroducer instance);
     partial void DeletetblIntroducer(tblIntroducer instance);
-    partial void InserttblMaintain(tblMaintain instance);
-    partial void UpdatetblMaintain(tblMaintain instance);
-    partial void DeletetblMaintain(tblMaintain instance);
     partial void InserttblMaintainLevel(tblMaintainLevel instance);
     partial void UpdatetblMaintainLevel(tblMaintainLevel instance);
     partial void DeletetblMaintainLevel(tblMaintainLevel instance);
@@ -48,6 +45,9 @@ namespace BXDB
     partial void InserttblRight(tblRight instance);
     partial void UpdatetblRight(tblRight instance);
     partial void DeletetblRight(tblRight instance);
+    partial void InserttblMaintain(tblMaintain instance);
+    partial void UpdatetblMaintain(tblMaintain instance);
+    partial void DeletetblMaintain(tblMaintain instance);
     #endregion
 		
 		public BxdbDataContext() : 
@@ -88,14 +88,6 @@ namespace BXDB
 			}
 		}
 		
-		public System.Data.Linq.Table<tblMaintain> tblMaintain
-		{
-			get
-			{
-				return this.GetTable<tblMaintain>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tblMaintainLevel> tblMaintainLevel
 		{
 			get
@@ -125,6 +117,14 @@ namespace BXDB
 			get
 			{
 				return this.GetTable<tblRight>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblMaintain> tblMaintain
+		{
+			get
+			{
+				return this.GetTable<tblMaintain>();
 			}
 		}
 	}
@@ -312,637 +312,6 @@ namespace BXDB
 		{
 			this.SendPropertyChanging();
 			entity.tblIntroducer = null;
-		}
-	}
-	
-	[Table(Name="dbo.tblMaintain")]
-	public partial class tblMaintain : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Nullable<int> _it_id;
-		
-		private int _mt_id;
-		
-		private int _ml_id;
-		
-		private System.Nullable<int> _rp_id;
-		
-		private int _op_id;
-		
-		private System.Nullable<System.DateTime> _mt_pose_dt;
-		
-		private System.DateTime _mt_create_dt;
-		
-		private System.Nullable<System.DateTime> _mt_begin_dt;
-		
-		private int _mt_status;
-		
-		private string _mt_location;
-		
-		private string _mt_content;
-		
-		private string _mt_remark;
-		
-		private System.Nullable<int> _mt_parent;
-		
-		private string _mt_fee_info;
-		
-		private System.Nullable<int> _mt_mark;
-		
-		private EntitySet<tblMaintain> _tblMaintain2;
-		
-		private EntityRef<tblIntroducer> _tblIntroducer;
-		
-		private EntityRef<tblMaintain> _tblMaintain1;
-		
-		private EntityRef<tblMaintainLevel> _tblMaintainLevel;
-		
-		private EntityRef<tblReply> _tblReply;
-		
-		private EntityRef<tblOperator> _tblOperator;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onit_idChanging(System.Nullable<int> value);
-    partial void Onit_idChanged();
-    partial void Onmt_idChanging(int value);
-    partial void Onmt_idChanged();
-    partial void Onml_idChanging(int value);
-    partial void Onml_idChanged();
-    partial void Onrp_idChanging(System.Nullable<int> value);
-    partial void Onrp_idChanged();
-    partial void Onop_idChanging(int value);
-    partial void Onop_idChanged();
-    partial void Onmt_pose_dtChanging(System.Nullable<System.DateTime> value);
-    partial void Onmt_pose_dtChanged();
-    partial void Onmt_create_dtChanging(System.DateTime value);
-    partial void Onmt_create_dtChanged();
-    partial void Onmt_begin_dtChanging(System.Nullable<System.DateTime> value);
-    partial void Onmt_begin_dtChanged();
-    partial void Onmt_statusChanging(int value);
-    partial void Onmt_statusChanged();
-    partial void Onmt_locationChanging(string value);
-    partial void Onmt_locationChanged();
-    partial void Onmt_contentChanging(string value);
-    partial void Onmt_contentChanged();
-    partial void Onmt_remarkChanging(string value);
-    partial void Onmt_remarkChanged();
-    partial void Onmt_parentChanging(System.Nullable<int> value);
-    partial void Onmt_parentChanged();
-    partial void Onmt_fee_infoChanging(string value);
-    partial void Onmt_fee_infoChanged();
-    partial void Onmt_markChanging(System.Nullable<int> value);
-    partial void Onmt_markChanged();
-    #endregion
-		
-		public tblMaintain()
-		{
-			this._tblMaintain2 = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain2), new Action<tblMaintain>(this.detach_tblMaintain2));
-			this._tblIntroducer = default(EntityRef<tblIntroducer>);
-			this._tblMaintain1 = default(EntityRef<tblMaintain>);
-			this._tblMaintainLevel = default(EntityRef<tblMaintainLevel>);
-			this._tblReply = default(EntityRef<tblReply>);
-			this._tblOperator = default(EntityRef<tblOperator>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_it_id", DbType="Int")]
-		public System.Nullable<int> it_id
-		{
-			get
-			{
-				return this._it_id;
-			}
-			set
-			{
-				if ((this._it_id != value))
-				{
-					if (this._tblIntroducer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onit_idChanging(value);
-					this.SendPropertyChanging();
-					this._it_id = value;
-					this.SendPropertyChanged("it_id");
-					this.Onit_idChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int mt_id
-		{
-			get
-			{
-				return this._mt_id;
-			}
-			set
-			{
-				if ((this._mt_id != value))
-				{
-					this.Onmt_idChanging(value);
-					this.SendPropertyChanging();
-					this._mt_id = value;
-					this.SendPropertyChanged("mt_id");
-					this.Onmt_idChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ml_id", DbType="Int NOT NULL")]
-		public int ml_id
-		{
-			get
-			{
-				return this._ml_id;
-			}
-			set
-			{
-				if ((this._ml_id != value))
-				{
-					if (this._tblMaintainLevel.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onml_idChanging(value);
-					this.SendPropertyChanging();
-					this._ml_id = value;
-					this.SendPropertyChanged("ml_id");
-					this.Onml_idChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_rp_id", DbType="Int")]
-		public System.Nullable<int> rp_id
-		{
-			get
-			{
-				return this._rp_id;
-			}
-			set
-			{
-				if ((this._rp_id != value))
-				{
-					if (this._tblReply.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onrp_idChanging(value);
-					this.SendPropertyChanging();
-					this._rp_id = value;
-					this.SendPropertyChanged("rp_id");
-					this.Onrp_idChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_op_id", DbType="Int NOT NULL")]
-		public int op_id
-		{
-			get
-			{
-				return this._op_id;
-			}
-			set
-			{
-				if ((this._op_id != value))
-				{
-					if (this._tblOperator.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onop_idChanging(value);
-					this.SendPropertyChanging();
-					this._op_id = value;
-					this.SendPropertyChanged("op_id");
-					this.Onop_idChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_pose_dt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> mt_pose_dt
-		{
-			get
-			{
-				return this._mt_pose_dt;
-			}
-			set
-			{
-				if ((this._mt_pose_dt != value))
-				{
-					this.Onmt_pose_dtChanging(value);
-					this.SendPropertyChanging();
-					this._mt_pose_dt = value;
-					this.SendPropertyChanged("mt_pose_dt");
-					this.Onmt_pose_dtChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_create_dt", DbType="DateTime NOT NULL")]
-		public System.DateTime mt_create_dt
-		{
-			get
-			{
-				return this._mt_create_dt;
-			}
-			set
-			{
-				if ((this._mt_create_dt != value))
-				{
-					this.Onmt_create_dtChanging(value);
-					this.SendPropertyChanging();
-					this._mt_create_dt = value;
-					this.SendPropertyChanged("mt_create_dt");
-					this.Onmt_create_dtChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_begin_dt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> mt_begin_dt
-		{
-			get
-			{
-				return this._mt_begin_dt;
-			}
-			set
-			{
-				if ((this._mt_begin_dt != value))
-				{
-					this.Onmt_begin_dtChanging(value);
-					this.SendPropertyChanging();
-					this._mt_begin_dt = value;
-					this.SendPropertyChanged("mt_begin_dt");
-					this.Onmt_begin_dtChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_status", DbType="Int NOT NULL")]
-		public int mt_status
-		{
-			get
-			{
-				return this._mt_status;
-			}
-			set
-			{
-				if ((this._mt_status != value))
-				{
-					this.Onmt_statusChanging(value);
-					this.SendPropertyChanging();
-					this._mt_status = value;
-					this.SendPropertyChanged("mt_status");
-					this.Onmt_statusChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_location", DbType="NVarChar(1000)")]
-		public string mt_location
-		{
-			get
-			{
-				return this._mt_location;
-			}
-			set
-			{
-				if ((this._mt_location != value))
-				{
-					this.Onmt_locationChanging(value);
-					this.SendPropertyChanging();
-					this._mt_location = value;
-					this.SendPropertyChanged("mt_location");
-					this.Onmt_locationChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_content", DbType="NVarChar(1000)")]
-		public string mt_content
-		{
-			get
-			{
-				return this._mt_content;
-			}
-			set
-			{
-				if ((this._mt_content != value))
-				{
-					this.Onmt_contentChanging(value);
-					this.SendPropertyChanging();
-					this._mt_content = value;
-					this.SendPropertyChanged("mt_content");
-					this.Onmt_contentChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_remark", DbType="NVarChar(1000)")]
-		public string mt_remark
-		{
-			get
-			{
-				return this._mt_remark;
-			}
-			set
-			{
-				if ((this._mt_remark != value))
-				{
-					this.Onmt_remarkChanging(value);
-					this.SendPropertyChanging();
-					this._mt_remark = value;
-					this.SendPropertyChanged("mt_remark");
-					this.Onmt_remarkChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_parent", DbType="Int")]
-		public System.Nullable<int> mt_parent
-		{
-			get
-			{
-				return this._mt_parent;
-			}
-			set
-			{
-				if ((this._mt_parent != value))
-				{
-					if (this._tblMaintain1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onmt_parentChanging(value);
-					this.SendPropertyChanging();
-					this._mt_parent = value;
-					this.SendPropertyChanged("mt_parent");
-					this.Onmt_parentChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_fee_info", DbType="NVarChar(1000)")]
-		public string mt_fee_info
-		{
-			get
-			{
-				return this._mt_fee_info;
-			}
-			set
-			{
-				if ((this._mt_fee_info != value))
-				{
-					this.Onmt_fee_infoChanging(value);
-					this.SendPropertyChanging();
-					this._mt_fee_info = value;
-					this.SendPropertyChanged("mt_fee_info");
-					this.Onmt_fee_infoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_mark", DbType="Int")]
-		public System.Nullable<int> mt_mark
-		{
-			get
-			{
-				return this._mt_mark;
-			}
-			set
-			{
-				if ((this._mt_mark != value))
-				{
-					this.Onmt_markChanging(value);
-					this.SendPropertyChanging();
-					this._mt_mark = value;
-					this.SendPropertyChanged("mt_mark");
-					this.Onmt_markChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblMaintain_tblMaintain", Storage="_tblMaintain2", OtherKey="mt_parent")]
-		public EntitySet<tblMaintain> tblMaintain2
-		{
-			get
-			{
-				return this._tblMaintain2;
-			}
-			set
-			{
-				this._tblMaintain2.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblIntroducer_tblMaintain", Storage="_tblIntroducer", ThisKey="it_id", IsForeignKey=true)]
-		public tblIntroducer tblIntroducer
-		{
-			get
-			{
-				return this._tblIntroducer.Entity;
-			}
-			set
-			{
-				tblIntroducer previousValue = this._tblIntroducer.Entity;
-				if (((previousValue != value) 
-							|| (this._tblIntroducer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblIntroducer.Entity = null;
-						previousValue.tblMaintain.Remove(this);
-					}
-					this._tblIntroducer.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain.Add(this);
-						this._it_id = value.it_id;
-					}
-					else
-					{
-						this._it_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblIntroducer");
-				}
-			}
-		}
-		
-		[Association(Name="tblMaintain_tblMaintain", Storage="_tblMaintain1", ThisKey="mt_parent", IsForeignKey=true)]
-		public tblMaintain tblMaintain1
-		{
-			get
-			{
-				return this._tblMaintain1.Entity;
-			}
-			set
-			{
-				tblMaintain previousValue = this._tblMaintain1.Entity;
-				if (((previousValue != value) 
-							|| (this._tblMaintain1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblMaintain1.Entity = null;
-						previousValue.tblMaintain2.Remove(this);
-					}
-					this._tblMaintain1.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain2.Add(this);
-						this._mt_parent = value.mt_id;
-					}
-					else
-					{
-						this._mt_parent = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblMaintain1");
-				}
-			}
-		}
-		
-		[Association(Name="tblMaintainLevel_tblMaintain", Storage="_tblMaintainLevel", ThisKey="ml_id", IsForeignKey=true)]
-		public tblMaintainLevel tblMaintainLevel
-		{
-			get
-			{
-				return this._tblMaintainLevel.Entity;
-			}
-			set
-			{
-				tblMaintainLevel previousValue = this._tblMaintainLevel.Entity;
-				if (((previousValue != value) 
-							|| (this._tblMaintainLevel.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblMaintainLevel.Entity = null;
-						previousValue.tblMaintain.Remove(this);
-					}
-					this._tblMaintainLevel.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain.Add(this);
-						this._ml_id = value.ml_id;
-					}
-					else
-					{
-						this._ml_id = default(int);
-					}
-					this.SendPropertyChanged("tblMaintainLevel");
-				}
-			}
-		}
-		
-		[Association(Name="tblReply_tblMaintain", Storage="_tblReply", ThisKey="rp_id", IsForeignKey=true)]
-		public tblReply tblReply
-		{
-			get
-			{
-				return this._tblReply.Entity;
-			}
-			set
-			{
-				tblReply previousValue = this._tblReply.Entity;
-				if (((previousValue != value) 
-							|| (this._tblReply.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblReply.Entity = null;
-						previousValue.tblMaintain.Remove(this);
-					}
-					this._tblReply.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain.Add(this);
-						this._rp_id = value.rp_id;
-					}
-					else
-					{
-						this._rp_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblReply");
-				}
-			}
-		}
-		
-		[Association(Name="tblOperator_tblMaintain", Storage="_tblOperator", ThisKey="op_id", IsForeignKey=true)]
-		public tblOperator tblOperator
-		{
-			get
-			{
-				return this._tblOperator.Entity;
-			}
-			set
-			{
-				tblOperator previousValue = this._tblOperator.Entity;
-				if (((previousValue != value) 
-							|| (this._tblOperator.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblOperator.Entity = null;
-						previousValue.tblMaintain.Remove(this);
-					}
-					this._tblOperator.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain.Add(this);
-						this._op_id = value.op_id;
-					}
-					else
-					{
-						this._op_id = default(int);
-					}
-					this.SendPropertyChanged("tblOperator");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblMaintain2(tblMaintain entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblMaintain1 = this;
-		}
-		
-		private void detach_tblMaintain2(tblMaintain entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblMaintain1 = null;
 		}
 	}
 	
@@ -1469,9 +838,9 @@ namespace BXDB
 		
 		private string _op_pwd;
 		
-		private EntitySet<tblMaintain> _tblMaintain;
-		
 		private EntitySet<tblReply> _tblReply;
+		
+		private EntitySet<tblMaintain> _tblMaintain;
 		
 		private EntityRef<tblRight> _tblRight;
 		
@@ -1491,8 +860,8 @@ namespace BXDB
 		
 		public tblOperator()
 		{
-			this._tblMaintain = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain), new Action<tblMaintain>(this.detach_tblMaintain));
 			this._tblReply = new EntitySet<tblReply>(new Action<tblReply>(this.attach_tblReply), new Action<tblReply>(this.detach_tblReply));
+			this._tblMaintain = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain), new Action<tblMaintain>(this.detach_tblMaintain));
 			this._tblRight = default(EntityRef<tblRight>);
 			OnCreated();
 		}
@@ -1581,19 +950,6 @@ namespace BXDB
 			}
 		}
 		
-		[Association(Name="tblOperator_tblMaintain", Storage="_tblMaintain", OtherKey="op_id")]
-		public EntitySet<tblMaintain> tblMaintain
-		{
-			get
-			{
-				return this._tblMaintain;
-			}
-			set
-			{
-				this._tblMaintain.Assign(value);
-			}
-		}
-		
 		[Association(Name="tblOperator_tblReply", Storage="_tblReply", OtherKey="op_id")]
 		public EntitySet<tblReply> tblReply
 		{
@@ -1604,6 +960,19 @@ namespace BXDB
 			set
 			{
 				this._tblReply.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblOperator_tblMaintain", Storage="_tblMaintain", OtherKey="op_id")]
+		public EntitySet<tblMaintain> tblMaintain
+		{
+			get
+			{
+				return this._tblMaintain;
+			}
+			set
+			{
+				this._tblMaintain.Assign(value);
 			}
 		}
 		
@@ -1661,18 +1030,6 @@ namespace BXDB
 			}
 		}
 		
-		private void attach_tblMaintain(tblMaintain entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblOperator = this;
-		}
-		
-		private void detach_tblMaintain(tblMaintain entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblOperator = null;
-		}
-		
 		private void attach_tblReply(tblReply entity)
 		{
 			this.SendPropertyChanging();
@@ -1680,6 +1037,18 @@ namespace BXDB
 		}
 		
 		private void detach_tblReply(tblReply entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = null;
+		}
+		
+		private void attach_tblMaintain(tblMaintain entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = this;
+		}
+		
+		private void detach_tblMaintain(tblMaintain entity)
 		{
 			this.SendPropertyChanging();
 			entity.tblOperator = null;
@@ -1797,6 +1166,661 @@ namespace BXDB
 		{
 			this.SendPropertyChanging();
 			entity.tblRight = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblMaintain")]
+	public partial class tblMaintain : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Nullable<int> _it_id;
+		
+		private int _mt_id;
+		
+		private int _ml_id;
+		
+		private System.Nullable<int> _rp_id;
+		
+		private int _op_id;
+		
+		private System.Nullable<System.DateTime> _mt_pose_dt;
+		
+		private System.DateTime _mt_create_dt;
+		
+		private System.Nullable<System.DateTime> _mt_begin_dt;
+		
+		private System.Nullable<System.DateTime> _mt_timeout_dt;
+		
+		private int _mt_status;
+		
+		private string _mt_location;
+		
+		private string _mt_content;
+		
+		private string _mt_remark;
+		
+		private System.Nullable<int> _mt_parent;
+		
+		private string _mt_fee_info;
+		
+		private System.Nullable<int> _mt_mark;
+		
+		private EntitySet<tblMaintain> _tblMaintain2;
+		
+		private EntityRef<tblIntroducer> _tblIntroducer;
+		
+		private EntityRef<tblMaintain> _tblMaintain1;
+		
+		private EntityRef<tblMaintainLevel> _tblMaintainLevel;
+		
+		private EntityRef<tblOperator> _tblOperator;
+		
+		private EntityRef<tblReply> _tblReply;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onit_idChanging(System.Nullable<int> value);
+    partial void Onit_idChanged();
+    partial void Onmt_idChanging(int value);
+    partial void Onmt_idChanged();
+    partial void Onml_idChanging(int value);
+    partial void Onml_idChanged();
+    partial void Onrp_idChanging(System.Nullable<int> value);
+    partial void Onrp_idChanged();
+    partial void Onop_idChanging(int value);
+    partial void Onop_idChanged();
+    partial void Onmt_pose_dtChanging(System.Nullable<System.DateTime> value);
+    partial void Onmt_pose_dtChanged();
+    partial void Onmt_create_dtChanging(System.DateTime value);
+    partial void Onmt_create_dtChanged();
+    partial void Onmt_begin_dtChanging(System.Nullable<System.DateTime> value);
+    partial void Onmt_begin_dtChanged();
+    partial void Onmt_timeout_dtChanging(System.Nullable<System.DateTime> value);
+    partial void Onmt_timeout_dtChanged();
+    partial void Onmt_statusChanging(int value);
+    partial void Onmt_statusChanged();
+    partial void Onmt_locationChanging(string value);
+    partial void Onmt_locationChanged();
+    partial void Onmt_contentChanging(string value);
+    partial void Onmt_contentChanged();
+    partial void Onmt_remarkChanging(string value);
+    partial void Onmt_remarkChanged();
+    partial void Onmt_parentChanging(System.Nullable<int> value);
+    partial void Onmt_parentChanged();
+    partial void Onmt_fee_infoChanging(string value);
+    partial void Onmt_fee_infoChanged();
+    partial void Onmt_markChanging(System.Nullable<int> value);
+    partial void Onmt_markChanged();
+    #endregion
+		
+		public tblMaintain()
+		{
+			this._tblMaintain2 = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain2), new Action<tblMaintain>(this.detach_tblMaintain2));
+			this._tblIntroducer = default(EntityRef<tblIntroducer>);
+			this._tblMaintain1 = default(EntityRef<tblMaintain>);
+			this._tblMaintainLevel = default(EntityRef<tblMaintainLevel>);
+			this._tblOperator = default(EntityRef<tblOperator>);
+			this._tblReply = default(EntityRef<tblReply>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_it_id", DbType="Int")]
+		public System.Nullable<int> it_id
+		{
+			get
+			{
+				return this._it_id;
+			}
+			set
+			{
+				if ((this._it_id != value))
+				{
+					if (this._tblIntroducer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onit_idChanging(value);
+					this.SendPropertyChanging();
+					this._it_id = value;
+					this.SendPropertyChanged("it_id");
+					this.Onit_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int mt_id
+		{
+			get
+			{
+				return this._mt_id;
+			}
+			set
+			{
+				if ((this._mt_id != value))
+				{
+					this.Onmt_idChanging(value);
+					this.SendPropertyChanging();
+					this._mt_id = value;
+					this.SendPropertyChanged("mt_id");
+					this.Onmt_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ml_id", DbType="Int NOT NULL")]
+		public int ml_id
+		{
+			get
+			{
+				return this._ml_id;
+			}
+			set
+			{
+				if ((this._ml_id != value))
+				{
+					if (this._tblMaintainLevel.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onml_idChanging(value);
+					this.SendPropertyChanging();
+					this._ml_id = value;
+					this.SendPropertyChanged("ml_id");
+					this.Onml_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_rp_id", DbType="Int")]
+		public System.Nullable<int> rp_id
+		{
+			get
+			{
+				return this._rp_id;
+			}
+			set
+			{
+				if ((this._rp_id != value))
+				{
+					if (this._tblReply.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onrp_idChanging(value);
+					this.SendPropertyChanging();
+					this._rp_id = value;
+					this.SendPropertyChanged("rp_id");
+					this.Onrp_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_op_id", DbType="Int NOT NULL")]
+		public int op_id
+		{
+			get
+			{
+				return this._op_id;
+			}
+			set
+			{
+				if ((this._op_id != value))
+				{
+					if (this._tblOperator.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onop_idChanging(value);
+					this.SendPropertyChanging();
+					this._op_id = value;
+					this.SendPropertyChanged("op_id");
+					this.Onop_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_pose_dt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> mt_pose_dt
+		{
+			get
+			{
+				return this._mt_pose_dt;
+			}
+			set
+			{
+				if ((this._mt_pose_dt != value))
+				{
+					this.Onmt_pose_dtChanging(value);
+					this.SendPropertyChanging();
+					this._mt_pose_dt = value;
+					this.SendPropertyChanged("mt_pose_dt");
+					this.Onmt_pose_dtChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_create_dt", DbType="DateTime NOT NULL")]
+		public System.DateTime mt_create_dt
+		{
+			get
+			{
+				return this._mt_create_dt;
+			}
+			set
+			{
+				if ((this._mt_create_dt != value))
+				{
+					this.Onmt_create_dtChanging(value);
+					this.SendPropertyChanging();
+					this._mt_create_dt = value;
+					this.SendPropertyChanged("mt_create_dt");
+					this.Onmt_create_dtChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_begin_dt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> mt_begin_dt
+		{
+			get
+			{
+				return this._mt_begin_dt;
+			}
+			set
+			{
+				if ((this._mt_begin_dt != value))
+				{
+					this.Onmt_begin_dtChanging(value);
+					this.SendPropertyChanging();
+					this._mt_begin_dt = value;
+					this.SendPropertyChanged("mt_begin_dt");
+					this.Onmt_begin_dtChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_timeout_dt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> mt_timeout_dt
+		{
+			get
+			{
+				return this._mt_timeout_dt;
+			}
+			set
+			{
+				if ((this._mt_timeout_dt != value))
+				{
+					this.Onmt_timeout_dtChanging(value);
+					this.SendPropertyChanging();
+					this._mt_timeout_dt = value;
+					this.SendPropertyChanged("mt_timeout_dt");
+					this.Onmt_timeout_dtChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_status", DbType="Int NOT NULL")]
+		public int mt_status
+		{
+			get
+			{
+				return this._mt_status;
+			}
+			set
+			{
+				if ((this._mt_status != value))
+				{
+					this.Onmt_statusChanging(value);
+					this.SendPropertyChanging();
+					this._mt_status = value;
+					this.SendPropertyChanged("mt_status");
+					this.Onmt_statusChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_location", DbType="NVarChar(1000)")]
+		public string mt_location
+		{
+			get
+			{
+				return this._mt_location;
+			}
+			set
+			{
+				if ((this._mt_location != value))
+				{
+					this.Onmt_locationChanging(value);
+					this.SendPropertyChanging();
+					this._mt_location = value;
+					this.SendPropertyChanged("mt_location");
+					this.Onmt_locationChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_content", DbType="NVarChar(1000)")]
+		public string mt_content
+		{
+			get
+			{
+				return this._mt_content;
+			}
+			set
+			{
+				if ((this._mt_content != value))
+				{
+					this.Onmt_contentChanging(value);
+					this.SendPropertyChanging();
+					this._mt_content = value;
+					this.SendPropertyChanged("mt_content");
+					this.Onmt_contentChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_remark", DbType="NVarChar(1000)")]
+		public string mt_remark
+		{
+			get
+			{
+				return this._mt_remark;
+			}
+			set
+			{
+				if ((this._mt_remark != value))
+				{
+					this.Onmt_remarkChanging(value);
+					this.SendPropertyChanging();
+					this._mt_remark = value;
+					this.SendPropertyChanged("mt_remark");
+					this.Onmt_remarkChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_parent", DbType="Int")]
+		public System.Nullable<int> mt_parent
+		{
+			get
+			{
+				return this._mt_parent;
+			}
+			set
+			{
+				if ((this._mt_parent != value))
+				{
+					if (this._tblMaintain1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onmt_parentChanging(value);
+					this.SendPropertyChanging();
+					this._mt_parent = value;
+					this.SendPropertyChanged("mt_parent");
+					this.Onmt_parentChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_fee_info", DbType="NVarChar(1000)")]
+		public string mt_fee_info
+		{
+			get
+			{
+				return this._mt_fee_info;
+			}
+			set
+			{
+				if ((this._mt_fee_info != value))
+				{
+					this.Onmt_fee_infoChanging(value);
+					this.SendPropertyChanging();
+					this._mt_fee_info = value;
+					this.SendPropertyChanged("mt_fee_info");
+					this.Onmt_fee_infoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_mark", DbType="Int")]
+		public System.Nullable<int> mt_mark
+		{
+			get
+			{
+				return this._mt_mark;
+			}
+			set
+			{
+				if ((this._mt_mark != value))
+				{
+					this.Onmt_markChanging(value);
+					this.SendPropertyChanging();
+					this._mt_mark = value;
+					this.SendPropertyChanged("mt_mark");
+					this.Onmt_markChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblMaintain_tblMaintain", Storage="_tblMaintain2", OtherKey="mt_parent")]
+		public EntitySet<tblMaintain> tblMaintain2
+		{
+			get
+			{
+				return this._tblMaintain2;
+			}
+			set
+			{
+				this._tblMaintain2.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblIntroducer_tblMaintain", Storage="_tblIntroducer", ThisKey="it_id", IsForeignKey=true)]
+		public tblIntroducer tblIntroducer
+		{
+			get
+			{
+				return this._tblIntroducer.Entity;
+			}
+			set
+			{
+				tblIntroducer previousValue = this._tblIntroducer.Entity;
+				if (((previousValue != value) 
+							|| (this._tblIntroducer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblIntroducer.Entity = null;
+						previousValue.tblMaintain.Remove(this);
+					}
+					this._tblIntroducer.Entity = value;
+					if ((value != null))
+					{
+						value.tblMaintain.Add(this);
+						this._it_id = value.it_id;
+					}
+					else
+					{
+						this._it_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblIntroducer");
+				}
+			}
+		}
+		
+		[Association(Name="tblMaintain_tblMaintain", Storage="_tblMaintain1", ThisKey="mt_parent", IsForeignKey=true)]
+		public tblMaintain tblMaintain1
+		{
+			get
+			{
+				return this._tblMaintain1.Entity;
+			}
+			set
+			{
+				tblMaintain previousValue = this._tblMaintain1.Entity;
+				if (((previousValue != value) 
+							|| (this._tblMaintain1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblMaintain1.Entity = null;
+						previousValue.tblMaintain2.Remove(this);
+					}
+					this._tblMaintain1.Entity = value;
+					if ((value != null))
+					{
+						value.tblMaintain2.Add(this);
+						this._mt_parent = value.mt_id;
+					}
+					else
+					{
+						this._mt_parent = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblMaintain1");
+				}
+			}
+		}
+		
+		[Association(Name="tblMaintainLevel_tblMaintain", Storage="_tblMaintainLevel", ThisKey="ml_id", IsForeignKey=true)]
+		public tblMaintainLevel tblMaintainLevel
+		{
+			get
+			{
+				return this._tblMaintainLevel.Entity;
+			}
+			set
+			{
+				tblMaintainLevel previousValue = this._tblMaintainLevel.Entity;
+				if (((previousValue != value) 
+							|| (this._tblMaintainLevel.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblMaintainLevel.Entity = null;
+						previousValue.tblMaintain.Remove(this);
+					}
+					this._tblMaintainLevel.Entity = value;
+					if ((value != null))
+					{
+						value.tblMaintain.Add(this);
+						this._ml_id = value.ml_id;
+					}
+					else
+					{
+						this._ml_id = default(int);
+					}
+					this.SendPropertyChanged("tblMaintainLevel");
+				}
+			}
+		}
+		
+		[Association(Name="tblOperator_tblMaintain", Storage="_tblOperator", ThisKey="op_id", IsForeignKey=true)]
+		public tblOperator tblOperator
+		{
+			get
+			{
+				return this._tblOperator.Entity;
+			}
+			set
+			{
+				tblOperator previousValue = this._tblOperator.Entity;
+				if (((previousValue != value) 
+							|| (this._tblOperator.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblOperator.Entity = null;
+						previousValue.tblMaintain.Remove(this);
+					}
+					this._tblOperator.Entity = value;
+					if ((value != null))
+					{
+						value.tblMaintain.Add(this);
+						this._op_id = value.op_id;
+					}
+					else
+					{
+						this._op_id = default(int);
+					}
+					this.SendPropertyChanged("tblOperator");
+				}
+			}
+		}
+		
+		[Association(Name="tblReply_tblMaintain", Storage="_tblReply", ThisKey="rp_id", IsForeignKey=true)]
+		public tblReply tblReply
+		{
+			get
+			{
+				return this._tblReply.Entity;
+			}
+			set
+			{
+				tblReply previousValue = this._tblReply.Entity;
+				if (((previousValue != value) 
+							|| (this._tblReply.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblReply.Entity = null;
+						previousValue.tblMaintain.Remove(this);
+					}
+					this._tblReply.Entity = value;
+					if ((value != null))
+					{
+						value.tblMaintain.Add(this);
+						this._rp_id = value.rp_id;
+					}
+					else
+					{
+						this._rp_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblReply");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblMaintain2(tblMaintain entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblMaintain1 = this;
+		}
+		
+		private void detach_tblMaintain2(tblMaintain entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblMaintain1 = null;
 		}
 	}
 }

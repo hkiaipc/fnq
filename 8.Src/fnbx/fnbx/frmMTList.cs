@@ -79,7 +79,7 @@ namespace fnbx
                 Right rt = App.Default.GetLoginOperatorRight();
                 if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, mt.GetMtStatus()))
                 {
-                    NUnit.UiKit.UserMessage.DisplayFailure("cannot edit");
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotEditMT);
                     return;
                 }
 
@@ -136,11 +136,11 @@ namespace fnbx
                 Right rt = App.Default.GetLoginOperatorRight();
                 if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, mt.GetMtStatus()))
                 {
-                    NUnit.UiKit.UserMessage.DisplayFailure("cannot delete.");
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
                     return;
                 }
 
-                if (NUnit.UiKit.UserMessage.Ask("delete?") == DialogResult.Yes)
+                if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
                 {
                     BxdbDataContext dc = Class1.GetBxdbDataContext();
                     dc.tblMaintain.DeleteOnSubmit(mt);

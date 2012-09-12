@@ -44,6 +44,7 @@ namespace fnbx
             mt.mt_create_dt = DateTime.Now;
             mt.mt_pose_dt = DateTime.Now;
             mt.mt_begin_dt = DateTime.Now;
+            mt.mt_timeout_dt = mt.mt_begin_dt + TimeSpan.FromMinutes((int)mt.tblMaintainLevel.ml_arrive_hl);
             mt.SetMTStatus(MTStatus.Created);
 
             return mt;

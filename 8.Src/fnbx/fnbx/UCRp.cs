@@ -80,6 +80,11 @@ namespace fnbx
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPEndDTMustGreaterReceivedDT);
                 r = false;
             }
+            else if (this.dtpEnd.Value >= this.Reply.tblMaintain[0].mt_timeout_dt)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPEndDTMustLessTimeoutDT);
+                r = false;
+            }
             else if (this.txtWorker.Text.Trim().Length == 0)
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPWorkerEmpty);

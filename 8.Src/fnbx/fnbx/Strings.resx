@@ -118,10 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CannotCreateMT" xml:space="preserve">
-    <value>权限不够, 不能创建保修单.</value>
+    <value>权限不够, 不能创建报修单</value>
+  </data>
+  <data name="CannotDeleteMT" xml:space="preserve">
+    <value>不能删除报修单</value>
+  </data>
+  <data name="CannotEditMT" xml:space="preserve">
+    <value>不能修改报修单</value>
   </data>
   <data name="CannotModifyMTStatus" xml:space="preserve">
     <value>不能修改状态</value>
+  </data>
+  <data name="RemainTimespan" xml:space="preserve">
+    <value>距离超时时间还有 {0}</value>
   </data>
   <data name="RPContentEmpty" xml:space="preserve">
     <value>完成内容不能为空</value>
@@ -130,12 +139,21 @@
     <value>完成时间必须大于接单时间</value>
   </data>
   <data name="RPWorkerEmpty" xml:space="preserve">
-    <value>worker empty...</value>
+    <value>完成人不能为空</value>
   </data>
   <data name="SelectMTFirst" xml:space="preserve">
     <value>请先选中一条记录</value>
   </data>
   <data name="SelectNewStatus" xml:space="preserve">
     <value>请选择新状态</value>
+  </data>
+  <data name="SureDelete" xml:space="preserve">
+    <value>确定删除吗?</value>
+  </data>
+  <data name="RPEndDTMustLessTimeoutDT" xml:space="preserve">
+    <value>完成时间必须小于超时时间</value>
+  </data>
+  <data name="Timeouted" xml:space="preserve">
+    <value>已超时</value>
   </data>
 </root>

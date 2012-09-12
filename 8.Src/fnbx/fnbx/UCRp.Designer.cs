@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpReceived = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.txtWorker = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -38,16 +36,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtOperatorName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.dtpEnd = new fnbx.UCDateTimePicker();
+            this.dtpReceived = new fnbx.UCDateTimePicker();
             this.SuspendLayout();
-            // 
-            // dtpReceived
-            // 
-            this.dtpReceived.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dtpReceived.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReceived.Location = new System.Drawing.Point(108, 3);
-            this.dtpReceived.Name = "dtpReceived";
-            this.dtpReceived.Size = new System.Drawing.Size(150, 21);
-            this.dtpReceived.TabIndex = 51;
             // 
             // label2
             // 
@@ -56,15 +47,6 @@
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 50;
             this.label2.Text = "接单时间:";
-            // 
-            // dtpEnd
-            // 
-            this.dtpEnd.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnd.Location = new System.Drawing.Point(108, 30);
-            this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(150, 21);
-            this.dtpEnd.TabIndex = 53;
             // 
             // label1
             // 
@@ -79,7 +61,7 @@
             this.txtWorker.Location = new System.Drawing.Point(108, 57);
             this.txtWorker.Multiline = true;
             this.txtWorker.Name = "txtWorker";
-            this.txtWorker.Size = new System.Drawing.Size(150, 20);
+            this.txtWorker.Size = new System.Drawing.Size(200, 20);
             this.txtWorker.TabIndex = 55;
             // 
             // label5
@@ -113,7 +95,7 @@
             this.txtOperatorName.Multiline = true;
             this.txtOperatorName.Name = "txtOperatorName";
             this.txtOperatorName.ReadOnly = true;
-            this.txtOperatorName.Size = new System.Drawing.Size(150, 20);
+            this.txtOperatorName.Size = new System.Drawing.Size(200, 20);
             this.txtOperatorName.TabIndex = 59;
             // 
             // label9
@@ -124,19 +106,35 @@
             this.label9.TabIndex = 58;
             this.label9.Text = "回单员:";
             // 
+            // dtpEnd
+            // 
+            this.dtpEnd.Location = new System.Drawing.Point(108, 29);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(200, 21);
+            this.dtpEnd.TabIndex = 60;
+            this.dtpEnd.Value = new System.DateTime(2012, 9, 12, 14, 42, 12, 0);
+            // 
+            // dtpReceived
+            // 
+            this.dtpReceived.Location = new System.Drawing.Point(108, 3);
+            this.dtpReceived.Name = "dtpReceived";
+            this.dtpReceived.Size = new System.Drawing.Size(200, 21);
+            this.dtpReceived.TabIndex = 61;
+            this.dtpReceived.Value = new System.DateTime(2012, 9, 12, 14, 42, 35, 0);
+            // 
             // UCRp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dtpReceived);
+            this.Controls.Add(this.dtpEnd);
             this.Controls.Add(this.txtOperatorName);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtRpContent);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtWorker);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dtpEnd);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtpReceived);
             this.Controls.Add(this.label2);
             this.Name = "UCRp";
             this.Size = new System.Drawing.Size(586, 251);
@@ -148,9 +146,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dtpReceived;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtWorker;
         private System.Windows.Forms.Label label5;
@@ -158,5 +154,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtOperatorName;
         private System.Windows.Forms.Label label9;
+        private UCDateTimePicker dtpEnd;
+        private UCDateTimePicker dtpReceived;
     }
 }

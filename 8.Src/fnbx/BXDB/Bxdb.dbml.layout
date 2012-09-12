@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 12.5" name="Bxdb">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.75, 12.5" name="Bxdb">
   <DataContextMoniker Name="/BxdbDataContext" />
   <nestedChildShapes>
     <classShape Id="a48e17eb-d13e-4335-8d46-274e877eeb3d" absoluteBounds="6.25, 4.125, 2, 1.5891951497395827">
@@ -8,65 +8,24 @@
         <elementListCompartment Id="b18895ca-8cbe-45de-9c10-1450854fceaf" absoluteBounds="6.2650000000000006, 4.585, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f92a802b-e0fb-4ff4-95c0-a0d47639d213" absoluteBounds="9, 4.625, 2, 3.2326684570312505">
-      <DataClassMoniker Name="/BxdbDataContext/tblMaintain" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c55f0eaf-9312-4e0c-aa85-8ccbdb7eee3e" absoluteBounds="9.015, 5.085, 1.9700000000000002, 2.67266845703125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(8.25 : 5.16959757486979); (9 : 5.16959757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BxdbDataContext/tblIntroducer/tblIntroducer_tblMaintain" />
-      <nodes>
-        <classShapeMoniker Id="a48e17eb-d13e-4335-8d46-274e877eeb3d" />
-        <classShapeMoniker Id="f92a802b-e0fb-4ff4-95c0-a0d47639d213" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(9.70923076923077 : 7.85766845703125); (9.70923076923077 : 8.10766845703125); (10.3046153846154 : 8.10766845703125); (10.3046153846154 : 7.85766845703125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BxdbDataContext/tblMaintain/tblMaintain_tblMaintain" />
-      <nodes>
-        <classShapeMoniker Id="f92a802b-e0fb-4ff4-95c0-a0d47639d213" />
-        <classShapeMoniker Id="f92a802b-e0fb-4ff4-95c0-a0d47639d213" />
-      </nodes>
-    </associationConnector>
     <classShape Id="765d54b5-46fb-4d75-ab98-ee8db4778133" absoluteBounds="6.25, 10.375, 2, 1.9178898111979166">
       <DataClassMoniker Name="/BxdbDataContext/tblMaintainLevel" />
       <nestedChildShapes>
         <elementListCompartment Id="9cc08f28-781e-4c26-9c37-f681cf266ac6" absoluteBounds="6.2650000000000006, 10.835, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 11.333944905599); (9.32336288461538 : 11.333944905599); (9.32336288461538 : 7.85766845703125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BxdbDataContext/tblMaintainLevel/tblMaintainLevel_tblMaintain" />
-      <nodes>
-        <classShapeMoniker Id="765d54b5-46fb-4d75-ab98-ee8db4778133" />
-        <classShapeMoniker Id="f92a802b-e0fb-4ff4-95c0-a0d47639d213" />
-      </nodes>
-    </associationConnector>
     <classShape Id="2f2ecbed-3885-47a0-9e0b-c528071c04c4" absoluteBounds="6.25, 7.125, 2, 1.9178898111979166">
       <DataClassMoniker Name="/BxdbDataContext/tblReply" />
       <nestedChildShapes>
         <elementListCompartment Id="0bfba3e8-de61-40e6-b0b6-8b95eedf92ad" absoluteBounds="6.265, 7.585, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 7.49133422851563); (9 : 7.49133422851563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BxdbDataContext/tblReply/tblReply_tblMaintain" />
-      <nodes>
-        <classShapeMoniker Id="2f2ecbed-3885-47a0-9e0b-c528071c04c4" />
-        <classShapeMoniker Id="f92a802b-e0fb-4ff4-95c0-a0d47639d213" />
-      </nodes>
-    </associationConnector>
     <classShape Id="999f5e3a-0527-4f17-afc4-bb450fca6833" absoluteBounds="3.5, 3.875, 2, 1.4248478190104168">
       <DataClassMoniker Name="/BxdbDataContext/tblOperator" />
       <nestedChildShapes>
         <elementListCompartment Id="64e54bad-34bd-4517-a559-902261e7b07d" absoluteBounds="3.515, 4.335, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 3.96875); (10 : 3.96875); (10 : 4.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BxdbDataContext/tblOperator/tblOperator_tblMaintain" />
-      <nodes>
-        <classShapeMoniker Id="999f5e3a-0527-4f17-afc4-bb450fca6833" />
-        <classShapeMoniker Id="f92a802b-e0fb-4ff4-95c0-a0d47639d213" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(4.5 : 5.29984781901042); (4.5 : 8.08394490559896); (6.25 : 8.08394490559896)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BxdbDataContext/tblOperator/tblOperator_tblReply" />
       <nodes>
@@ -85,6 +44,47 @@
       <nodes>
         <classShapeMoniker Id="03596b25-1aac-4ece-9bc5-8d93a1221e04" />
         <classShapeMoniker Id="999f5e3a-0527-4f17-afc4-bb450fca6833" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="24c1d0d0-52f4-4851-8003-8daf2ef5f456" absoluteBounds="10.5, 4.5, 2, 3.3970157877604166">
+      <DataClassMoniker Name="/BxdbDataContext/tblMaintain" />
+      <nestedChildShapes>
+        <elementListCompartment Id="39aee2d8-896c-4136-bc4f-efc13c6e7c38" absoluteBounds="10.515, 4.96, 1.9700000000000002, 2.8370157877604165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 5.10709757486979); (10.5 : 5.10709757486979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BxdbDataContext/tblIntroducer/tblIntroducer_tblMaintain" />
+      <nodes>
+        <classShapeMoniker Id="a48e17eb-d13e-4335-8d46-274e877eeb3d" />
+        <classShapeMoniker Id="24c1d0d0-52f4-4851-8003-8daf2ef5f456" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.2092307692308 : 7.89701578776042); (11.2092307692308 : 8.14701578776042); (11.8046153846154 : 8.14701578776042); (11.8046153846154 : 7.89701578776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BxdbDataContext/tblMaintain/tblMaintain_tblMaintain" />
+      <nodes>
+        <classShapeMoniker Id="24c1d0d0-52f4-4851-8003-8daf2ef5f456" />
+        <classShapeMoniker Id="24c1d0d0-52f4-4851-8003-8daf2ef5f456" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 11.333944905599); (10.8233628846154 : 11.333944905599); (10.8233628846154 : 7.89701578776042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BxdbDataContext/tblMaintainLevel/tblMaintainLevel_tblMaintain" />
+      <nodes>
+        <classShapeMoniker Id="765d54b5-46fb-4d75-ab98-ee8db4778133" />
+        <classShapeMoniker Id="24c1d0d0-52f4-4851-8003-8daf2ef5f456" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 3.96875); (11.5 : 3.96875); (11.5 : 4.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BxdbDataContext/tblOperator/tblOperator_tblMaintain" />
+      <nodes>
+        <classShapeMoniker Id="999f5e3a-0527-4f17-afc4-bb450fca6833" />
+        <classShapeMoniker Id="24c1d0d0-52f4-4851-8003-8daf2ef5f456" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 7.51100789388021); (10.5 : 7.51100789388021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BxdbDataContext/tblReply/tblReply_tblMaintain" />
+      <nodes>
+        <classShapeMoniker Id="2f2ecbed-3885-47a0-9e0b-c528071c04c4" />
+        <classShapeMoniker Id="24c1d0d0-52f4-4851-8003-8daf2ef5f456" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

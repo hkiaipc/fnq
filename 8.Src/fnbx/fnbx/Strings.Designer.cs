@@ -61,11 +61,29 @@ namespace fnbx {
         }
         
         /// <summary>
-        ///   查找类似 权限不够, 不能创建保修单. 的本地化字符串。
+        ///   查找类似 权限不够, 不能创建报修单 的本地化字符串。
         /// </summary>
         internal static string CannotCreateMT {
             get {
                 return ResourceManager.GetString("CannotCreateMT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 不能删除报修单 的本地化字符串。
+        /// </summary>
+        internal static string CannotDeleteMT {
+            get {
+                return ResourceManager.GetString("CannotDeleteMT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 不能修改报修单 的本地化字符串。
+        /// </summary>
+        internal static string CannotEditMT {
+            get {
+                return ResourceManager.GetString("CannotEditMT", resourceCulture);
             }
         }
         
@@ -75,6 +93,15 @@ namespace fnbx {
         internal static string CannotModifyMTStatus {
             get {
                 return ResourceManager.GetString("CannotModifyMTStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 距离超时时间还有 {0} 的本地化字符串。
+        /// </summary>
+        internal static string RemainTimespan {
+            get {
+                return ResourceManager.GetString("RemainTimespan", resourceCulture);
             }
         }
         
@@ -97,7 +124,16 @@ namespace fnbx {
         }
         
         /// <summary>
-        ///   查找类似 worker empty... 的本地化字符串。
+        ///   查找类似 完成时间必须小于超时时间 的本地化字符串。
+        /// </summary>
+        internal static string RPEndDTMustLessTimeoutDT {
+            get {
+                return ResourceManager.GetString("RPEndDTMustLessTimeoutDT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 完成人不能为空 的本地化字符串。
         /// </summary>
         internal static string RPWorkerEmpty {
             get {
@@ -120,6 +156,24 @@ namespace fnbx {
         internal static string SelectNewStatus {
             get {
                 return ResourceManager.GetString("SelectNewStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定删除吗? 的本地化字符串。
+        /// </summary>
+        internal static string SureDelete {
+            get {
+                return ResourceManager.GetString("SureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 已超时 的本地化字符串。
+        /// </summary>
+        internal static string Timeouted {
+            get {
+                return ResourceManager.GetString("Timeouted", resourceCulture);
             }
         }
     }

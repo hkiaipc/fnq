@@ -32,23 +32,13 @@ namespace fnbx
         public UCMt()
         {
             InitializeComponent();
-
-            //if (!this.DesignMode)
-            //{
-            //    BindML();
-            //}
         }
 
         private void UCMt_Load(object sender, EventArgs e)
         {
-            //if (!this.DesignMode)
-            //{
-            //    this.dtpPose.Value = DateTime.Now;
-            //    this.dtpBegin.Value = DateTime.Now;
-
-            //    this.txtOperatorName.Text = App.Default.LoginOperator.op_name;
-
-            //}
+            // after load
+            //
+            this._isUpdateTimeoutDateTimePicker = true;
         }
 
         /// <summary>
@@ -102,6 +92,8 @@ namespace fnbx
 
             this.dtpPose.Value = (DateTime )_maintain.mt_pose_dt;
             this.dtpBegin.Value = (DateTime)_maintain.mt_begin_dt;
+            this.dtpTimeout.Value = (DateTime)_maintain.mt_timeout_dt;
+
             this.cmbML.SelectedValue = _maintain.tblMaintainLevel.ml_id;
             this.txtOperatorName.Text = _maintain.tblOperator.op_name;
             this.txtContent.Text  = _maintain.mt_content;
@@ -116,6 +108,7 @@ namespace fnbx
             _maintain.mt_begin_dt = this.dtpBegin.Value;
             _maintain.tblMaintainLevel = (tblMaintainLevel)this.cmbML.SelectedItem;
             _maintain.mt_content = this.txtContent.Text;
+            _maintain.mt_timeout_dt = this.dtpTimeout.Value;
 
             tblIntroducer introducer = _maintain.tblIntroducer;
             if (introducer == null)
@@ -127,6 +120,53 @@ namespace fnbx
             introducer.it_name = txtIntroducerName.Text;
             introducer.it_phone = txtPhone.Text;
             introducer.it_address = txtAddress.Text;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool _isUpdateTimeoutDateTimePicker = false;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dtpBegin_ValueChanged(object sender, EventArgs e)
+        {
+            if (_isUpdateTimeoutDateTimePicker)
+            {
+                UpdateTimeoutDateTimePicker();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private tblMaintainLevel GetSelectedML()
+        {
+            tblMaintainLevel ml = (tblMaintainLevel)this.cmbML.SelectedItem;
+            Debug.Assert(ml != null);
+            return ml;
+        }
+
+        private void cmbML_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_isUpdateTimeoutDateTimePicker)
+            {
+                UpdateTimeoutDateTimePicker();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateTimeoutDateTimePicker()
+        {
+            DateTime dt = this.dtpBegin.Value;
+            DateTime timeout = dt + TimeSpan.FromMinutes((int)GetSelectedML().ml_arrive_hl);
+            this.dtpTimeout.Value = timeout;
         }
     }
 }
