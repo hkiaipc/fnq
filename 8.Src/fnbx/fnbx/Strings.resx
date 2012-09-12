@@ -123,6 +123,18 @@
   <data name="CannotModifyMTStatus" xml:space="preserve">
     <value>不能修改状态</value>
   </data>
+  <data name="RPContentEmpty" xml:space="preserve">
+    <value>完成内容不能为空</value>
+  </data>
+  <data name="RPEndDTMustGreaterReceivedDT" xml:space="preserve">
+    <value>完成时间必须大于接单时间</value>
+  </data>
+  <data name="RPWorkerEmpty" xml:space="preserve">
+    <value>worker empty...</value>
+  </data>
+  <data name="SelectMTFirst" xml:space="preserve">
+    <value>请先选中一条记录</value>
+  </data>
   <data name="SelectNewStatus" xml:space="preserve">
     <value>请选择新状态</value>
   </data>

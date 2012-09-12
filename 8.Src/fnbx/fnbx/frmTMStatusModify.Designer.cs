@@ -48,9 +48,11 @@
             // 
             // txtCurrentStatus
             // 
+            this.txtCurrentStatus.BackColor = System.Drawing.Color.White;
             this.txtCurrentStatus.Location = new System.Drawing.Point(118, 6);
             this.txtCurrentStatus.Multiline = true;
             this.txtCurrentStatus.Name = "txtCurrentStatus";
+            this.txtCurrentStatus.ReadOnly = true;
             this.txtCurrentStatus.Size = new System.Drawing.Size(150, 20);
             this.txtCurrentStatus.TabIndex = 1;
             // 
@@ -72,6 +74,7 @@
             // 
             // cmbNewMTStatus
             // 
+            this.cmbNewMTStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNewMTStatus.FormattingEnabled = true;
             this.cmbNewMTStatus.Location = new System.Drawing.Point(118, 35);
             this.cmbNewMTStatus.Name = "cmbNewMTStatus";

@@ -61,6 +61,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="MTProcessor.cs" />
     <Compile Include="Right\AdminRight.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Forms\frmML.cs">

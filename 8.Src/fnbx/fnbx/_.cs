@@ -24,9 +24,47 @@ namespace fnbx
             return status;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mt"></param>
+        /// <param name="status"></param>
         static public void SetMTStatus(this tblMaintain mt, MTStatus status)
         {
-            mt.mt_status = (int)status;
+            if (mt.GetMtStatus() != status)
+            {
+                mt.mt_status = (int)status;
+                mt.OnMtStatusChanged();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mt"></param>
+        static public void OnMtStatusChanged(this tblMaintain mt)
+        {
+            switch (mt.GetMtStatus())
+            {
+                case MTStatus.Received:
+                    {
+                        tblReply rp = mt.tblReply;
+
+                        if (rp == null)
+                        {
+                            rp = new tblReply();
+                            mt.tblReply = rp;
+                        }
+
+                        rp.rp_receive_dt = DateTime.Now;
+                        rp.tblOperator = App.Default.LoginOperator;
+
+                        Class1.GetBxdbDataContext().SubmitChanges();
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>

@@ -41,6 +41,8 @@ namespace fnbx
             this.lblStatus.Text = _maintain.mt_status.ToString();
             this.ucMt1.Maintain = _maintain;
             this.txtTMStatus.Text = _maintain.GetMtStatusText();
+
+            this.ucRp1.Reply = _maintain.tblReply;
         }
 
         /// <summary>
@@ -100,28 +102,51 @@ namespace fnbx
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (this.AdeStatus == ADEState.Add)
+
+            if (CheckInput())
             {
-                BxdbDataContext dc = Class1.GetBxdbDataContext();
-                ucMt1.UpdateMaintain();
-                _maintain.mt_create_dt = DateTime.Now;
+                if (this.AdeStatus == ADEState.Add)
+                {
+                    BxdbDataContext dc = Class1.GetBxdbDataContext();
+                    ucMt1.UpdateMaintain();
+                    _maintain.mt_create_dt = DateTime.Now;
 
-                dc.tblMaintain.InsertOnSubmit(_maintain);
-                dc.SubmitChanges();
+                    dc.tblMaintain.InsertOnSubmit(_maintain);
+                    dc.SubmitChanges();
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
 
+                }
+
+                if (this.AdeStatus == ADEState.Edit)
+                {
+                    BxdbDataContext dc = Class1.GetBxdbDataContext();
+                    ucMt1.UpdateMaintain();
+                    ucRp1.UpdateReply();
+                    dc.SubmitChanges();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
+        }
 
-            if (this.AdeStatus == ADEState.Edit)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckInput()
+        {
+            bool r = true;
+            MTStatus status = this._maintain.GetMtStatus();
+            if (status == MTStatus.Received || status == MTStatus.Completed)
             {
-                BxdbDataContext dc = Class1.GetBxdbDataContext();
-                ucMt1.UpdateMaintain();
-                dc.SubmitChanges();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (!ucRp1.CheckInput())
+                {
+                    r = false;
+                }
             }
+            return r;
         }
 
         /// <summary>
@@ -140,6 +165,12 @@ namespace fnbx
                 {
                     // TODO: refresh tm status 
                     //
+                    //_maintain.mt_status =(int) f.NewMtStatus;
+                    _maintain.SetMTStatus(f.NewMtStatus);
+
+                    this.txtTMStatus.Text = MTStatusHelper.GetMtStatusText(f.NewMtStatus);
+
+                    Class1.GetBxdbDataContext().SubmitChanges();
                 }
             }
             else

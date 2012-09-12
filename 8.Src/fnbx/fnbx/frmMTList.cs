@@ -74,22 +74,38 @@ namespace fnbx
         private void button2_Click(object sender, EventArgs e)
         {
             tblMaintain mt = this.GetSelectedMaintain();
-
-            Right rt = App.Default.GetLoginOperatorRight();
-            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, mt.GetMtStatus()))
+            if (CheckSelectedMaintain(mt))
             {
-                NUnit.UiKit.UserMessage.DisplayFailure("cannot edit");
-                return;
-            }
+                Right rt = App.Default.GetLoginOperatorRight();
+                if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, mt.GetMtStatus()))
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure("cannot edit");
+                    return;
+                }
 
-            frmMT f = new frmMT();
-            f.AdeStatus = Xdgk.Common.ADEState.Edit;
-            f.IsViewMode = true;
-            f.Maintain = mt;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                Fill();
+                frmMT f = new frmMT();
+                f.AdeStatus = Xdgk.Common.ADEState.Edit;
+                f.IsViewMode = true;
+                f.Maintain = mt;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Fill();
+                }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mt"></param>
+        /// <returns></returns>
+        private bool CheckSelectedMaintain(tblMaintain mt)
+        {
+            if (mt == null)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.SelectMTFirst);
+            }
+            return mt != null;
         }
 
         private tblMaintain GetSelectedMaintain()
@@ -114,21 +130,24 @@ namespace fnbx
         private void button3_Click(object sender, EventArgs e)
         {
             tblMaintain mt = this.GetSelectedMaintain();
-
-            Right rt = App.Default.GetLoginOperatorRight();
-            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, mt.GetMtStatus()))
+            if (CheckSelectedMaintain(mt))
             {
-                NUnit.UiKit.UserMessage.DisplayFailure("cannot delete.");
-                return ;
-            }
 
-            if (NUnit.UiKit.UserMessage.Ask("delete?") == DialogResult.Yes)
-            {
-                BxdbDataContext dc = Class1.GetBxdbDataContext();
-                dc.tblMaintain.DeleteOnSubmit(mt);
+                Right rt = App.Default.GetLoginOperatorRight();
+                if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, mt.GetMtStatus()))
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure("cannot delete.");
+                    return;
+                }
 
-                dc.SubmitChanges();
-                Fill();
+                if (NUnit.UiKit.UserMessage.Ask("delete?") == DialogResult.Yes)
+                {
+                    BxdbDataContext dc = Class1.GetBxdbDataContext();
+                    dc.tblMaintain.DeleteOnSubmit(mt);
+
+                    dc.SubmitChanges();
+                    Fill();
+                }
             }
         }
 
@@ -140,14 +159,15 @@ namespace fnbx
         private void button4_Click(object sender, EventArgs e)
         {
             tblMaintain mt = this.GetSelectedMaintain();
-            // TOOD: mt == null
-            //
-
-            frmMT f = new frmMT();
-            f.Maintain = mt;
-            if (f.ShowDialog() == DialogResult.OK)
+            if (CheckSelectedMaintain(mt))
             {
-                Fill();
+                frmMT f = new frmMT();
+                f.AdeStatus = Xdgk.Common.ADEState.Edit;
+                f.Maintain = mt;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Fill();
+                }
             }
         }
     }

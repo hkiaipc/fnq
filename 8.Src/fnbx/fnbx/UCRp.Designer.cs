@@ -30,7 +30,7 @@
         {
             this.dtpReceived = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.txtWorker = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,14 +57,14 @@
             this.label2.TabIndex = 50;
             this.label2.Text = "接单时间:";
             // 
-            // dateEnd
+            // dtpEnd
             // 
-            this.dateEnd.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateEnd.Location = new System.Drawing.Point(108, 30);
-            this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(150, 21);
-            this.dateEnd.TabIndex = 53;
+            this.dtpEnd.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd.Location = new System.Drawing.Point(108, 30);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(150, 21);
+            this.dtpEnd.TabIndex = 53;
             // 
             // label1
             // 
@@ -134,12 +134,13 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtWorker);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateEnd);
+            this.Controls.Add(this.dtpEnd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpReceived);
             this.Controls.Add(this.label2);
             this.Name = "UCRp";
             this.Size = new System.Drawing.Size(586, 251);
+            this.Load += new System.EventHandler(this.UCRp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,7 +150,7 @@
 
         private System.Windows.Forms.DateTimePicker dtpReceived;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateEnd;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtWorker;
         private System.Windows.Forms.Label label5;

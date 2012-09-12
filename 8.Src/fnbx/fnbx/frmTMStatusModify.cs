@@ -22,7 +22,11 @@ namespace fnbx
         public MTStatus Current
         {
             get { return _current; }
-            set { _current = value; }
+            set
+            {
+                _current = value;
+                this.txtCurrentStatus.Text = MTStatusHelper.GetMtStatusText(_current);
+            }
         } private MTStatus _current;
 
         /// <summary>
@@ -69,7 +73,7 @@ namespace fnbx
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (this.cmbNewMTStatus.SelectedIndex > 0)
+            if (this.cmbNewMTStatus.SelectedIndex >= 0)
             {
                 this._newMtStatus = (MTStatus)this.cmbNewMTStatus.SelectedValue;
                 this.DialogResult = DialogResult.OK;

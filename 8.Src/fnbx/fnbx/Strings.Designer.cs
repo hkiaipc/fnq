@@ -79,6 +79,42 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 完成内容不能为空 的本地化字符串。
+        /// </summary>
+        internal static string RPContentEmpty {
+            get {
+                return ResourceManager.GetString("RPContentEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 完成时间必须大于接单时间 的本地化字符串。
+        /// </summary>
+        internal static string RPEndDTMustGreaterReceivedDT {
+            get {
+                return ResourceManager.GetString("RPEndDTMustGreaterReceivedDT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 worker empty... 的本地化字符串。
+        /// </summary>
+        internal static string RPWorkerEmpty {
+            get {
+                return ResourceManager.GetString("RPWorkerEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请先选中一条记录 的本地化字符串。
+        /// </summary>
+        internal static string SelectMTFirst {
+            get {
+                return ResourceManager.GetString("SelectMTFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请选择新状态 的本地化字符串。
         /// </summary>
         internal static string SelectNewStatus {
