@@ -116,7 +116,7 @@ namespace fnbx
         public bool IsReadonly(Right rt, FLStatus status)
         {
             return !(rt.Value == fnbx.Right.SenderValue &&
-                status == FLStatus.Created);
+                (status == FLStatus.New || status == FLStatus.Created));
         }
 
         #endregion

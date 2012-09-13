@@ -165,8 +165,14 @@
   <data name="ITPhoneEmpty" xml:space="preserve">
     <value>电话不能为空</value>
   </data>
+  <data name="MTBeginOld" xml:space="preserve">
+    <value>维修时间不能为过去的时间</value>
+  </data>
   <data name="MTContentEmpty" xml:space="preserve">
     <value>内容不能为空</value>
+  </data>
+  <data name="MTTimeoutOld" xml:space="preserve">
+    <value>超时时间不能为过去的时间</value>
   </data>
   <data name="SaveSuccess" xml:space="preserve">
     <value>数据保存成功</value>

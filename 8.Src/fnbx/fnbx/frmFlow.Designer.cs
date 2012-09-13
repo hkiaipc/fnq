@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlow));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tssTimeout = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.新建NToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.打开OToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -41,16 +43,17 @@
             this.粘贴PToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.tsbModifyStatus = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpIT = new System.Windows.Forms.TabPage();
-            this.tpMT = new System.Windows.Forms.TabPage();
-            this.tpRP = new System.Windows.Forms.TabPage();
-            this.tssTimeout = new System.Windows.Forms.ToolStripStatusLabel();
             this.ucIt1 = new fnbx.UCIt();
+            this.tpMT = new System.Windows.Forms.TabPage();
             this.ucMt1 = new fnbx.UCMt();
+            this.tpRP = new System.Windows.Forms.TabPage();
             this.ucRc1 = new fnbx.UCRc();
             this.ucRp1 = new fnbx.UCRp();
-            this.tsbModifyStatus = new System.Windows.Forms.ToolStripButton();
+            this.tssFLStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -62,12 +65,22 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssFLStatus,
             this.tssTimeout});
             this.statusStrip1.Location = new System.Drawing.Point(0, 383);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(660, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tssTimeout
+            // 
+            this.tssTimeout.AutoSize = false;
+            this.tssTimeout.ForeColor = System.Drawing.Color.Red;
+            this.tssTimeout.Name = "tssTimeout";
+            this.tssTimeout.Size = new System.Drawing.Size(250, 17);
+            this.tssTimeout.Text = "toolStripStatusLabel1";
+            this.tssTimeout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // toolStrip1
             // 
@@ -174,6 +187,15 @@
             this.帮助LToolStripButton.Size = new System.Drawing.Size(23, 33);
             this.帮助LToolStripButton.Text = "帮助(&L)";
             // 
+            // tsbModifyStatus
+            // 
+            this.tsbModifyStatus.Image = ((System.Drawing.Image)(resources.GetObject("tsbModifyStatus.Image")));
+            this.tsbModifyStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbModifyStatus.Name = "tsbModifyStatus";
+            this.tsbModifyStatus.Size = new System.Drawing.Size(51, 33);
+            this.tsbModifyStatus.Text = "修改";
+            this.tsbModifyStatus.Click += new System.EventHandler(this.tsbModifyStatus_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tpIT);
@@ -196,6 +218,15 @@
             this.tpIT.Text = "IT";
             this.tpIT.UseVisualStyleBackColor = true;
             // 
+            // ucIt1
+            // 
+            this.ucIt1.It = null;
+            this.ucIt1.Location = new System.Drawing.Point(8, 6);
+            this.ucIt1.Name = "ucIt1";
+            this.ucIt1.Readonly = false;
+            this.ucIt1.Size = new System.Drawing.Size(464, 257);
+            this.ucIt1.TabIndex = 0;
+            // 
             // tpMT
             // 
             this.tpMT.Controls.Add(this.ucMt1);
@@ -206,6 +237,15 @@
             this.tpMT.TabIndex = 0;
             this.tpMT.Text = "MT";
             this.tpMT.UseVisualStyleBackColor = true;
+            // 
+            // ucMt1
+            // 
+            this.ucMt1.Location = new System.Drawing.Point(3, 6);
+            this.ucMt1.Maintain = null;
+            this.ucMt1.Name = "ucMt1";
+            this.ucMt1.Readonly = false;
+            this.ucMt1.Size = new System.Drawing.Size(630, 301);
+            this.ucMt1.TabIndex = 0;
             // 
             // tpRP
             // 
@@ -218,31 +258,6 @@
             this.tpRP.TabIndex = 1;
             this.tpRP.Text = "RP";
             this.tpRP.UseVisualStyleBackColor = true;
-            // 
-            // tssTimeout
-            // 
-            this.tssTimeout.ForeColor = System.Drawing.Color.Red;
-            this.tssTimeout.Name = "tssTimeout";
-            this.tssTimeout.Size = new System.Drawing.Size(109, 17);
-            this.tssTimeout.Text = "toolStripStatusLabel1";
-            // 
-            // ucIt1
-            // 
-            this.ucIt1.It = null;
-            this.ucIt1.Location = new System.Drawing.Point(8, 6);
-            this.ucIt1.Name = "ucIt1";
-            this.ucIt1.Readonly = false;
-            this.ucIt1.Size = new System.Drawing.Size(464, 327);
-            this.ucIt1.TabIndex = 0;
-            // 
-            // ucMt1
-            // 
-            this.ucMt1.Location = new System.Drawing.Point(3, 6);
-            this.ucMt1.Maintain = null;
-            this.ucMt1.Name = "ucMt1";
-            this.ucMt1.Readonly = false;
-            this.ucMt1.Size = new System.Drawing.Size(630, 301);
-            this.ucMt1.TabIndex = 0;
             // 
             // ucRc1
             // 
@@ -263,14 +278,19 @@
             this.ucRp1.Size = new System.Drawing.Size(586, 251);
             this.ucRp1.TabIndex = 0;
             // 
-            // tsbModifyStatus
+            // tssFLStatus
             // 
-            this.tsbModifyStatus.Image = ((System.Drawing.Image)(resources.GetObject("tsbModifyStatus.Image")));
-            this.tsbModifyStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbModifyStatus.Name = "tsbModifyStatus";
-            this.tsbModifyStatus.Size = new System.Drawing.Size(51, 33);
-            this.tsbModifyStatus.Text = "修改";
-            this.tsbModifyStatus.Click += new System.EventHandler(this.tsbModifyStatus_Click);
+            this.tssFLStatus.AutoSize = false;
+            this.tssFLStatus.Name = "tssFLStatus";
+            this.tssFLStatus.Size = new System.Drawing.Size(200, 17);
+            this.tssFLStatus.Text = "toolStripStatusLabel1";
+            this.tssFLStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmFlow
             // 
@@ -320,5 +340,7 @@
         private UCIt ucIt1;
         private System.Windows.Forms.ToolStripStatusLabel tssTimeout;
         private System.Windows.Forms.ToolStripButton tsbModifyStatus;
+        private System.Windows.Forms.ToolStripStatusLabel tssFLStatus;
+        private System.Windows.Forms.Timer timer1;
     }
 }

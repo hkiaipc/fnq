@@ -41,6 +41,7 @@
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssLogin = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuRelogin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,7 @@
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuRelogin,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(57, 20);
@@ -70,7 +72,7 @@
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(112, 22);
+            this.mnuExit.Size = new System.Drawing.Size(152, 22);
             this.mnuExit.Text = "退出(&X)";
             // 
             // mnuMT
@@ -85,13 +87,13 @@
             // mnuMTNew
             // 
             this.mnuMTNew.Name = "mnuMTNew";
-            this.mnuMTNew.Size = new System.Drawing.Size(152, 22);
+            this.mnuMTNew.Size = new System.Drawing.Size(114, 22);
             this.mnuMTNew.Text = "新建(&N)";
             // 
             // mnuMTQuery
             // 
             this.mnuMTQuery.Name = "mnuMTQuery";
-            this.mnuMTQuery.Size = new System.Drawing.Size(152, 22);
+            this.mnuMTQuery.Size = new System.Drawing.Size(114, 22);
             this.mnuMTQuery.Text = "查询(&Q)";
             this.mnuMTQuery.Click += new System.EventHandler(this.mnuMTQuery_Click);
             // 
@@ -149,6 +151,13 @@
             this.tssLogin.Text = "toolStripStatusLabel1";
             this.tssLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // mnuRelogin
+            // 
+            this.mnuRelogin.Name = "mnuRelogin";
+            this.mnuRelogin.Size = new System.Drawing.Size(152, 22);
+            this.mnuRelogin.Text = "重新登录(&R)";
+            this.mnuRelogin.Click += new System.EventHandler(this.mnuRelogin_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -185,6 +194,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
         private System.Windows.Forms.ToolStripStatusLabel tssLogin;
         private System.Windows.Forms.ToolStripMenuItem mnuML;
+        private System.Windows.Forms.ToolStripMenuItem mnuRelogin;
     }
 }
 

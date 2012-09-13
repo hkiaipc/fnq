@@ -215,6 +215,12 @@ namespace fnbx
             }
             // TODO: pose dt and begin dt
             //
+            bool b = this.dtpBegin.Value > DateTime.Now;
+            if (!b)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.MTBeginOld);
+                r = false;
+            }
             return r;
         }
 
@@ -226,7 +232,8 @@ namespace fnbx
         public bool IsReadonly(Right rt, FLStatus status)
         {
             return !(rt.Value == fnbx.Right.SenderValue &&
-                (status == FLStatus.Created));
+                (status == FLStatus.New ||
+                status == FLStatus.Created));
         }
 
         #endregion

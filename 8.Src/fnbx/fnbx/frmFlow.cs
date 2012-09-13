@@ -11,7 +11,7 @@ using BXDB;
 
 namespace fnbx
 {
-    public partial class frmFlow : Form, IView 
+    public partial class frmFlow : Form, IView
     {
 
         #region frmFlow
@@ -64,7 +64,9 @@ namespace fnbx
             ucMt1.Maintain = _fl.tblMaintain;
             ucRc1.Rc = _fl.tblReceive;
             ucRp1.Reply = _fl.tblReply;
-            this.tssTimeout.Text = _fl.GetFLStatusText();
+            this.tssFLStatus.Text = _fl.GetFLStatusText();
+
+            SetReplyPageStyle();
 
         }
         #endregion //UpdateView
@@ -145,7 +147,8 @@ namespace fnbx
                     FLStatus newStatus = f.NewMtStatus;
                     FL.SetFLStatus(newStatus);
 
-                    this.tssTimeout.Text = this.FL.GetFLStatusText();
+                    this.tssFLStatus.Text = this.FL.GetFLStatusText();
+                    //this.tssTimeout.Text = this.FL.GetFLStatusText();
                 }
             }
             else
@@ -155,5 +158,58 @@ namespace fnbx
         }
 
         #endregion
+
+        #region timer1_Tick
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            FLStatus status = this.FL.GetFLStatus();
+            if (status == FLStatus.Created ||
+                status == FLStatus.Received)
+            {
+                tblMaintain mt = this.FL.tblMaintain;
+                TimeSpan ts = mt.mt_timeout_dt - DateTime.Now;
+                if (ts > TimeSpan.Zero)
+                {
+                    string tsString = string.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
+                    string s = string.Format(Strings.RemainTimespan, tsString);
+                    this.tssTimeout.Text = s;
+                }
+                else
+                {
+                    this.tssTimeout.Text = Strings.Timeouted;
+                }
+            }
+            else
+            {
+                this.tssTimeout.Text = string.Empty;
+            }
+
+        }
+        #endregion //timer1_Tick
+
+        #region SetReplyPageStyle
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetReplyPageStyle()
+        {
+            if (this.FL.tblReceive == null)
+            {
+                this.tabControl1.TabPages.Remove(tpRP);
+            }
+            else
+            {
+                if (!this.tabControl1.TabPages.Contains(tpRP))
+                {
+                    this.tabControl1.TabPages.Add(tpRP);
+                }
+            }
+        }
+        #endregion //SetReplyPageStyle
     }
 }

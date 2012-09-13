@@ -24,6 +24,10 @@ namespace fnbx
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+        }
+
+        private void AddFL()
+        {
             Right rt = App.Default.GetLoginOperatorRight();
             if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Add, FLStatus.Created))
             {
@@ -132,6 +136,12 @@ namespace fnbx
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private void DeleteFL ()
+        {
             tblFlow fl = this.GetSelectedFlow();
             if (CheckSelectedFlow(fl))
             {
@@ -160,6 +170,10 @@ namespace fnbx
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
+        }
+
+        private void ViewFL ()
+        {
             tblFlow  fl = this.GetSelectedFlow();
             if (CheckSelectedFlow (fl))
             {
@@ -178,6 +192,36 @@ namespace fnbx
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 新建NToolStripButton_Click(object sender, EventArgs e)
+        {
+            AddFL();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            ViewFL();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
+            this.DeleteFL();
         }
     }
 }

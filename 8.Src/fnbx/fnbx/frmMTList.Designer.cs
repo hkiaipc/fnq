@@ -29,15 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tblFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tblMaintainBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tblFlowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tblFlowBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMTList));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tblFlowBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.flidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,83 +44,23 @@
             this.tblReceiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblMaintainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblMaintainBindingSource)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource2)).BeginInit();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.新建NToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.打开OToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.保存SToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.打印PToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.剪切UToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.复制CToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.粘贴PToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource3)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tblFlowBindingSource
-            // 
-            this.tblFlowBindingSource.DataSource = typeof(BXDB.tblFlow);
-            // 
-            // tblMaintainBindingSource
-            // 
-            this.tblMaintainBindingSource.DataSource = typeof(BXDB.tblMaintain);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 384);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(694, 61);
-            this.panel1.TabIndex = 1;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(308, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(166, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "view for rp";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(165, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "x";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(84, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "*";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tblFlowBindingSource1
-            // 
-            this.tblFlowBindingSource1.DataSource = typeof(BXDB.tblFlow);
-            // 
-            // tblFlowBindingSource2
-            // 
-            this.tblFlowBindingSource2.DataMember = "tblFlow";
-            this.tblFlowBindingSource2.DataSource = this.tblMaintainBindingSource;
             // 
             // dataGridView1
             // 
@@ -148,10 +80,11 @@
             this.dataGridViewTextBoxColumn4,
             this.tblMaintainDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.tblFlowBindingSource3;
-            this.dataGridView1.Location = new System.Drawing.Point(147, 52);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 25);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(694, 420);
             this.dataGridView1.TabIndex = 2;
             // 
             // tblFlowBindingSource3
@@ -230,30 +163,150 @@
             this.tblMaintainDataGridViewTextBoxColumn.HeaderText = "tblMaintain";
             this.tblMaintainDataGridViewTextBoxColumn.Name = "tblMaintainDataGridViewTextBoxColumn";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新建NToolStripButton,
+            this.打开OToolStripButton,
+            this.保存SToolStripButton,
+            this.打印PToolStripButton,
+            this.toolStripSeparator,
+            this.剪切UToolStripButton,
+            this.复制CToolStripButton,
+            this.粘贴PToolStripButton,
+            this.toolStripSeparator1,
+            this.帮助LToolStripButton,
+            this.toolStripButton1,
+            this.tsbDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(694, 25);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // 新建NToolStripButton
+            // 
+            this.新建NToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.新建NToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("新建NToolStripButton.Image")));
+            this.新建NToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.新建NToolStripButton.Name = "新建NToolStripButton";
+            this.新建NToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.新建NToolStripButton.Text = "新建(&N)";
+            this.新建NToolStripButton.Click += new System.EventHandler(this.新建NToolStripButton_Click);
+            // 
+            // 打开OToolStripButton
+            // 
+            this.打开OToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.打开OToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("打开OToolStripButton.Image")));
+            this.打开OToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.打开OToolStripButton.Name = "打开OToolStripButton";
+            this.打开OToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.打开OToolStripButton.Text = "打开(&O)";
+            // 
+            // 保存SToolStripButton
+            // 
+            this.保存SToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.保存SToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("保存SToolStripButton.Image")));
+            this.保存SToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.保存SToolStripButton.Name = "保存SToolStripButton";
+            this.保存SToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.保存SToolStripButton.Text = "保存(&S)";
+            // 
+            // 打印PToolStripButton
+            // 
+            this.打印PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.打印PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("打印PToolStripButton.Image")));
+            this.打印PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.打印PToolStripButton.Name = "打印PToolStripButton";
+            this.打印PToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.打印PToolStripButton.Text = "打印(&P)";
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // 剪切UToolStripButton
+            // 
+            this.剪切UToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.剪切UToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("剪切UToolStripButton.Image")));
+            this.剪切UToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.剪切UToolStripButton.Name = "剪切UToolStripButton";
+            this.剪切UToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.剪切UToolStripButton.Text = "剪切(&U)";
+            // 
+            // 复制CToolStripButton
+            // 
+            this.复制CToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.复制CToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("复制CToolStripButton.Image")));
+            this.复制CToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.复制CToolStripButton.Name = "复制CToolStripButton";
+            this.复制CToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.复制CToolStripButton.Text = "复制(&C)";
+            // 
+            // 粘贴PToolStripButton
+            // 
+            this.粘贴PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.粘贴PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("粘贴PToolStripButton.Image")));
+            this.粘贴PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.粘贴PToolStripButton.Name = "粘贴PToolStripButton";
+            this.粘贴PToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.粘贴PToolStripButton.Text = "粘贴(&P)";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // 帮助LToolStripButton
+            // 
+            this.帮助LToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.帮助LToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("帮助LToolStripButton.Image")));
+            this.帮助LToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.帮助LToolStripButton.Name = "帮助LToolStripButton";
+            this.帮助LToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.帮助LToolStripButton.Text = "帮助(&L)";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(49, 22);
+            this.toolStripButton1.Text = "View";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbDelete.Image")));
+            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.Size = new System.Drawing.Size(58, 22);
+            this.tsbDelete.Text = "Delete";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
+            // 
             // frmMTList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 445);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.toolStrip1);
             this.Name = "frmMTList";
             this.Text = "frmMTList";
             this.Load += new System.EventHandler(this.frmMTList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblMaintainBindingSource)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblFlowBindingSource3)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn itidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rpidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mtstatusDataGridViewTextBoxColumn;
@@ -262,14 +315,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tblIntroducerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tblMaintain1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tblReplyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource tblMaintainBindingSource;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.BindingSource tblFlowBindingSource;
-        private System.Windows.Forms.BindingSource tblFlowBindingSource1;
-        private System.Windows.Forms.BindingSource tblFlowBindingSource2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn flidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -284,5 +329,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn tblMaintainDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource tblFlowBindingSource3;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton 新建NToolStripButton;
+        private System.Windows.Forms.ToolStripButton 打开OToolStripButton;
+        private System.Windows.Forms.ToolStripButton 保存SToolStripButton;
+        private System.Windows.Forms.ToolStripButton 打印PToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripButton 剪切UToolStripButton;
+        private System.Windows.Forms.ToolStripButton 复制CToolStripButton;
+        private System.Windows.Forms.ToolStripButton 粘贴PToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton 帮助LToolStripButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsbDelete;
     }
 }

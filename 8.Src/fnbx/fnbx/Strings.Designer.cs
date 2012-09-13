@@ -124,11 +124,29 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 维修时间不能为过去的时间 的本地化字符串。
+        /// </summary>
+        internal static string MTBeginOld {
+            get {
+                return ResourceManager.GetString("MTBeginOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 内容不能为空 的本地化字符串。
         /// </summary>
         internal static string MTContentEmpty {
             get {
                 return ResourceManager.GetString("MTContentEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 超时时间不能为过去的时间 的本地化字符串。
+        /// </summary>
+        internal static string MTTimeoutOld {
+            get {
+                return ResourceManager.GetString("MTTimeoutOld", resourceCulture);
             }
         }
         

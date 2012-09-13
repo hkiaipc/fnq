@@ -50,5 +50,25 @@ namespace fnbx
                 NUnit.UiKit.UserMessage.DisplayFailure("login fail");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.txtOperatorName.Text = "mt";
+            this.okButton_Click(null, null);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.txtOperatorName.Text = "rp";
+            this.okButton_Click(null, null);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.txtOperatorName.Text = "ad";
+            this.okButton_Click(null, null);
+
+        }
     }
 }

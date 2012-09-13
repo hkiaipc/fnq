@@ -45,6 +45,13 @@ namespace fnbx
         /// 
         /// </summary>
         [Text("新建")]
+        New = 0,
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Text("已创建")]
         Created = 10,
 
         /// <summary>

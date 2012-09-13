@@ -27,12 +27,20 @@ namespace fnbx
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //
-            //
-            this.tssLogin.Text = "当前用户: " + App.Default.LoginOperator.op_name + 
-                string.Format ("({0})",App.Default.GetLoginOperatorRight().ToString());
+            RefreshLoginStatus();
 
             mnuMTQuery_Click(null, null); 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void RefreshLoginStatus()
+        {
+            //
+            //
+            this.tssLogin.Text = "当前用户: " + App.Default.LoginOperator.op_name +
+                string.Format("({0})", App.Default.GetLoginOperatorRight().ToString());
         }
 
         /// <summary>
@@ -69,6 +77,22 @@ namespace fnbx
                 r.Activate();
             }
             return r;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuRelogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmLogin f = new frmLogin();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+                this.RefreshLoginStatus();
+            }
         }
     }
 }
