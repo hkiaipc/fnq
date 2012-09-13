@@ -1,48 +1,48 @@
 set quoted_identifier on 
 GO
 
-/****** Object:  User dbo    Script Date: 2012-09-12 16:42:21 ******/
-/****** Object:  Table [dbo].[tblFlow]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  User dbo    Script Date: 2012-09-13 10:17:15 ******/
+/****** Object:  Table [dbo].[tblFlow]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblFlow]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblFlow]
 GO
 
-/****** Object:  Table [dbo].[tblMaintain]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblMaintain]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblMaintain]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblMaintain]
 GO
 
-/****** Object:  Table [dbo].[tblReceive]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblReceive]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblReceive]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblReceive]
 GO
 
-/****** Object:  Table [dbo].[tblReply]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblReply]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblReply]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblReply]
 GO
 
-/****** Object:  Table [dbo].[tblOperator]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblOperator]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblOperator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblOperator]
 GO
 
-/****** Object:  Table [dbo].[tblIntroducer]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblIntroducer]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblIntroducer]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblIntroducer]
 GO
 
-/****** Object:  Table [dbo].[tblMaintainLevel]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblMaintainLevel]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblMaintainLevel]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblMaintainLevel]
 GO
 
-/****** Object:  Table [dbo].[tblRight]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblRight]    Script Date: 2012-09-13 10:17:15 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblRight]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblRight]
 GO
 
-/****** Object:  Table [dbo].[tblIntroducer]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblIntroducer]    Script Date: 2012-09-13 10:17:15 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblIntroducer]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblIntroducer] (
@@ -64,7 +64,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblMaintainLevel]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblMaintainLevel]    Script Date: 2012-09-13 10:17:16 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblMaintainLevel]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblMaintainLevel] (
@@ -90,7 +90,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblRight]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblRight]    Script Date: 2012-09-13 10:17:16 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblRight]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblRight] (
@@ -106,7 +106,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblOperator]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblOperator]    Script Date: 2012-09-13 10:17:16 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblOperator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblOperator] (
@@ -133,12 +133,11 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblMaintain]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblMaintain]    Script Date: 2012-09-13 10:17:16 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblMaintain]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblMaintain] (
 	[mt_id] [int] IDENTITY (1, 1) NOT NULL ,
-	[it_id] [int] NOT NULL ,
 	[ml_id] [int] NOT NULL ,
 	[op_id] [int] NOT NULL ,
 	[mt_pose_dt] [datetime] NOT NULL ,
@@ -153,12 +152,6 @@ CREATE TABLE [dbo].[tblMaintain] (
 	(
 		[mt_id]
 	)  ON [PRIMARY] ,
-	CONSTRAINT [tblIntroducer_tblMaintain_FK1] FOREIGN KEY 
-	(
-		[it_id]
-	) REFERENCES [dbo].[tblIntroducer] (
-		[it_id]
-	),
 	CONSTRAINT [tblMaintainLevel_tblMaintain_FK1] FOREIGN KEY 
 	(
 		[ml_id]
@@ -172,7 +165,6 @@ CREATE TABLE [dbo].[tblMaintain] (
 		[op_id]
 	)
 ) ON [PRIMARY]
- CREATE  INDEX [_WA_Sys_it_id_282DF8C2] ON [dbo].[tblMaintain]([it_id]) ON [PRIMARY]
  CREATE  INDEX [_WA_Sys_ml_id_282DF8C2] ON [dbo].[tblMaintain]([ml_id]) ON [PRIMARY]
  CREATE  INDEX [_WA_Sys_mt_begin_dt_282DF8C2] ON [dbo].[tblMaintain]([mt_begin_dt]) ON [PRIMARY]
  CREATE  INDEX [_WA_Sys_mt_create_dt_282DF8C2] ON [dbo].[tblMaintain]([mt_create_dt]) ON [PRIMARY]
@@ -184,7 +176,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblReceive]    Script Date: 2012-09-12 16:42:21 ******/
+/****** Object:  Table [dbo].[tblReceive]    Script Date: 2012-09-13 10:17:16 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblReceive]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblReceive] (
@@ -207,7 +199,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblReply]    Script Date: 2012-09-12 16:42:22 ******/
+/****** Object:  Table [dbo].[tblReply]    Script Date: 2012-09-13 10:17:16 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblReply]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblReply] (
@@ -236,16 +228,17 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblFlow]    Script Date: 2012-09-12 16:42:22 ******/
+/****** Object:  Table [dbo].[tblFlow]    Script Date: 2012-09-13 10:17:16 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblFlow]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblFlow] (
 	[fl_id] [int] IDENTITY (1, 1) NOT NULL ,
-	[fl_status] [int] NOT NULL CONSTRAINT [DF_tblFlow_fl_status] DEFAULT (10),
+	[it_id] [int] NOT NULL ,
 	[fl_parent] [int] NULL ,
 	[mt_id] [int] NULL ,
 	[rp_id] [int] NULL ,
 	[rc_id] [int] NULL ,
+	[fl_status] [int] NOT NULL CONSTRAINT [DF_tblFlow_fl_status] DEFAULT (10),
 	CONSTRAINT [PK_tblFlow] PRIMARY KEY  CLUSTERED 
 	(
 		[fl_id]
@@ -255,6 +248,12 @@ CREATE TABLE [dbo].[tblFlow] (
 		[fl_parent]
 	) REFERENCES [dbo].[tblFlow] (
 		[fl_id]
+	),
+	CONSTRAINT [FK_tblFlow_tblIntroducer] FOREIGN KEY 
+	(
+		[it_id]
+	) REFERENCES [dbo].[tblIntroducer] (
+		[it_id]
 	),
 	CONSTRAINT [FK_tblFlow_tblMaintain] FOREIGN KEY 
 	(
