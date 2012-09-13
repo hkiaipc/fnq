@@ -8,7 +8,7 @@ using Xdgk.Common;
 
 namespace fnbx
 {
-    using TMStatusPair = KeyValuePair<MTStatus, MTStatus>;
+    using TMStatusPair = KeyValuePair<FLStatus, FLStatus>;
     public class AdminRight : Right
     {
         static private List<TMStatusPair> GetList()
@@ -16,11 +16,11 @@ namespace fnbx
             if (_list == null)
             {
                 _list = new List<TMStatusPair>();
-                _list.Add(new TMStatusPair(MTStatus.Created, MTStatus.Received));
-                _list.Add(new TMStatusPair(MTStatus.Created, MTStatus.Timeouted));
-                _list.Add(new TMStatusPair(MTStatus.Received, MTStatus.Timeouted));
-                _list.Add(new TMStatusPair(MTStatus.Received, MTStatus.Completed));
-                _list.Add(new TMStatusPair(MTStatus.Completed, MTStatus.Closed));
+                _list.Add(new TMStatusPair(FLStatus.Created, FLStatus.Received));
+                _list.Add(new TMStatusPair(FLStatus.Created, FLStatus.Timeouted));
+                _list.Add(new TMStatusPair(FLStatus.Received, FLStatus.Timeouted));
+                _list.Add(new TMStatusPair(FLStatus.Received, FLStatus.Completed));
+                _list.Add(new TMStatusPair(FLStatus.Completed, FLStatus.Closed));
 
             }
             return _list;
@@ -40,7 +40,7 @@ namespace fnbx
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>
-        public override bool CanModifyTMStatus(MTStatus current)
+        public override bool CanModifyTMStatus(FLStatus current)
         {
             bool r = false;
             foreach (TMStatusPair item in GetList())
@@ -54,7 +54,7 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForTm(ADEState ade, MTStatus current)
+        public override bool CanActivateForTm(ADEState ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
@@ -76,7 +76,7 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForRp(ADEState ade, MTStatus current)
+        public override bool CanActivateForRp(ADEState ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
@@ -107,7 +107,7 @@ namespace fnbx
         /// 
         /// </summary>
         /// <returns></returns>
-        public override List<KeyValuePair<MTStatus, MTStatus>> GetStatusPairList()
+        public override List<KeyValuePair<FLStatus, FLStatus>> GetStatusPairList()
         {
             return GetList();
         }

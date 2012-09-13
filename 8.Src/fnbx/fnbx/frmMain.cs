@@ -41,6 +41,7 @@ namespace fnbx
         private void mnuMTQuery_Click(object sender, EventArgs e)
         {
             frmMTList f = GetFrmMtList();
+            f.WindowState = FormWindowState.Maximized;
             f.Show();
         }
 

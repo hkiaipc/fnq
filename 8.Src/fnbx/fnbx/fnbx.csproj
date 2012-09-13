@@ -55,6 +55,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFlow.Designer.cs">
+      <DependentUpon>frmFlow.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,12 +100,6 @@
     <Compile Include="Forms\frmOperatorList.Designer.cs">
       <DependentUpon>frmOperatorList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMT.Designer.cs">
-      <DependentUpon>frmMT.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMTList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,12 +136,12 @@
       <DependentUpon>frmOperatorList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="frmFlow.resx">
+      <DependentUpon>frmFlow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMT.resx">
-      <DependentUpon>frmMT.cs</DependentUpon>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMTList.resx">
@@ -162,20 +162,32 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCDateTimePicker.resx">
+    <EmbeddedResource Include="UC\UCDateTimePicker.resx">
       <DependentUpon>UCDateTimePicker.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCMt.resx">
+    <EmbeddedResource Include="UC\UCIt.resx">
+      <DependentUpon>UCIt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCMt.resx">
       <DependentUpon>UCMt.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCRp.resx">
+    <EmbeddedResource Include="UC\UCRc.resx">
+      <DependentUpon>UCRc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCRp.resx">
       <DependentUpon>UCRp.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\UCTimespan.resx">
       <DependentUpon>UCTimespan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_frmTest.resx">
+      <DependentUpon>_frmTest.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -202,23 +214,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="TMStatus.cs" />
-    <Compile Include="UCDateTimePicker.cs">
+    <Compile Include="FLStatus.cs" />
+    <Compile Include="tblFlowExtend.cs" />
+    <Compile Include="UC\UCDateTimePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCDateTimePicker.Designer.cs">
+    <Compile Include="UC\UCDateTimePicker.Designer.cs">
       <DependentUpon>UCDateTimePicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCMt.cs">
+    <Compile Include="UC\UCIt.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCMt.Designer.cs">
+    <Compile Include="UC\UCIt.Designer.cs">
+      <DependentUpon>UCIt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCMt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCMt.Designer.cs">
       <DependentUpon>UCMt.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCRp.cs">
+    <Compile Include="UC\UCRc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCRp.Designer.cs">
+    <Compile Include="UC\UCRc.Designer.cs">
+      <DependentUpon>UCRc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCRp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCRp.Designer.cs">
       <DependentUpon>UCRp.cs</DependentUpon>
     </Compile>
     <Compile Include="UC\UCTimespan.cs">
@@ -228,6 +253,12 @@
       <DependentUpon>UCTimespan.cs</DependentUpon>
     </Compile>
     <Compile Include="_.cs" />
+    <Compile Include="_frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_frmTest.Designer.cs">
+      <DependentUpon>_frmTest.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

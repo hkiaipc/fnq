@@ -9,7 +9,7 @@ using Xdgk.Common;
 namespace fnbx
 {
 
-    using TMStatusPair = KeyValuePair<MTStatus, MTStatus>;
+    using TMStatusPair = KeyValuePair<FLStatus, FLStatus>;
 
     /// <summary>
     /// 
@@ -50,6 +50,13 @@ namespace fnbx
 
         abstract public List<TMStatusPair> GetStatusPairList();
 
+        public int Value
+        {
+            get
+            {
+                return _value;
+            }
+        }
         private int _value;
 
         /// <summary>
@@ -64,20 +71,20 @@ namespace fnbx
         /// 
         /// </summary>
         /// <returns></returns>
-        abstract public bool CanModifyTMStatus(MTStatus current);
-        abstract public bool CanActivateForTm(ADEState ade, MTStatus current);
-        abstract public bool CanActivateForRp(ADEState ade, MTStatus current);
+        abstract public bool CanModifyTMStatus(FLStatus current);
+        abstract public bool CanActivateForTm(ADEState ade, FLStatus current);
+        abstract public bool CanActivateForRp(ADEState ade, FLStatus current);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>
-        public MTStatus[] GetPossibles(MTStatus current)
+        public FLStatus[] GetPossibles(FLStatus current)
         {
             List<TMStatusPair> list = this.GetStatusPairList();
 
-            List<MTStatus> r = new List<MTStatus>();
+            List<FLStatus> r = new List<FLStatus>();
             foreach (TMStatusPair item in list)
             {
                 if (item.Key == current)

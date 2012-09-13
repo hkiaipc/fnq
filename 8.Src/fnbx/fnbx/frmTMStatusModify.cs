@@ -19,7 +19,7 @@ namespace fnbx
         /// <summary>
         /// 
         /// </summary>
-        public MTStatus Current
+        public FLStatus Current
         {
             get { return _current; }
             set
@@ -27,7 +27,7 @@ namespace fnbx
                 _current = value;
                 this.txtCurrentStatus.Text = MTStatusHelper.GetMtStatusText(_current);
             }
-        } private MTStatus _current;
+        } private FLStatus _current;
 
         /// <summary>
         /// 
@@ -37,13 +37,13 @@ namespace fnbx
         private void frmTMStatusModify_Load(object sender, EventArgs e)
         {
             Right rt = App.Default.GetLoginOperatorRight();
-            MTStatus[] poss = rt.GetPossibles(this.Current);
-            List<KeyValuePair<string, MTStatus>> ds = new List<KeyValuePair<string, MTStatus>>();
+            FLStatus[] poss = rt.GetPossibles(this.Current);
+            List<KeyValuePair<string, FLStatus>> ds = new List<KeyValuePair<string, FLStatus>>();
 
-            foreach (MTStatus item in poss)
+            foreach (FLStatus item in poss)
             {
                 string name = MTStatusHelper.GetMtStatusText(item);
-                ds.Add(new KeyValuePair<string, MTStatus>(name, item));
+                ds.Add(new KeyValuePair<string, FLStatus>(name, item));
             }
 
 
@@ -75,7 +75,7 @@ namespace fnbx
         {
             if (this.cmbNewMTStatus.SelectedIndex >= 0)
             {
-                this._newMtStatus = (MTStatus)this.cmbNewMTStatus.SelectedValue;
+                this._newMtStatus = (FLStatus)this.cmbNewMTStatus.SelectedValue;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -88,9 +88,9 @@ namespace fnbx
         /// <summary>
         /// 
         /// </summary>
-        public MTStatus NewMtStatus
+        public FLStatus NewMtStatus
         {
             get { return _newMtStatus; }
-        } private MTStatus _newMtStatus;
+        } private FLStatus _newMtStatus;
     }
 }

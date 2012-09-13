@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BXDB;
 namespace fnbx
 {
-    public partial class UCMt : UserControl
+    public partial class UCMt : UserControl, IReadonly , IView 
     {
 
         private BxdbDataContext _dc = null;
@@ -81,14 +81,14 @@ namespace fnbx
                 BindML();
             }
 
-            tblIntroducer introducer = _maintain.tblIntroducer;
-            if (introducer != null)
-            {
-                this.txtIntroducerName.Text = introducer.it_name;
-                this.txtAddress.Text = introducer.it_address;
-                //this.cmdFee .Text = introducer.it_
-                this.txtPhone.Text = introducer.it_phone;
-            }
+            //tblIntroducer introducer = _maintain.tblIntroducer;
+            //if (introducer != null)
+            //{
+            //    //this.txtIntroducerName.Text = introducer.it_name;
+            //    //this.txtAddress.Text = introducer.it_address;
+            //    //this.cmdFee .Text = introducer.it_
+            //    //this.txtPhone.Text = introducer.it_phone;
+            //}
 
             this.dtpPose.Value = (DateTime )_maintain.mt_pose_dt;
             this.dtpBegin.Value = (DateTime)_maintain.mt_begin_dt;
@@ -97,30 +97,11 @@ namespace fnbx
             this.cmbML.SelectedValue = _maintain.tblMaintainLevel.ml_id;
             this.txtOperatorName.Text = _maintain.tblOperator.op_name;
             this.txtContent.Text  = _maintain.mt_content;
+
+            this.Readonly = IsReadonly(App.Default.GetLoginOperatorRight(),
+                _maintain.tblFlow[0].GetMtStatus());
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        internal void UpdateMaintain()
-        {
-            _maintain.mt_pose_dt = this.dtpPose.Value;
-            _maintain.mt_begin_dt = this.dtpBegin.Value;
-            _maintain.tblMaintainLevel = (tblMaintainLevel)this.cmbML.SelectedItem;
-            _maintain.mt_content = this.txtContent.Text;
-            _maintain.mt_timeout_dt = this.dtpTimeout.Value;
-
-            tblIntroducer introducer = _maintain.tblIntroducer;
-            if (introducer == null)
-            {
-                introducer = new tblIntroducer();
-                _maintain.tblIntroducer = introducer;
-            }
-
-            introducer.it_name = txtIntroducerName.Text;
-            introducer.it_phone = txtPhone.Text;
-            introducer.it_address = txtAddress.Text;
-        }
 
         /// <summary>
         /// 
@@ -168,5 +149,81 @@ namespace fnbx
             DateTime timeout = dt + TimeSpan.FromMinutes((int)GetSelectedML().ml_arrive_hl);
             this.dtpTimeout.Value = timeout;
         }
+
+        #region IReadonly 成员
+
+        public bool Readonly
+        {
+            get
+            {
+                return _readonly;
+            }
+            set
+            {
+                if (_readonly != value)
+                {
+                    _readonly = value;
+
+                    ReadonlyHelper.SetReadonlyStyle(
+                        new Control[] { dtpPose, dtpBegin, cmbML, txtContent },
+                        _readonly);
+
+                    ReadonlyHelper.SetReadonlyStyle(
+                        new Control[] { dtpTimeout, txtOperatorName },
+                        true);
+                }
+            }
+        } private bool _readonly;
+
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal void UpdateMaintain()
+        {
+            UpdateModel();
+        }
+
+        #region IView 成员
+
+        public void UpdateModel()
+        {
+            _maintain.mt_pose_dt = this.dtpPose.Value;
+            _maintain.mt_begin_dt = this.dtpBegin.Value;
+            _maintain.tblMaintainLevel = (tblMaintainLevel)this.cmbML.SelectedItem;
+            _maintain.mt_content = this.txtContent.Text;
+            _maintain.mt_timeout_dt = this.dtpTimeout.Value;
+
+            //tblIntroducer introducer = _maintain.tblIntroducer;
+            //if (introducer == null)
+            //{
+            //    introducer = new tblIntroducer();
+            //    _maintain.tblIntroducer = introducer;
+            //}
+
+            //introducer.it_name = txtIntroducerName.Text;
+            //introducer.it_phone = txtPhone.Text;
+            //introducer.it_address = txtAddress.Text;
+        }
+
+        public bool CheckInput()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region IView 成员
+
+
+        public bool IsReadonly(Right rt, FLStatus status)
+        {
+            return !(rt.Value == fnbx.Right.SenderValue &&
+                (status == FLStatus.Created));
+        }
+
+        #endregion
+
     }
 }

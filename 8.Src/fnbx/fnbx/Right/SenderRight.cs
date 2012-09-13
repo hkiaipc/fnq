@@ -8,7 +8,7 @@ using Xdgk.Common;
 
 namespace fnbx
 {
-    using TMStatusPair = KeyValuePair<MTStatus, MTStatus>;
+    using TMStatusPair = KeyValuePair<FLStatus, FLStatus>;
 
     /// <summary>
     /// 
@@ -24,7 +24,7 @@ namespace fnbx
             if (_senderList == null)
             {
                 _senderList = new List<TMStatusPair>();
-                _senderList.Add(new TMStatusPair(MTStatus.Completed, MTStatus.Closed));
+                _senderList.Add(new TMStatusPair(FLStatus.Completed, FLStatus.Closed));
             }
             return _senderList;
         } static private List<TMStatusPair> _senderList;
@@ -40,7 +40,7 @@ namespace fnbx
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>
-        public override bool CanModifyTMStatus(MTStatus current)
+        public override bool CanModifyTMStatus(FLStatus current)
         {
             bool r = false;
             foreach (TMStatusPair item in GetSenderList())
@@ -54,12 +54,12 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForRp(ADEState ade, MTStatus current)
+        public override bool CanActivateForRp(ADEState ade, FLStatus current)
         {
             return false;
         }
 
-        public override bool CanActivateForTm(ADEState ade, MTStatus current)
+        public override bool CanActivateForTm(ADEState ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
@@ -69,11 +69,11 @@ namespace fnbx
                     break;
 
                 case ADEState.Delete:
-                    r = current == MTStatus.Created;
+                    r = current == FLStatus.Created;
                     break;
 
                 case ADEState.Edit:
-                    r = current == MTStatus.Created;
+                    r = current == FLStatus.Created;
                     break;
 
                 default:
@@ -92,7 +92,7 @@ namespace fnbx
         /// 
         /// </summary>
         /// <returns></returns>
-        public override List<KeyValuePair<MTStatus, MTStatus>> GetStatusPairList()
+        public override List<KeyValuePair<FLStatus, FLStatus>> GetStatusPairList()
         {
             return GetSenderList();
         }

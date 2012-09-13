@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,9 +46,50 @@ namespace fnbx
             mt.mt_pose_dt = DateTime.Now;
             mt.mt_begin_dt = DateTime.Now;
             mt.mt_timeout_dt = mt.mt_begin_dt + TimeSpan.FromMinutes((int)mt.tblMaintainLevel.ml_arrive_hl);
-            mt.SetMTStatus(MTStatus.Created);
+            //fl.SetMTStatus(FLStatus.Created);
 
             return mt;
+        }
+    }
+
+    public class FlowFactory
+    {
+        private FlowFactory()
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        static public tblFlow Create()
+        {
+            tblFlow f = new tblFlow();
+            f.tblIntroducer = IntroducerFactory.Create();
+            f.tblMaintain = MaintainFactory.Create();
+            f.SetMTStatus(FLStatus.Created);
+            //f.fl_status
+
+            Debug.Assert(f.GetMtStatus() == FLStatus.Created);
+            return f;
+        }
+    }
+
+    public class IntroducerFactory
+    {
+        private IntroducerFactory()
+        {
+        }
+
+        static public tblIntroducer Create()
+        {
+            tblIntroducer it = new tblIntroducer();
+
+            it.it_name = "unknown name";
+            it.it_phone = "unknown phone";
+            it.it_address = "unknown address";
+
+            return it;
         }
     }
 }

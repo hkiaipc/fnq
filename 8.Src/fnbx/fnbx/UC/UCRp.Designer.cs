@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtWorker = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -37,16 +36,7 @@
             this.txtOperatorName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dtpEnd = new fnbx.UCDateTimePicker();
-            this.dtpReceived = new fnbx.UCDateTimePicker();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(2, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 20);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "接单时间:";
             // 
             // label1
             // 
@@ -55,6 +45,7 @@
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 52;
             this.label1.Text = "完成时间:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtWorker
             // 
@@ -71,6 +62,7 @@
             this.label5.Size = new System.Drawing.Size(100, 18);
             this.label5.TabIndex = 54;
             this.label5.Text = "完成人:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtRpContent
             // 
@@ -105,28 +97,21 @@
             this.label9.Size = new System.Drawing.Size(100, 18);
             this.label9.TabIndex = 58;
             this.label9.Text = "回单员:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtpEnd
             // 
             this.dtpEnd.Location = new System.Drawing.Point(108, 29);
             this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Readonly = false;
             this.dtpEnd.Size = new System.Drawing.Size(200, 21);
             this.dtpEnd.TabIndex = 60;
             this.dtpEnd.Value = new System.DateTime(2012, 9, 12, 14, 42, 12, 0);
-            // 
-            // dtpReceived
-            // 
-            this.dtpReceived.Location = new System.Drawing.Point(108, 3);
-            this.dtpReceived.Name = "dtpReceived";
-            this.dtpReceived.Size = new System.Drawing.Size(200, 21);
-            this.dtpReceived.TabIndex = 61;
-            this.dtpReceived.Value = new System.DateTime(2012, 9, 12, 14, 42, 35, 0);
             // 
             // UCRp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dtpReceived);
             this.Controls.Add(this.dtpEnd);
             this.Controls.Add(this.txtOperatorName);
             this.Controls.Add(this.label9);
@@ -135,7 +120,6 @@
             this.Controls.Add(this.txtWorker);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
             this.Name = "UCRp";
             this.Size = new System.Drawing.Size(586, 251);
             this.Load += new System.EventHandler(this.UCRp_Load);
@@ -146,7 +130,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtWorker;
         private System.Windows.Forms.Label label5;
@@ -155,6 +138,5 @@
         private System.Windows.Forms.TextBox txtOperatorName;
         private System.Windows.Forms.Label label9;
         private UCDateTimePicker dtpEnd;
-        private UCDateTimePicker dtpReceived;
     }
 }

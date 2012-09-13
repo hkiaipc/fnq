@@ -30,21 +30,27 @@ namespace BXDB
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InserttblIntroducer(tblIntroducer instance);
-    partial void UpdatetblIntroducer(tblIntroducer instance);
-    partial void DeletetblIntroducer(tblIntroducer instance);
-    partial void InserttblMaintainLevel(tblMaintainLevel instance);
-    partial void UpdatetblMaintainLevel(tblMaintainLevel instance);
-    partial void DeletetblMaintainLevel(tblMaintainLevel instance);
-    partial void InserttblReply(tblReply instance);
-    partial void UpdatetblReply(tblReply instance);
-    partial void DeletetblReply(tblReply instance);
-    partial void InserttblOperator(tblOperator instance);
-    partial void UpdatetblOperator(tblOperator instance);
-    partial void DeletetblOperator(tblOperator instance);
     partial void InserttblRight(tblRight instance);
     partial void UpdatetblRight(tblRight instance);
     partial void DeletetblRight(tblRight instance);
+    partial void InserttblMaintainLevel(tblMaintainLevel instance);
+    partial void UpdatetblMaintainLevel(tblMaintainLevel instance);
+    partial void DeletetblMaintainLevel(tblMaintainLevel instance);
+    partial void InserttblOperator(tblOperator instance);
+    partial void UpdatetblOperator(tblOperator instance);
+    partial void DeletetblOperator(tblOperator instance);
+    partial void InserttblReceive(tblReceive instance);
+    partial void UpdatetblReceive(tblReceive instance);
+    partial void DeletetblReceive(tblReceive instance);
+    partial void InserttblReply(tblReply instance);
+    partial void UpdatetblReply(tblReply instance);
+    partial void DeletetblReply(tblReply instance);
+    partial void InserttblIntroducer(tblIntroducer instance);
+    partial void UpdatetblIntroducer(tblIntroducer instance);
+    partial void DeletetblIntroducer(tblIntroducer instance);
+    partial void InserttblFlow(tblFlow instance);
+    partial void UpdatetblFlow(tblFlow instance);
+    partial void DeletetblFlow(tblFlow instance);
     partial void InserttblMaintain(tblMaintain instance);
     partial void UpdatetblMaintain(tblMaintain instance);
     partial void DeletetblMaintain(tblMaintain instance);
@@ -80,11 +86,11 @@ namespace BXDB
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tblIntroducer> tblIntroducer
+		public System.Data.Linq.Table<tblRight> tblRight
 		{
 			get
 			{
-				return this.GetTable<tblIntroducer>();
+				return this.GetTable<tblRight>();
 			}
 		}
 		
@@ -96,14 +102,6 @@ namespace BXDB
 			}
 		}
 		
-		public System.Data.Linq.Table<tblReply> tblReply
-		{
-			get
-			{
-				return this.GetTable<tblReply>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tblOperator> tblOperator
 		{
 			get
@@ -112,11 +110,35 @@ namespace BXDB
 			}
 		}
 		
-		public System.Data.Linq.Table<tblRight> tblRight
+		public System.Data.Linq.Table<tblReceive> tblReceive
 		{
 			get
 			{
-				return this.GetTable<tblRight>();
+				return this.GetTable<tblReceive>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblReply> tblReply
+		{
+			get
+			{
+				return this.GetTable<tblReply>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblIntroducer> tblIntroducer
+		{
+			get
+			{
+				return this.GetTable<tblIntroducer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblFlow> tblFlow
+		{
+			get
+			{
+				return this.GetTable<tblFlow>();
 			}
 		}
 		
@@ -129,156 +151,84 @@ namespace BXDB
 		}
 	}
 	
-	[Table(Name="dbo.tblIntroducer")]
-	public partial class tblIntroducer : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.tblRight")]
+	public partial class tblRight : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _it_id;
+		private int _rt_id;
 		
-		private string _it_name;
+		private int _rt_value;
 		
-		private string _it_address;
-		
-		private string _it_phone;
-		
-		private string _it_remark;
-		
-		private EntitySet<tblMaintain> _tblMaintain;
+		private EntitySet<tblOperator> _tblOperator;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onit_idChanging(int value);
-    partial void Onit_idChanged();
-    partial void Onit_nameChanging(string value);
-    partial void Onit_nameChanged();
-    partial void Onit_addressChanging(string value);
-    partial void Onit_addressChanged();
-    partial void Onit_phoneChanging(string value);
-    partial void Onit_phoneChanged();
-    partial void Onit_remarkChanging(string value);
-    partial void Onit_remarkChanged();
+    partial void Onrt_idChanging(int value);
+    partial void Onrt_idChanged();
+    partial void Onrt_valueChanging(int value);
+    partial void Onrt_valueChanged();
     #endregion
 		
-		public tblIntroducer()
+		public tblRight()
 		{
-			this._tblMaintain = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain), new Action<tblMaintain>(this.detach_tblMaintain));
+			this._tblOperator = new EntitySet<tblOperator>(new Action<tblOperator>(this.attach_tblOperator), new Action<tblOperator>(this.detach_tblOperator));
 			OnCreated();
 		}
 		
-		[Column(Storage="_it_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int it_id
+		[Column(Storage="_rt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int rt_id
 		{
 			get
 			{
-				return this._it_id;
+				return this._rt_id;
 			}
 			set
 			{
-				if ((this._it_id != value))
+				if ((this._rt_id != value))
 				{
-					this.Onit_idChanging(value);
+					this.Onrt_idChanging(value);
 					this.SendPropertyChanging();
-					this._it_id = value;
-					this.SendPropertyChanged("it_id");
-					this.Onit_idChanged();
+					this._rt_id = value;
+					this.SendPropertyChanged("rt_id");
+					this.Onrt_idChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_it_name", DbType="NVarChar(100)")]
-		public string it_name
+		[Column(Storage="_rt_value", DbType="Int NOT NULL")]
+		public int rt_value
 		{
 			get
 			{
-				return this._it_name;
+				return this._rt_value;
 			}
 			set
 			{
-				if ((this._it_name != value))
+				if ((this._rt_value != value))
 				{
-					this.Onit_nameChanging(value);
+					this.Onrt_valueChanging(value);
 					this.SendPropertyChanging();
-					this._it_name = value;
-					this.SendPropertyChanged("it_name");
-					this.Onit_nameChanged();
+					this._rt_value = value;
+					this.SendPropertyChanged("rt_value");
+					this.Onrt_valueChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_it_address", DbType="NVarChar(400)")]
-		public string it_address
+		[Association(Name="tblRight_tblOperator", Storage="_tblOperator", OtherKey="rt_id")]
+		public EntitySet<tblOperator> tblOperator
 		{
 			get
 			{
-				return this._it_address;
+				return this._tblOperator;
 			}
 			set
 			{
-				if ((this._it_address != value))
-				{
-					this.Onit_addressChanging(value);
-					this.SendPropertyChanging();
-					this._it_address = value;
-					this.SendPropertyChanged("it_address");
-					this.Onit_addressChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_it_phone", DbType="NVarChar(200)")]
-		public string it_phone
-		{
-			get
-			{
-				return this._it_phone;
-			}
-			set
-			{
-				if ((this._it_phone != value))
-				{
-					this.Onit_phoneChanging(value);
-					this.SendPropertyChanging();
-					this._it_phone = value;
-					this.SendPropertyChanged("it_phone");
-					this.Onit_phoneChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_it_remark", DbType="NVarChar(1000)")]
-		public string it_remark
-		{
-			get
-			{
-				return this._it_remark;
-			}
-			set
-			{
-				if ((this._it_remark != value))
-				{
-					this.Onit_remarkChanging(value);
-					this.SendPropertyChanging();
-					this._it_remark = value;
-					this.SendPropertyChanged("it_remark");
-					this.Onit_remarkChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblIntroducer_tblMaintain", Storage="_tblMaintain", OtherKey="it_id")]
-		public EntitySet<tblMaintain> tblMaintain
-		{
-			get
-			{
-				return this._tblMaintain;
-			}
-			set
-			{
-				this._tblMaintain.Assign(value);
+				this._tblOperator.Assign(value);
 			}
 		}
 		
@@ -302,16 +252,16 @@ namespace BXDB
 			}
 		}
 		
-		private void attach_tblMaintain(tblMaintain entity)
+		private void attach_tblOperator(tblOperator entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblIntroducer = this;
+			entity.tblRight = this;
 		}
 		
-		private void detach_tblMaintain(tblMaintain entity)
+		private void detach_tblOperator(tblOperator entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblIntroducer = null;
+			entity.tblRight = null;
 		}
 	}
 	
@@ -549,6 +499,444 @@ namespace BXDB
 		}
 	}
 	
+	[Table(Name="dbo.tblOperator")]
+	public partial class tblOperator : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _op_id;
+		
+		private string _op_name;
+		
+		private System.Nullable<int> _rt_id;
+		
+		private string _op_pwd;
+		
+		private EntitySet<tblReceive> _tblReceive;
+		
+		private EntitySet<tblReply> _tblReply;
+		
+		private EntitySet<tblMaintain> _tblMaintain;
+		
+		private EntityRef<tblRight> _tblRight;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onop_idChanging(int value);
+    partial void Onop_idChanged();
+    partial void Onop_nameChanging(string value);
+    partial void Onop_nameChanged();
+    partial void Onrt_idChanging(System.Nullable<int> value);
+    partial void Onrt_idChanged();
+    partial void Onop_pwdChanging(string value);
+    partial void Onop_pwdChanged();
+    #endregion
+		
+		public tblOperator()
+		{
+			this._tblReceive = new EntitySet<tblReceive>(new Action<tblReceive>(this.attach_tblReceive), new Action<tblReceive>(this.detach_tblReceive));
+			this._tblReply = new EntitySet<tblReply>(new Action<tblReply>(this.attach_tblReply), new Action<tblReply>(this.detach_tblReply));
+			this._tblMaintain = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain), new Action<tblMaintain>(this.detach_tblMaintain));
+			this._tblRight = default(EntityRef<tblRight>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_op_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int op_id
+		{
+			get
+			{
+				return this._op_id;
+			}
+			set
+			{
+				if ((this._op_id != value))
+				{
+					this.Onop_idChanging(value);
+					this.SendPropertyChanging();
+					this._op_id = value;
+					this.SendPropertyChanged("op_id");
+					this.Onop_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_op_name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string op_name
+		{
+			get
+			{
+				return this._op_name;
+			}
+			set
+			{
+				if ((this._op_name != value))
+				{
+					this.Onop_nameChanging(value);
+					this.SendPropertyChanging();
+					this._op_name = value;
+					this.SendPropertyChanged("op_name");
+					this.Onop_nameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_rt_id", DbType="Int")]
+		public System.Nullable<int> rt_id
+		{
+			get
+			{
+				return this._rt_id;
+			}
+			set
+			{
+				if ((this._rt_id != value))
+				{
+					if (this._tblRight.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onrt_idChanging(value);
+					this.SendPropertyChanging();
+					this._rt_id = value;
+					this.SendPropertyChanged("rt_id");
+					this.Onrt_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_op_pwd", DbType="NVarChar(200)")]
+		public string op_pwd
+		{
+			get
+			{
+				return this._op_pwd;
+			}
+			set
+			{
+				if ((this._op_pwd != value))
+				{
+					this.Onop_pwdChanging(value);
+					this.SendPropertyChanging();
+					this._op_pwd = value;
+					this.SendPropertyChanged("op_pwd");
+					this.Onop_pwdChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblOperator_tblReceive", Storage="_tblReceive", OtherKey="op_id")]
+		public EntitySet<tblReceive> tblReceive
+		{
+			get
+			{
+				return this._tblReceive;
+			}
+			set
+			{
+				this._tblReceive.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblOperator_tblReply", Storage="_tblReply", OtherKey="op_id")]
+		public EntitySet<tblReply> tblReply
+		{
+			get
+			{
+				return this._tblReply;
+			}
+			set
+			{
+				this._tblReply.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblOperator_tblMaintain", Storage="_tblMaintain", OtherKey="op_id")]
+		public EntitySet<tblMaintain> tblMaintain
+		{
+			get
+			{
+				return this._tblMaintain;
+			}
+			set
+			{
+				this._tblMaintain.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblRight_tblOperator", Storage="_tblRight", ThisKey="rt_id", IsForeignKey=true)]
+		public tblRight tblRight
+		{
+			get
+			{
+				return this._tblRight.Entity;
+			}
+			set
+			{
+				tblRight previousValue = this._tblRight.Entity;
+				if (((previousValue != value) 
+							|| (this._tblRight.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblRight.Entity = null;
+						previousValue.tblOperator.Remove(this);
+					}
+					this._tblRight.Entity = value;
+					if ((value != null))
+					{
+						value.tblOperator.Add(this);
+						this._rt_id = value.rt_id;
+					}
+					else
+					{
+						this._rt_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblRight");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblReceive(tblReceive entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = this;
+		}
+		
+		private void detach_tblReceive(tblReceive entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = null;
+		}
+		
+		private void attach_tblReply(tblReply entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = this;
+		}
+		
+		private void detach_tblReply(tblReply entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = null;
+		}
+		
+		private void attach_tblMaintain(tblMaintain entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = this;
+		}
+		
+		private void detach_tblMaintain(tblMaintain entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblOperator = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblReceive")]
+	public partial class tblReceive : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _rc_id;
+		
+		private System.DateTime _rc_dt;
+		
+		private int _op_id;
+		
+		private EntitySet<tblFlow> _tblFlow;
+		
+		private EntityRef<tblOperator> _tblOperator;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onrc_idChanging(int value);
+    partial void Onrc_idChanged();
+    partial void Onrc_dtChanging(System.DateTime value);
+    partial void Onrc_dtChanged();
+    partial void Onop_idChanging(int value);
+    partial void Onop_idChanged();
+    #endregion
+		
+		public tblReceive()
+		{
+			this._tblFlow = new EntitySet<tblFlow>(new Action<tblFlow>(this.attach_tblFlow), new Action<tblFlow>(this.detach_tblFlow));
+			this._tblOperator = default(EntityRef<tblOperator>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_rc_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int rc_id
+		{
+			get
+			{
+				return this._rc_id;
+			}
+			set
+			{
+				if ((this._rc_id != value))
+				{
+					this.Onrc_idChanging(value);
+					this.SendPropertyChanging();
+					this._rc_id = value;
+					this.SendPropertyChanged("rc_id");
+					this.Onrc_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_rc_dt", DbType="DateTime NOT NULL")]
+		public System.DateTime rc_dt
+		{
+			get
+			{
+				return this._rc_dt;
+			}
+			set
+			{
+				if ((this._rc_dt != value))
+				{
+					this.Onrc_dtChanging(value);
+					this.SendPropertyChanging();
+					this._rc_dt = value;
+					this.SendPropertyChanged("rc_dt");
+					this.Onrc_dtChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_op_id", DbType="Int NOT NULL")]
+		public int op_id
+		{
+			get
+			{
+				return this._op_id;
+			}
+			set
+			{
+				if ((this._op_id != value))
+				{
+					if (this._tblOperator.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onop_idChanging(value);
+					this.SendPropertyChanging();
+					this._op_id = value;
+					this.SendPropertyChanged("op_id");
+					this.Onop_idChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblReceive_tblFlow", Storage="_tblFlow", OtherKey="rc_id")]
+		public EntitySet<tblFlow> tblFlow
+		{
+			get
+			{
+				return this._tblFlow;
+			}
+			set
+			{
+				this._tblFlow.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblOperator_tblReceive", Storage="_tblOperator", ThisKey="op_id", IsForeignKey=true)]
+		public tblOperator tblOperator
+		{
+			get
+			{
+				return this._tblOperator.Entity;
+			}
+			set
+			{
+				tblOperator previousValue = this._tblOperator.Entity;
+				if (((previousValue != value) 
+							|| (this._tblOperator.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblOperator.Entity = null;
+						previousValue.tblReceive.Remove(this);
+					}
+					this._tblOperator.Entity = value;
+					if ((value != null))
+					{
+						value.tblReceive.Add(this);
+						this._op_id = value.op_id;
+					}
+					else
+					{
+						this._op_id = default(int);
+					}
+					this.SendPropertyChanged("tblOperator");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblFlow(tblFlow entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblReceive = this;
+		}
+		
+		private void detach_tblFlow(tblFlow entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblReceive = null;
+		}
+	}
+	
 	[Table(Name="dbo.tblReply")]
 	public partial class tblReply : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -567,9 +955,7 @@ namespace BXDB
 		
 		private string _rp_worker;
 		
-		private System.Nullable<System.DateTime> _rp_receive_dt;
-		
-		private EntitySet<tblMaintain> _tblMaintain;
+		private EntitySet<tblFlow> _tblFlow;
 		
 		private EntityRef<tblOperator> _tblOperator;
 		
@@ -589,13 +975,11 @@ namespace BXDB
     partial void Onrp_end_dtChanged();
     partial void Onrp_workerChanging(string value);
     partial void Onrp_workerChanged();
-    partial void Onrp_receive_dtChanging(System.Nullable<System.DateTime> value);
-    partial void Onrp_receive_dtChanged();
     #endregion
 		
 		public tblReply()
 		{
-			this._tblMaintain = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain), new Action<tblMaintain>(this.detach_tblMaintain));
+			this._tblFlow = new EntitySet<tblFlow>(new Action<tblFlow>(this.attach_tblFlow), new Action<tblFlow>(this.detach_tblFlow));
 			this._tblOperator = default(EntityRef<tblOperator>);
 			OnCreated();
 		}
@@ -724,36 +1108,16 @@ namespace BXDB
 			}
 		}
 		
-		[Column(Storage="_rp_receive_dt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> rp_receive_dt
+		[Association(Name="tblReply_tblFlow", Storage="_tblFlow", OtherKey="rp_id")]
+		public EntitySet<tblFlow> tblFlow
 		{
 			get
 			{
-				return this._rp_receive_dt;
+				return this._tblFlow;
 			}
 			set
 			{
-				if ((this._rp_receive_dt != value))
-				{
-					this.Onrp_receive_dtChanging(value);
-					this.SendPropertyChanging();
-					this._rp_receive_dt = value;
-					this.SendPropertyChanged("rp_receive_dt");
-					this.Onrp_receive_dtChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblReply_tblMaintain", Storage="_tblMaintain", OtherKey="rp_id")]
-		public EntitySet<tblMaintain> tblMaintain
-		{
-			get
-			{
-				return this._tblMaintain;
-			}
-			set
-			{
-				this._tblMaintain.Assign(value);
+				this._tblFlow.Assign(value);
 			}
 		}
 		
@@ -811,202 +1175,169 @@ namespace BXDB
 			}
 		}
 		
-		private void attach_tblMaintain(tblMaintain entity)
+		private void attach_tblFlow(tblFlow entity)
 		{
 			this.SendPropertyChanging();
 			entity.tblReply = this;
 		}
 		
-		private void detach_tblMaintain(tblMaintain entity)
+		private void detach_tblFlow(tblFlow entity)
 		{
 			this.SendPropertyChanging();
 			entity.tblReply = null;
 		}
 	}
 	
-	[Table(Name="dbo.tblOperator")]
-	public partial class tblOperator : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.tblIntroducer")]
+	public partial class tblIntroducer : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _op_id;
+		private int _it_id;
 		
-		private string _op_name;
+		private string _it_name;
 		
-		private System.Nullable<int> _rt_id;
+		private string _it_address;
 		
-		private string _op_pwd;
+		private string _it_phone;
 		
-		private EntitySet<tblReply> _tblReply;
+		private string _it_remark;
 		
-		private EntitySet<tblMaintain> _tblMaintain;
-		
-		private EntityRef<tblRight> _tblRight;
+		private EntitySet<tblFlow> _tblFlow;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onop_idChanging(int value);
-    partial void Onop_idChanged();
-    partial void Onop_nameChanging(string value);
-    partial void Onop_nameChanged();
-    partial void Onrt_idChanging(System.Nullable<int> value);
-    partial void Onrt_idChanged();
-    partial void Onop_pwdChanging(string value);
-    partial void Onop_pwdChanged();
+    partial void Onit_idChanging(int value);
+    partial void Onit_idChanged();
+    partial void Onit_nameChanging(string value);
+    partial void Onit_nameChanged();
+    partial void Onit_addressChanging(string value);
+    partial void Onit_addressChanged();
+    partial void Onit_phoneChanging(string value);
+    partial void Onit_phoneChanged();
+    partial void Onit_remarkChanging(string value);
+    partial void Onit_remarkChanged();
     #endregion
 		
-		public tblOperator()
+		public tblIntroducer()
 		{
-			this._tblReply = new EntitySet<tblReply>(new Action<tblReply>(this.attach_tblReply), new Action<tblReply>(this.detach_tblReply));
-			this._tblMaintain = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain), new Action<tblMaintain>(this.detach_tblMaintain));
-			this._tblRight = default(EntityRef<tblRight>);
+			this._tblFlow = new EntitySet<tblFlow>(new Action<tblFlow>(this.attach_tblFlow), new Action<tblFlow>(this.detach_tblFlow));
 			OnCreated();
 		}
 		
-		[Column(Storage="_op_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int op_id
+		[Column(Storage="_it_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int it_id
 		{
 			get
 			{
-				return this._op_id;
+				return this._it_id;
 			}
 			set
 			{
-				if ((this._op_id != value))
+				if ((this._it_id != value))
 				{
-					this.Onop_idChanging(value);
+					this.Onit_idChanging(value);
 					this.SendPropertyChanging();
-					this._op_id = value;
-					this.SendPropertyChanged("op_id");
-					this.Onop_idChanged();
+					this._it_id = value;
+					this.SendPropertyChanged("it_id");
+					this.Onit_idChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_op_name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string op_name
+		[Column(Storage="_it_name", DbType="NVarChar(100)")]
+		public string it_name
 		{
 			get
 			{
-				return this._op_name;
+				return this._it_name;
 			}
 			set
 			{
-				if ((this._op_name != value))
+				if ((this._it_name != value))
 				{
-					this.Onop_nameChanging(value);
+					this.Onit_nameChanging(value);
 					this.SendPropertyChanging();
-					this._op_name = value;
-					this.SendPropertyChanged("op_name");
-					this.Onop_nameChanged();
+					this._it_name = value;
+					this.SendPropertyChanged("it_name");
+					this.Onit_nameChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_rt_id", DbType="Int")]
-		public System.Nullable<int> rt_id
+		[Column(Storage="_it_address", DbType="NVarChar(400)")]
+		public string it_address
 		{
 			get
 			{
-				return this._rt_id;
+				return this._it_address;
 			}
 			set
 			{
-				if ((this._rt_id != value))
+				if ((this._it_address != value))
 				{
-					if (this._tblRight.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onrt_idChanging(value);
+					this.Onit_addressChanging(value);
 					this.SendPropertyChanging();
-					this._rt_id = value;
-					this.SendPropertyChanged("rt_id");
-					this.Onrt_idChanged();
+					this._it_address = value;
+					this.SendPropertyChanged("it_address");
+					this.Onit_addressChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_op_pwd", DbType="NVarChar(200)")]
-		public string op_pwd
+		[Column(Storage="_it_phone", DbType="NVarChar(200)")]
+		public string it_phone
 		{
 			get
 			{
-				return this._op_pwd;
+				return this._it_phone;
 			}
 			set
 			{
-				if ((this._op_pwd != value))
+				if ((this._it_phone != value))
 				{
-					this.Onop_pwdChanging(value);
+					this.Onit_phoneChanging(value);
 					this.SendPropertyChanging();
-					this._op_pwd = value;
-					this.SendPropertyChanged("op_pwd");
-					this.Onop_pwdChanged();
+					this._it_phone = value;
+					this.SendPropertyChanged("it_phone");
+					this.Onit_phoneChanged();
 				}
 			}
 		}
 		
-		[Association(Name="tblOperator_tblReply", Storage="_tblReply", OtherKey="op_id")]
-		public EntitySet<tblReply> tblReply
+		[Column(Storage="_it_remark", DbType="NVarChar(1000)")]
+		public string it_remark
 		{
 			get
 			{
-				return this._tblReply;
+				return this._it_remark;
 			}
 			set
 			{
-				this._tblReply.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblOperator_tblMaintain", Storage="_tblMaintain", OtherKey="op_id")]
-		public EntitySet<tblMaintain> tblMaintain
-		{
-			get
-			{
-				return this._tblMaintain;
-			}
-			set
-			{
-				this._tblMaintain.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblRight_tblOperator", Storage="_tblRight", ThisKey="rt_id", IsForeignKey=true)]
-		public tblRight tblRight
-		{
-			get
-			{
-				return this._tblRight.Entity;
-			}
-			set
-			{
-				tblRight previousValue = this._tblRight.Entity;
-				if (((previousValue != value) 
-							|| (this._tblRight.HasLoadedOrAssignedValue == false)))
+				if ((this._it_remark != value))
 				{
+					this.Onit_remarkChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblRight.Entity = null;
-						previousValue.tblOperator.Remove(this);
-					}
-					this._tblRight.Entity = value;
-					if ((value != null))
-					{
-						value.tblOperator.Add(this);
-						this._rt_id = value.rt_id;
-					}
-					else
-					{
-						this._rt_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblRight");
+					this._it_remark = value;
+					this.SendPropertyChanged("it_remark");
+					this.Onit_remarkChanged();
 				}
+			}
+		}
+		
+		[Association(Name="tblIntroducer_tblFlow", Storage="_tblFlow", OtherKey="it_id")]
+		public EntitySet<tblFlow> tblFlow
+		{
+			get
+			{
+				return this._tblFlow;
+			}
+			set
+			{
+				this._tblFlow.Assign(value);
 			}
 		}
 		
@@ -1030,246 +1361,104 @@ namespace BXDB
 			}
 		}
 		
-		private void attach_tblReply(tblReply entity)
+		private void attach_tblFlow(tblFlow entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblOperator = this;
+			entity.tblIntroducer = this;
 		}
 		
-		private void detach_tblReply(tblReply entity)
+		private void detach_tblFlow(tblFlow entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblOperator = null;
-		}
-		
-		private void attach_tblMaintain(tblMaintain entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblOperator = this;
-		}
-		
-		private void detach_tblMaintain(tblMaintain entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblOperator = null;
+			entity.tblIntroducer = null;
 		}
 	}
 	
-	[Table(Name="dbo.tblRight")]
-	public partial class tblRight : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.tblFlow")]
+	public partial class tblFlow : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _rt_value;
+		private int _fl_id;
 		
-		private int _rt_id;
+		private int _it_id;
 		
-		private EntitySet<tblOperator> _tblOperator;
+		private System.Nullable<int> _fl_parent;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onrt_valueChanging(int value);
-    partial void Onrt_valueChanged();
-    partial void Onrt_idChanging(int value);
-    partial void Onrt_idChanged();
-    #endregion
-		
-		public tblRight()
-		{
-			this._tblOperator = new EntitySet<tblOperator>(new Action<tblOperator>(this.attach_tblOperator), new Action<tblOperator>(this.detach_tblOperator));
-			OnCreated();
-		}
-		
-		[Column(Storage="_rt_value", DbType="Int NOT NULL")]
-		public int rt_value
-		{
-			get
-			{
-				return this._rt_value;
-			}
-			set
-			{
-				if ((this._rt_value != value))
-				{
-					this.Onrt_valueChanging(value);
-					this.SendPropertyChanging();
-					this._rt_value = value;
-					this.SendPropertyChanged("rt_value");
-					this.Onrt_valueChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_rt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int rt_id
-		{
-			get
-			{
-				return this._rt_id;
-			}
-			set
-			{
-				if ((this._rt_id != value))
-				{
-					this.Onrt_idChanging(value);
-					this.SendPropertyChanging();
-					this._rt_id = value;
-					this.SendPropertyChanged("rt_id");
-					this.Onrt_idChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblRight_tblOperator", Storage="_tblOperator", OtherKey="rt_id")]
-		public EntitySet<tblOperator> tblOperator
-		{
-			get
-			{
-				return this._tblOperator;
-			}
-			set
-			{
-				this._tblOperator.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblOperator(tblOperator entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblRight = this;
-		}
-		
-		private void detach_tblOperator(tblOperator entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblRight = null;
-		}
-	}
-	
-	[Table(Name="dbo.tblMaintain")]
-	public partial class tblMaintain : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Nullable<int> _it_id;
-		
-		private int _mt_id;
-		
-		private int _ml_id;
+		private System.Nullable<int> _mt_id;
 		
 		private System.Nullable<int> _rp_id;
 		
-		private int _op_id;
+		private System.Nullable<int> _rc_id;
 		
-		private System.Nullable<System.DateTime> _mt_pose_dt;
+		private int _fl_status;
 		
-		private System.DateTime _mt_create_dt;
+		private EntitySet<tblFlow> _tblFlow2;
 		
-		private System.Nullable<System.DateTime> _mt_begin_dt;
-		
-		private System.Nullable<System.DateTime> _mt_timeout_dt;
-		
-		private int _mt_status;
-		
-		private string _mt_location;
-		
-		private string _mt_content;
-		
-		private string _mt_remark;
-		
-		private System.Nullable<int> _mt_parent;
-		
-		private string _mt_fee_info;
-		
-		private System.Nullable<int> _mt_mark;
-		
-		private EntitySet<tblMaintain> _tblMaintain2;
+		private EntityRef<tblFlow> _tblFlow1;
 		
 		private EntityRef<tblIntroducer> _tblIntroducer;
 		
-		private EntityRef<tblMaintain> _tblMaintain1;
-		
-		private EntityRef<tblMaintainLevel> _tblMaintainLevel;
-		
-		private EntityRef<tblOperator> _tblOperator;
+		private EntityRef<tblReceive> _tblReceive;
 		
 		private EntityRef<tblReply> _tblReply;
+		
+		private EntityRef<tblMaintain> _tblMaintain;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onit_idChanging(System.Nullable<int> value);
+    partial void Onfl_idChanging(int value);
+    partial void Onfl_idChanged();
+    partial void Onit_idChanging(int value);
     partial void Onit_idChanged();
-    partial void Onmt_idChanging(int value);
+    partial void Onfl_parentChanging(System.Nullable<int> value);
+    partial void Onfl_parentChanged();
+    partial void Onmt_idChanging(System.Nullable<int> value);
     partial void Onmt_idChanged();
-    partial void Onml_idChanging(int value);
-    partial void Onml_idChanged();
     partial void Onrp_idChanging(System.Nullable<int> value);
     partial void Onrp_idChanged();
-    partial void Onop_idChanging(int value);
-    partial void Onop_idChanged();
-    partial void Onmt_pose_dtChanging(System.Nullable<System.DateTime> value);
-    partial void Onmt_pose_dtChanged();
-    partial void Onmt_create_dtChanging(System.DateTime value);
-    partial void Onmt_create_dtChanged();
-    partial void Onmt_begin_dtChanging(System.Nullable<System.DateTime> value);
-    partial void Onmt_begin_dtChanged();
-    partial void Onmt_timeout_dtChanging(System.Nullable<System.DateTime> value);
-    partial void Onmt_timeout_dtChanged();
-    partial void Onmt_statusChanging(int value);
-    partial void Onmt_statusChanged();
-    partial void Onmt_locationChanging(string value);
-    partial void Onmt_locationChanged();
-    partial void Onmt_contentChanging(string value);
-    partial void Onmt_contentChanged();
-    partial void Onmt_remarkChanging(string value);
-    partial void Onmt_remarkChanged();
-    partial void Onmt_parentChanging(System.Nullable<int> value);
-    partial void Onmt_parentChanged();
-    partial void Onmt_fee_infoChanging(string value);
-    partial void Onmt_fee_infoChanged();
-    partial void Onmt_markChanging(System.Nullable<int> value);
-    partial void Onmt_markChanged();
+    partial void Onrc_idChanging(System.Nullable<int> value);
+    partial void Onrc_idChanged();
+    partial void Onfl_statusChanging(int value);
+    partial void Onfl_statusChanged();
     #endregion
 		
-		public tblMaintain()
+		public tblFlow()
 		{
-			this._tblMaintain2 = new EntitySet<tblMaintain>(new Action<tblMaintain>(this.attach_tblMaintain2), new Action<tblMaintain>(this.detach_tblMaintain2));
+			this._tblFlow2 = new EntitySet<tblFlow>(new Action<tblFlow>(this.attach_tblFlow2), new Action<tblFlow>(this.detach_tblFlow2));
+			this._tblFlow1 = default(EntityRef<tblFlow>);
 			this._tblIntroducer = default(EntityRef<tblIntroducer>);
-			this._tblMaintain1 = default(EntityRef<tblMaintain>);
-			this._tblMaintainLevel = default(EntityRef<tblMaintainLevel>);
-			this._tblOperator = default(EntityRef<tblOperator>);
+			this._tblReceive = default(EntityRef<tblReceive>);
 			this._tblReply = default(EntityRef<tblReply>);
+			this._tblMaintain = default(EntityRef<tblMaintain>);
 			OnCreated();
 		}
 		
-		[Column(Storage="_it_id", DbType="Int")]
-		public System.Nullable<int> it_id
+		[Column(Storage="_fl_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int fl_id
+		{
+			get
+			{
+				return this._fl_id;
+			}
+			set
+			{
+				if ((this._fl_id != value))
+				{
+					this.Onfl_idChanging(value);
+					this.SendPropertyChanging();
+					this._fl_id = value;
+					this.SendPropertyChanged("fl_id");
+					this.Onfl_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_it_id", DbType="Int NOT NULL")]
+		public int it_id
 		{
 			get
 			{
@@ -1290,6 +1479,408 @@ namespace BXDB
 					this.Onit_idChanged();
 				}
 			}
+		}
+		
+		[Column(Storage="_fl_parent", DbType="Int")]
+		public System.Nullable<int> fl_parent
+		{
+			get
+			{
+				return this._fl_parent;
+			}
+			set
+			{
+				if ((this._fl_parent != value))
+				{
+					if (this._tblFlow1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onfl_parentChanging(value);
+					this.SendPropertyChanging();
+					this._fl_parent = value;
+					this.SendPropertyChanged("fl_parent");
+					this.Onfl_parentChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_mt_id", DbType="Int")]
+		public System.Nullable<int> mt_id
+		{
+			get
+			{
+				return this._mt_id;
+			}
+			set
+			{
+				if ((this._mt_id != value))
+				{
+					if (this._tblMaintain.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onmt_idChanging(value);
+					this.SendPropertyChanging();
+					this._mt_id = value;
+					this.SendPropertyChanged("mt_id");
+					this.Onmt_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_rp_id", DbType="Int")]
+		public System.Nullable<int> rp_id
+		{
+			get
+			{
+				return this._rp_id;
+			}
+			set
+			{
+				if ((this._rp_id != value))
+				{
+					if (this._tblReply.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onrp_idChanging(value);
+					this.SendPropertyChanging();
+					this._rp_id = value;
+					this.SendPropertyChanged("rp_id");
+					this.Onrp_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_rc_id", DbType="Int")]
+		public System.Nullable<int> rc_id
+		{
+			get
+			{
+				return this._rc_id;
+			}
+			set
+			{
+				if ((this._rc_id != value))
+				{
+					if (this._tblReceive.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onrc_idChanging(value);
+					this.SendPropertyChanging();
+					this._rc_id = value;
+					this.SendPropertyChanged("rc_id");
+					this.Onrc_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_fl_status", DbType="Int NOT NULL")]
+		public int fl_status
+		{
+			get
+			{
+				return this._fl_status;
+			}
+			set
+			{
+				if ((this._fl_status != value))
+				{
+					this.Onfl_statusChanging(value);
+					this.SendPropertyChanging();
+					this._fl_status = value;
+					this.SendPropertyChanged("fl_status");
+					this.Onfl_statusChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblFlow_tblFlow", Storage="_tblFlow2", OtherKey="fl_parent")]
+		public EntitySet<tblFlow> tblFlow2
+		{
+			get
+			{
+				return this._tblFlow2;
+			}
+			set
+			{
+				this._tblFlow2.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblFlow_tblFlow", Storage="_tblFlow1", ThisKey="fl_parent", IsForeignKey=true)]
+		public tblFlow tblFlow1
+		{
+			get
+			{
+				return this._tblFlow1.Entity;
+			}
+			set
+			{
+				tblFlow previousValue = this._tblFlow1.Entity;
+				if (((previousValue != value) 
+							|| (this._tblFlow1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblFlow1.Entity = null;
+						previousValue.tblFlow2.Remove(this);
+					}
+					this._tblFlow1.Entity = value;
+					if ((value != null))
+					{
+						value.tblFlow2.Add(this);
+						this._fl_parent = value.fl_id;
+					}
+					else
+					{
+						this._fl_parent = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblFlow1");
+				}
+			}
+		}
+		
+		[Association(Name="tblIntroducer_tblFlow", Storage="_tblIntroducer", ThisKey="it_id", IsForeignKey=true)]
+		public tblIntroducer tblIntroducer
+		{
+			get
+			{
+				return this._tblIntroducer.Entity;
+			}
+			set
+			{
+				tblIntroducer previousValue = this._tblIntroducer.Entity;
+				if (((previousValue != value) 
+							|| (this._tblIntroducer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblIntroducer.Entity = null;
+						previousValue.tblFlow.Remove(this);
+					}
+					this._tblIntroducer.Entity = value;
+					if ((value != null))
+					{
+						value.tblFlow.Add(this);
+						this._it_id = value.it_id;
+					}
+					else
+					{
+						this._it_id = default(int);
+					}
+					this.SendPropertyChanged("tblIntroducer");
+				}
+			}
+		}
+		
+		[Association(Name="tblReceive_tblFlow", Storage="_tblReceive", ThisKey="rc_id", IsForeignKey=true)]
+		public tblReceive tblReceive
+		{
+			get
+			{
+				return this._tblReceive.Entity;
+			}
+			set
+			{
+				tblReceive previousValue = this._tblReceive.Entity;
+				if (((previousValue != value) 
+							|| (this._tblReceive.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblReceive.Entity = null;
+						previousValue.tblFlow.Remove(this);
+					}
+					this._tblReceive.Entity = value;
+					if ((value != null))
+					{
+						value.tblFlow.Add(this);
+						this._rc_id = value.rc_id;
+					}
+					else
+					{
+						this._rc_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblReceive");
+				}
+			}
+		}
+		
+		[Association(Name="tblReply_tblFlow", Storage="_tblReply", ThisKey="rp_id", IsForeignKey=true)]
+		public tblReply tblReply
+		{
+			get
+			{
+				return this._tblReply.Entity;
+			}
+			set
+			{
+				tblReply previousValue = this._tblReply.Entity;
+				if (((previousValue != value) 
+							|| (this._tblReply.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblReply.Entity = null;
+						previousValue.tblFlow.Remove(this);
+					}
+					this._tblReply.Entity = value;
+					if ((value != null))
+					{
+						value.tblFlow.Add(this);
+						this._rp_id = value.rp_id;
+					}
+					else
+					{
+						this._rp_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblReply");
+				}
+			}
+		}
+		
+		[Association(Name="tblMaintain_tblFlow", Storage="_tblMaintain", ThisKey="mt_id", IsForeignKey=true)]
+		public tblMaintain tblMaintain
+		{
+			get
+			{
+				return this._tblMaintain.Entity;
+			}
+			set
+			{
+				tblMaintain previousValue = this._tblMaintain.Entity;
+				if (((previousValue != value) 
+							|| (this._tblMaintain.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblMaintain.Entity = null;
+						previousValue.tblFlow.Remove(this);
+					}
+					this._tblMaintain.Entity = value;
+					if ((value != null))
+					{
+						value.tblFlow.Add(this);
+						this._mt_id = value.mt_id;
+					}
+					else
+					{
+						this._mt_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblMaintain");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblFlow2(tblFlow entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblFlow1 = this;
+		}
+		
+		private void detach_tblFlow2(tblFlow entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblFlow1 = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblMaintain")]
+	public partial class tblMaintain : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _mt_id;
+		
+		private int _ml_id;
+		
+		private int _op_id;
+		
+		private System.DateTime _mt_pose_dt;
+		
+		private System.DateTime _mt_create_dt;
+		
+		private System.DateTime _mt_begin_dt;
+		
+		private System.DateTime _mt_timeout_dt;
+		
+		private string _mt_location;
+		
+		private string _mt_content;
+		
+		private string _mt_remark;
+		
+		private string _mt_fee_info;
+		
+		private EntitySet<tblFlow> _tblFlow;
+		
+		private EntityRef<tblMaintainLevel> _tblMaintainLevel;
+		
+		private EntityRef<tblOperator> _tblOperator;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onmt_idChanging(int value);
+    partial void Onmt_idChanged();
+    partial void Onml_idChanging(int value);
+    partial void Onml_idChanged();
+    partial void Onop_idChanging(int value);
+    partial void Onop_idChanged();
+    partial void Onmt_pose_dtChanging(System.DateTime value);
+    partial void Onmt_pose_dtChanged();
+    partial void Onmt_create_dtChanging(System.DateTime value);
+    partial void Onmt_create_dtChanged();
+    partial void Onmt_begin_dtChanging(System.DateTime value);
+    partial void Onmt_begin_dtChanged();
+    partial void Onmt_timeout_dtChanging(System.DateTime value);
+    partial void Onmt_timeout_dtChanged();
+    partial void Onmt_locationChanging(string value);
+    partial void Onmt_locationChanged();
+    partial void Onmt_contentChanging(string value);
+    partial void Onmt_contentChanged();
+    partial void Onmt_remarkChanging(string value);
+    partial void Onmt_remarkChanged();
+    partial void Onmt_fee_infoChanging(string value);
+    partial void Onmt_fee_infoChanged();
+    #endregion
+		
+		public tblMaintain()
+		{
+			this._tblFlow = new EntitySet<tblFlow>(new Action<tblFlow>(this.attach_tblFlow), new Action<tblFlow>(this.detach_tblFlow));
+			this._tblMaintainLevel = default(EntityRef<tblMaintainLevel>);
+			this._tblOperator = default(EntityRef<tblOperator>);
+			OnCreated();
 		}
 		
 		[Column(Storage="_mt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
@@ -1336,30 +1927,6 @@ namespace BXDB
 			}
 		}
 		
-		[Column(Storage="_rp_id", DbType="Int")]
-		public System.Nullable<int> rp_id
-		{
-			get
-			{
-				return this._rp_id;
-			}
-			set
-			{
-				if ((this._rp_id != value))
-				{
-					if (this._tblReply.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onrp_idChanging(value);
-					this.SendPropertyChanging();
-					this._rp_id = value;
-					this.SendPropertyChanged("rp_id");
-					this.Onrp_idChanged();
-				}
-			}
-		}
-		
 		[Column(Storage="_op_id", DbType="Int NOT NULL")]
 		public int op_id
 		{
@@ -1384,8 +1951,8 @@ namespace BXDB
 			}
 		}
 		
-		[Column(Storage="_mt_pose_dt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> mt_pose_dt
+		[Column(Storage="_mt_pose_dt", DbType="DateTime NOT NULL")]
+		public System.DateTime mt_pose_dt
 		{
 			get
 			{
@@ -1424,8 +1991,8 @@ namespace BXDB
 			}
 		}
 		
-		[Column(Storage="_mt_begin_dt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> mt_begin_dt
+		[Column(Storage="_mt_begin_dt", DbType="DateTime NOT NULL")]
+		public System.DateTime mt_begin_dt
 		{
 			get
 			{
@@ -1444,8 +2011,8 @@ namespace BXDB
 			}
 		}
 		
-		[Column(Storage="_mt_timeout_dt", DbType="DateTime")]
-		public System.Nullable<System.DateTime> mt_timeout_dt
+		[Column(Storage="_mt_timeout_dt", DbType="DateTime NOT NULL")]
+		public System.DateTime mt_timeout_dt
 		{
 			get
 			{
@@ -1460,26 +2027,6 @@ namespace BXDB
 					this._mt_timeout_dt = value;
 					this.SendPropertyChanged("mt_timeout_dt");
 					this.Onmt_timeout_dtChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_mt_status", DbType="Int NOT NULL")]
-		public int mt_status
-		{
-			get
-			{
-				return this._mt_status;
-			}
-			set
-			{
-				if ((this._mt_status != value))
-				{
-					this.Onmt_statusChanging(value);
-					this.SendPropertyChanging();
-					this._mt_status = value;
-					this.SendPropertyChanged("mt_status");
-					this.Onmt_statusChanged();
 				}
 			}
 		}
@@ -1544,30 +2091,6 @@ namespace BXDB
 			}
 		}
 		
-		[Column(Storage="_mt_parent", DbType="Int")]
-		public System.Nullable<int> mt_parent
-		{
-			get
-			{
-				return this._mt_parent;
-			}
-			set
-			{
-				if ((this._mt_parent != value))
-				{
-					if (this._tblMaintain1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onmt_parentChanging(value);
-					this.SendPropertyChanging();
-					this._mt_parent = value;
-					this.SendPropertyChanged("mt_parent");
-					this.Onmt_parentChanged();
-				}
-			}
-		}
-		
 		[Column(Storage="_mt_fee_info", DbType="NVarChar(1000)")]
 		public string mt_fee_info
 		{
@@ -1588,104 +2111,16 @@ namespace BXDB
 			}
 		}
 		
-		[Column(Storage="_mt_mark", DbType="Int")]
-		public System.Nullable<int> mt_mark
+		[Association(Name="tblMaintain_tblFlow", Storage="_tblFlow", OtherKey="mt_id")]
+		public EntitySet<tblFlow> tblFlow
 		{
 			get
 			{
-				return this._mt_mark;
+				return this._tblFlow;
 			}
 			set
 			{
-				if ((this._mt_mark != value))
-				{
-					this.Onmt_markChanging(value);
-					this.SendPropertyChanging();
-					this._mt_mark = value;
-					this.SendPropertyChanged("mt_mark");
-					this.Onmt_markChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblMaintain_tblMaintain", Storage="_tblMaintain2", OtherKey="mt_parent")]
-		public EntitySet<tblMaintain> tblMaintain2
-		{
-			get
-			{
-				return this._tblMaintain2;
-			}
-			set
-			{
-				this._tblMaintain2.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblIntroducer_tblMaintain", Storage="_tblIntroducer", ThisKey="it_id", IsForeignKey=true)]
-		public tblIntroducer tblIntroducer
-		{
-			get
-			{
-				return this._tblIntroducer.Entity;
-			}
-			set
-			{
-				tblIntroducer previousValue = this._tblIntroducer.Entity;
-				if (((previousValue != value) 
-							|| (this._tblIntroducer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblIntroducer.Entity = null;
-						previousValue.tblMaintain.Remove(this);
-					}
-					this._tblIntroducer.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain.Add(this);
-						this._it_id = value.it_id;
-					}
-					else
-					{
-						this._it_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblIntroducer");
-				}
-			}
-		}
-		
-		[Association(Name="tblMaintain_tblMaintain", Storage="_tblMaintain1", ThisKey="mt_parent", IsForeignKey=true)]
-		public tblMaintain tblMaintain1
-		{
-			get
-			{
-				return this._tblMaintain1.Entity;
-			}
-			set
-			{
-				tblMaintain previousValue = this._tblMaintain1.Entity;
-				if (((previousValue != value) 
-							|| (this._tblMaintain1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblMaintain1.Entity = null;
-						previousValue.tblMaintain2.Remove(this);
-					}
-					this._tblMaintain1.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain2.Add(this);
-						this._mt_parent = value.mt_id;
-					}
-					else
-					{
-						this._mt_parent = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblMaintain1");
-				}
+				this._tblFlow.Assign(value);
 			}
 		}
 		
@@ -1757,40 +2192,6 @@ namespace BXDB
 			}
 		}
 		
-		[Association(Name="tblReply_tblMaintain", Storage="_tblReply", ThisKey="rp_id", IsForeignKey=true)]
-		public tblReply tblReply
-		{
-			get
-			{
-				return this._tblReply.Entity;
-			}
-			set
-			{
-				tblReply previousValue = this._tblReply.Entity;
-				if (((previousValue != value) 
-							|| (this._tblReply.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblReply.Entity = null;
-						previousValue.tblMaintain.Remove(this);
-					}
-					this._tblReply.Entity = value;
-					if ((value != null))
-					{
-						value.tblMaintain.Add(this);
-						this._rp_id = value.rp_id;
-					}
-					else
-					{
-						this._rp_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblReply");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1811,16 +2212,16 @@ namespace BXDB
 			}
 		}
 		
-		private void attach_tblMaintain2(tblMaintain entity)
+		private void attach_tblFlow(tblFlow entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblMaintain1 = this;
+			entity.tblMaintain = this;
 		}
 		
-		private void detach_tblMaintain2(tblMaintain entity)
+		private void detach_tblFlow(tblFlow entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblMaintain1 = null;
+			entity.tblMaintain = null;
 		}
 	}
 }

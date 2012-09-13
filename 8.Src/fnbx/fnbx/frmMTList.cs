@@ -25,17 +25,20 @@ namespace fnbx
         private void button1_Click(object sender, EventArgs e)
         {
             Right rt = App.Default.GetLoginOperatorRight();
-            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Add, MTStatus.Created))
+            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Add, FLStatus.Created))
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotCreateMT);
                 return;
             }
 
-            tblMaintain mt = MaintainFactory.Create();
+            //tblMaintain mt = MaintainFactory.Create();
+            tblFlow fl = FlowFactory.Create();
+            frmFlow f = new frmFlow();
+            f.FL = fl;
 
-            frmMT f = new frmMT();
-            f.Maintain = mt;
-            f.AdeStatus = Xdgk.Common.ADEState.Add;
+            //frmMT f = new frmMT();
+            //f.Maintain = fl;
+            //f.AdeStatus = Xdgk.Common.ADEState.Add;
 
             if (f.ShowDialog() == DialogResult.OK)
             {
@@ -77,27 +80,27 @@ namespace fnbx
             if (CheckSelectedMaintain(mt))
             {
                 Right rt = App.Default.GetLoginOperatorRight();
-                if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, mt.GetMtStatus()))
-                {
-                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotEditMT);
-                    return;
-                }
+                //if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, fl.GetMtStatus()))
+                //{
+                //    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotEditMT);
+                //    return;
+                //}
 
-                frmMT f = new frmMT();
-                f.AdeStatus = Xdgk.Common.ADEState.Edit;
-                f.IsViewMode = true;
-                f.Maintain = mt;
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    Fill();
-                }
+                //frmMT f = new frmMT();
+                //f.AdeStatus = Xdgk.Common.ADEState.Edit;
+                //f.IsViewMode = true;
+                //f.Maintain = fl;
+                //if (f.ShowDialog() == DialogResult.OK)
+                //{
+                //    Fill();
+                //}
             }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="mt"></param>
+        /// <param name="fl"></param>
         /// <returns></returns>
         private bool CheckSelectedMaintain(tblMaintain mt)
         {
@@ -134,11 +137,11 @@ namespace fnbx
             {
 
                 Right rt = App.Default.GetLoginOperatorRight();
-                if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, mt.GetMtStatus()))
-                {
-                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
-                    return;
-                }
+                //if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, fl.GetMtStatus()))
+                //{
+                //    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
+                //    return;
+                //}
 
                 if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
                 {
@@ -161,13 +164,13 @@ namespace fnbx
             tblMaintain mt = this.GetSelectedMaintain();
             if (CheckSelectedMaintain(mt))
             {
-                frmMT f = new frmMT();
-                f.AdeStatus = Xdgk.Common.ADEState.Edit;
-                f.Maintain = mt;
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    Fill();
-                }
+                //frmMT f = new frmMT();
+                //f.AdeStatus = Xdgk.Common.ADEState.Edit;
+                //f.Maintain = fl;
+                //if (f.ShowDialog() == DialogResult.OK)
+                //{
+                //    Fill();
+                //}
             }
         }
     }

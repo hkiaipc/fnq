@@ -38,8 +38,9 @@ namespace fnbx
         #endregion //Text
     }
 
-    public enum MTStatus
+    public enum FLStatus
     {
+
         /// <summary>
         /// 
         /// </summary>

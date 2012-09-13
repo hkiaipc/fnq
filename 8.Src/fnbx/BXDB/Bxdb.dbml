@@ -1,14 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="fnbaoxiu" Class="BxdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=fnbaoxiu;Persist Security Info=True;User ID=sa" SettingsObjectName="BXDB.Properties.Settings" SettingsPropertyName="fnbaoxiuConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tblIntroducer" Member="tblIntroducer">
-    <Type Name="tblIntroducer">
-      <Column Name="it_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="it_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="it_address" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
-      <Column Name="it_phone" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="it_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Association Name="tblIntroducer_tblMaintain" Member="tblMaintain" OtherKey="it_id" Type="tblMaintain" />
+  <Table Name="dbo.tblRight" Member="tblRight">
+    <Type Name="tblRight">
+      <Column Name="rt_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="rt_value" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblRight_tblOperator" Member="tblOperator" OtherKey="rt_id" Type="tblOperator" />
     </Type>
   </Table>
   <Table Name="dbo.tblMaintainLevel" Member="tblMaintainLevel">
@@ -23,6 +20,27 @@
       <Association Name="tblMaintainLevel_tblMaintain" Member="tblMaintain" OtherKey="ml_id" Type="tblMaintain" />
     </Type>
   </Table>
+  <Table Name="dbo.tblOperator" Member="tblOperator">
+    <Type Name="tblOperator">
+      <Column Name="op_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="op_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="rt_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="op_pwd" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="tblOperator_tblReceive" Member="tblReceive" OtherKey="op_id" Type="tblReceive" />
+      <Association Name="tblOperator_tblReply" Member="tblReply" OtherKey="op_id" Type="tblReply" />
+      <Association Name="tblOperator_tblMaintain" Member="tblMaintain" OtherKey="op_id" Type="tblMaintain" />
+      <Association Name="tblRight_tblOperator" Member="tblRight" ThisKey="rt_id" Type="tblRight" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblReceive" Member="tblReceive">
+    <Type Name="tblReceive">
+      <Column Name="rc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="rc_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="op_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblReceive_tblFlow" Member="tblFlow" OtherKey="rc_id" Type="tblFlow" />
+      <Association Name="tblOperator_tblReceive" Member="tblOperator" ThisKey="op_id" Type="tblOperator" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tblReply" Member="tblReply">
     <Type Name="tblReply">
       <Column Name="rp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -31,53 +49,53 @@
       <Column Name="rp_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="rp_end_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="rp_worker" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="rp_receive_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="tblReply_tblMaintain" Member="tblMaintain" OtherKey="rp_id" Type="tblMaintain" />
+      <Association Name="tblReply_tblFlow" Member="tblFlow" OtherKey="rp_id" Type="tblFlow" />
       <Association Name="tblOperator_tblReply" Member="tblOperator" ThisKey="op_id" Type="tblOperator" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblOperator" Member="tblOperator">
-    <Type Name="tblOperator">
-      <Column Name="op_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="op_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="rt_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="op_pwd" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Association Name="tblOperator_tblReply" Member="tblReply" OtherKey="op_id" Type="tblReply" />
-      <Association Name="tblOperator_tblMaintain" Member="tblMaintain" OtherKey="op_id" Type="tblMaintain" />
-      <Association Name="tblRight_tblOperator" Member="tblRight" ThisKey="rt_id" Type="tblRight" IsForeignKey="true" />
+  <Table Name="dbo.tblIntroducer" Member="tblIntroducer">
+    <Type Name="tblIntroducer">
+      <Column Name="it_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="it_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="it_address" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="it_phone" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="it_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="tblIntroducer_tblFlow" Member="tblFlow" OtherKey="it_id" Type="tblFlow" />
     </Type>
   </Table>
-  <Table Name="dbo.tblRight" Member="tblRight">
-    <Type Name="tblRight">
-      <Column Name="rt_value" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="rt_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="tblRight_tblOperator" Member="tblOperator" OtherKey="rt_id" Type="tblOperator" />
+  <Table Name="dbo.tblFlow" Member="tblFlow">
+    <Type Name="tblFlow">
+      <Column Name="fl_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="it_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fl_parent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mt_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rp_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fl_status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblFlow_tblFlow" Member="tblFlow2" OtherKey="fl_parent" Type="tblFlow" />
+      <Association Name="tblFlow_tblFlow" Member="tblFlow1" ThisKey="fl_parent" Type="tblFlow" IsForeignKey="true" />
+      <Association Name="tblIntroducer_tblFlow" Member="tblIntroducer" ThisKey="it_id" Type="tblIntroducer" IsForeignKey="true" />
+      <Association Name="tblReceive_tblFlow" Member="tblReceive" ThisKey="rc_id" Type="tblReceive" IsForeignKey="true" />
+      <Association Name="tblReply_tblFlow" Member="tblReply" ThisKey="rp_id" Type="tblReply" IsForeignKey="true" />
+      <Association Name="tblMaintain_tblFlow" Member="tblMaintain" ThisKey="mt_id" Type="tblMaintain" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tblMaintain" Member="tblMaintain">
     <Type Name="tblMaintain">
-      <Column Name="it_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="mt_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ml_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="rp_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="op_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mt_pose_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="mt_pose_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="mt_create_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="mt_begin_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="mt_timeout_dt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="mt_status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mt_begin_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="mt_timeout_dt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="mt_location" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="mt_content" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="mt_remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Column Name="mt_parent" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="mt_fee_info" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Column Name="mt_mark" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="tblMaintain_tblMaintain" Member="tblMaintain2" OtherKey="mt_parent" Type="tblMaintain" />
-      <Association Name="tblIntroducer_tblMaintain" Member="tblIntroducer" ThisKey="it_id" Type="tblIntroducer" IsForeignKey="true" />
-      <Association Name="tblMaintain_tblMaintain" Member="tblMaintain1" ThisKey="mt_parent" Type="tblMaintain" IsForeignKey="true" />
+      <Association Name="tblMaintain_tblFlow" Member="tblFlow" OtherKey="mt_id" Type="tblFlow" />
       <Association Name="tblMaintainLevel_tblMaintain" Member="tblMaintainLevel" ThisKey="ml_id" Type="tblMaintainLevel" IsForeignKey="true" />
       <Association Name="tblOperator_tblMaintain" Member="tblOperator" ThisKey="op_id" Type="tblOperator" IsForeignKey="true" />
-      <Association Name="tblReply_tblMaintain" Member="tblReply" ThisKey="rp_id" Type="tblReply" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

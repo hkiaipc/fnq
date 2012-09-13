@@ -42,7 +42,8 @@ namespace fnbx
             this.ucMt1.Maintain = _maintain;
             this.txtTMStatus.Text = _maintain.GetMtStatusText();
 
-            this.ucRp1.Reply = _maintain.tblReply;
+            // TODO:
+            //this.ucRp1.Reply = _maintain.tblReply;
         }
 
         /// <summary>

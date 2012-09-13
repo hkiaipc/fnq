@@ -8,7 +8,7 @@ using Xdgk.Common;
 
 namespace fnbx
 {
-    using TMStatusPair = KeyValuePair<MTStatus, MTStatus>;
+    using TMStatusPair = KeyValuePair<FLStatus, FLStatus>;
     public class ReceiverRight : Right
     {
         public ReceiverRight()
@@ -20,14 +20,14 @@ namespace fnbx
             if (_receiverList == null)
             {
                 _receiverList = new List<TMStatusPair>();
-                _receiverList.Add(new TMStatusPair(MTStatus.Created, MTStatus.Received));
-                _receiverList.Add(new TMStatusPair(MTStatus.Received, MTStatus.Completed));
+                _receiverList.Add(new TMStatusPair(FLStatus.Created, FLStatus.Received));
+                _receiverList.Add(new TMStatusPair(FLStatus.Received, FLStatus.Completed));
             }
             return _receiverList;
         } static private List<TMStatusPair> _receiverList;
 
 
-        public override bool CanModifyTMStatus(MTStatus current)
+        public override bool CanModifyTMStatus(FLStatus current)
         {
             bool r = false;
             foreach (TMStatusPair item in GetReceiverList())
@@ -41,21 +41,21 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForRp(ADEState ade, MTStatus current)
+        public override bool CanActivateForRp(ADEState ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
             {
                 case ADEState.Add:
-                    r = current == MTStatus.Created;
+                    r = current == FLStatus.Created;
                     break;
 
                 case ADEState.Delete:
                     break;
 
                 case ADEState.Edit:
-                    r = current == MTStatus.Received ||
-                        current == MTStatus.Completed;
+                    r = current == FLStatus.Received ||
+                        current == FLStatus.Completed;
 
                     break;
 
@@ -66,7 +66,7 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForTm(ADEState ade, MTStatus current)
+        public override bool CanActivateForTm(ADEState ade, FLStatus current)
         {
             return false;
         }
@@ -77,7 +77,7 @@ namespace fnbx
         }
 
 
-        public override List<KeyValuePair<MTStatus, MTStatus>> GetStatusPairList()
+        public override List<KeyValuePair<FLStatus, FLStatus>> GetStatusPairList()
         {
             return GetReceiverList();
         }
