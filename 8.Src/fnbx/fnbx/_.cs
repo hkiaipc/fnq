@@ -118,16 +118,16 @@ namespace fnbx
     //    /// </summary>
     //    /// <param name="fl"></param>
     //    /// <returns></returns>
-    //    static public string GetMtStatusText(this tblMaintain fl)
+    //    static public string GetFLStatusText(this tblMaintain fl)
     //    {
-    //        return MTStatusHelper.GetMtStatusText(fl.GetMtStatus());
+    //        return MTStatusHelper.GetFLStatusText(fl.GetMtStatus());
     //    }
     //}
 
 
     public class MTStatusHelper
     {
-        static public string GetMtStatusText(FLStatus status)
+        static public string GetFLStatusText(FLStatus status)
         {
             Type t = typeof(FLStatus);
             FieldInfo fi = t.GetField(status.ToString());

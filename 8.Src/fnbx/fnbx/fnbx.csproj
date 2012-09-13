@@ -194,7 +194,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\DataSources\BXDB.tblMaintain.datasource" />
+    <None Include="Properties\DataSources\BXDB.tblFlow.datasource" />
     <None Include="Properties\DataSources\BXDB.tblMaintainLevel.datasource" />
     <None Include="Properties\DataSources\BXDB.tblOperator.datasource" />
     <None Include="Properties\Settings.settings">

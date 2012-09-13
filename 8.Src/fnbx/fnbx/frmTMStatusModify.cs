@@ -25,7 +25,7 @@ namespace fnbx
             set
             {
                 _current = value;
-                this.txtCurrentStatus.Text = MTStatusHelper.GetMtStatusText(_current);
+                this.txtCurrentStatus.Text = MTStatusHelper.GetFLStatusText(_current);
             }
         } private FLStatus _current;
 
@@ -42,7 +42,7 @@ namespace fnbx
 
             foreach (FLStatus item in poss)
             {
-                string name = MTStatusHelper.GetMtStatusText(item);
+                string name = MTStatusHelper.GetFLStatusText(item);
                 ds.Add(new KeyValuePair<string, FLStatus>(name, item));
             }
 

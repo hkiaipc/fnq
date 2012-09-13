@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -35,6 +36,7 @@ namespace fnbx
                     FillReply();
                     //SetControlEnableStatus();
                 }
+                this.Visible = _reply != null;
             }
         } private tblReply _reply;
 
@@ -56,7 +58,7 @@ namespace fnbx
 
             this.Readonly = IsReadonly(
                 App.Default.GetLoginOperatorRight(),
-                this.Reply.tblFlow[0].GetMtStatus());
+                this.Reply.tblFlow[0].GetFLStatus());
         }
 
         //public void SetControlEnableStatus()
@@ -81,26 +83,30 @@ namespace fnbx
         public bool CheckInput()
         {
             bool r = true;
-            //if (this.dtpEnd.Value <= this.ucRc1.Receive.rc_dt)
-            //{
-            //    NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPEndDTMustGreaterReceivedDT);
-            //    r = false;
-            //}
-            // TODO:
-            //else if (this.dtpEnd.Value >= this.Reply.tblMaintain[0].mt_timeout_dt)
-            //{
-            //    NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPEndDTMustLessTimeoutDT);
-            //    r = false;
-            //}
-            if (this.txtWorker.Text.Trim().Length == 0)
+            if (this.Reply != null)
             {
-                NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPWorkerEmpty);
-                r = false;
-            }
-            else if (this.txtRpContent.Text.Trim().Length == 0)
-            {
-                NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPContentEmpty);
-                r = false;
+                Debug.Assert(this.Reply.tblFlow.Count == 1);
+
+                if (this.dtpEnd.Value <= this.Reply.tblFlow[0].tblReceive.rc_dt)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPEndDTMustGreaterReceivedDT);
+                    r = false;
+                }
+                else if (this.dtpEnd.Value >= this.Reply.tblFlow[0].tblMaintain.mt_timeout_dt)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPEndDTMustLessTimeoutDT);
+                    r = false;
+                }
+                else if (this.txtWorker.Text.Trim().Length == 0)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPWorkerEmpty);
+                    r = false;
+                }
+                else if (this.txtRpContent.Text.Trim().Length == 0)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.RPContentEmpty);
+                    r = false;
+                }
             }
 
             return r;

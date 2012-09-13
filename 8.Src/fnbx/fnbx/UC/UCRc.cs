@@ -34,7 +34,7 @@ namespace fnbx
                     this.dtpReceived.Value = _receive.rc_dt;
 
                     this.Readonly = IsReadonly(App.Default.GetLoginOperatorRight(),
-                        this._receive.tblFlow[0].GetMtStatus());
+                        this._receive.tblFlow[0].GetFLStatus());
                 }
             }
         } private tblReceive _receive;
@@ -66,7 +66,10 @@ namespace fnbx
 
         public void UpdateModel()
         {
-            _rc.rc_dt = this.dtpReceived.Value;
+            if (this.Rc != null)
+            {
+                _rc.rc_dt = this.dtpReceived.Value;
+            }
         }
 
         /// <summary>
@@ -94,6 +97,7 @@ namespace fnbx
                         this.dtpReceived.Value = _rc.rc_dt;
                     }
                 }
+                this.Visible = _rc != null;
             }
         } private tblReceive _rc;
 

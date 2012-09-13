@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BXDB;
 namespace fnbx
 {
-    public partial class UCMt : UserControl, IReadonly , IView 
+    public partial class UCMt : UserControl, IReadonly, IView
     {
 
         private BxdbDataContext _dc = null;
@@ -61,7 +61,8 @@ namespace fnbx
         public tblMaintain Maintain
         {
             get { return _maintain; }
-            set {
+            set
+            {
                 //Debug.Assert(value != null);
                 _maintain = value;
                 if (_maintain != null)
@@ -90,16 +91,16 @@ namespace fnbx
             //    //this.txtPhone.Text = introducer.it_phone;
             //}
 
-            this.dtpPose.Value = (DateTime )_maintain.mt_pose_dt;
+            this.dtpPose.Value = (DateTime)_maintain.mt_pose_dt;
             this.dtpBegin.Value = (DateTime)_maintain.mt_begin_dt;
             this.dtpTimeout.Value = (DateTime)_maintain.mt_timeout_dt;
 
             this.cmbML.SelectedValue = _maintain.tblMaintainLevel.ml_id;
             this.txtOperatorName.Text = _maintain.tblOperator.op_name;
-            this.txtContent.Text  = _maintain.mt_content;
+            this.txtContent.Text = _maintain.mt_content;
 
             this.Readonly = IsReadonly(App.Default.GetLoginOperatorRight(),
-                _maintain.tblFlow[0].GetMtStatus());
+                _maintain.tblFlow[0].GetFLStatus());
         }
 
 
@@ -160,18 +161,15 @@ namespace fnbx
             }
             set
             {
-                if (_readonly != value)
-                {
-                    _readonly = value;
+                _readonly = value;
 
-                    ReadonlyHelper.SetReadonlyStyle(
-                        new Control[] { dtpPose, dtpBegin, cmbML, txtContent },
-                        _readonly);
+                ReadonlyHelper.SetReadonlyStyle(
+                    new Control[] { dtpPose, dtpBegin, cmbML, txtContent },
+                    _readonly);
 
-                    ReadonlyHelper.SetReadonlyStyle(
-                        new Control[] { dtpTimeout, txtOperatorName },
-                        true);
-                }
+                ReadonlyHelper.SetReadonlyStyle(
+                    new Control[] { dtpTimeout, txtOperatorName },
+                    true);
             }
         } private bool _readonly;
 
@@ -209,7 +207,15 @@ namespace fnbx
 
         public bool CheckInput()
         {
-            return true;
+            bool r = true;
+            if (this.txtContent.Text.Trim().Length == 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.MTContentEmpty);
+                r = false;
+            }
+            // TODO: pose dt and begin dt
+            //
+            return r;
         }
 
         #endregion

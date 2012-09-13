@@ -31,6 +31,8 @@ namespace fnbx
             //
             this.tssLogin.Text = "当前用户: " + App.Default.LoginOperator.op_name + 
                 string.Format ("({0})",App.Default.GetLoginOperatorRight().ToString());
+
+            mnuMTQuery_Click(null, null); 
         }
 
         /// <summary>

@@ -67,10 +67,10 @@ namespace fnbx
             tblFlow f = new tblFlow();
             f.tblIntroducer = IntroducerFactory.Create();
             f.tblMaintain = MaintainFactory.Create();
-            f.SetMTStatus(FLStatus.Created);
+            f.SetFLStatus(FLStatus.Created);
             //f.fl_status
 
-            Debug.Assert(f.GetMtStatus() == FLStatus.Created);
+            Debug.Assert(f.GetFLStatus() == FLStatus.Created);
             return f;
         }
     }

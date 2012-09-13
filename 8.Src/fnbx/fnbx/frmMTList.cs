@@ -31,7 +31,7 @@ namespace fnbx
                 return;
             }
 
-            //tblMaintain mt = MaintainFactory.Create();
+            //tblMaintain fl = MaintainFactory.Create();
             tblFlow fl = FlowFactory.Create();
             frmFlow f = new frmFlow();
             f.FL = fl;
@@ -63,7 +63,7 @@ namespace fnbx
         {
             BxdbDataContext dc = Class1.GetBxdbDataContext();
 
-            var r = from q in dc.tblMaintain
+            var r = from q in dc.tblFlow
                     select q;
 
             this.dataGridView1.DataSource = r;
@@ -76,8 +76,8 @@ namespace fnbx
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            tblMaintain mt = this.GetSelectedMaintain();
-            if (CheckSelectedMaintain(mt))
+            tblFlow fl = this.GetSelectedFlow();
+            if (CheckSelectedFlow(fl))
             {
                 Right rt = App.Default.GetLoginOperatorRight();
                 //if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, fl.GetMtStatus()))
@@ -102,21 +102,21 @@ namespace fnbx
         /// </summary>
         /// <param name="fl"></param>
         /// <returns></returns>
-        private bool CheckSelectedMaintain(tblMaintain mt)
+        private bool CheckSelectedFlow(tblFlow fl)
         {
-            if (mt == null)
+            if (fl == null)
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.SelectMTFirst);
             }
-            return mt != null;
+            return fl != null;
         }
 
-        private tblMaintain GetSelectedMaintain()
+        private tblFlow GetSelectedFlow()
         {
             if (this.dataGridView1.SelectedCells.Count > 0)
             {
                 int index = this.dataGridView1.SelectedCells[0].RowIndex;
-                tblMaintain mt = (tblMaintain)this.dataGridView1.Rows[index].DataBoundItem;
+                tblFlow mt = (tblFlow )this.dataGridView1.Rows[index].DataBoundItem;
                 return mt;
             }
             else
@@ -132,10 +132,9 @@ namespace fnbx
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-            tblMaintain mt = this.GetSelectedMaintain();
-            if (CheckSelectedMaintain(mt))
+            tblFlow fl = this.GetSelectedFlow();
+            if (CheckSelectedFlow(fl))
             {
-
                 Right rt = App.Default.GetLoginOperatorRight();
                 //if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, fl.GetMtStatus()))
                 //{
@@ -146,7 +145,7 @@ namespace fnbx
                 if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
                 {
                     BxdbDataContext dc = Class1.GetBxdbDataContext();
-                    dc.tblMaintain.DeleteOnSubmit(mt);
+                    dc.tblFlow.DeleteOnSubmit(fl);
 
                     dc.SubmitChanges();
                     Fill();
@@ -161,17 +160,24 @@ namespace fnbx
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-            tblMaintain mt = this.GetSelectedMaintain();
-            if (CheckSelectedMaintain(mt))
+            tblFlow  fl = this.GetSelectedFlow();
+            if (CheckSelectedFlow (fl))
             {
                 //frmMT f = new frmMT();
+                frmFlow f = new frmFlow();
+                f.FL = fl;
                 //f.AdeStatus = Xdgk.Common.ADEState.Edit;
                 //f.Maintain = fl;
-                //if (f.ShowDialog() == DialogResult.OK)
-                //{
-                //    Fill();
-                //}
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Fill();
+                }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

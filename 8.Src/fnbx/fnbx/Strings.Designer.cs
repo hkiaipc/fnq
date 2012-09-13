@@ -97,6 +97,42 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 地址不能为空 的本地化字符串。
+        /// </summary>
+        internal static string ITAddressEmpty {
+            get {
+                return ResourceManager.GetString("ITAddressEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 联系人不能为空 的本地化字符串。
+        /// </summary>
+        internal static string ITNameEmpty {
+            get {
+                return ResourceManager.GetString("ITNameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 电话不能为空 的本地化字符串。
+        /// </summary>
+        internal static string ITPhoneEmpty {
+            get {
+                return ResourceManager.GetString("ITPhoneEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 内容不能为空 的本地化字符串。
+        /// </summary>
+        internal static string MTContentEmpty {
+            get {
+                return ResourceManager.GetString("MTContentEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 距离超时时间还有 {0} 的本地化字符串。
         /// </summary>
         internal static string RemainTimespan {
@@ -138,6 +174,15 @@ namespace fnbx {
         internal static string RPWorkerEmpty {
             get {
                 return ResourceManager.GetString("RPWorkerEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 数据保存成功 的本地化字符串。
+        /// </summary>
+        internal static string SaveSuccess {
+            get {
+                return ResourceManager.GetString("SaveSuccess", resourceCulture);
             }
         }
         

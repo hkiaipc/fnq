@@ -10,7 +10,7 @@ using BXDB;
 
 namespace fnbx
 {
-    public partial class UCIt : UserControl, IReadonly, IView 
+    public partial class UCIt : UserControl, IReadonly, IView
     {
         public UCIt()
         {
@@ -45,6 +45,7 @@ namespace fnbx
 
         #endregion
 
+        #region It
         public tblIntroducer It
         {
             get { return _it; }
@@ -62,13 +63,15 @@ namespace fnbx
                         //
 
                         this.Readonly = IsReadonly(App.Default.GetLoginOperatorRight(),
-                            _it.tblFlow[0].GetMtStatus());
+                            _it.tblFlow[0].GetFLStatus());
 
                     }
                 }
             }
         } private tblIntroducer _it;
+        #endregion //It
 
+        #region UpdateModel
         /// <summary>
         /// 
         /// </summary>
@@ -78,19 +81,34 @@ namespace fnbx
             _it.it_phone = txtPhone.Text.Trim();
             _it.it_address = txtAddress.Text.Trim();
         }
+        #endregion //UpdateModel
 
+        #region CheckInput
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public bool CheckInput()
         {
-            // TODO:
-            //
-            return true;
+            bool r = true;
+            if (this.txtIntroducerName.Text.Trim().Length == 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.ITNameEmpty);
+                r = false;
+            }
+            else if (this.txtAddress.Text.Trim().Length == 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.ITAddressEmpty);
+                r = false;
+            }
+            else if (this.txtPhone.Text.Trim().Length == 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.ITPhoneEmpty);
+                r = false;
+            }
+            return r;
         }
-
-
+        #endregion //CheckInput
 
         #region IView 成员
 
