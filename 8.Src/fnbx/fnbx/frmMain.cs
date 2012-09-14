@@ -21,7 +21,7 @@ namespace fnbx
             //frmML f = new frmML();
             //frmMLList f = new frmMLList();
             //frmOperatorList f = new frmOperatorList();
-            frmMTList f = new frmMTList();
+            frmFlowList f = new frmFlowList();
             f.ShowDialog();
         }
 
@@ -50,7 +50,7 @@ namespace fnbx
         /// <param name="e"></param>
         private void mnuMTQuery_Click(object sender, EventArgs e)
         {
-            frmMTList f = GetFrmMtList();
+            frmFlowList f = GetFrmMtList();
             f.WindowState = FormWindowState.Maximized;
             f.Show();
         }
@@ -59,20 +59,20 @@ namespace fnbx
         /// 
         /// </summary>
         /// <returns></returns>
-        private frmMTList GetFrmMtList()
+        private frmFlowList GetFrmMtList()
         {
-            frmMTList r = null;
+            frmFlowList r = null;
             foreach (Form c in this.MdiChildren)
             {
-                if (c is frmMTList)
+                if (c is frmFlowList)
                 {
-                    r = c as frmMTList;
+                    r = c as frmFlowList;
                 }
             }
 
             if (r == null)
             {
-                r = new frmMTList();
+                r = new frmFlowList();
                 r.MdiParent = this;
                 r.Activate();
             }

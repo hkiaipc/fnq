@@ -211,5 +211,15 @@ namespace fnbx
             }
         }
         #endregion //SetReplyPageStyle
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 打印PToolStripButton_Click(object sender, EventArgs e)
+        {
+            NUnit.UiKit.UserMessage.DisplayFailure("NotImplemented");
+        }
     }
 }

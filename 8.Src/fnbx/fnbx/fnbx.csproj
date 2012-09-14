@@ -100,11 +100,11 @@
     <Compile Include="Forms\frmOperatorList.Designer.cs">
       <DependentUpon>frmOperatorList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMTList.cs">
+    <Compile Include="frmFlowList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMTList.Designer.cs">
-      <DependentUpon>frmMTList.cs</DependentUpon>
+    <Compile Include="frmFlowList.Designer.cs">
+      <DependentUpon>frmFlowList.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTMStatusModify.cs">
       <SubType>Form</SubType>
@@ -144,8 +144,8 @@
       <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMTList.resx">
-      <DependentUpon>frmMTList.cs</DependentUpon>
+    <EmbeddedResource Include="frmFlowList.resx">
+      <DependentUpon>frmFlowList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTMStatusModify.resx">

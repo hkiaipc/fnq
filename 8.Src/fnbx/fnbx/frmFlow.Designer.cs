@@ -31,18 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlow));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tssFLStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssTimeout = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.新建NToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.打开OToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.保存SToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.打印PToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.剪切UToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.复制CToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.粘贴PToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tsbModifyStatus = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpIT = new System.Windows.Forms.TabPage();
@@ -52,7 +45,6 @@
             this.tpRP = new System.Windows.Forms.TabPage();
             this.ucRc1 = new fnbx.UCRc();
             this.ucRp1 = new fnbx.UCRp();
-            this.tssFLStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -73,29 +65,28 @@
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // tssFLStatus
+            // 
+            this.tssFLStatus.AutoSize = false;
+            this.tssFLStatus.Name = "tssFLStatus";
+            this.tssFLStatus.Size = new System.Drawing.Size(200, 17);
+            this.tssFLStatus.Text = "toolStripStatusLabel1";
+            this.tssFLStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tssTimeout
             // 
             this.tssTimeout.AutoSize = false;
             this.tssTimeout.ForeColor = System.Drawing.Color.Red;
             this.tssTimeout.Name = "tssTimeout";
             this.tssTimeout.Size = new System.Drawing.Size(250, 17);
-            this.tssTimeout.Text = "toolStripStatusLabel1";
             this.tssTimeout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新建NToolStripButton,
-            this.打开OToolStripButton,
             this.保存SToolStripButton,
             this.打印PToolStripButton,
-            this.toolStripSeparator,
-            this.剪切UToolStripButton,
-            this.复制CToolStripButton,
-            this.粘贴PToolStripButton,
-            this.toolStripSeparator1,
-            this.帮助LToolStripButton,
             this.tsbModifyStatus});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -103,24 +94,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(660, 36);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // 新建NToolStripButton
-            // 
-            this.新建NToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("新建NToolStripButton.Image")));
-            this.新建NToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.新建NToolStripButton.Name = "新建NToolStripButton";
-            this.新建NToolStripButton.Size = new System.Drawing.Size(50, 33);
-            this.新建NToolStripButton.Text = "新建(&N)";
-            this.新建NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // 打开OToolStripButton
-            // 
-            this.打开OToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("打开OToolStripButton.Image")));
-            this.打开OToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.打开OToolStripButton.Name = "打开OToolStripButton";
-            this.打开OToolStripButton.Size = new System.Drawing.Size(51, 33);
-            this.打开OToolStripButton.Text = "打开(&O)";
-            this.打开OToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // 保存SToolStripButton
             // 
@@ -140,60 +113,16 @@
             this.打印PToolStripButton.Size = new System.Drawing.Size(49, 33);
             this.打印PToolStripButton.Text = "打印(&P)";
             this.打印PToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 36);
-            // 
-            // 剪切UToolStripButton
-            // 
-            this.剪切UToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.剪切UToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("剪切UToolStripButton.Image")));
-            this.剪切UToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.剪切UToolStripButton.Name = "剪切UToolStripButton";
-            this.剪切UToolStripButton.Size = new System.Drawing.Size(23, 33);
-            this.剪切UToolStripButton.Text = "剪切(&U)";
-            // 
-            // 复制CToolStripButton
-            // 
-            this.复制CToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.复制CToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("复制CToolStripButton.Image")));
-            this.复制CToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.复制CToolStripButton.Name = "复制CToolStripButton";
-            this.复制CToolStripButton.Size = new System.Drawing.Size(23, 33);
-            this.复制CToolStripButton.Text = "复制(&C)";
-            // 
-            // 粘贴PToolStripButton
-            // 
-            this.粘贴PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.粘贴PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("粘贴PToolStripButton.Image")));
-            this.粘贴PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.粘贴PToolStripButton.Name = "粘贴PToolStripButton";
-            this.粘贴PToolStripButton.Size = new System.Drawing.Size(23, 33);
-            this.粘贴PToolStripButton.Text = "粘贴(&P)";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
-            // 
-            // 帮助LToolStripButton
-            // 
-            this.帮助LToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.帮助LToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("帮助LToolStripButton.Image")));
-            this.帮助LToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.帮助LToolStripButton.Name = "帮助LToolStripButton";
-            this.帮助LToolStripButton.Size = new System.Drawing.Size(23, 33);
-            this.帮助LToolStripButton.Text = "帮助(&L)";
+            this.打印PToolStripButton.Click += new System.EventHandler(this.打印PToolStripButton_Click);
             // 
             // tsbModifyStatus
             // 
             this.tsbModifyStatus.Image = ((System.Drawing.Image)(resources.GetObject("tsbModifyStatus.Image")));
             this.tsbModifyStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbModifyStatus.Name = "tsbModifyStatus";
-            this.tsbModifyStatus.Size = new System.Drawing.Size(51, 33);
+            this.tsbModifyStatus.Size = new System.Drawing.Size(35, 33);
             this.tsbModifyStatus.Text = "修改";
+            this.tsbModifyStatus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbModifyStatus.Click += new System.EventHandler(this.tsbModifyStatus_Click);
             // 
             // tabControl1
@@ -215,7 +144,7 @@
             this.tpIT.Padding = new System.Windows.Forms.Padding(3);
             this.tpIT.Size = new System.Drawing.Size(637, 299);
             this.tpIT.TabIndex = 2;
-            this.tpIT.Text = "IT";
+            this.tpIT.Text = "联系人";
             this.tpIT.UseVisualStyleBackColor = true;
             // 
             // ucIt1
@@ -235,7 +164,7 @@
             this.tpMT.Padding = new System.Windows.Forms.Padding(3);
             this.tpMT.Size = new System.Drawing.Size(637, 299);
             this.tpMT.TabIndex = 0;
-            this.tpMT.Text = "MT";
+            this.tpMT.Text = "报修";
             this.tpMT.UseVisualStyleBackColor = true;
             // 
             // ucMt1
@@ -256,7 +185,7 @@
             this.tpRP.Padding = new System.Windows.Forms.Padding(3);
             this.tpRP.Size = new System.Drawing.Size(637, 299);
             this.tpRP.TabIndex = 1;
-            this.tpRP.Text = "RP";
+            this.tpRP.Text = "回单";
             this.tpRP.UseVisualStyleBackColor = true;
             // 
             // ucRc1
@@ -277,14 +206,6 @@
             this.ucRp1.Reply = null;
             this.ucRp1.Size = new System.Drawing.Size(586, 251);
             this.ucRp1.TabIndex = 0;
-            // 
-            // tssFLStatus
-            // 
-            this.tssFLStatus.AutoSize = false;
-            this.tssFLStatus.Name = "tssFLStatus";
-            this.tssFLStatus.Size = new System.Drawing.Size(200, 17);
-            this.tssFLStatus.Text = "toolStripStatusLabel1";
-            this.tssFLStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // timer1
             // 
@@ -320,16 +241,8 @@
 
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton 新建NToolStripButton;
-        private System.Windows.Forms.ToolStripButton 打开OToolStripButton;
         private System.Windows.Forms.ToolStripButton 保存SToolStripButton;
         private System.Windows.Forms.ToolStripButton 打印PToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripButton 剪切UToolStripButton;
-        private System.Windows.Forms.ToolStripButton 复制CToolStripButton;
-        private System.Windows.Forms.ToolStripButton 粘贴PToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton 帮助LToolStripButton;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpMT;
         private System.Windows.Forms.TabPage tpRP;
