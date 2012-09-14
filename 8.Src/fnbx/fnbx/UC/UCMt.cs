@@ -32,6 +32,8 @@ namespace fnbx
         public UCMt()
         {
             InitializeComponent();
+
+            this.BindML();
         }
 
         private void UCMt_Load(object sender, EventArgs e)
@@ -207,19 +209,22 @@ namespace fnbx
 
         public bool CheckInput()
         {
+            // TODO: pose dt and begin dt
+            //
             bool r = true;
             if (this.txtContent.Text.Trim().Length == 0)
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.MTContentEmpty);
                 r = false;
             }
-            // TODO: pose dt and begin dt
-            //
-            bool b = this.dtpBegin.Value > DateTime.Now;
-            if (!b)
+            else
             {
-                NUnit.UiKit.UserMessage.DisplayFailure(Strings.MTBeginOld);
-                r = false;
+                bool b = this.dtpBegin.Value > DateTime.Now;
+                if (!b)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.MTBeginOld);
+                    r = false;
+                }
             }
             return r;
         }

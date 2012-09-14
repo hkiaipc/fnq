@@ -40,7 +40,7 @@ namespace fnbx
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>
-        public override bool CanModifyTMStatus(FLStatus current)
+        public override bool CanModifyFLStatus(FLStatus current)
         {
             bool r = false;
             foreach (TMStatusPair item in GetList())
@@ -54,7 +54,7 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForTm(ADEState ade, FLStatus current)
+        public override bool CanActivateForFL(ADEState ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
@@ -76,27 +76,27 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForRp(ADEState ade, FLStatus current)
-        {
-            bool r = false;
-            switch (ade)
-            {
-                case ADEState.Add:
-                    break;
+        //public override bool CanActivateForRp(ADEState ade, FLStatus current)
+        //{
+        //    bool r = false;
+        //    switch (ade)
+        //    {
+        //        case ADEState.Add:
+        //            break;
 
-                case ADEState.Delete:
-                    r = true;
-                    break;
+        //        case ADEState.Delete:
+        //            r = true;
+        //            break;
 
-                case ADEState.Edit:
-                    break;
+        //        case ADEState.Edit:
+        //            break;
 
-                default:
-                    break;
+        //        default:
+        //            break;
 
-            }
-            return r;
-        }
+        //    }
+        //    return r;
+        //}
 
         public override string ToString()
         {

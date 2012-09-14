@@ -71,9 +71,9 @@ namespace fnbx
         /// 
         /// </summary>
         /// <returns></returns>
-        abstract public bool CanModifyTMStatus(FLStatus current);
-        abstract public bool CanActivateForTm(ADEState ade, FLStatus current);
-        abstract public bool CanActivateForRp(ADEState ade, FLStatus current);
+        abstract public bool CanModifyFLStatus(FLStatus current);
+        abstract public bool CanActivateForFL(ADEState ade, FLStatus current);
+        //abstract public bool CanActivateForRp(ADEState ade, FLStatus current);
 
         /// <summary>
         /// 

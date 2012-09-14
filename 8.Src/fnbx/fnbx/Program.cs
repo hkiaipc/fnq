@@ -13,6 +13,9 @@ namespace fnbx
         [STAThread]
         static void Main()
         {
+            //new _Test();
+            //return;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

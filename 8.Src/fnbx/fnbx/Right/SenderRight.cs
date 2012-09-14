@@ -40,7 +40,7 @@ namespace fnbx
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>
-        public override bool CanModifyTMStatus(FLStatus current)
+        public override bool CanModifyFLStatus(FLStatus current)
         {
             bool r = false;
             foreach (TMStatusPair item in GetSenderList())
@@ -54,12 +54,18 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForRp(ADEState ade, FLStatus current)
-        {
-            return false;
-        }
+        //public override bool CanActivateForRp(ADEState ade, FLStatus current)
+        //{
+        //    return false;
+        //}
 
-        public override bool CanActivateForTm(ADEState ade, FLStatus current)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ade"></param>
+        /// <param name="current"></param>
+        /// <returns></returns>
+        public override bool CanActivateForFL(ADEState ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
@@ -69,11 +75,11 @@ namespace fnbx
                     break;
 
                 case ADEState.Delete:
-                    r = current == FLStatus.Created;
+                    r = current == FLStatus.Created || current == FLStatus.New;
                     break;
 
                 case ADEState.Edit:
-                    r = current == FLStatus.Created;
+                    r = current == FLStatus.Created || current == FLStatus.New || current == FLStatus.Closed;
                     break;
 
                 default:

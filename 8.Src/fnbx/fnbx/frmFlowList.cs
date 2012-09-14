@@ -17,19 +17,10 @@ namespace fnbx
             InitializeComponent();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void AddFL()
         {
             Right rt = App.Default.GetLoginOperatorRight();
-            if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Add, FLStatus.Created))
+            if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Add, FLStatus.Created))
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotCreateMT);
                 return;
@@ -74,34 +65,6 @@ namespace fnbx
         }
 
         /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
-        {
-            tblFlow fl = this.GetSelectedFlow();
-            if (CheckSelectedFlow(fl))
-            {
-                Right rt = App.Default.GetLoginOperatorRight();
-                //if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Edit, fl.GetMtStatus()))
-                //{
-                //    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotEditMT);
-                //    return;
-                //}
-
-                //frmMT f = new frmMT();
-                //f.AdeStatus = Xdgk.Common.ADEState.Edit;
-                //f.IsViewMode = true;
-                //f.Maintain = fl;
-                //if (f.ShowDialog() == DialogResult.OK)
-                //{
-                //    Fill();
-                //}
-            }
-        }
-
-        /// <summary>
         /// 
         /// </summary>
         /// <param name="fl"></param>
@@ -130,14 +93,6 @@ namespace fnbx
         }
 
         /// <summary>
-        /// del
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button3_Click(object sender, EventArgs e)
-        {
-        }
-        /// <summary>
         /// 
         /// </summary>
         private void DeleteFL ()
@@ -146,11 +101,11 @@ namespace fnbx
             if (CheckSelectedFlow(fl))
             {
                 Right rt = App.Default.GetLoginOperatorRight();
-                //if (!rt.CanActivateForTm(Xdgk.Common.ADEState.Delete, fl.GetMtStatus()))
-                //{
-                //    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
-                //    return;
-                //}
+                if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Delete, fl.GetFLStatus()))
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
+                    return;
+                }
 
                 if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
                 {
@@ -164,14 +119,8 @@ namespace fnbx
         }
 
         /// <summary>
-        /// jie dan
+        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button4_Click(object sender, EventArgs e)
-        {
-        }
-
         private void ViewFL ()
         {
             tblFlow  fl = this.GetSelectedFlow();
@@ -209,7 +158,7 @@ namespace fnbx
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void tsbView_Click(object sender, EventArgs e)
         {
             ViewFL();
         }

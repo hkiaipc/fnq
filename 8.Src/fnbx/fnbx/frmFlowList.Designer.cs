@@ -46,7 +46,7 @@
             this.tblFlowBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.新建NToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbView = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbFind = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -159,7 +159,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新建NToolStripButton,
-            this.toolStripButton1,
+            this.tsbView,
             this.tsbDelete,
             this.tsbFind});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -179,15 +179,15 @@
             this.新建NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.新建NToolStripButton.Click += new System.EventHandler(this.新建NToolStripButton_Click);
             // 
-            // toolStripButton1
+            // tsbView
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(33, 33);
-            this.toolStripButton1.Text = "View";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.tsbView.Image = ((System.Drawing.Image)(resources.GetObject("tsbView.Image")));
+            this.tsbView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbView.Name = "tsbView";
+            this.tsbView.Size = new System.Drawing.Size(33, 33);
+            this.tsbView.Text = "View";
+            this.tsbView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbView.Click += new System.EventHandler(this.tsbView_Click);
             // 
             // tsbDelete
             // 
@@ -254,7 +254,7 @@
         private System.Windows.Forms.BindingSource tblFlowBindingSource3;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton 新建NToolStripButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsbView;
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ToolStripButton tsbFind;
     }

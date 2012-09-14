@@ -56,9 +56,16 @@ namespace fnbx
             this.txtOperatorName.Text = this.Reply.tblOperator.op_name;
             this.txtRpContent.Text = this.Reply.rp_content;
 
-            this.Readonly = IsReadonly(
-                App.Default.GetLoginOperatorRight(),
-                this.Reply.tblFlow[0].GetFLStatus());
+            if (this.Reply.tblFlow.Count > 0)
+            {
+                this.Readonly = IsReadonly(
+                    App.Default.GetLoginOperatorRight(),
+                    this.Reply.tblFlow[0].GetFLStatus());
+            }
+            else
+            {
+                this.Readonly = true;
+            }
         }
 
         //public void SetControlEnableStatus()

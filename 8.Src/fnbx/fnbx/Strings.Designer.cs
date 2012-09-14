@@ -97,6 +97,24 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 当前状态: {0} 的本地化字符串。
+        /// </summary>
+        internal static string CurrentFLStatus {
+            get {
+                return ResourceManager.GetString("CurrentFLStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 已更改 的本地化字符串。
+        /// </summary>
+        internal static string FlStatusChanged {
+            get {
+                return ResourceManager.GetString("FlStatusChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 地址不能为空 的本地化字符串。
         /// </summary>
         internal static string ITAddressEmpty {

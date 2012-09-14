@@ -25,8 +25,10 @@ namespace fnbx
         {
             if (fl.GetFLStatus() != status)
             {
+                // TODO: check
+                //
                 fl.fl_status = (int)status;
-                fl.OnMtStatusChanged();
+                fl.OnFLStatusChanged();
             }
         }
 
@@ -34,7 +36,7 @@ namespace fnbx
         /// 
         /// </summary>
         /// <param name="fl"></param>
-        static public void OnMtStatusChanged(this tblFlow  fl)
+        static public void OnFLStatusChanged(this tblFlow  fl)
         {
             switch (fl.GetFLStatus())
             {

@@ -95,6 +95,9 @@ namespace fnbx
                     if (_rc != null)
                     {
                         this.dtpReceived.Value = _rc.rc_dt;
+                        this.Readonly = IsReadonly(
+                            App.Default.GetLoginOperatorRight(), 
+                            _rc.tblFlow[0].GetFLStatus());
                     }
                 }
                 this.Visible = _rc != null;

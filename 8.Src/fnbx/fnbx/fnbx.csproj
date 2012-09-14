@@ -259,6 +259,7 @@
     <Compile Include="_frmTest.Designer.cs">
       <DependentUpon>_frmTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -27,7 +27,7 @@ namespace fnbx
         } static private List<TMStatusPair> _receiverList;
 
 
-        public override bool CanModifyTMStatus(FLStatus current)
+        public override bool CanModifyFLStatus(FLStatus current)
         {
             bool r = false;
             foreach (TMStatusPair item in GetReceiverList())
@@ -41,34 +41,45 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForRp(ADEState ade, FLStatus current)
+        //public override bool CanActivateForRp(ADEState ade, FLStatus current)
+        //{
+        //    bool r = false;
+        //    switch (ade)
+        //    {
+        //        case ADEState.Add:
+        //            r = current == FLStatus.Created;
+        //            break;
+
+        //        case ADEState.Delete:
+        //            break;
+
+        //        case ADEState.Edit:
+        //            r = current == FLStatus.Received ||
+        //                current == FLStatus.Completed;
+
+        //            break;
+
+        //        default:
+        //            break;
+
+        //    }
+        //    return r;
+        //}
+
+        public override bool CanActivateForFL(ADEState ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
             {
-                case ADEState.Add:
-                    r = current == FLStatus.Created;
-                    break;
-
-                case ADEState.Delete:
-                    break;
-
                 case ADEState.Edit:
-                    r = current == FLStatus.Received ||
-                        current == FLStatus.Completed;
-
+                    r = current == FLStatus.Completed || current == FLStatus.Received;
                     break;
 
                 default:
                     break;
-
             }
             return r;
-        }
-
-        public override bool CanActivateForTm(ADEState ade, FLStatus current)
-        {
-            return false;
+            //return false;
         }
 
         public override string ToString()

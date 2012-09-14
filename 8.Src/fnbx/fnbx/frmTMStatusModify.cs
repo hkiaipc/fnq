@@ -11,9 +11,10 @@ namespace fnbx
 {
     public partial class frmTMStatusModify : NUnit.UiKit.SettingsDialogBase 
     {
-        public frmTMStatusModify()
+        public frmTMStatusModify(FLStatus current)
         {
             InitializeComponent();
+            this.Current = current;
         }
 
         /// <summary>

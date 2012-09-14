@@ -177,4 +177,10 @@
   <data name="SaveSuccess" xml:space="preserve">
     <value>数据保存成功</value>
   </data>
+  <data name="CurrentFLStatus" xml:space="preserve">
+    <value>当前状态: {0}</value>
+  </data>
+  <data name="FlStatusChanged" xml:space="preserve">
+    <value>已更改</value>
+  </data>
 </root>
