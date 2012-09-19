@@ -67,6 +67,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="MTProcessor.cs" />
     <Compile Include="Right\AdminRight.cs" />
     <Compile Include="App.cs" />
@@ -148,6 +154,10 @@
       <DependentUpon>frmFlowList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTMStatusModify.resx">
       <DependentUpon>frmTMStatusModify.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -157,6 +167,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
@@ -186,7 +197,7 @@
       <DependentUpon>UCTimespan.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="_frmTest.resx">
+    <EmbeddedResource Include="Test\_frmTest.resx">
       <DependentUpon>_frmTest.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -253,13 +264,13 @@
       <DependentUpon>UCTimespan.cs</DependentUpon>
     </Compile>
     <Compile Include="_.cs" />
-    <Compile Include="_frmTest.cs">
+    <Compile Include="Test\_frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="_frmTest.Designer.cs">
+    <Compile Include="Test\_frmTest.Designer.cs">
       <DependentUpon>_frmTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Test.cs" />
+    <Compile Include="Test\_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

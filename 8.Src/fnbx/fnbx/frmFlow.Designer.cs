@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlow));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssFLStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssModifyStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssTimeout = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.保存SToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -58,28 +59,40 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssFLStatus,
+            this.tssModifyStatus,
             this.tssTimeout});
             this.statusStrip1.Location = new System.Drawing.Point(0, 383);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(660, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // tssFLStatus
             // 
-            this.tssFLStatus.AutoSize = false;
             this.tssFLStatus.Name = "tssFLStatus";
-            this.tssFLStatus.Size = new System.Drawing.Size(200, 17);
+            this.tssFLStatus.Size = new System.Drawing.Size(109, 17);
             this.tssFLStatus.Text = "toolStripStatusLabel1";
             this.tssFLStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tssModifyStatus
+            // 
+            this.tssModifyStatus.AutoSize = false;
+            this.tssModifyStatus.IsLink = true;
+            this.tssModifyStatus.Name = "tssModifyStatus";
+            this.tssModifyStatus.Size = new System.Drawing.Size(40, 17);
+            this.tssModifyStatus.Text = "修改";
+            this.tssModifyStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tssModifyStatus.Click += new System.EventHandler(this.tssModifyStatus_Click);
             // 
             // tssTimeout
             // 
             this.tssTimeout.AutoSize = false;
             this.tssTimeout.ForeColor = System.Drawing.Color.Red;
             this.tssTimeout.Name = "tssTimeout";
-            this.tssTimeout.Size = new System.Drawing.Size(250, 17);
-            this.tssTimeout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tssTimeout.Size = new System.Drawing.Size(496, 17);
+            this.tssTimeout.Spring = true;
+            this.tssTimeout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStrip1
             // 
@@ -209,7 +222,6 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -256,5 +268,6 @@
         private System.Windows.Forms.ToolStripButton tsbModifyStatus;
         private System.Windows.Forms.ToolStripStatusLabel tssFLStatus;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripStatusLabel tssModifyStatus;
     }
 }

@@ -17,7 +17,7 @@ namespace fnbx
         {
             get
             {
-                var r = from q in Class1.GetBxdbDataContext().tblMaintainLevel
+                var r = from q in DBFactory.GetBxdbDataContext().tblMaintainLevel
                         where q.ml_name == "普通"
                         select q;
 

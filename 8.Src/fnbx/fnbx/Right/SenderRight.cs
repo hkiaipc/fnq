@@ -79,7 +79,7 @@ namespace fnbx
                     break;
 
                 case ADEState.Edit:
-                    r = current == FLStatus.Created || current == FLStatus.New || current == FLStatus.Closed;
+                    r = current == FLStatus.Created || current == FLStatus.New || current == FLStatus.Completed;
                     break;
 
                 default:

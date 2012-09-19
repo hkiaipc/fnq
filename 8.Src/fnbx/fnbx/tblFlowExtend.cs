@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using BXDB;
 
 namespace fnbx
 {
+
     static public class tblFlowExtend
     {
         static public FLStatus GetFLStatus(this tblFlow fl)
@@ -54,7 +56,7 @@ namespace fnbx
                         //rp.rp_receive_dt = DateTime.Now;
                         //rp.tblOperator = App.Default.LoginOperator;
 
-                        //Class1.GetBxdbDataContext().SubmitChanges();
+                        //DBFactory.GetBxdbDataContext().SubmitChanges();
                     }
                     break;
                 default:
@@ -70,6 +72,93 @@ namespace fnbx
         static public string GetFLStatusText(this tblFlow fl)
         {
             return MTStatusHelper.GetFLStatusText(fl.GetFLStatus());
+        }
+
+        static public void Refresh(this tblFlow fl)
+        {
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            dc.Refresh(
+                System.Data.Linq.RefreshMode.OverwriteCurrentValues,
+                fl);
+
+            if (fl.tblIntroducer != null)
+            {
+                fl.tblIntroducer.Refresh();
+            }
+
+            if (fl.tblMaintain != null)
+            {
+                fl.tblMaintain.Refresh();
+            }
+
+            if (fl.tblReceive != null)
+            {
+                fl.tblReceive.Refresh();
+            }
+
+            if (fl.tblReply != null)
+            {
+                fl.tblReply.Refresh();
+            }
+
+
+
+        }
+    }
+
+    static public class tblIntroducerExtend
+    {
+        static public void Refresh(this tblIntroducer it)
+        {
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            dc.Refresh(RefreshMode.OverwriteCurrentValues,
+                it);
+        }
+    }
+
+    static public class tblMaintainExtend
+    {
+        static public void Refresh(this tblMaintain mt)
+        {
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            dc.Refresh(RefreshMode.OverwriteCurrentValues,
+                mt);
+
+            if (mt.tblOperator != null)
+            {
+                mt.tblOperator.Refresh();
+                dc.Refresh(RefreshMode.OverwriteCurrentValues, mt.tblMaintainLevel);
+            }
+        }
+    }
+
+    static public class tblReceiveExtend
+    {
+        static public void Refresh(this tblReceive rc)
+        {
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            dc.Refresh(RefreshMode.OverwriteCurrentValues,
+                rc);
+        }
+    }
+
+    static public class tblReplyExtend
+    {
+        static public void Refresh(this tblReply rp)
+        {
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            dc.Refresh(RefreshMode.OverwriteCurrentValues,
+                rp);
+        }
+    }
+
+    static public class tblOperatorExtend
+    {
+        static public void Refresh(this tblOperator op)
+        { 
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            dc.Refresh(RefreshMode.OverwriteCurrentValues,
+                op);
         }
     }
 }

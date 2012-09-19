@@ -65,7 +65,7 @@ namespace fnbx
             _ml.ml_arrive_hl = this.ucArriveHL.Value;
             _ml.ml_reply_hl = this.ucReplyHL.Value;
 
-            BXDB.BxdbDataContext dc = Class1.GetBxdbDataContext();
+            BXDB.BxdbDataContext dc = DBFactory.GetBxdbDataContext();
             dc.SubmitChanges();
 
             this.Close();

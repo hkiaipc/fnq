@@ -45,6 +45,51 @@ namespace fnbx
 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="dest"></param>
+        /// <returns></returns>
+        public tblIntroducer UpdateIntroducer(BxdbDataContext db, tblIntroducer it)
+        {
+            // TODO: dest.id != old.id
+            //
+            tblIntroducer old = this.It;
+
+            it.it_id = old.it_id;
+            it.it_address = old.it_address;
+            it.it_name = old.it_name;
+            it.it_phone = old.it_phone;
+            it.it_remark = old.it_remark;
+
+            return it;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public tblIntroducer GetIntroducer(BxdbDataContext db)
+        {
+            tblIntroducer old = this.It;
+
+            tblIntroducer it = new tblIntroducer();
+
+            it.it_id = old.it_id;
+            it.it_address = old.it_address;
+            it.it_name = old.it_name;
+            it.it_phone = old.it_phone;
+            it.it_remark = old.it_remark;
+
+            if (it.it_id == 0)
+            {
+                db.tblIntroducer.InsertOnSubmit(it);
+            }
+            return it;
+        }
+
         #region It
         public tblIntroducer It
         {

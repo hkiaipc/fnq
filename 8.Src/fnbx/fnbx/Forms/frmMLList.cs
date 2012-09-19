@@ -19,7 +19,7 @@ namespace fnbx
 
         private void frmMLList_Load(object sender, EventArgs e)
         {
-            BXDB.BxdbDataContext dc = Class1.GetBxdbDataContext();
+            BXDB.BxdbDataContext dc = DBFactory.GetBxdbDataContext();
             var r = from p in dc.tblMaintainLevel
                     select p;
             //var r = dc.tblMaintainLevel.ToList();

@@ -23,7 +23,7 @@ namespace fnbx
         /// </summary>
         private void Fill()
         {
-            BxdbDataContext dc = Class1.GetBxdbDataContext();
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
             var r = from q in dc.tblOperator
                     select q;
 
@@ -72,7 +72,7 @@ namespace fnbx
             {
                 if (NUnit.UiKit.UserMessage.Ask("delete?") == DialogResult.Yes)
                 {
-                    BXDB.BxdbDataContext dc = Class1.GetBxdbDataContext();
+                    BXDB.BxdbDataContext dc = DBFactory.GetBxdbDataContext();
                     dc.tblOperator.DeleteOnSubmit(op);
                     dc.SubmitChanges();
 

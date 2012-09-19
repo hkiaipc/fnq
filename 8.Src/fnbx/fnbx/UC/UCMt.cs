@@ -13,18 +13,18 @@ namespace fnbx
     public partial class UCMt : UserControl, IReadonly, IView
     {
 
-        private BxdbDataContext _dc = null;
-        private BxdbDataContext Dc
-        {
-            get
-            {
-                if (_dc == null)
-                {
-                    _dc = Class1.GetBxdbDataContext();
-                }
-                return _dc;
-            }
-        }
+        //private BxdbDataContext _dc = null;
+        //private BxdbDataContext Dc
+        //{
+        //    get
+        //    {
+        //        if (_dc == null)
+        //        {
+        //            _dc = DBFactory.GetBxdbDataContext();
+        //        }
+        //        return _dc;
+        //    }
+        //}
 
         /// <summary>
         /// 
@@ -48,13 +48,76 @@ namespace fnbx
         /// </summary>
         public void BindML()
         {
-            var r = from q in this.Dc.tblMaintainLevel
-                    orderby q.ml_number
-                    select q;
+            using (var db = DBFactory.GetBxdbDataContext())
+            {
+                var r = from q in db.tblMaintainLevel
+                        orderby q.ml_number
+                        select q;
 
-            this.cmbML.DisplayMember = "ml_name";
-            this.cmbML.ValueMember = "ml_id";
-            this.cmbML.DataSource = r;
+                this.cmbML.DisplayMember = "ml_name";
+                this.cmbML.ValueMember = "ml_id";
+                this.cmbML.DataSource = r;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="mt"></param>
+        /// <returns></returns>
+        public tblMaintain UpdateMaintain(BxdbDataContext db, tblMaintain mt)
+        {
+            tblMaintain old = this.Maintain;
+
+            //tblMaintain mt = new tblMaintain();
+            mt.mt_id = old.mt_id;
+            mt.mt_create_dt = old.mt_create_dt;
+            mt.mt_pose_dt = old.mt_pose_dt;
+            mt.mt_begin_dt = old.mt_begin_dt;
+            mt.mt_content = old.mt_content;
+            mt.mt_timeout_dt = old.mt_timeout_dt;
+            mt.tblMaintainLevel = GetMaintainLevel(db, (tblMaintainLevel)this.cmbML.SelectedItem);
+            mt.tblOperator = db.tblOperator.First(c => c.op_id == App.Default.LoginOperator.op_id);
+            return mt;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public tblMaintain GetMaintain(BxdbDataContext db)
+        {
+            tblMaintain old = this.Maintain;
+
+            tblMaintain mt = new tblMaintain();
+            mt.mt_id = old.mt_id;
+            mt.mt_create_dt = old.mt_create_dt;
+            mt.mt_pose_dt = old.mt_pose_dt;
+            mt.mt_begin_dt = old.mt_begin_dt;
+            mt.mt_content = old.mt_content;
+            mt.mt_timeout_dt = old.mt_timeout_dt;
+            mt.tblMaintainLevel = GetMaintainLevel(db, (tblMaintainLevel)this.cmbML.SelectedItem);
+            mt.tblOperator = db.tblOperator.First(c => c.op_id == App.Default.LoginOperator.op_id);
+
+            if (mt.mt_id == 0)
+            {
+                db.tblMaintain.InsertOnSubmit(mt);
+            }
+
+            return mt;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="ml"></param>
+        /// <returns></returns>
+        private tblMaintainLevel GetMaintainLevel(BxdbDataContext db, tblMaintainLevel ml)
+        {
+            var v = db.tblMaintainLevel.First(c => c.ml_id == ml.ml_id);
+            return v;
         }
 
         /// <summary>
@@ -194,17 +257,6 @@ namespace fnbx
             _maintain.tblMaintainLevel = (tblMaintainLevel)this.cmbML.SelectedItem;
             _maintain.mt_content = this.txtContent.Text;
             _maintain.mt_timeout_dt = this.dtpTimeout.Value;
-
-            //tblIntroducer introducer = _maintain.tblIntroducer;
-            //if (introducer == null)
-            //{
-            //    introducer = new tblIntroducer();
-            //    _maintain.tblIntroducer = introducer;
-            //}
-
-            //introducer.it_name = txtIntroducerName.Text;
-            //introducer.it_phone = txtPhone.Text;
-            //introducer.it_address = txtAddress.Text;
         }
 
         public bool CheckInput()

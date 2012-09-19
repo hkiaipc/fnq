@@ -52,7 +52,7 @@ namespace fnbx
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            BxdbDataContext dc = Class1.GetBxdbDataContext();
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
             if (_op != null)
             {
                 _op.op_name = this.txtName.Text.Trim();
@@ -62,7 +62,7 @@ namespace fnbx
                 _op = new tblOperator();
                 _op.op_name = this.txtName.Text.Trim();
                 //_op.tblRight 
-                dc.tblOperator.InsertOnSubmit(_op);
+                //dc.tblOperator.InsertOnSubmit(_op);
             }
             dc.SubmitChanges();
 

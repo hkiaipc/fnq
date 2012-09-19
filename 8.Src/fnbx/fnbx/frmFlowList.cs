@@ -17,6 +17,9 @@ namespace fnbx
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void AddFL()
         {
             Right rt = App.Default.GetLoginOperatorRight();
@@ -26,8 +29,10 @@ namespace fnbx
                 return;
             }
 
-            //tblMaintain fl = MaintainFactory.Create();
             tblFlow fl = FlowFactory.Create();
+
+
+
             frmFlow f = new frmFlow();
             f.FL = fl;
 
@@ -37,8 +42,8 @@ namespace fnbx
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                this.Fill();
             }
+            this.Fill();
         }
 
         /// <summary>
@@ -56,7 +61,7 @@ namespace fnbx
         /// </summary>
         private void Fill()
         {
-            BxdbDataContext dc = Class1.GetBxdbDataContext();
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
 
             var r = from q in dc.tblFlow
                     select q;
@@ -83,7 +88,7 @@ namespace fnbx
             if (this.dataGridView1.SelectedCells.Count > 0)
             {
                 int index = this.dataGridView1.SelectedCells[0].RowIndex;
-                tblFlow mt = (tblFlow )this.dataGridView1.Rows[index].DataBoundItem;
+                tblFlow mt = (tblFlow)this.dataGridView1.Rows[index].DataBoundItem;
                 return mt;
             }
             else
@@ -95,49 +100,48 @@ namespace fnbx
         /// <summary>
         /// 
         /// </summary>
-        private void DeleteFL ()
+        private void DeleteFL()
         {
             tblFlow fl = this.GetSelectedFlow();
-            if (CheckSelectedFlow(fl))
+            if (!CheckSelectedFlow(fl))
             {
-                Right rt = App.Default.GetLoginOperatorRight();
-                if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Delete, fl.GetFLStatus()))
-                {
-                    NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
-                    return;
-                }
+                return;
+            }
 
-                if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
+            Right rt = App.Default.GetLoginOperatorRight();
+            if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Delete, fl.GetFLStatus()))
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
+                return;
+            }
+
+            if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
+            {
+                BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+                try
                 {
-                    BxdbDataContext dc = Class1.GetBxdbDataContext();
-                    dc.tblFlow.DeleteOnSubmit(fl);
+                    var v = dc.tblFlow.First(c => c.fl_id == fl.fl_id);
+
+                    dc.tblFlow.DeleteOnSubmit(v);
 
                     dc.SubmitChanges();
-                    Fill();
                 }
+                catch (Exception ex)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+                    return;
+                }
+                Fill();
             }
         }
+
+
 
         /// <summary>
         /// 
         /// </summary>
-        private void ViewFL ()
-        {
-            tblFlow  fl = this.GetSelectedFlow();
-            if (CheckSelectedFlow (fl))
-            {
-                //frmMT f = new frmMT();
-                frmFlow f = new frmFlow();
-                f.FL = fl;
-                //f.AdeStatus = Xdgk.Common.ADEState.Edit;
-                //f.Maintain = fl;
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    Fill();
-                }
-            }
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -161,6 +165,28 @@ namespace fnbx
         private void tsbView_Click(object sender, EventArgs e)
         {
             ViewFL();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ViewFL()
+        {
+            tblFlow fl = this.GetSelectedFlow();
+            if (!CheckSelectedFlow(fl))
+            {
+                return;
+            }
+            var db = DBFactory .GetBxdbDataContext ();
+
+            var v = db.tblFlow.First(c => c.fl_id == fl.fl_id);
+
+            frmFlow f = new frmFlow();
+            f.FL = v;
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                Fill();
+            }
         }
 
         /// <summary>

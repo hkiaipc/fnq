@@ -32,7 +32,10 @@ namespace fnbx
             string opName = this.txtOperatorName.Text.Trim();
             string pwd = this.txtPwd.Text ;
 
-            BxdbDataContext dc = Class1.GetBxdbDataContext();
+            //BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            BxdbDataContext dc = DBFactory.CreateDataContext();
+            dc.DeferredLoadingEnabled = false;
+
             var r = from q in dc.tblOperator
                     where q.op_name == opName && q.op_pwd == pwd 
                     select q;
@@ -41,6 +44,11 @@ namespace fnbx
             {
                 tblOperator op = r.ToArray()[0];
                 App.Default.LoginOperator = op;
+
+                BxdbDataContext dc2 = DBFactory.CreateDataContext();
+                dc2.tblOperator.Attach(op);
+                
+
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -53,8 +61,18 @@ namespace fnbx
 
         private void button1_Click(object sender, EventArgs e)
         {
+            BXDB.BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            //dc.ObjectTrackingEnabled = false;
+
             this.txtOperatorName.Text = "mt";
             this.okButton_Click(null, null);
+
+            //tblFlow f = FlowFactory.Create();
+
+            //f = FlowFactory.Create();
+
+            ////DBFactory.GetBxdbDataContext().tblFlow.InsertOnSubmit(f);
+            //DBFactory.GetBxdbDataContext().SubmitChanges( );
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -35,13 +35,17 @@ namespace fnbx
         {
             get
             {
-                if (_loginOperator == null)
-                {
-                    // TODO:
-                    //
-                    BxdbDataContext dc = Class1.GetBxdbDataContext ();
-                    _loginOperator = dc.tblOperator.ToArray()[0];
-                }
+                //if (_loginOperator == null)
+                //{
+                //    using (var db = DBFactory.CreateDataContext())
+                //    {
+                //        // TODO:
+                //        //
+                //        //BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+                //        //_loginOperator = dc.tblOperator.ToArray()[0];
+                //        _loginOperator = db.tblOperator.First();
+                //    }
+                //}
                 return _loginOperator;
             }
             set

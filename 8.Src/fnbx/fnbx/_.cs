@@ -105,7 +105,7 @@ namespace fnbx
     //                    //rp.rp_receive_dt = DateTime.Now;
     //                    //rp.tblOperator = App.Default.LoginOperator;
 
-    //                    //Class1.GetBxdbDataContext().SubmitChanges();
+    //                    //DBFactory.GetBxdbDataContext().SubmitChanges();
     //                }
     //                break;
     //            default:

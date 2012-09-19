@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,21 +16,20 @@ namespace fnbx
     {
 
         #region Members
-        //private int _flID;
         private FLStatus _oldFLStatus;
         private List<FLStatus> _newStatusList = new List<FLStatus>();
         #endregion //Members
 
         #region GetDC
-        private BxdbDataContext GetDC()
-        {
-            if (this._dc == null)
-            {
-                //_dc = new BxdbDataContext();
-                _dc = Class1.GetBxdbDataContext();
-            }
-            return this._dc;
-        } private BxdbDataContext _dc;
+        //private BxdbDataContext GetDC()
+        //{
+        //    if (this._dc == null)
+        //    {
+        //        //_dc = new BxdbDataContext();
+        //        _dc = DBFactory.GetBxdbDataContext();
+        //    }
+        //    return this._dc;
+        //} private BxdbDataContext _dc;
         #endregion //GetDC
 
         #region frmFlow
@@ -65,7 +65,13 @@ namespace fnbx
         /// <param name="e"></param>
         private void frmFlow_Load(object sender, EventArgs e)
         {
+            Right rt = App.Default.GetLoginOperatorRight();
 
+            bool b = rt.CanActivateForFL(Xdgk.Common.ADEState.Edit, this.FL.GetFLStatus());
+            this.保存SToolStripButton.Enabled = b;
+
+            b = rt.CanModifyFLStatus(this.FL.GetFLStatus());
+            this.tssModifyStatus.Enabled = b;
         }
         #endregion //frmFlow_Load
 
@@ -78,15 +84,15 @@ namespace fnbx
             get { return _fl; }
             set
             {
-                if (_fl != value)
+                //if (_fl != value)
+                //{
+                _fl = value;
+                if (_fl != null)
                 {
-                    _fl = value;
-                    if (_fl != null)
-                    {
-                        UpdateView();
-                        this._oldFLStatus = this.FL.GetFLStatus();
-                    }
+                    this._oldFLStatus = this.FL.GetFLStatus();
+                    UpdateView();
                 }
+                //}
             }
         } private tblFlow _fl;
         #endregion //FL
@@ -113,8 +119,8 @@ namespace fnbx
         /// </summary>
         private void RefreshFLStatusBar()
         {
-            this.tssFLStatus.Text = string.Format (
-                Strings.CurrentFLStatus ,
+            this.tssFLStatus.Text = string.Format(
+                Strings.CurrentFLStatus,
                 _fl.GetFLStatusText()
                 );
 
@@ -150,24 +156,136 @@ namespace fnbx
 
             if (this.FL.fl_id == 0)
             {
-                if (this.FL.GetFLStatus() == FLStatus.New)
-                {
-                    this.FL.SetFLStatus(FLStatus.Created);
-                }
-                this.GetDC().tblFlow.InsertOnSubmit(this.FL);
-                this.GetDC().SubmitChanges();
-
-                Debug.Assert(this.FL.fl_id != 0);
+                InsertFL();
             }
             else
             {
-                this.GetDC().SubmitChanges();
+                UpdateFL();
             }
-
-            this.DialogResult = DialogResult.OK;
-            NUnit.UiKit.UserMessage.DisplayInfo(Strings.SaveSuccess);
         }
+
         #endregion //保存
+        /// <summary>
+        /// 
+        /// </summary>
+        private void InsertFL()
+        {
+            using (var db = DBFactory.CreateDataContext())
+            {
+                tblFlow newFL = new tblFlow();
+                newFL.fl_status = (int)FLStatus.Created;
+                newFL.tblIntroducer = ucIt1.GetIntroducer(db);
+                newFL.tblMaintain = ucMt1.GetMaintain(db);
+                newFL.tblReceive = ucRc1.Rc;
+                newFL.tblReply = ucRp1.Reply;
+
+                if (newFL.fl_id == 0)
+                {
+                    db.tblFlow.InsertOnSubmit(newFL);
+                }
+
+                //if (this.FL.GetFLStatus() == FLStatus.New)
+                //{
+                //    this.FL.SetFLStatus(FLStatus.Created);
+                //}
+
+                //this.GetDC().tblFlow.InsertOnSubmit(this.FL);
+                //v.tblFlow.Attach(this.FL);
+                //v.tblIntroducer.Attach(this.FL.tblIntroducer);
+                //v.tblIntroducer.InsertOnSubmit(this.FL.tblIntroducer);
+                //v.tblMaintain.InsertOnSubmit(this.FL.tblMaintain);
+                //v.tblOperator.Attach(App.Default.LoginOperator);
+                //v.tblFlow.InsertOnSubmit(this.FL);
+
+                try
+                {
+                    db.SubmitChanges();
+
+                    Debug.Assert(this.FL.fl_id != 0);
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateFL()
+        {
+            using (var db = DBFactory.GetBxdbDataContext())
+            {
+                tblFlow old = this.FL;
+
+                tblFlow updateFL = db.tblFlow.First(c => c.fl_id == old.fl_id);
+                updateFL.SetFLStatus(old.GetFLStatus());
+                updateFL.tblIntroducer = ucIt1.UpdateIntroducer(db, updateFL.tblIntroducer);
+                //updateFL.tblIntroducer = ucIt1.GetIntroducer(db);
+                //updateFL.tblMaintain = ucMt1.GetMaintain(db);
+                updateFL.tblMaintain = ucMt1.UpdateMaintain(db, updateFL.tblMaintain);
+                //updateFL.tblReceive = ucRc1.Rc;
+                //updateFL.tblReply = ucRp1.Reply;
+                //db.Refresh(RefreshMode.KeepCurrentValues, updateFL, updateFL.tblMaintain);
+                //this.ucMt1.UpdateModel();
+
+                try
+                {
+                    db.SubmitChanges();
+                    this.DialogResult = DialogResult.OK;
+                    NUnit.UiKit.UserMessage.DisplayInfo(Strings.SaveSuccess);
+                }
+                catch (System.Data.Linq.ChangeConflictException ee)
+                {
+                    foreach (ObjectChangeConflict occ in db.ChangeConflicts)
+                    {
+                        Dump(occ);
+                        occ.Resolve(RefreshMode.OverwriteCurrentValues);
+                    }
+
+                    NUnit.UiKit.UserMessage.DisplayFailure(ee.Message);
+
+                    //this._oldFLStatus = this.FL.GetFLStatus();
+                    //this.UpdateView();
+
+                    this.FL = this.FL;
+                }
+            }
+        }
+
+        #region Dump
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="occ"></param>
+        private void Dump(ObjectChangeConflict occ)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("------dump occ------\r\n");
+            sb.AppendFormat("IsDeleted: {0}\r\n", occ.IsDeleted);
+            sb.AppendFormat("IsResolved: {0}\r\n", occ.IsResolved);
+            Dump(sb, occ.MemberConflicts);
+            sb.AppendFormat("object: {0}\r\n", occ.Object);
+
+            Console.WriteLine(sb.ToString());
+        }
+
+        private void Dump(StringBuilder sb, System.Collections.ObjectModel.ReadOnlyCollection<MemberChangeConflict> readOnlyCollection)
+        {
+            foreach (MemberChangeConflict item in readOnlyCollection)
+            {
+                sb.Append("--- member ---\r\n");
+                sb.AppendFormat("CurrentValue: {0}\r\n", item.CurrentValue);
+                sb.AppendFormat("DatabaseValue: {0}\r\n", item.DatabaseValue);
+                sb.AppendFormat("IsModified: {0}\r\n", item.IsModified);
+                sb.AppendFormat("IsResolved: {0}\r\n", item.IsResolved);
+                sb.AppendFormat("OriginalValue: {0}\r\n", item.OriginalValue);
+                sb.AppendFormat("Member: {0}\r\n", item.Member.Name);
+            }
+        }
+        #endregion //Dump
 
         #region UpdateModel
         public void UpdateModel()
@@ -274,6 +392,10 @@ namespace fnbx
                 if (ts > TimeSpan.Zero)
                 {
                     string tsString = string.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
+                    if (ts.Days > 0)
+                    {
+                        tsString = string.Format("{0}天", ts.Days) + tsString;
+                    }
                     string s = string.Format(Strings.RemainTimespan, tsString);
                     this.tssTimeout.Text = s;
                 }
@@ -328,37 +450,10 @@ namespace fnbx
         /// </summary>
         private void RestoreFLStatus()
         {
-            for (int i = _newStatusList.Count - 1; i >= 0; i--)
+            if (this.FL.fl_id > 0)
             {
-                FLStatus st = _newStatusList[i];
-                switch (st)
-                {
-                    case FLStatus.New:
-                        break;
-
-                    case FLStatus.Created:
-
-                        break;
-
-                    case FLStatus.Received:
-                        this.FL.tblReceive = null;
-                        break;
-
-                    case FLStatus.Completed:
-                        this.FL.tblReply = null;
-                        break;
-
-                    case FLStatus.Closed:
-                        break;
-
-                    case FLStatus.Timeouted:
-                        break;
-
-                    default:
-                        break;
-                }
+                this.FL.Refresh();
             }
-            this.FL.SetFLStatus(this._oldFLStatus);
         }
         #endregion //RestoreFLStatus
 
@@ -370,12 +465,24 @@ namespace fnbx
         /// <param name="e"></param>
         private void frmFlow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this.DialogResult != DialogResult.OK)
-            {
-                RestoreFLStatus();
-            }
+            //if (this.DialogResult != DialogResult.OK)
+            //{
+            //    RestoreFLStatus();
+            //}
         }
         #endregion //frmFlow_FormClosed
+
+        #region tssModifyStatus_Click
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tssModifyStatus_Click(object sender, EventArgs e)
+        {
+            tsbModifyStatus_Click(null, null);
+        }
+        #endregion //tssModifyStatus_Click
 
     }
 }
