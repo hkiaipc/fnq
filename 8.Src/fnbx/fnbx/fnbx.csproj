@@ -74,6 +74,10 @@
       <DependentUpon>frmPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\MTProcessor.cs" />
+    <Compile Include="Code\IReadonly.cs" />
+    <Compile Include="Code\IView.cs" />
+    <Compile Include="Code\MTStatusHelper.cs" />
+    <Compile Include="Code\ReadonlyHelper.cs" />
     <Compile Include="Right\AdminRight.cs" />
     <Compile Include="Code\App.cs" />
     <Compile Include="Forms\frmML.cs">
@@ -119,7 +123,7 @@
       <DependentUpon>frmTMStatusModify.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\MaintainFactory.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Code\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="app.config" />
     <EmbeddedResource Include="Forms\frmML.resx">
