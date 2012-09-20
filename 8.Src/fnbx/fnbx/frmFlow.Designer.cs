@@ -207,7 +207,6 @@
             this.ucRc1.Name = "ucRc1";
             this.ucRc1.Rc = null;
             this.ucRc1.Readonly = false;
-            this.ucRc1.Receive = null;
             this.ucRc1.Size = new System.Drawing.Size(311, 25);
             this.ucRc1.TabIndex = 1;
             // 

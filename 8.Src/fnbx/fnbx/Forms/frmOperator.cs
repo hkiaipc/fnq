@@ -62,7 +62,7 @@ namespace fnbx
                 _op = new tblOperator();
                 _op.op_name = this.txtName.Text.Trim();
                 //_op.tblRight 
-                //dc.tblOperator.InsertOnSubmit(_op);
+                //db.tblOperator.InsertOnSubmit(_op);
             }
             dc.SubmitChanges();
 

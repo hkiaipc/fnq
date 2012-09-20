@@ -65,13 +65,24 @@ namespace fnbx
         /// <param name="e"></param>
         private void frmFlow_Load(object sender, EventArgs e)
         {
+            UpdateToolbarStyles();
+
+            Right rt = App.Default.GetLoginOperatorRight();
+            bool b = rt.CanModifyFLStatus(this.FL.GetFLStatus());
+            this.tssModifyStatus.Enabled = b;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rt"></param>
+        /// <param name="b"></param>
+        private void UpdateToolbarStyles()
+        {
             Right rt = App.Default.GetLoginOperatorRight();
 
             bool b = rt.CanActivateForFL(Xdgk.Common.ADEState.Edit, this.FL.GetFLStatus());
             this.保存SToolStripButton.Enabled = b;
-
-            b = rt.CanModifyFLStatus(this.FL.GetFLStatus());
-            this.tssModifyStatus.Enabled = b;
         }
         #endregion //frmFlow_Load
 
@@ -81,7 +92,10 @@ namespace fnbx
         /// </summary>
         public tblFlow FL
         {
-            get { return _fl; }
+            get
+            {
+                return _fl;
+            }
             set
             {
                 //if (_fl != value)
@@ -163,8 +177,9 @@ namespace fnbx
                 UpdateFL();
             }
         }
-
         #endregion //保存
+
+        #region InsertFL
         /// <summary>
         /// 
         /// </summary>
@@ -184,24 +199,10 @@ namespace fnbx
                     db.tblFlow.InsertOnSubmit(newFL);
                 }
 
-                //if (this.FL.GetFLStatus() == FLStatus.New)
-                //{
-                //    this.FL.SetFLStatus(FLStatus.Created);
-                //}
-
-                //this.GetDC().tblFlow.InsertOnSubmit(this.FL);
-                //v.tblFlow.Attach(this.FL);
-                //v.tblIntroducer.Attach(this.FL.tblIntroducer);
-                //v.tblIntroducer.InsertOnSubmit(this.FL.tblIntroducer);
-                //v.tblMaintain.InsertOnSubmit(this.FL.tblMaintain);
-                //v.tblOperator.Attach(App.Default.LoginOperator);
-                //v.tblFlow.InsertOnSubmit(this.FL);
-
                 try
                 {
                     db.SubmitChanges();
-
-                    Debug.Assert(this.FL.fl_id != 0);
+                    //Debug.Assert(this.FL.fl_id != 0);
                     this.DialogResult = DialogResult.OK;
                 }
                 catch (Exception ex)
@@ -210,7 +211,9 @@ namespace fnbx
                 }
             }
         }
+        #endregion //InsertFL
 
+        #region UpdateFL
         /// <summary>
         /// 
         /// </summary>
@@ -226,10 +229,8 @@ namespace fnbx
                 //updateFL.tblIntroducer = ucIt1.GetIntroducer(db);
                 //updateFL.tblMaintain = ucMt1.GetMaintain(db);
                 updateFL.tblMaintain = ucMt1.UpdateMaintain(db, updateFL.tblMaintain);
-                //updateFL.tblReceive = ucRc1.Rc;
-                //updateFL.tblReply = ucRp1.Reply;
-                //db.Refresh(RefreshMode.KeepCurrentValues, updateFL, updateFL.tblMaintain);
-                //this.ucMt1.UpdateModel();
+                updateFL.tblReceive = ucRc1.UpdateReceive(db, updateFL.tblReceive);
+                updateFL.tblReply = ucRp1.UpdateReply(db, updateFL.tblReply);
 
                 try
                 {
@@ -254,6 +255,7 @@ namespace fnbx
                 }
             }
         }
+        #endregion //UpdateFL
 
         #region Dump
         /// <summary>
@@ -371,6 +373,8 @@ namespace fnbx
                     this.FL.SetFLStatus(newStatus);
                     this.RefreshFLStatusBar();
                 }
+
+                UpdateToolbarStyles();
             }
         }
         #endregion //tsbModifyStatus_Click

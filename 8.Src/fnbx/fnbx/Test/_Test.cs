@@ -28,7 +28,7 @@ namespace fnbx
             Debug.Assert(flow != null);
 
             flow.tblReply = t;
-            //dc.tblReply.InsertOnSubmit(t);
+            //db.tblReply.InsertOnSubmit(t);
 
             dc.SubmitChanges();
         }

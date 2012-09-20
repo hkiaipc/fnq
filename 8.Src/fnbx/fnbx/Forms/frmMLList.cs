@@ -22,7 +22,7 @@ namespace fnbx
             BXDB.BxdbDataContext dc = DBFactory.GetBxdbDataContext();
             var r = from p in dc.tblMaintainLevel
                     select p;
-            //var r = dc.tblMaintainLevel.ToList();
+            //var r = db.tblMaintainLevel.ToList();
             this.dataGridView1.DataSource = r;
         }
 

@@ -97,43 +97,7 @@ namespace fnbx
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private void DeleteFL()
-        {
-            tblFlow fl = this.GetSelectedFlow();
-            if (!CheckSelectedFlow(fl))
-            {
-                return;
-            }
-
-            Right rt = App.Default.GetLoginOperatorRight();
-            if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Delete, fl.GetFLStatus()))
-            {
-                NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
-                return;
-            }
-
-            if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
-            {
-                BxdbDataContext dc = DBFactory.GetBxdbDataContext();
-                try
-                {
-                    var v = dc.tblFlow.First(c => c.fl_id == fl.fl_id);
-
-                    dc.tblFlow.DeleteOnSubmit(v);
-
-                    dc.SubmitChanges();
-                }
-                catch (Exception ex)
-                {
-                    NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
-                    return;
-                }
-                Fill();
-            }
-        }
+     
 
 
 
@@ -199,6 +163,63 @@ namespace fnbx
             this.DeleteFL();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void DeleteFL()
+        {
+            tblFlow fl = this.GetSelectedFlow();
+            if (!CheckSelectedFlow(fl))
+            {
+                return;
+            }
+
+            Right rt = App.Default.GetLoginOperatorRight();
+            if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Delete, fl.GetFLStatus()))
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
+                return;
+            }
+
+            if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
+            {
+                using (BxdbDataContext db = DBFactory.GetBxdbDataContext())
+                {
+                    try
+                    {
+                        var v = db.tblFlow.First(c => c.fl_id == fl.fl_id);
+
+                        db.tblIntroducer.DeleteOnSubmit(v.tblIntroducer);
+                        db.tblMaintain.DeleteOnSubmit(v.tblMaintain);
+                        if (v.tblReceive != null)
+                        {
+                            db.tblReceive.DeleteOnSubmit(v.tblReceive);
+                        }
+
+                        if (v.tblReply != null)
+                        {
+                            db.tblReply.DeleteOnSubmit(v.tblReply);
+                        }
+                        db.tblFlow.DeleteOnSubmit(v);
+
+                        db.SubmitChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+                        return;
+                    }
+                }
+
+                Fill();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbFind_Click(object sender, EventArgs e)
         {
             NUnit.UiKit.UserMessage.DisplayFailure("NotImplemented");

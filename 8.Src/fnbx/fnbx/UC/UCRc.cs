@@ -20,26 +20,25 @@ namespace fnbx
             InitializeComponent();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public tblReceive Receive
-        {
-            get { return _receive; }
-            set
-            {
-                _receive = value;
-                if (_receive != null)
-                {
-                    this.dtpReceived.Value = _receive.rc_dt;
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public tblReceive Receive
+        //{
+        //    get { return _receive; }
+        //    set
+        //    {
+        //        _receive = value;
+        //        if (_receive != null)
+        //        {
+        //            this.dtpReceived.Value = _receive.rc_dt;
 
-                    this.Readonly = IsReadonly(App.Default.GetLoginOperatorRight(),
-                        this._receive.tblFlow[0].GetFLStatus());
-                }
-            }
-        } private tblReceive _receive;
+        //            this.Readonly = IsReadonly(App.Default.GetLoginOperatorRight(),
+        //                this._receive.tblFlow[0].GetFLStatus());
+        //        }
+        //    }
+        //} private tblReceive _receive;
 
-        #region IReadonly 成员
 
         /// <summary>
         /// 
@@ -59,10 +58,6 @@ namespace fnbx
                 }
             }
         } private bool _readonly;
-
-        #endregion
-
-        #region IView 成员
 
         public void UpdateModel()
         {
@@ -104,9 +99,6 @@ namespace fnbx
             }
         } private tblReceive _rc;
 
-        #endregion
-
-        #region IView 成员
 
 
         public bool IsReadonly(Right rt, FLStatus status)
@@ -115,6 +107,33 @@ namespace fnbx
             return true;
         }
 
-        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="tblReceive"></param>
+        /// <returns></returns>
+        internal tblReceive UpdateReceive(BxdbDataContext db, tblReceive tblReceive)
+        {
+            if (this.Rc == null)
+            {
+                return null;
+            }
+
+            if (tblReceive == null)
+            {
+                tblReceive = new tblReceive();
+            }
+
+            tblReceive.rc_dt = this.dtpReceived.Value;
+            tblReceive.tblOperator = db.tblOperator.First(c => c.op_id == App.Default.LoginOperator.op_id);
+
+            if (tblReceive.rc_id == 0)
+            {
+                db.tblReceive.InsertOnSubmit(tblReceive);
+            }
+            return tblReceive;
+        }
     }
 }

@@ -179,5 +179,37 @@ namespace fnbx
         }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="tblReply"></param>
+        /// <returns></returns>
+        internal tblReply UpdateReply(BxdbDataContext db, tblReply tblReply)
+        {
+            tblReply old = this.Reply;
+            if (old == null)
+            {
+                return null;
+            }
+
+            if (tblReply == null)
+            {
+                tblReply = new tblReply();
+            }
+
+            tblReply.tblOperator = db.tblOperator.First(c => c.op_id == App.Default.LoginOperator.op_id);
+            tblReply.rp_content = old.rp_content;
+            tblReply.rp_end_dt = old.rp_end_dt;
+            tblReply.rp_remark = old.rp_remark;
+            tblReply.rp_worker = old.rp_worker;
+
+            if (tblReply.rp_id == 0)
+            {
+                db.tblReply.InsertOnSubmit(tblReply);
+            }
+            return tblReply;
+        }
     }
 }

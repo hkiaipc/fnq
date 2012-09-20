@@ -41,8 +41,8 @@ namespace fnbx
                 //    {
                 //        // TODO:
                 //        //
-                //        //BxdbDataContext dc = DBFactory.GetBxdbDataContext();
-                //        //_loginOperator = dc.tblOperator.ToArray()[0];
+                //        //BxdbDataContext db = DBFactory.GetBxdbDataContext();
+                //        //_loginOperator = db.tblOperator.ToArray()[0];
                 //        _loginOperator = db.tblOperator.First();
                 //    }
                 //}

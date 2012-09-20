@@ -32,7 +32,7 @@ namespace fnbx
             string opName = this.txtOperatorName.Text.Trim();
             string pwd = this.txtPwd.Text ;
 
-            //BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            //BxdbDataContext db = DBFactory.GetBxdbDataContext();
             BxdbDataContext dc = DBFactory.CreateDataContext();
             dc.DeferredLoadingEnabled = false;
 
@@ -62,7 +62,7 @@ namespace fnbx
         private void button1_Click(object sender, EventArgs e)
         {
             BXDB.BxdbDataContext dc = DBFactory.GetBxdbDataContext();
-            //dc.ObjectTrackingEnabled = false;
+            //db.ObjectTrackingEnabled = false;
 
             this.txtOperatorName.Text = "mt";
             this.okButton_Click(null, null);
