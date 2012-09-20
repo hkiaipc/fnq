@@ -10,13 +10,9 @@ using BXDB;
 
 namespace fnbx
 {
-    class _
-    {
-        void a()
-        {
-        }
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IView
     {
         void UpdateModel();
@@ -58,73 +54,10 @@ namespace fnbx
     }
     
 
-    //static public class tblMaintainExtend
-    //{
-    //    static public FLStatus GetMtStatus(this tblMaintain fl)
-    //    {
-    //        // TODO:
-    //        //FLStatus status = (FLStatus)fl.mt_status;
-    //        //return status;
-    //        return FLStatus.Timeouted;
-    //    }
 
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    /// <param name="fl"></param>
-    //    /// <param name="status"></param>
-    //    static public void SetMTStatus(this tblMaintain fl, FLStatus status)
-    //    {
-    //        if (fl.GetMtStatus() != status)
-    //        {
-    //            // TODO:
-    //            //fl.mt_status = (int)status;
-    //            fl.OnMtStatusChanged();
-    //        }
-    //    }
-
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    /// <param name="fl"></param>
-    //    static public void OnMtStatusChanged(this tblMaintain fl)
-    //    {
-    //        switch (fl.GetMtStatus())
-    //        {
-    //            case FLStatus.Received:
-    //                {
-    //                    // TODO:
-    //                    //tblReply rp = fl.tblReply;
-
-    //                    //if (rp == null)
-    //                    //{
-    //                    //    rp = new tblReply();
-    //                    //    fl.tblReply = rp;
-    //                    //}
-
-    //                    //rp.rp_receive_dt = DateTime.Now;
-    //                    //rp.tblOperator = App.Default.LoginOperator;
-
-    //                    //DBFactory.GetBxdbDataContext().SubmitChanges();
-    //                }
-    //                break;
-    //            default:
-    //                break;
-    //        }
-    //    }
-
-    //    /// <summary>
-    //    /// 
-    //    /// </summary>
-    //    /// <param name="fl"></param>
-    //    /// <returns></returns>
-    //    static public string GetFLStatusText(this tblMaintain fl)
-    //    {
-    //        return MTStatusHelper.GetFLStatusText(fl.GetMtStatus());
-    //    }
-    //}
-
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class MTStatusHelper
     {
         static public string GetFLStatusText(FLStatus status)

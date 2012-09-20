@@ -70,6 +70,9 @@ namespace fnbx
             Right rt = App.Default.GetLoginOperatorRight();
             bool b = rt.CanModifyFLStatus(this.FL.GetFLStatus());
             this.tssModifyStatus.Enabled = b;
+
+            this.timer1.Start();
+
         }
 
         /// <summary>
@@ -487,6 +490,16 @@ namespace fnbx
             tsbModifyStatus_Click(null, null);
         }
         #endregion //tssModifyStatus_Click
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmFlow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.timer1.Stop();
+        }
 
     }
 }

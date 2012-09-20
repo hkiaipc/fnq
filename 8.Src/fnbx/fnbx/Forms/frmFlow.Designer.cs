@@ -236,6 +236,7 @@
             this.Text = "frmFlow";
             this.Load += new System.EventHandler(this.frmFlow_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmFlow_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFlow_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
