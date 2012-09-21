@@ -55,6 +55,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Config.cs" />
+    <Compile Include="Code\F.cs">
+    </Compile>
     <Compile Include="Forms\frmFlow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +81,12 @@
     <Compile Include="Code\IView.cs" />
     <Compile Include="Code\MTStatusHelper.cs" />
     <Compile Include="Code\ReadonlyHelper.cs" />
+    <Compile Include="Forms\frmColumnSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmColumnSelect.Designer.cs">
+      <DependentUpon>frmColumnSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Right\AdminRight.cs" />
     <Compile Include="Code\App.cs" />
     <Compile Include="Forms\frmML.cs">
@@ -166,6 +175,10 @@
       <DependentUpon>frmTMStatusModify.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmColumnSelect.resx">
+      <DependentUpon>frmColumnSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -209,9 +222,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\DataSources\BXDB.tblFlow.datasource" />
-    <None Include="Properties\DataSources\BXDB.tblMaintainLevel.datasource" />
-    <None Include="Properties\DataSources\BXDB.tblOperator.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -267,7 +277,7 @@
     <Compile Include="UC\UCTimespan.Designer.cs">
       <DependentUpon>UCTimespan.cs</DependentUpon>
     </Compile>
-    <Compile Include="_.cs" />
+    <Compile Include="Code\DataGirdviewColumnProvider.cs" />
     <Compile Include="Test\_frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +294,9 @@
       <Project>{C8097522-7C96-4ADD-9F84-288E64B0757D}</Project>
       <Name>BXDB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

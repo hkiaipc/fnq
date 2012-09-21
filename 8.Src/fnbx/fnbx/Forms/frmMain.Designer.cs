@@ -116,13 +116,13 @@
             // mnuLoginManage
             // 
             this.mnuLoginManage.Name = "mnuLoginManage";
-            this.mnuLoginManage.Size = new System.Drawing.Size(152, 22);
+            this.mnuLoginManage.Size = new System.Drawing.Size(138, 22);
             this.mnuLoginManage.Text = "登录管理(&L)";
             // 
             // mnuML
             // 
             this.mnuML.Name = "mnuML";
-            this.mnuML.Size = new System.Drawing.Size(152, 22);
+            this.mnuML.Size = new System.Drawing.Size(138, 22);
             this.mnuML.Text = "报修等级(&M)";
             // 
             // mnuHelp
@@ -138,6 +138,7 @@
             this.mnuAbout.Name = "mnuAbout";
             this.mnuAbout.Size = new System.Drawing.Size(152, 22);
             this.mnuAbout.Text = "关于(&A)";
+            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
             // statusStrip1
             // 

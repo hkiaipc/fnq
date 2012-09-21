@@ -7,16 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BXDB;
+using Xdgk.Common;
 
 namespace fnbx
 {
     public partial class frmFlowList : Form
     {
+
+        #region frmFlowList
         public frmFlowList()
         {
             InitializeComponent();
         }
+        #endregion //frmFlowList
 
+        #region AddFL
         /// <summary>
         /// 
         /// </summary>
@@ -45,7 +50,9 @@ namespace fnbx
             }
             this.Fill();
         }
+        #endregion //AddFL
 
+        #region frmMTList_Load
         /// <summary>
         /// 
         /// </summary>
@@ -53,22 +60,56 @@ namespace fnbx
         /// <param name="e"></param>
         private void frmMTList_Load(object sender, EventArgs e)
         {
+            SetDataGtidViewColumns();
             Fill();
+            
         }
+        #endregion //frmMTList_Load
 
+        #region SetDataGtidViewColumns
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetDataGtidViewColumns()
+        {
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.Columns.Clear();
+
+            string[] displayColumns = App.Default.Config.DisplayFlowColumns;
+
+            DGVColumnConfigCollection dgvccs = DataGirdviewColumnProvider.GetFlowDgvColumnConfigs(displayColumns);
+            foreach (DGVColumnConfig item in dgvccs)
+            {
+                DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+                col.DataPropertyName = item.DataPropertyName;
+                col.HeaderText = item.Text;
+                col.DefaultCellStyle.Format = item.Format;
+
+                this.dataGridView1.Columns.Add(col);
+            }
+        }
+        #endregion //SetDataGtidViewColumns
+
+        #region Fill
         /// <summary>
         /// 
         /// </summary>
         private void Fill()
         {
+            //this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Programmatic;
+
             BxdbDataContext dc = DBFactory.GetBxdbDataContext();
 
             var r = from q in dc.tblFlow
                     select q;
 
-            this.dataGridView1.DataSource = r;
+            F[] fs =FlowConverter.Convert(r.ToArray());
+            DataTable tbl = FlowConverter.Convert(fs);
+            this.dataGridView1.DataSource = tbl;
         }
+        #endregion //Fill
 
+        #region CheckSelectedFlow
         /// <summary>
         /// 
         /// </summary>
@@ -82,25 +123,29 @@ namespace fnbx
             }
             return fl != null;
         }
+        #endregion //CheckSelectedFlow
 
+        #region GetSelectedFlow
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private tblFlow GetSelectedFlow()
         {
             if (this.dataGridView1.SelectedCells.Count > 0)
             {
                 int index = this.dataGridView1.SelectedCells[0].RowIndex;
-                tblFlow mt = (tblFlow)this.dataGridView1.Rows[index].DataBoundItem;
-                return mt;
+                tblFlow fl = (tblFlow)((DataRowView)(this.dataGridView1.Rows[index].DataBoundItem))["TblFlow"];
+                return fl;
             }
             else
             {
                 return null;
             }
         }
+        #endregion //GetSelectedFlow
 
      
-
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -111,6 +156,7 @@ namespace fnbx
 
         }
 
+        #region 新建
         /// <summary>
         /// 
         /// </summary>
@@ -120,7 +166,9 @@ namespace fnbx
         {
             AddFL();
         }
+        #endregion //新建
 
+        #region tsbView_Click
         /// <summary>
         /// 
         /// </summary>
@@ -130,7 +178,9 @@ namespace fnbx
         {
             ViewFL();
         }
+        #endregion //tsbView_Click
 
+        #region ViewFL
         /// <summary>
         /// 
         /// </summary>
@@ -152,7 +202,9 @@ namespace fnbx
                 Fill();
             }
         }
+        #endregion //ViewFL
 
+        #region tsbDelete_Click
         /// <summary>
         /// 
         /// </summary>
@@ -162,7 +214,9 @@ namespace fnbx
         {
             this.DeleteFL();
         }
+        #endregion //tsbDelete_Click
 
+        #region DeleteFL
         /// <summary>
         /// 
         /// </summary>
@@ -214,7 +268,9 @@ namespace fnbx
                 Fill();
             }
         }
+        #endregion //DeleteFL
 
+        #region tsbFind_Click
         /// <summary>
         /// 
         /// </summary>
@@ -223,6 +279,13 @@ namespace fnbx
         private void tsbFind_Click(object sender, EventArgs e)
         {
             NUnit.UiKit.UserMessage.DisplayFailure("NotImplemented");
+
+            if (new frmColumnSelect().ShowDialog() == DialogResult.OK)
+            {
+                this.SetDataGtidViewColumns();
+                this.Fill();
+            }
         }
+        #endregion //tsbFind_Click
     }
 }

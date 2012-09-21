@@ -24,6 +24,8 @@ namespace fnbx
             {
                 Application.Run(new frmMain());
             }
+
+            App.Default.Config.Save("config.xml");
         }
     }
 }

@@ -63,13 +63,25 @@ namespace fnbx
         {
             return Right.GetRight(LoginOperator.tblRight.rt_value);
         }
-    }
 
-    //static class AAA
-    //{
-    //    public static void F(this string o, string p )
-    //    {
-    //        Console.WriteLine(o + p);
-    //    }
-    //}
+        public Config Config
+        {
+            get
+            {
+                if (_config == null)
+                {
+                    try
+                    {
+                        _config = (Config)Config.Load(typeof(Config), "config.xml");
+                    }
+                    catch (Exception ex)
+                    {
+                        NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+                        _config = new Config();
+                    }
+                }
+                return _config;
+            }
+        } private Config _config;
+    }
 }

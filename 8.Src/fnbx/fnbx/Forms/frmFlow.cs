@@ -66,13 +66,18 @@ namespace fnbx
         private void frmFlow_Load(object sender, EventArgs e)
         {
             UpdateToolbarStyles();
+            UpdateModifyFlowStatusButtonStyle();
 
+            this.timer1.Start();
+            SelectLastTabPage();
+
+        }
+
+        private void UpdateModifyFlowStatusButtonStyle()
+        {
             Right rt = App.Default.GetLoginOperatorRight();
             bool b = rt.CanModifyFLStatus(this.FL.GetFLStatus());
             this.tssModifyStatus.Enabled = b;
-
-            this.timer1.Start();
-
         }
 
         /// <summary>
@@ -228,6 +233,10 @@ namespace fnbx
 
                 tblFlow updateFL = db.tblFlow.First(c => c.fl_id == old.fl_id);
                 updateFL.SetFLStatus(old.GetFLStatus());
+                if (updateFL.GetFLStatus() == FLStatus.Closed)
+                {
+                    updateFL.SetFLStatus(FLStatus.Finally);
+                }
                 updateFL.tblIntroducer = ucIt1.UpdateIntroducer(db, updateFL.tblIntroducer);
                 //updateFL.tblIntroducer = ucIt1.GetIntroducer(db);
                 //updateFL.tblMaintain = ucMt1.GetMaintain(db);
@@ -336,8 +345,9 @@ namespace fnbx
             }
 
             frmTMStatusModify f = new frmTMStatusModify(this.FL.GetFLStatus());
+            DialogResult dr = f.ShowDialog();
 
-            if (f.ShowDialog() == DialogResult.OK)
+            if (dr == DialogResult.OK)
             {
                 FLStatus newStatus = f.NewMtStatus;
 
@@ -355,8 +365,6 @@ namespace fnbx
                     this.ucRc1.Rc = this.FL.tblReceive;
                     SetReplyPageStyle();
                     FL.SetFLStatus(newStatus);
-
-                    this.RefreshFLStatusBar();
                 }
 
                 if (newStatus == FLStatus.Completed)
@@ -368,16 +376,17 @@ namespace fnbx
                     this.FL.SetFLStatus(newStatus);
 
                     this.ucRp1.Reply = rp;
-                    this.RefreshFLStatusBar();
                 }
 
                 if (newStatus == FLStatus.Closed)
                 {
                     this.FL.SetFLStatus(newStatus);
-                    this.RefreshFLStatusBar();
                 }
 
-                UpdateToolbarStyles();
+                this.RefreshFLStatusBar();
+                this.UpdateToolbarStyles();
+                this.UpdateModifyFlowStatusButtonStyle();
+                this.SelectLastTabPage();
             }
         }
         #endregion //tsbModifyStatus_Click
@@ -491,6 +500,7 @@ namespace fnbx
         }
         #endregion //tssModifyStatus_Click
 
+        #region frmFlow_FormClosing
         /// <summary>
         /// 
         /// </summary>
@@ -500,6 +510,16 @@ namespace fnbx
         {
             this.timer1.Stop();
         }
+        #endregion //frmFlow_FormClosing
 
+        #region SelectLastTabPage
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SelectLastTabPage()
+        {
+            this.tabControl1.SelectedTab = this.tabControl1.TabPages[this.tabControl1.TabPages.Count - 1];
+        }
+        #endregion //SelectLastTabPage
     }
 }

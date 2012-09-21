@@ -94,5 +94,9 @@ namespace fnbx
                 this.RefreshLoginStatus();
             }
         }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

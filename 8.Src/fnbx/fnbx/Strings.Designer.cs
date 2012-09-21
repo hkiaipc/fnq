@@ -97,11 +97,29 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        internal static string CreateDT {
+            get {
+                return ResourceManager.GetString("CreateDT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 当前状态: {0} 的本地化字符串。
         /// </summary>
         internal static string CurrentFLStatus {
             get {
                 return ResourceManager.GetString("CurrentFLStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 状态 的本地化字符串。
+        /// </summary>
+        internal static string FlStatus {
+            get {
+                return ResourceManager.GetString("FlStatus", resourceCulture);
             }
         }
         
@@ -115,11 +133,29 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 地址 的本地化字符串。
+        /// </summary>
+        internal static string ItAddress {
+            get {
+                return ResourceManager.GetString("ItAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 地址不能为空 的本地化字符串。
         /// </summary>
         internal static string ITAddressEmpty {
             get {
                 return ResourceManager.GetString("ITAddressEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 联系人 的本地化字符串。
+        /// </summary>
+        internal static string ItName {
+            get {
+                return ResourceManager.GetString("ItName", resourceCulture);
             }
         }
         
@@ -133,11 +169,38 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 电话 的本地化字符串。
+        /// </summary>
+        internal static string ItPhone {
+            get {
+                return ResourceManager.GetString("ItPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 电话不能为空 的本地化字符串。
         /// </summary>
         internal static string ITPhoneEmpty {
             get {
                 return ResourceManager.GetString("ITPhoneEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        internal static string ItRemark {
+            get {
+                return ResourceManager.GetString("ItRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 维修时间 的本地化字符串。
+        /// </summary>
+        internal static string MtBeginDT {
+            get {
+                return ResourceManager.GetString("MtBeginDT", resourceCulture);
             }
         }
         
@@ -151,11 +214,65 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 维修内容 的本地化字符串。
+        /// </summary>
+        internal static string MtContent {
+            get {
+                return ResourceManager.GetString("MtContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 内容不能为空 的本地化字符串。
         /// </summary>
         internal static string MTContentEmpty {
             get {
                 return ResourceManager.GetString("MTContentEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 维修地点 的本地化字符串。
+        /// </summary>
+        internal static string MtLocation {
+            get {
+                return ResourceManager.GetString("MtLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 接线员 的本地化字符串。
+        /// </summary>
+        internal static string MtOperatorName {
+            get {
+                return ResourceManager.GetString("MtOperatorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 报修时间 的本地化字符串。
+        /// </summary>
+        internal static string MtPoseDT {
+            get {
+                return ResourceManager.GetString("MtPoseDT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        internal static string MtRemark {
+            get {
+                return ResourceManager.GetString("MtRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 超时时间 的本地化字符串。
+        /// </summary>
+        internal static string MtTimeoutDT {
+            get {
+                return ResourceManager.GetString("MtTimeoutDT", resourceCulture);
             }
         }
         
@@ -169,6 +286,24 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 接单时间 的本地化字符串。
+        /// </summary>
+        internal static string RcDT {
+            get {
+                return ResourceManager.GetString("RcDT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 接单员 的本地化字符串。
+        /// </summary>
+        internal static string RcOperatorName {
+            get {
+                return ResourceManager.GetString("RcOperatorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 距离超时时间还有 {0} 的本地化字符串。
         /// </summary>
         internal static string RemainTimespan {
@@ -178,11 +313,29 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 完成内容 的本地化字符串。
+        /// </summary>
+        internal static string RpContent {
+            get {
+                return ResourceManager.GetString("RpContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 完成内容不能为空 的本地化字符串。
         /// </summary>
         internal static string RPContentEmpty {
             get {
                 return ResourceManager.GetString("RPContentEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 完成时间 的本地化字符串。
+        /// </summary>
+        internal static string RpEndDT {
+            get {
+                return ResourceManager.GetString("RpEndDT", resourceCulture);
             }
         }
         
@@ -201,6 +354,24 @@ namespace fnbx {
         internal static string RPEndDTMustLessTimeoutDT {
             get {
                 return ResourceManager.GetString("RPEndDTMustLessTimeoutDT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        internal static string RpRemark {
+            get {
+                return ResourceManager.GetString("RpRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 执行人 的本地化字符串。
+        /// </summary>
+        internal static string RpWorker {
+            get {
+                return ResourceManager.GetString("RpWorker", resourceCulture);
             }
         }
         

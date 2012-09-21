@@ -47,7 +47,6 @@ namespace fnbx
         [Text("新建")]
         New = 0,
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -78,6 +77,13 @@ namespace fnbx
         /// </summary>
         [Text("已超时")]
         Timeouted = 60,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Text("已关闭")]
+        Finally = 70,
+
     }
 
 }
