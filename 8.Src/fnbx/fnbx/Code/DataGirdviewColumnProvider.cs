@@ -34,6 +34,7 @@ namespace fnbx
                     new DGVColumnConfig("MtLocation", "", Strings.MtLocation),
                     new DGVColumnConfig("MtContent", "", Strings.MtContent),
                     new DGVColumnConfig("MtRemark", "", Strings.MtRemark),
+                    new DGVColumnConfig("MtLevel", "", Strings.MtLevel),
                     new DGVColumnConfig("MtOperatorName", "", Strings.MtOperatorName),
                     new DGVColumnConfig("RcDT", "", Strings.RcDT),
                     new DGVColumnConfig("RcOperatorName", "", Strings.RcOperatorName),

@@ -232,6 +232,15 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 报修等级 的本地化字符串。
+        /// </summary>
+        internal static string MtLevel {
+            get {
+                return ResourceManager.GetString("MtLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 维修地点 的本地化字符串。
         /// </summary>
         internal static string MtLocation {

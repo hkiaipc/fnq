@@ -41,10 +41,6 @@ namespace fnbx
             frmFlow f = new frmFlow();
             f.FL = fl;
 
-            //frmMT f = new frmMT();
-            //f.Maintain = fl;
-            //f.AdeStatus = Xdgk.Common.ADEState.Add;
-
             if (f.ShowDialog() == DialogResult.OK)
             {
             }
@@ -103,9 +99,10 @@ namespace fnbx
             var r = from q in dc.tblFlow
                     select q;
 
-            F[] fs =FlowConverter.Convert(r.ToArray());
+            FlowData[] fs =FlowConverter.Convert(r.ToArray());
             DataTable tbl = FlowConverter.Convert(fs);
             this.dataGridView1.DataSource = tbl;
+
         }
         #endregion //Fill
 
@@ -287,5 +284,54 @@ namespace fnbx
             }
         }
         #endregion //tsbFind_Click
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            Console.WriteLine("dataGridView1_DataBindingComplete" + DateTime.Now );
+            foreach (DataGridViewRow rv in this.dataGridView1.Rows)
+            {
+                tblFlow flow = GetTblFlow(rv);
+                Color c = GetColor(flow.GetFLStatus());
+                rv.DefaultCellStyle.BackColor = c;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fLStatus"></param>
+        /// <returns></returns>
+        private Color GetColor(FLStatus fLStatus)
+        {
+            Color c = App.Default.Config.StatusColors.GetColor(fLStatus);
+            return c;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        private tblFlow GetTblFlow(DataGridViewRow row)
+        {
+            DataRowView view = (DataRowView)row.DataBoundItem;
+            tblFlow flow = (tblFlow)view.Row["tblFlow"];
+            return flow;
+        }
     }
 }

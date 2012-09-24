@@ -237,12 +237,19 @@ namespace fnbx
                 {
                     updateFL.SetFLStatus(FLStatus.Finally);
                 }
-                updateFL.tblIntroducer = ucIt1.UpdateIntroducer(db, updateFL.tblIntroducer);
-                //updateFL.tblIntroducer = ucIt1.GetIntroducer(db);
-                //updateFL.tblMaintain = ucMt1.GetMaintain(db);
-                updateFL.tblMaintain = ucMt1.UpdateMaintain(db, updateFL.tblMaintain);
-                updateFL.tblReceive = ucRc1.UpdateReceive(db, updateFL.tblReceive);
-                updateFL.tblReply = ucRp1.UpdateReply(db, updateFL.tblReply);
+
+                FLStatus status = updateFL.GetFLStatus();
+                if (status == FLStatus.New || status == FLStatus.Created)
+                {
+                    updateFL.tblIntroducer = ucIt1.UpdateIntroducer(db, updateFL.tblIntroducer);
+                    updateFL.tblMaintain = ucMt1.UpdateMaintain(db, updateFL.tblMaintain);
+                }
+
+                if (status == FLStatus.Received || status == FLStatus.Completed)
+                {
+                    updateFL.tblReceive = ucRc1.UpdateReceive(db, updateFL.tblReceive);
+                    updateFL.tblReply = ucRp1.UpdateReply(db, updateFL.tblReply);
+                }
 
                 try
                 {
@@ -456,7 +463,10 @@ namespace fnbx
         /// <param name="e"></param>
         private void 打印PToolStripButton_Click(object sender, EventArgs e)
         {
-            NUnit.UiKit.UserMessage.DisplayFailure("NotImplemented");
+            //NUnit.UiKit.UserMessage.DisplayFailure("NotImplemented");
+            frmPrint f = new frmPrint();
+            f.FD = FlowConverter.Convert(this.FL);
+            f.ShowDialog();
         }
         #endregion //打印
 

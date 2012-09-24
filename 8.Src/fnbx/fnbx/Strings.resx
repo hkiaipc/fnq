@@ -240,4 +240,7 @@
   <data name="RpWorker" xml:space="preserve">
     <value>执行人</value>
   </data>
+  <data name="MtLevel" xml:space="preserve">
+    <value>报修等级</value>
+  </data>
 </root>

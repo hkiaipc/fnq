@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Windows.Forms;
 
 namespace fnbx
@@ -19,13 +18,15 @@ namespace fnbx
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            //new frmPrint().ShowDialog();
             frmLogin f = new frmLogin();
             if (f.ShowDialog() == DialogResult.OK)
             {
                 Application.Run(new frmMain());
             }
 
-            App.Default.Config.Save("config.xml");
+            string path = Path.Combine(Application.StartupPath, "config.xml");
+            App.Default.Config.Save(path);
         }
     }
 }

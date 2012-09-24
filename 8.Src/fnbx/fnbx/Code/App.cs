@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Forms;
+using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +66,9 @@ namespace fnbx
             return Right.GetRight(LoginOperator.tblRight.rt_value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Config Config
         {
             get
@@ -72,12 +77,18 @@ namespace fnbx
                 {
                     try
                     {
-                        _config = (Config)Config.Load(typeof(Config), "config.xml");
+                        string path = Path.Combine(Application.StartupPath, "config.xml");
+                        _config = (Config)Config.Load(typeof(Config), path);
+
                     }
                     catch (Exception ex)
                     {
                         NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
                         _config = new Config();
+                    }
+                    if (_config.StatusColors == null || _config.StatusColors.Count == 0)
+                    {
+                        _config.StatusColors = Config.GetDefaultStatusColors();
                     }
                 }
                 return _config;
