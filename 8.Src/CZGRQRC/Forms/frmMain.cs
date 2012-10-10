@@ -982,5 +982,32 @@ namespace CZGRQRC
             nf.MdiParent = this;
             return nf;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuTM_Click(object sender, EventArgs e)
+        {
+            frmTMCardManager f = GetTMCardManagerForm();
+            f.Show();
+            f.Activate();
+        }
+
+        private frmTMCardManager GetTMCardManagerForm()
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmTMCardManager)
+                {
+                    return (frmTMCardManager)f;
+                }
+            }
+
+            frmTMCardManager nf = new frmTMCardManager();
+            nf.MdiParent = this;
+            return nf;
+        }
     }
 }

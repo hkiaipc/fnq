@@ -138,7 +138,7 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteXGDataTable(string stationName, DateTime begin, DateTime end)
         {
-            string sql = "SELECT * FROM vXGData WHERE (Name = @n) AND (DT BETWEEN @b AND @e) ORDER BY DT";
+            string sql = "SELECT * FROM vXGData WHERE (StationName = @n) AND (DT >= @b AND DT < @e) ORDER BY DT";
             SqlCommand cmd = new SqlCommand(sql);
 
             SqlParameter p = null;
@@ -164,7 +164,7 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteXGDataTable(DateTime begin, DateTime end)
         {
-            string sql = "SELECT * FROM vXGData WHERE (DT BETWEEN @b AND @e) ORDER BY DT";
+            string sql = "SELECT * FROM vXGData WHERE (DT >= @b AND  DT < @e) ORDER BY DT";
             SqlCommand cmd = new SqlCommand(sql);
             SqlParameter p = new SqlParameter("b", begin);
             cmd.Parameters.Add(p);
@@ -1215,6 +1215,163 @@ namespace CZGRWEBDBI
             return ExecuteDataTable(cmd);   
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DBCard[] ExecuteTmDBCard()
+        {
+            DataTable tbl = ExecuteTmCardDataTable();
+            List<DBCard> list = new List<DBCard>();
+            foreach (DataRow row in tbl.Rows)
+            {
+                DBCard c = new DBCard();
+                c.CardID = Convert.ToInt32(row["CardID"]);
+                c.SN = row["sn"].ToString();
+                c.Person = row["person"].ToString();
+                c.Remark = row["remark"].ToString();
+                list.Add(c);
+            }
+            return list.ToArray();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DataTable ExecuteTmCardDataTable()
+        {
+            string s = "select * from tblCard order by Person";
+            return ExecuteDataTable(s);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sn"></param>
+        /// <param name="person"></param>
+        /// <param name="remark"></param>
+        public int InsertTmCard(string sn, string person, string remark)
+        {
+            string s = "insert into tblCard(sn, person, remark) values(@sn, @person, @remark); select @@identity";
+            SqlCommand cmd = new SqlCommand(s);
+            DBIBase.AddSqlParameter(cmd, "sn", sn);
+            DBIBase.AddSqlParameter(cmd, "person", person );
+            DBIBase.AddSqlParameter(cmd, "remark", remark );
+            object obj = ExecuteScalar(cmd);
+            return Convert.ToInt32(obj);
+        }
+
+
+        public void UpdateTmCard(int id, string sn, string person, string remark)
+        {
+            string s = "update tblCard Set sn = @sn, person = @person, remark = @remark where cardid = @id";
+            SqlCommand cmd = new SqlCommand(s);
+
+            DBIBase.AddSqlParameter(cmd, "sn", sn);
+            DBIBase.AddSqlParameter(cmd, "person", person );
+            DBIBase.AddSqlParameter(cmd, "remark", remark );
+            DBIBase.AddSqlParameter(cmd, "id", id);
+
+            this.ExecuteScalar(cmd);
+
+        }
+
+        public void DeleteTmCard(int id)
+        {
+            string s = string.Format("delete from tblCard where cardid = {0}",id);
+            ExecuteScalar(s);
+        }
+
+        // exist tmcard (sn )
+        //
+
+        public bool ExistTmCard(string sn, int ignoreID)
+        {
+            string s = string.Format("select count(*) from tblCard where sn = '{0}' and cardid <> {1}",
+                sn, ignoreID);
+
+            object obj = ExecuteScalar(s);
+            return Convert.ToInt32(obj) > 0;
+        }
+    }
+
+   public class DBCard     
+    {
+        #region Members
+        private string _sN;
+        private string _person;
+        private string _remark;
+        #endregion //Members
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DBCard()
+        {
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sn"></param>
+        /// <param name="person"></param>
+        /// <param name="remark"></param>
+        public DBCard(string sn, string person, string remark)
+        {
+            this.SN = sn;
+            Person = person;
+            Remark = remark;
+        }
+
+        #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        public int CardID
+        {
+            get { return _cardID; }
+            set { _cardID = value; }
+        } private int _cardID;
+
+        #region SN
+        /// <summary>
+        /// 获取或设置
+        /// </summary>
+        public string SN
+        {
+            get { return _sN; }
+            set { _sN = value; }
+        }
+        #endregion //SN
+
+        #region Person
+        /// <summary>
+        /// 获取或设置
+        /// </summary>
+        public string Person
+        {
+            get { return _person; }
+            set { _person = value; }
+        }
+        #endregion //Person
+
+        #region Remark
+        /// <summary>
+        /// 获取或设置
+        /// </summary>
+        public string Remark
+        {
+            get { return _remark; }
+            set { _remark = value; }
+        }
+        #endregion //Remark
+
+        #endregion //Properties
 
     }
 }

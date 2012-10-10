@@ -71,6 +71,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xdgk.Common, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GlobalAssembly\Xdgk.Common\Xdgk.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Xdgk.Common.Export, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\GlobalAssembly\Xdgk.Common.Export\Xdgk.Common.Export.dll</HintPath>
@@ -230,6 +234,11 @@
       <DependentUpon>frmPlanHeatItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PlanHeat\PlanHeatItem.cs" />
+    <Compile Include="Forms\TM\DBCard.cs" />
+    <Compile Include="Forms\TM\TMCardListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\TM\TMCardListViewItem.cs" />
     <Compile Include="GatherClass.cs" />
     <Compile Include="GRAlarmData.cs" />
     <Compile Include="GRAlarmDataCollection.cs" />
@@ -330,6 +339,10 @@
       <DependentUpon>frmPlanHeatItem.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TM\TMCardListView.resx">
+      <DependentUpon>TMCardListView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -338,6 +351,14 @@
     <EmbeddedResource Include="strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>strings1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TM\frmTMCardItem.resx">
+      <DependentUpon>frmTMCardItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TM\frmTMCardManager.resx">
+      <DependentUpon>frmTMCardManager.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\UCAlarm.resx">
@@ -407,6 +428,15 @@
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
     <Compile Include="T.cs" />
+    <Compile Include="Forms\TM\frmTMCardItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TM\frmTMCardManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TM\frmTMCardManager.Designer.cs">
+      <DependentUpon>frmTMCardManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\UCCurveSelectCondition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,10 +489,6 @@
     <Compile Include="WavePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\C3\8.Src\Xdgk.Common\Xdgk.Common.csproj">
-      <Project>{34919A7B-E237-4412-90B0-6BB2D4DCBF8E}</Project>
-      <Name>Xdgk.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CZGRCommon\CZGRCommon.csproj">
       <Project>{4B9EE343-54D3-4851-AF24-EA7CD946F846}</Project>
       <Name>CZGRCommon</Name>

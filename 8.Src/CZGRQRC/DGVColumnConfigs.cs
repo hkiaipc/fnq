@@ -93,8 +93,8 @@ namespace CZGRQRC
                 if (_xg == null)
                 {
                     _xg = new DGVColumnConfigCollection();
-                    _xg.Add(new DGVColumnConfig("Street", noFormat, "街道"));
-                    _xg.Add(new DGVColumnConfig("Name", noFormat, "站名"));
+                    //_xg.Add(new DGVColumnConfig("Street", noFormat, "街道"));
+                    _xg.Add(new DGVColumnConfig("StationName", noFormat, "站名"));
                     _xg.Add(new DGVColumnConfig("DT", noFormat, "时间"));
                     _xg.Add(new DGVColumnConfig("SN", noFormat, "卡号"));
                     _xg.Add(new DGVColumnConfig("Person", noFormat, "人员"));

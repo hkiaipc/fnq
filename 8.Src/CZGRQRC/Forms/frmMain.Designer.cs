@@ -33,6 +33,7 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.mnuFile = new System.Windows.Forms.MenuItem();
             this.mnuExit = new System.Windows.Forms.MenuItem();
+            this.mnuTM = new System.Windows.Forms.MenuItem();
             this.mnuView = new System.Windows.Forms.MenuItem();
             this.mnuToolbar = new System.Windows.Forms.MenuItem();
             this.mnuStatusbar = new System.Windows.Forms.MenuItem();
@@ -83,6 +84,7 @@
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ucAlarm1 = new CZGRQRC.UC.UCAlarm();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -101,14 +103,22 @@
             // 
             this.mnuFile.Index = 0;
             this.mnuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mnuTM,
+            this.menuItem3,
             this.mnuExit});
             this.mnuFile.Text = "文件(&F)";
             // 
             // mnuExit
             // 
-            this.mnuExit.Index = 0;
+            this.mnuExit.Index = 2;
             this.mnuExit.Text = "退出(&X)";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
+            // mnuTM
+            // 
+            this.mnuTM.Index = 0;
+            this.mnuTM.Text = "TM卡管理(&C)";
+            this.mnuTM.Click += new System.EventHandler(this.mnuTM_Click);
             // 
             // mnuView
             // 
@@ -499,6 +509,11 @@
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
             // 
+            // menuItem3
+            // 
+            this.menuItem3.Index = 1;
+            this.menuItem3.Text = "-";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -588,6 +603,8 @@
         private System.Windows.Forms.MenuItem mnuEMCurve;
         private System.Windows.Forms.MenuItem mnuRecruit;
         private System.Windows.Forms.MenuItem mnuRecruitCurve;
+        private System.Windows.Forms.MenuItem mnuTM;
+        private System.Windows.Forms.MenuItem menuItem3;
     }
 }
 
