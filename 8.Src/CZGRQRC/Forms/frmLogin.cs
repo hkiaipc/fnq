@@ -170,6 +170,16 @@ namespace FNGRQRC
                 this.txtPwd.Text);
             if (b)
             {
+                int id, role;
+                CZGRQRCApp.Default.DBI.GetUserIDAndRole(this.txtUser.Text, out id, out role);
+
+                User u = new User();
+                u.Name = this.txtUser.Text;
+                u.Password = this.txtPwd.Text;
+                u.RightEnum = (RightEnum)role;
+
+                CZGRQRCApp.Default.LoginedUser = u;
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
