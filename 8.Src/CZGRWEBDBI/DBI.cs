@@ -1294,6 +1294,12 @@ namespace CZGRWEBDBI
             object obj = ExecuteScalar(s);
             return Convert.ToInt32(obj) > 0;
         }
+
+        public string GetDeviceExtend(int deviceID)
+        {
+            string s = string.Format("select DeviceExtend from tblDevice where deviceid = {0}", deviceID);
+            return ExecuteScalar(s).ToString();
+        }
     }
 
    public class DBCard     

@@ -612,6 +612,22 @@ namespace FNGRQRC
         }
         #endregion //btnHistoryData_Click
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private int GetSelectedGRDeviceID()
+        {
+            if (this.dataGridView1.SelectedCells.Count > 0)
+            {
+                int rowIndex = this.dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow row = this.dataGridView1.Rows[rowIndex];
+                int id = (int)((DataRowView)row.DataBoundItem)["DeviceID"];
+                return id;
+            }
+            return -1;
+        }
+
         #region GetSelectedGRDeviceName
         /// <summary>
         /// 
@@ -766,9 +782,14 @@ namespace FNGRQRC
         private void PopupGRDataForm(DataGridViewRow dgvrow)
         {
             string displayName = GetSelectedGRDeviceName();
-            if (displayName != null)
+            int deviceID = GetSelectedGRDeviceID();
+            if ( deviceID > 0 )
             {
-                if (IsZGStation(displayName))
+
+            //if (displayName != null)
+            //{
+                //if (IsZGStation(displayName))
+                if (IsZGStation(deviceID))
                 {
                     frmGRFlowZG.PopupGRFlowZGForm(displayName, this);
                 }
@@ -780,6 +801,44 @@ namespace FNGRQRC
             }
         }
         #endregion //PopupGRDataForm
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deviceID"></param>
+        /// <returns></returns>
+        private bool IsZGStation(int deviceID)
+        {
+            string extend = CZGRQRCApp.Default.DBI.GetDeviceExtend(deviceID);
+            KeyValueCollection keyValues = Split(extend);
+            KeyValue r = keyValues.Find("HtmMode");
+            if (r != null)
+            {
+                return StringHelper.Equal(r.Value.ToString (),"Direct");
+            }
+                return false;
+        }
+
+        private KeyValueCollection Split(string config)
+        {
+            KeyValueCollection r = new KeyValueCollection();
+            string[] kvArray = config.Split(';');
+            foreach (string kv in kvArray)
+            {
+                string[] k_v = kv.Split('=');
+                if (k_v.Length == 2)
+                {
+                    string k = k_v[0];
+                    string v = k_v[1];
+
+                    KeyValue newkv = new KeyValue(k, v);
+                    r.Add(newkv);
+                }
+            }
+            return r;
+        }
 
         /// <summary>
         /// 
