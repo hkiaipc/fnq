@@ -7,12 +7,12 @@ using System.Xml;
 
 namespace FNGRQRC
 {
-
     /// <summary>
     /// 
     /// </summary>
     public class CZGRQRCApp
     {
+        #region Default
         /// <summary>
         /// 
         /// </summary>
@@ -27,7 +27,9 @@ namespace FNGRQRC
                 return s_default;
             }
         } static private CZGRQRCApp s_default;
+        #endregion //Default
 
+        #region Init
         /// <summary>
         /// 
         /// </summary>
@@ -35,7 +37,9 @@ namespace FNGRQRC
         {
             s_default = new CZGRQRCApp();
         }
+        #endregion //Init
 
+        #region CZGRQRCApp
         /// <summary>
         /// 
         /// </summary>
@@ -43,7 +47,9 @@ namespace FNGRQRC
         {
             _dbi = new CZGRWEBDBI.DBI(GetConnectionString());
         }
+        #endregion //CZGRQRCApp
 
+        #region GetConnectionString
         /// <summary>
         /// 
         /// </summary>
@@ -68,7 +74,9 @@ namespace FNGRQRC
             }
             throw new Exception("not find 'connection.connection_string' config item");
         }
+        #endregion //GetConnectionString
 
+        #region DBI
         /// <summary>
         /// 
         /// </summary>
@@ -76,7 +84,9 @@ namespace FNGRQRC
         {
             get { return _dbi; }
         } private CZGRWEBDBI.DBI _dbi;
+        #endregion //DBI
 
+        #region AlarmDefineCollection
         /// <summary>
         /// 
         /// </summary>
@@ -87,42 +97,9 @@ namespace FNGRQRC
                 return Config.Default.AlarmDefineCollection;
             }
         } 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //public ComparatorCollection ComparatorCollection
-        //{
-        //    get
-        //    {
-        //        if (_comparatorCollection == null)
-        //        {
-        //            _comparatorCollection = new ComparatorCollection();
-        //            foreach (CompareValues cv in Config.Default.CompareValuesCollection)
-        //            {
-        //                Comparator c = CreateComparator(cv);
-        //                _comparatorCollection.Add(c);
-        //            }
-        //        }
-        //        return _comparatorCollection;
-        //    }
-        //} private ComparatorCollection _comparatorCollection;
+        #endregion //AlarmDefineCollection
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="cv"></param>
-        ///// <returns></returns>
-        //private Comparator CreateComparator(CompareValues cv)
-        //{
-        //    if (cv is RangeValues)
-        //    {
-        //        RangeValues rv = cv as RangeValues;
-        //        return new RangeComparator(rv);
-        //    }
-        //    throw new NotImplementedException("cannot create comparator by " + cv.GetType().Name);
-        //}
-
-
+        #region Renderer
         /// <summary>
         /// 
         /// </summary>
@@ -137,7 +114,9 @@ namespace FNGRQRC
                 return _renderer;
             }
         }private Renderer _renderer;
+        #endregion //Renderer
 
+        #region CreateRenderer
         /// <summary>
         /// 
         /// </summary>
@@ -151,8 +130,9 @@ namespace FNGRQRC
                 return new BackColorRenderer();
             throw new NotImplementedException("cannot create renderer by " + rt);
         }
+        #endregion //CreateRenderer
 
-
+        #region UCAlarm
         /// <summary>
         /// 
         /// </summary>
@@ -163,7 +143,9 @@ namespace FNGRQRC
                 return this.frmMain.UCAlarm;
             }
         }
+        #endregion //UCAlarm
 
+        #region frmMain
         /// <summary>
         /// 
         /// </summary>
@@ -172,7 +154,9 @@ namespace FNGRQRC
             get { return _frmMain; }
             set { _frmMain = value; }
         } private frmMain _frmMain;
+        #endregion //frmMain
 
+        #region ZGStationList
         /// <summary>
         /// 
         /// </summary>
@@ -187,9 +171,28 @@ namespace FNGRQRC
                 return _zgstationlist;
             }
         } private ZGStationList _zgstationlist;
+        #endregion //ZGStationList
+
+        #region LoginedUser
+        /// <summary>
+        /// 
+        /// </summary>
+        public User LoginedUser
+        {
+            get
+            {
+                return _loginedUser;
+            }
+            set
+            {
+                _loginedUser = value;
+            }
+        } private User _loginedUser;
+        #endregion //LoginedUser
 
     }
 
+    #region ZGStationList
     /// <summary>
     /// 
     /// </summary>
@@ -230,4 +233,5 @@ namespace FNGRQRC
             return false; 
         }
     }
+    #endregion //ZGStationList
 }

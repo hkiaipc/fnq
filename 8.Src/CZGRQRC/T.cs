@@ -9,13 +9,13 @@ namespace FNGRQRC
     /// <summary>
     /// 
     /// </summary>
-    public class T
+    public class MyTimer
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="timeout"></param>
-        public T(TimeSpan timeout)
+        public MyTimer(TimeSpan timeout)
         {
             this.TimeOut = timeout;
         }

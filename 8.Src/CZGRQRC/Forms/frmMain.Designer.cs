@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.mnuFile = new System.Windows.Forms.MenuItem();
+            this.mnuUserManager = new System.Windows.Forms.MenuItem();
             this.mnuTM = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.mnuExit = new System.Windows.Forms.MenuItem();
@@ -103,25 +104,32 @@
             // 
             this.mnuFile.Index = 0;
             this.mnuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mnuUserManager,
             this.mnuTM,
             this.menuItem3,
             this.mnuExit});
             this.mnuFile.Text = "文件(&F)";
             // 
+            // mnuUserManager
+            // 
+            this.mnuUserManager.Index = 0;
+            this.mnuUserManager.Text = "用户管理(&U)";
+            this.mnuUserManager.Click += new System.EventHandler(this.mnuUserManager_Click);
+            // 
             // mnuTM
             // 
-            this.mnuTM.Index = 0;
+            this.mnuTM.Index = 1;
             this.mnuTM.Text = "TM卡管理(&C)";
             this.mnuTM.Click += new System.EventHandler(this.mnuTM_Click);
             // 
             // menuItem3
             // 
-            this.menuItem3.Index = 1;
+            this.menuItem3.Index = 2;
             this.menuItem3.Text = "-";
             // 
             // mnuExit
             // 
-            this.mnuExit.Index = 2;
+            this.mnuExit.Index = 3;
             this.mnuExit.Text = "退出(&X)";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -138,7 +146,7 @@
             // mnuToolbar
             // 
             this.mnuToolbar.Index = 0;
-            this.mnuToolbar.Text = "工具栏(&T)";
+            this.mnuToolbar.Text = "工具栏(&MyTimer)";
             this.mnuToolbar.Click += new System.EventHandler(this.mnuToolbar_Click);
             // 
             // mnuStatusbar
@@ -257,7 +265,7 @@
             // mnuTempCurve
             // 
             this.mnuTempCurve.Index = 0;
-            this.mnuTempCurve.Text = "温度曲线(&T)...";
+            this.mnuTempCurve.Text = "温度曲线(&MyTimer)...";
             this.mnuTempCurve.Click += new System.EventHandler(this.mnuTempCurve_Click);
             // 
             // mnuPressCurve
@@ -341,7 +349,7 @@
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 348);
+            this.statusBar1.Location = new System.Drawing.Point(0, 148);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.statusBarPanel1});
@@ -500,7 +508,7 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 239);
+            this.splitter1.Location = new System.Drawing.Point(0, 39);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(838, 4);
             this.splitter1.TabIndex = 11;
@@ -509,7 +517,7 @@
             // ucAlarm1
             // 
             this.ucAlarm1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucAlarm1.Location = new System.Drawing.Point(0, 243);
+            this.ucAlarm1.Location = new System.Drawing.Point(0, 43);
             this.ucAlarm1.Name = "ucAlarm1";
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
@@ -519,7 +527,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(838, 370);
+            this.ClientSize = new System.Drawing.Size(838, 170);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ucAlarm1);
             this.Controls.Add(this.toolStrip1);
@@ -604,6 +612,7 @@
         private System.Windows.Forms.MenuItem mnuRecruitCurve;
         private System.Windows.Forms.MenuItem mnuTM;
         private System.Windows.Forms.MenuItem menuItem3;
+        private System.Windows.Forms.MenuItem mnuUserManager;
     }
 }
 

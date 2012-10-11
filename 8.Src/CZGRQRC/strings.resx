@@ -195,6 +195,12 @@
   <data name="OT" xml:space="preserve">
     <value>室外温度</value>
   </data>
+  <data name="PasswordDiff" xml:space="preserve">
+    <value>密码不一致</value>
+  </data>
+  <data name="PasswordEmpty" xml:space="preserve">
+    <value>密码不能为空</value>
+  </data>
   <data name="Press" xml:space="preserve">
     <value>压力</value>
   </data>
@@ -216,6 +222,9 @@
   <data name="Stop" xml:space="preserve">
     <value>停止</value>
   </data>
+  <data name="SureDelete" xml:space="preserve">
+    <value>确定删除吗?</value>
+  </data>
   <data name="TempCurve" xml:space="preserve">
     <value>温度曲线</value>
   </data>
@@ -224,6 +233,9 @@
   </data>
   <data name="Time" xml:space="preserve">
     <value>时间</value>
+  </data>
+  <data name="UserEmpty" xml:space="preserve">
+    <value>用户名不能为空</value>
   </data>
   <data name="XGData" xml:space="preserve">
     <value>巡更数据</value>

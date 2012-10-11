@@ -1009,5 +1009,28 @@ namespace FNGRQRC
             nf.MdiParent = this;
             return nf;
         }
+
+        private frmUserManager GetUserManagerForm()
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmUserManager )
+                {
+                    return (frmUserManager )f;
+                }
+            }
+
+            frmUserManager  nf = new frmUserManager ();
+            nf.MdiParent = this;
+            return nf;
+
+        }
+
+        private void mnuUserManager_Click(object sender, EventArgs e)
+        {
+            frmUserManager f = GetUserManagerForm();
+            f.Show();
+            f.Activate();
+        }
     }
 }

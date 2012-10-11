@@ -326,9 +326,15 @@ namespace CZGRWEBDBI
         public bool CanLogin(string user, string password)
         {
             user = user.Trim();
-            string sql = string.Format("select count(*) from tblUser where [Name] ='{0}' and Password = '{1}'", 
-                user, password);
-            int n = Convert.ToInt32(ExecuteScalar(sql));
+            //string sql = string.Format(
+            string sql = "select count(*) from tblUser where [Name] =@n and Password = @p";
+                //user, password);
+
+            SqlCommand cmd = new SqlCommand(sql);
+            AddSqlParameter(cmd, "n", user);
+            AddSqlParameter(cmd, "p", password);
+
+            int n = Convert.ToInt32(ExecuteScalar(cmd));
             return n != 0;
         }
         #endregion //
@@ -565,13 +571,19 @@ namespace CZGRWEBDBI
         /// </summary>
         /// <param name="_userID"></param>
         /// <param name="newPwd"></param>
-        public void UpdatePassword(int userID, string newPwd)
+        public void UpdatePassword(int userID, string name, string newPwd, int role)
         {
-            string s = "update tblUser Set password = @p where userid = @userid";
+            string s = "update tblUser Set Name = @n, Role = @r, password = @p where userid = @userid";
             SqlCommand cmd = new SqlCommand(s);
             SqlParameter p = null;
 
+            p = new SqlParameter("n", name);
+            cmd.Parameters.Add(p);
+
             p = new SqlParameter("p", newPwd);
+            cmd.Parameters.Add(p);
+
+            p = new SqlParameter("r", role );
             cmd.Parameters.Add(p);
 
             p = new SqlParameter("userid", userID);
@@ -594,6 +606,17 @@ namespace CZGRWEBDBI
 
             this.ExecuteScalar(cmd);
         }
+
+        public void DeleteUser(int userID)
+        {
+            string s = "delete from tblUser where UserID= @id";
+            SqlCommand cmd = new SqlCommand(s);
+            cmd.Parameters.Add(new SqlParameter("id", userID));
+
+            this.ExecuteScalar(cmd);
+        }
+
+
         #endregion //DeleteUser
 
         #region ExecuteGRAlarmDataTable

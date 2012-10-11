@@ -36,10 +36,10 @@ namespace FNGRQRC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //frmLogin f = new frmLogin();
-            //DialogResult dr = f.ShowDialog();
-            //if (dr != DialogResult.OK)
-                //return;
+            frmLogin f = new frmLogin();
+            DialogResult dr = f.ShowDialog();
+            if (dr != DialogResult.OK)
+                return;
 
             frmMain frmmain = new frmMain(cmdLineOpt);
             CZGRQRCApp.Default.frmMain = frmmain;

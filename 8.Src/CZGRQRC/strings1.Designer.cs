@@ -295,6 +295,24 @@ namespace FNGRQRC {
         }
         
         /// <summary>
+        ///   查找类似 密码不一致 的本地化字符串。
+        /// </summary>
+        internal static string PasswordDiff {
+            get {
+                return ResourceManager.GetString("PasswordDiff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码不能为空 的本地化字符串。
+        /// </summary>
+        internal static string PasswordEmpty {
+            get {
+                return ResourceManager.GetString("PasswordEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 压力 的本地化字符串。
         /// </summary>
         internal static string Press {
@@ -358,6 +376,15 @@ namespace FNGRQRC {
         }
         
         /// <summary>
+        ///   查找类似 确定删除吗? 的本地化字符串。
+        /// </summary>
+        internal static string SureDelete {
+            get {
+                return ResourceManager.GetString("SureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 温度曲线 的本地化字符串。
         /// </summary>
         internal static string TempCurve {
@@ -381,6 +408,15 @@ namespace FNGRQRC {
         internal static string Time {
             get {
                 return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户名不能为空 的本地化字符串。
+        /// </summary>
+        internal static string UserEmpty {
+            get {
+                return ResourceManager.GetString("UserEmpty", resourceCulture);
             }
         }
         

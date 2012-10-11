@@ -27,7 +27,7 @@ namespace FNGRQRC
         /// <summary>
         /// 
         /// </summary>
-        private T _t = new T(TimeSpan.FromSeconds(10));
+        private MyTimer _t = new MyTimer(TimeSpan.FromSeconds(10));
 
         #region frmGRDataLast
         /// <summary>

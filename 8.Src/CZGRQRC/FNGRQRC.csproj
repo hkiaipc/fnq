@@ -239,6 +239,18 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\TM\TMCardListViewItem.cs" />
+    <Compile Include="Forms\frmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserManager.Designer.cs">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="GatherClass.cs" />
     <Compile Include="GRAlarmData.cs" />
     <Compile Include="GRAlarmDataCollection.cs" />
@@ -341,6 +353,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TM\TMCardListView.resx">
       <DependentUpon>TMCardListView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserManager.resx">
+      <DependentUpon>frmUserManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -485,6 +505,7 @@
     <Compile Include="UC\UCSelectCondition.Designer.cs">
       <DependentUpon>UCSelectCondition.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="Utility\DataGridViewColumnFactory.cs" />
     <Compile Include="WavePlayer.cs" />
   </ItemGroup>
@@ -521,9 +542,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\dbconfig.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Configs\zgstation.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="doc\History.txt" />
