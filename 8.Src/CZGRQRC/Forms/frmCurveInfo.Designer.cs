@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmCurveInfo
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucCurveSelectCondition1 = new CZGRQRC.UCCurveSelectCondition();
+            this.ucCurveSelectCondition1 = new FNGRQRC.UCCurveSelectCondition();
             this.SuspendLayout();
             // 
             // okButton

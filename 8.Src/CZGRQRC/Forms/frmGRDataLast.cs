@@ -10,7 +10,7 @@ using Xdgk.Common;
 using CZGRCommon;
 using System.IO;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 
@@ -63,7 +63,7 @@ namespace CZGRQRC
             c.Width = 50;
             c.ValuesAreIcons = true;
             //c.SortMode = DataGridViewColumnSortMode.Automatic;
-            c.Icon = CZGRQRC.Properties.Resources.empty;
+            c.Icon = FNGRQRC.Properties.Resources.empty;
 
             dataGridView1.Columns.Insert(0, c);
         }
@@ -125,7 +125,7 @@ namespace CZGRQRC
             tbl.Columns.Add(new DataColumn("GRAlarm", typeof(Icon)));
             foreach (DataRow row in tbl.Rows)
             {
-                row["GRAlarm"] = CZGRQRC.Properties.Resources.empty;
+                row["GRAlarm"] = FNGRQRC.Properties.Resources.empty;
             }
         }
         #endregion //AddDataTableIconColumn
@@ -355,7 +355,7 @@ namespace CZGRQRC
                 
                 //if (dgvrow != null)
                 //{
-                //    Icon ico =CZGRQRC.Properties.Resources.Exclamation16; 
+                //    Icon ico =FNGRQRC.Properties.Resources.Exclamation16; 
                 //    UpdateGRAlarmIcon(dgvrow,ico);
 
                 //    // 
@@ -370,7 +370,7 @@ namespace CZGRQRC
                 {
                     GRAlarmDataCollection gralarmdatas = selrows[0]["GRAlarmDatas"] as GRAlarmDataCollection;
                     gralarmdatas.Add(CreateGRAlarmData(row));
-                    selrows[0]["GRAlarm"] = CZGRQRC.Properties.Resources.Exclamation16;
+                    selrows[0]["GRAlarm"] = FNGRQRC.Properties.Resources.Exclamation16;
                 }
             }
         }
@@ -731,7 +731,7 @@ namespace CZGRQRC
                 PopupGRAlarmDataForm(grAlarmDatas);
                 grAlarmDatas.Clear();
 
-                UpdateGRAlarmIcon(dgvrow, CZGRQRC.Properties.Resources.empty);
+                UpdateGRAlarmIcon(dgvrow, FNGRQRC.Properties.Resources.empty);
             }
             else
             {

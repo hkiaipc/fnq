@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmGRFlowZG
     {
@@ -428,7 +428,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::CZGRQRC.Properties.Resources.zg;
+            this.BackgroundImage = global::FNGRQRC.Properties.Resources.zg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(794, 455);
             this.Controls.Add(this.lblBusVolt);

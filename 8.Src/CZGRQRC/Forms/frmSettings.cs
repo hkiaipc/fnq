@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Xdgk.Common;
 
-namespace CZGRQRC.Forms
+namespace FNGRQRC.Forms
 {
     public partial class frmSettings : NUnit.UiKit.SettingsDialogBase
     {

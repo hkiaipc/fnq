@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC.UC
+﻿namespace FNGRQRC.UC
 {
     partial class UCAlarm
     {

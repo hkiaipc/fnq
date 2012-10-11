@@ -6,7 +6,7 @@ using System.Data;
 using CZGRCommon;
 using Xdgk.Common;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

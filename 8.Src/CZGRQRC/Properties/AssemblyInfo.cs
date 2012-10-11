@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("CZGRQRC")]
+[assembly: AssemblyTitle("FNGRQRC")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("xd")]
-[assembly: AssemblyProduct("CZGRQRC")]
+[assembly: AssemblyProduct("FNGRQRC")]
 [assembly: AssemblyCopyright("Copyright xd 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

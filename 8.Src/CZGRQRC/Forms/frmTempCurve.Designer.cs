@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmTempCurve
     {
@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
-            this.ucGatherDataGridView1 = new CZGRQRC.UCGatherDataGridView();
-            this.ucSelectCondition1 = new CZGRQRC.UCSelectCondition();
+            this.ucGatherDataGridView1 = new FNGRQRC.UCGatherDataGridView();
+            this.ucSelectCondition1 = new FNGRQRC.UCSelectCondition();
             this.SuspendLayout();
             // 
             // zedGraphControl1

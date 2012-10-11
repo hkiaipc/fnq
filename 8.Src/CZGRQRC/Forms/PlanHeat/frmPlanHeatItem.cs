@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Xdgk.Common;
 using CZGRWEBDBI;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

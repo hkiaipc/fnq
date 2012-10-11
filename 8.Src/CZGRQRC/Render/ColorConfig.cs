@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Xml.Serialization;
 using Xdgk.Common;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 //using CZGRDBI;
 using CZGRWEBDBI;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     //public partial class frmTMCardManager : NUnit.UiKit.SettingsDialogBase
     public partial class frmTMCardManager : Form 

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using ZedGraph;
 using Xdgk.GRCommon;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     public partial class frmContrastCurve : Form
     {

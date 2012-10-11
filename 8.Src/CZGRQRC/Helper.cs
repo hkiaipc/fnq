@@ -6,7 +6,7 @@ using System.Collections;
 using System.Drawing;
 using Xdgk.GRCommon;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

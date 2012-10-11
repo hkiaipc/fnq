@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Xdgk.Common;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     public partial class frmPlanHeat : NUnit.UiKit.SettingsDialogBase
     {

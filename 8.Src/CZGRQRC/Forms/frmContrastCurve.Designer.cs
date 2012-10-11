@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmContrastCurve
     {
@@ -105,7 +105,7 @@
             // tsbHorizontal
             // 
             this.tsbHorizontal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbHorizontal.Image = global::CZGRQRC.Properties.Resources.split;
+            this.tsbHorizontal.Image = global::FNGRQRC.Properties.Resources.split;
             this.tsbHorizontal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbHorizontal.Name = "tsbHorizontal";
             this.tsbHorizontal.Size = new System.Drawing.Size(28, 28);

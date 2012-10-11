@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using CZGRCommon;
 using ZedGraph;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     public partial class frmPressCurve : Form
     {

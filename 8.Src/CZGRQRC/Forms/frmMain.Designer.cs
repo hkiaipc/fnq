@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmMain
     {
@@ -32,8 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.mnuFile = new System.Windows.Forms.MenuItem();
-            this.mnuExit = new System.Windows.Forms.MenuItem();
             this.mnuTM = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
+            this.mnuExit = new System.Windows.Forms.MenuItem();
             this.mnuView = new System.Windows.Forms.MenuItem();
             this.mnuToolbar = new System.Windows.Forms.MenuItem();
             this.mnuStatusbar = new System.Windows.Forms.MenuItem();
@@ -83,8 +84,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.ucAlarm1 = new CZGRQRC.UC.UCAlarm();
+            this.ucAlarm1 = new FNGRQRC.UC.UCAlarm();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -108,17 +108,22 @@
             this.mnuExit});
             this.mnuFile.Text = "文件(&F)";
             // 
-            // mnuExit
-            // 
-            this.mnuExit.Index = 2;
-            this.mnuExit.Text = "退出(&X)";
-            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
-            // 
             // mnuTM
             // 
             this.mnuTM.Index = 0;
             this.mnuTM.Text = "TM卡管理(&C)";
             this.mnuTM.Click += new System.EventHandler(this.mnuTM_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Index = 1;
+            this.menuItem3.Text = "-";
+            // 
+            // mnuExit
+            // 
+            this.mnuExit.Index = 2;
+            this.mnuExit.Text = "退出(&X)";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuView
             // 
@@ -336,7 +341,7 @@
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 368);
+            this.statusBar1.Location = new System.Drawing.Point(0, 348);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.statusBarPanel1});
@@ -388,7 +393,7 @@
             // 
             // tsbMap
             // 
-            this.tsbMap.Image = global::CZGRQRC.Properties.Resources.Pipe;
+            this.tsbMap.Image = global::FNGRQRC.Properties.Resources.Pipe;
             this.tsbMap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMap.Name = "tsbMap";
             this.tsbMap.Size = new System.Drawing.Size(59, 49);
@@ -404,7 +409,7 @@
             // 
             // tsbGRDataLast
             // 
-            this.tsbGRDataLast.Image = global::CZGRQRC.Properties.Resources.Last;
+            this.tsbGRDataLast.Image = global::FNGRQRC.Properties.Resources.Last;
             this.tsbGRDataLast.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGRDataLast.Name = "tsbGRDataLast";
             this.tsbGRDataLast.Size = new System.Drawing.Size(59, 49);
@@ -413,7 +418,7 @@
             // 
             // tsbGRDataHistory
             // 
-            this.tsbGRDataHistory.Image = global::CZGRQRC.Properties.Resources.History;
+            this.tsbGRDataHistory.Image = global::FNGRQRC.Properties.Resources.History;
             this.tsbGRDataHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGRDataHistory.Name = "tsbGRDataHistory";
             this.tsbGRDataHistory.Size = new System.Drawing.Size(59, 49);
@@ -485,7 +490,7 @@
             // 
             // tsbExit
             // 
-            this.tsbExit.Image = global::CZGRQRC.Properties.Resources.Delete;
+            this.tsbExit.Image = global::FNGRQRC.Properties.Resources.Delete;
             this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbExit.Name = "tsbExit";
             this.tsbExit.Size = new System.Drawing.Size(45, 48);
@@ -495,21 +500,16 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 259);
+            this.splitter1.Location = new System.Drawing.Point(0, 239);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(838, 4);
             this.splitter1.TabIndex = 11;
             this.splitter1.TabStop = false;
             // 
-            // menuItem3
-            // 
-            this.menuItem3.Index = 1;
-            this.menuItem3.Text = "-";
-            // 
             // ucAlarm1
             // 
             this.ucAlarm1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucAlarm1.Location = new System.Drawing.Point(0, 263);
+            this.ucAlarm1.Location = new System.Drawing.Point(0, 243);
             this.ucAlarm1.Name = "ucAlarm1";
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
@@ -518,9 +518,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::CZGRQRC.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(838, 390);
+            this.ClientSize = new System.Drawing.Size(838, 370);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ucAlarm1);
             this.Controls.Add(this.toolStrip1);
@@ -589,7 +588,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton tsbExit1;
-        private CZGRQRC.UC.UCAlarm ucAlarm1;
+        private FNGRQRC.UC.UCAlarm ucAlarm1;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.MenuItem mnuShowGRAlarm;
         private System.Windows.Forms.MenuItem mnuStationHeat;

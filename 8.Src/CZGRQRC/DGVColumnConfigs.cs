@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Xdgk.Common;
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

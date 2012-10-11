@@ -6,7 +6,7 @@ using System.Windows.Forms;
 //using CZGRDBI;
 using CZGRWEBDBI;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
 
     /// <summary>

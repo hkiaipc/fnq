@@ -10,7 +10,7 @@ using CZGRCommon;
 using Xdgk.Common;
 //using Lucker.DataPrinter;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
 
 

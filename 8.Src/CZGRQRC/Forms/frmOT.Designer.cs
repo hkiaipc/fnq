@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmOT
     {
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ucotCondition1 = new CZGRQRC.UC.UCOTCondition();
+            this.ucotCondition1 = new FNGRQRC.UC.UCOTCondition();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,6 +80,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private CZGRQRC.UC.UCOTCondition ucotCondition1;
+        private FNGRQRC.UC.UCOTCondition ucotCondition1;
     }
 }

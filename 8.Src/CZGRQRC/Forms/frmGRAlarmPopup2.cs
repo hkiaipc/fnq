@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     public partial class frmGRAlarmPopup2 : Form
     {

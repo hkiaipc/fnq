@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Codeblast;
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using CZGRCommon;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     public partial class frmOT : Form
     {

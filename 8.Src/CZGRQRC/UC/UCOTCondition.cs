@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 
-namespace CZGRQRC.UC
+namespace FNGRQRC.UC
 {
     public partial class UCOTCondition : UserControl
     {

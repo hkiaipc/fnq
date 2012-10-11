@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using ZedGraph;
 using CZGRCommon;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 

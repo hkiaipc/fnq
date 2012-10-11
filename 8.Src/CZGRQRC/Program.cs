@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Xdgk.Common;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     static class Program
     {

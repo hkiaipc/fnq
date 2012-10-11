@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmRecruitCurve
     {
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
-            this.ucSelectCondition1 = new CZGRQRC.UCSelectCondition();
+            this.ucSelectCondition1 = new FNGRQRC.UCSelectCondition();
             this.SuspendLayout();
             // 
             // zedGraphControl1

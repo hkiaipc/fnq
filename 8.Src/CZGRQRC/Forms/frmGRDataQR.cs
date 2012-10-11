@@ -10,7 +10,7 @@ using CZGRCommon;
 using System.Diagnostics;
 using Xdgk.Common;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     public partial class frmGRDataQR : Form, IDataGridViewFont
     {

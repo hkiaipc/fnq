@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     #region DataColumnNames
     /// <summary>

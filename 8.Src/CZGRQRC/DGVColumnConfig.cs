@@ -4,7 +4,7 @@ using System.Text;
 using Xdgk.Common;
 using System.Data;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     ///// <summary>
     ///// 

@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmTMCardManager
     {
@@ -31,7 +31,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.tmCardListView1 = new CZGRQRC.TMCardListView();
+            this.tmCardListView1 = new FNGRQRC.TMCardListView();
             this.SuspendLayout();
             // 
             // btnAdd

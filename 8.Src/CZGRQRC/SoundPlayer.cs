@@ -4,7 +4,7 @@ using System.Text;
 using Xdgk.Common;
 using System.IO;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     using Path = System.IO.Path;
 

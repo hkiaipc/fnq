@@ -7,7 +7,7 @@ using System.Xml;
 using System.Data.SqlClient;
 //using Utilities;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// frmLogin 的摘要说明。
@@ -166,7 +166,7 @@ namespace CZGRQRC
 
         private void btnYes_Click(object sender, System.EventArgs e)
         {
-            bool b = CZGRQRC.CZGRQRCApp.Default.DBI.CanLogin(this.txtUser.Text,
+            bool b = FNGRQRC.CZGRQRCApp.Default.DBI.CanLogin(this.txtUser.Text,
                 this.txtPwd.Text);
             if (b)
             {
@@ -254,7 +254,7 @@ namespace CZGRQRC
             this.txtUser.Focus();
             //string loginFile = "Resources\\logo.jpg";
             //Image img = Image.FromFile(loginFile);
-            Image img = CZGRQRC.Properties.Resources.logo;
+            Image img = FNGRQRC.Properties.Resources.logo;
             //this.BackColor = Color.Black;
             this.BackgroundImage = img;
             this.BackgroundImageLayout = ImageLayout.Center;

@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC
+﻿namespace FNGRQRC
 {
     partial class frmXGDataQR
     {
@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ucSelectCondition1 = new CZGRQRC.UCSelectCondition();
+            this.ucSelectCondition1 = new FNGRQRC.UCSelectCondition();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).BeginInit();
             this.SuspendLayout();

@@ -12,7 +12,7 @@ using CZGRCommon;
 //using btGR;
 using Xdgk.GRCommon;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
 
     /// <summary>
@@ -59,7 +59,7 @@ namespace CZGRQRC
             //this.toolStrip1.ImageList = this.imageList1;
             //this.tsbMap.ImageIndex = 0;
             Process(_cmdLineOpt);
-            //SetBackgroundImage();
+            SetBackgroundImage();
 
             // not visible alarm
             //
@@ -67,21 +67,21 @@ namespace CZGRQRC
             this.ucAlarm1.Visible = false;
         }
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //private void SetBackgroundImage()
-        //{
-        //    Image img =null;
-        //    try
-        //    {
-        //        img = Image.FromFile("resources\\bg.jpg");
-        //    }
-        //    catch (System.IO.FileNotFoundException)
-        //    {
-        //    }
-        //    this.BackgroundImage = img;
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetBackgroundImage()
+        {
+            Image img = null;
+            try
+            {
+                img = Image.FromFile("resources\\bg.jpg");
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+            }
+            this.BackgroundImage = img;
+        }
 
         /// <summary>
         /// 
@@ -636,7 +636,7 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void mnuFont_Click(object sender, EventArgs e)
         {
-            //CZGRQRC.Config.Default.
+            //FNGRQRC.Config.Default.
             FontDialog f = new FontDialog();
             f.Font = Config.Default.DataGridViewFont;
             DialogResult dr = f.ShowDialog(this);
@@ -798,7 +798,7 @@ namespace CZGRQRC
         /// <param name="e"></param>
         private void mnuSettings_Click(object sender, EventArgs e)
         {
-            CZGRQRC.Forms.frmSettings f = new CZGRQRC.Forms.frmSettings();
+            FNGRQRC.Forms.frmSettings f = new FNGRQRC.Forms.frmSettings();
             f.ShowDialog();
         }
 

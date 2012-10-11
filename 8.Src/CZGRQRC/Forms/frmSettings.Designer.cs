@@ -1,4 +1,4 @@
-﻿namespace CZGRQRC.Forms
+﻿namespace FNGRQRC.Forms
 {
     partial class frmSettings
     {

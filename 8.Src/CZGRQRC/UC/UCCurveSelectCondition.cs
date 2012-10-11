@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Xdgk.GRCommon;
 using Xdgk.Common;
 
-namespace CZGRQRC
+namespace FNGRQRC
 {
     /// <summary>
     /// 
