@@ -36,15 +36,32 @@ namespace FNGRQRC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            frmLogin f = new frmLogin();
-            DialogResult dr = f.ShowDialog();
-            if (dr != DialogResult.OK)
-                return;
+            if (false)
+            {
+                frmLogin f = new frmLogin();
+                DialogResult dr = f.ShowDialog();
+                if (dr != DialogResult.OK)
+                    return;
+            }
 
+            if (CZGRQRCApp.Default.LoginedUser == null)
+            {
+                CZGRQRCApp.Default.LoginedUser = CreateDefaultUser();
+            }
+                
             frmMain frmmain = new frmMain(cmdLineOpt);
             CZGRQRCApp.Default.frmMain = frmmain;
             Application.Run(frmmain);
             OnExit();
+        }
+
+        static private User CreateDefaultUser()
+        {
+            User u = new User();
+            u.Name = "test user";
+            u.Password = "p";
+            u.RightEnum = RightEnum.User;
+            return u;
         }
 
         /// <summary>

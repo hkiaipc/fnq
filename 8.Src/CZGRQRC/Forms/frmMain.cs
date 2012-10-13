@@ -58,6 +58,8 @@ namespace FNGRQRC
             //Application.StartupPath 
             //this.toolStrip1.ImageList = this.imageList1;
             //this.tsbMap.ImageIndex = 0;
+
+            this.mnuUserManager.Visible = CZGRQRCApp.Default.LoginedUser.RightEnum == RightEnum.Admin;
             Process(_cmdLineOpt);
             SetBackgroundImage();
 

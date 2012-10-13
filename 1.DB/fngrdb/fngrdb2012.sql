@@ -1,143 +1,138 @@
 set quoted_identifier on 
 GO
 
-/****** Object:  User dbo    Script Date: 2012-10-11 15:48:45 ******/
-/****** Object:  User guest    Script Date: 2012-10-11 15:48:45 ******/
-if not exists (select * from dbo.sysusers where name = N'guest' and uid < 16382 and hasdbaccess = 1)
+/****** 对象: 用户 dbo    脚本日期: 2012-10-13 15:10:25 ******/
+/****** 对象: 用户 guest    脚本日期: 2012-10-13 15:10:25 ******/
+if not exists (select * from dbo.sysusers where name = N'guest' and hasdbaccess = 1)
 	EXEC sp_grantdbaccess N'guest'
 GO
 
-/****** Object:  Trigger dbo.InsertGRLastData    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 触发器 dbo.InsertGRLastData    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[InsertGRLastData]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
 drop trigger [dbo].[InsertGRLastData]
 GO
 
-/****** Object:  Trigger dbo.InsertOTData    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 触发器 dbo.InsertOTData    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[InsertOTData]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
 drop trigger [dbo].[InsertOTData]
 GO
 
-/****** Object:  Stored Procedure dbo.AAA    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 存储过程 dbo.AAA    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[AAA]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[AAA]
 GO
 
-/****** Object:  Stored Procedure dbo.CalcHeat    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 存储过程 dbo.CalcHeat    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CalcHeat]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[CalcHeat]
 GO
 
-/****** Object:  Stored Procedure dbo.StationCalcHeat    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 存储过程 dbo.StationCalcHeat    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[StationCalcHeat]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[StationCalcHeat]
 GO
 
-/****** Object:  View dbo.vGRDataLast    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 视图 dbo.vGRDataLast    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vGRDataLast]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[vGRDataLast]
 GO
 
-/****** Object:  View dbo.vGRAlarmData    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 视图 dbo.vGRAlarmData    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vGRAlarmData]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[vGRAlarmData]
 GO
 
-/****** Object:  View dbo.vGRData    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 视图 dbo.vGRData    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vGRData]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[vGRData]
 GO
 
-/****** Object:  View dbo.vXGData    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 视图 dbo.vXGData    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vXGData]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[vXGData]
 GO
 
-/****** Object:  View dbo.vStationDevice    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 视图 dbo.vStationDevice    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vStationDevice]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[vStationDevice]
 GO
 
-/****** Object:  View dbo.vGRDataHelper    Script Date: 2012-10-11 15:48:46 ******/
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vGRDataHelper]') and OBJECTPROPERTY(id, N'IsView') = 1)
-drop view [dbo].[vGRDataHelper]
-GO
-
-/****** Object:  View dbo.vStationGRDevice    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 视图 dbo.vStationGRDevice    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vStationGRDevice]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[vStationGRDevice]
 GO
 
-/****** Object:  Table [dbo].[tblGRDataLast]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblGRDataLast]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblGRDataLast]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblGRDataLast]
 GO
 
-/****** Object:  Table [dbo].[tblGRAlarmData]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblGRAlarmData]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblGRAlarmData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblGRAlarmData]
 GO
 
-/****** Object:  Table [dbo].[tblGRData]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblGRData]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblGRData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblGRData]
 GO
 
-/****** Object:  Table [dbo].[tblOTDevice]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblOTDevice]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblOTDevice]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblOTDevice]
 GO
 
-/****** Object:  Table [dbo].[tblXd100eData]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblXd100eData]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblXd100eData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblXd100eData]
 GO
 
-/****** Object:  Table [dbo].[tblXGData]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblXGData]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblXGData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblXGData]
 GO
 
-/****** Object:  Table [dbo].[tblDevice]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblDevice]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblDevice]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblDevice]
 GO
 
-/****** Object:  Table [dbo].[tblCard]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblCard]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblCard]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblCard]
 GO
 
-/****** Object:  Table [dbo].[tblConfig]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblConfig]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblConfig]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblConfig]
 GO
 
-/****** Object:  Table [dbo].[tblDBInfo]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblDBInfo]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblDBInfo]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblDBInfo]
 GO
 
-/****** Object:  Table [dbo].[tblFluxData]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblFluxData]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblFluxData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblFluxData]
 GO
 
-/****** Object:  Table [dbo].[tblOT]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblOT]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblOT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblOT]
 GO
 
-/****** Object:  Table [dbo].[tblStation]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblStation]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblStation]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblStation]
 GO
 
-/****** Object:  Table [dbo].[tblUser]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblUser]    脚本日期: 2012-10-13 15:10:25 ******/
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblUser]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[tblUser]
 GO
 
-/****** Object:  Table [dbo].[tblCard]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblCard]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblCard]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblCard] (
@@ -156,7 +151,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblConfig]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblConfig]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblConfig]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblConfig] (
@@ -171,7 +166,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblDBInfo]    Script Date: 2012-10-11 15:48:46 ******/
+/****** 对象: 表 [dbo].[tblDBInfo]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblDBInfo]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblDBInfo] (
@@ -189,7 +184,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblFluxData]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblFluxData]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblFluxData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblFluxData] (
@@ -208,7 +203,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblOT]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblOT]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblOT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblOT] (
@@ -225,7 +220,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblStation]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblStation]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblStation]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblStation] (
@@ -245,7 +240,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblUser]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblUser]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblUser]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblUser] (
@@ -263,7 +258,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblDevice]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblDevice]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblDevice]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblDevice] (
@@ -290,7 +285,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblGRAlarmData]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblGRAlarmData]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblGRAlarmData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblGRAlarmData] (
@@ -315,7 +310,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblGRData]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblGRData]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblGRData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblGRData] (
@@ -362,7 +357,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblOTDevice]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblOTDevice]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblOTDevice]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblOTDevice] (
@@ -384,7 +379,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblXd100eData]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblXd100eData]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblXd100eData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblXd100eData] (
@@ -423,7 +418,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblXGData]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblXGData]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblXGData]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblXGData] (
@@ -454,7 +449,7 @@ END
 GO
 
 
-/****** Object:  Table [dbo].[tblGRDataLast]    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 表 [dbo].[tblGRDataLast]    脚本日期: 2012-10-13 15:10:25 ******/
 if not exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tblGRDataLast]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
  BEGIN
 CREATE TABLE [dbo].[tblGRDataLast] (
@@ -476,7 +471,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  View dbo.vStationGRDevice    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 视图 dbo.vStationGRDevice    脚本日期: 2012-10-13 15:10:25 ******/
 CREATE VIEW dbo.vStationGRDevice
 AS
 SELECT dbo.vStationDevice.*
@@ -495,41 +490,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  View dbo.vGRDataHelper    Script Date: 2012-10-11 15:48:47 ******/
-
-/****** Object:  View dbo.vGRDataHelper    Script Date: 2012-09-05 15:35:36 ******/
-
-/****** 对象: 视图 dbo.vGRDataHelper    脚本日期: 2011-8-22 16:35:19 ******/
-CREATE VIEW dbo.vGRDataHelper
-AS
-SELECT dbo.tblGRData.GRDataID, dbo.tblStation.Name AS StationName, 
-      dbo.tblDevice.Name AS DeviceName, 
-      dbo.tblStation.Name + dbo.tblDevice.Name AS DisplayName, dbo.tblGRData.DT, 
-      dbo.tblGRData.GT1, dbo.tblGRData.BT1, dbo.tblGRData.GT2, dbo.tblGRData.BT2, 
-      dbo.tblGRData.S1, dbo.tblStation.Street, dbo.tblDevice.SupportArea, 
-      dbo.tblDevice.RegisteredArea, dbo.tblGRData.GP1, dbo.tblGRData.BP1, 
-      dbo.tblGRData.GP2, dbo.tblGRData.BP2, dbo.tblGRData.SR
-FROM dbo.tblStation INNER JOIN
-      dbo.tblGRData ON dbo.tblStation.StationID = dbo.tblGRData.StationID INNER JOIN
-      dbo.tblDevice ON dbo.tblStation.StationID = dbo.tblDevice.StationID AND 
-      dbo.tblGRData.DeviceID = dbo.tblDevice.DeviceID
-WHERE (dbo.tblDevice.Deleted = 0) AND (dbo.tblStation.Deleted = 0)
-
-
-
-GO
-
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
-
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
-
-/****** Object:  View dbo.vStationDevice    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 视图 dbo.vStationDevice    脚本日期: 2012-10-13 15:10:25 ******/
 CREATE VIEW dbo.vStationDevice
 AS
 SELECT dbo.tblStation.StationID, dbo.tblStation.StationName, dbo.tblDevice.DeviceID, 
@@ -550,7 +511,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  View dbo.vGRAlarmData    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 视图 dbo.vGRAlarmData    脚本日期: 2012-10-13 15:10:25 ******/
 /****** Object:  View dbo.vGRAlarmData    Script Date: 2012-09-05 15:35:36 *****
 ***** 对象: 视图 dbo.vGRAlarmData    脚本日期: 2011-8-22 16:35:19 ******/
 CREATE VIEW dbo.vGRAlarmData
@@ -574,7 +535,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  View dbo.vGRData    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 视图 dbo.vGRData    脚本日期: 2012-10-13 15:10:25 ******/
 /****** Object:  View dbo.vGRData    Script Date: 2012-09-05 15:35:36 *****
 ***** 对象: 视图 dbo.vGRData    脚本日期: 2011-8-22 16:35:19 ******/
 CREATE VIEW dbo.vGRData
@@ -603,7 +564,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  View dbo.vXGData    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 视图 dbo.vXGData    脚本日期: 2012-10-13 15:10:25 ******/
 /****** Object:  View dbo.vXGData    Script Date: 2012-09-05 15:35:36 *****
 ***** 对象: 视图 dbo.vXGData    脚本日期: 2011-8-22 16:35:19 *****
 */
@@ -629,7 +590,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  View dbo.vGRDataLast    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 视图 dbo.vGRDataLast    脚本日期: 2012-10-13 15:10:25 ******/
 /****** Object:  View dbo.vGRDataLast    Script Date: 2012-09-05 15:35:36 *****
 ***** 对象: 视图 dbo.vGRDataLast    脚本日期: 2011-8-22 16:35:19 ******/
 CREATE VIEW dbo.vGRDataLast
@@ -660,7 +621,7 @@ GO
 SET ANSI_NULLS OFF 
 GO
 
-/****** Object:  Stored Procedure dbo.AAA    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 存储过程 dbo.AAA    脚本日期: 2012-10-13 15:10:25 ******/
 
 /****** Object:  Stored Procedure dbo.AAA    Script Date: 2012-09-05 15:35:36 ******/
 
@@ -706,7 +667,7 @@ GO
 SET ANSI_NULLS OFF 
 GO
 
-/****** Object:  Stored Procedure dbo.CalcHeat    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 存储过程 dbo.CalcHeat    脚本日期: 2012-10-13 15:10:25 ******/
 
 /****** Object:  Stored Procedure dbo.CalcHeat    Script Date: 2012-09-05 15:35:36 ******/
 
@@ -753,7 +714,7 @@ GO
 SET ANSI_NULLS OFF 
 GO
 
-/****** Object:  Stored Procedure dbo.StationCalcHeat    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 存储过程 dbo.StationCalcHeat    脚本日期: 2012-10-13 15:10:25 ******/
 
 /****** Object:  Stored Procedure dbo.StationCalcHeat    Script Date: 2012-09-05 15:35:36 ******/
 
@@ -802,7 +763,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  Trigger dbo.InsertOTData    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 触发器 dbo.InsertOTData    脚本日期: 2012-10-13 15:10:26 ******/
 /****** Object:  Trigger dbo.InsertOTData    Script Date: 2012-09-05 15:35:36 ******/
 /****** 对象: 触发器 dbo.InsertOTData    脚本日期: 2011-8-22 16:35:19 ******/
 /****** 对象: 触发器 dbo.InsertOTData    脚本日期: 2010-11-04 15:53:17 ******/
@@ -840,7 +801,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  Trigger dbo.InsertGRLastData    Script Date: 2012-10-11 15:48:47 ******/
+/****** 对象: 触发器 dbo.InsertGRLastData    脚本日期: 2012-10-13 15:10:26 ******/
 /****** Object:  Trigger dbo.InsertGRLastData    Script Date: 2012-09-05 15:35:36 ******/
 /****** 对象: 触发器 dbo.InsertGRLastData    脚本日期: 2011-8-22 16:35:19 ******/
 CREATE TRIGGER [InsertGRLastData] ON dbo.tblGRData 
