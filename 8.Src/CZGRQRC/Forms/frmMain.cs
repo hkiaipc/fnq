@@ -1034,5 +1034,35 @@ namespace FNGRQRC
             f.Show();
             f.Activate();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuShuoZhan_Click(object sender, EventArgs e)
+        {
+            frmShouZhanLast f = GetShouZhanForm();
+            f.Show();
+            f.Activate();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private frmShouZhanLast GetShouZhanForm()
+        {
+           foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmShouZhanLast )
+                {
+                    return (frmShouZhanLast)f;
+                }
+            }
+           frmShouZhanLast nf = new frmShouZhanLast();
+           nf.MdiParent = this;
+           return nf;
+        }
     }
 }

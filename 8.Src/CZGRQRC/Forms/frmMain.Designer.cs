@@ -86,6 +86,7 @@
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ucAlarm1 = new FNGRQRC.UC.UCAlarm();
+            this.mnuShuoZhan = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -173,6 +174,7 @@
             this.mnuOT,
             this.mnuEM,
             this.mnuRecruit,
+            this.mnuShuoZhan,
             this.menuItem2,
             this.mnuHeat,
             this.mnuStationHeat,
@@ -226,27 +228,27 @@
             // 
             // menuItem2
             // 
-            this.menuItem2.Index = 7;
+            this.menuItem2.Index = 8;
             this.menuItem2.Text = "-";
             this.menuItem2.Visible = false;
             // 
             // mnuHeat
             // 
-            this.mnuHeat.Index = 8;
+            this.mnuHeat.Index = 9;
             this.mnuHeat.Text = "日耗热量(&H)";
             this.mnuHeat.Visible = false;
             this.mnuHeat.Click += new System.EventHandler(this.mnuHeat_Click);
             // 
             // mnuStationHeat
             // 
-            this.mnuStationHeat.Index = 9;
+            this.mnuStationHeat.Index = 10;
             this.mnuStationHeat.Text = "阶段耗热量(&R)";
             this.mnuStationHeat.Visible = false;
             this.mnuStationHeat.Click += new System.EventHandler(this.mnuStationHeat_Click);
             // 
             // mnu2Data
             // 
-            this.mnu2Data.Index = 10;
+            this.mnu2Data.Index = 11;
             this.mnu2Data.Text = "二次数据统计...";
             this.mnu2Data.Visible = false;
             this.mnu2Data.Click += new System.EventHandler(this.mnu2Data_Click);
@@ -522,6 +524,12 @@
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
             // 
+            // mnuShuoZhan
+            // 
+            this.mnuShuoZhan.Index = 7;
+            this.mnuShuoZhan.Text = "首站数据(H)...";
+            this.mnuShuoZhan.Click += new System.EventHandler(this.mnuShuoZhan_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -613,6 +621,7 @@
         private System.Windows.Forms.MenuItem mnuTM;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem mnuUserManager;
+        private System.Windows.Forms.MenuItem mnuShuoZhan;
     }
 }
 

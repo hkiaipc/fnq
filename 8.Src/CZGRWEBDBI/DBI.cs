@@ -484,6 +484,18 @@ namespace CZGRWEBDBI
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        public DataTable ExecuteXD100eLastDataTable()
+        {
+            //string s = "select * from vXd100eDataLast";
+            string s = "SELECT [站名],  [时间], [一次供温], [一次回温], [一次供压], [一次回压], [瞬时流量] FROM [fngrdb2012].[dbo].[vXd100eDataLast]";
+            return ExecuteDataTable(s);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="stationName"></param>
         /// <returns></returns>
         public DataTable ExecuteGRLastDataTable(string stationName)
