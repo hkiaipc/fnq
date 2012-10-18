@@ -42,7 +42,11 @@ namespace FNGRQRC
             this.mnu2Data.Visible = Config.Default.Show2DataGather;
         }
 
-        string GetMainFormText()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private string GetMainFormText()
         {
             string s = System.Configuration.ConfigurationSettings.AppSettings["text"];
             return s;

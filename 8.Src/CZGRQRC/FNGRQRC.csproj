@@ -85,25 +85,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalcColumnInfo.cs" />
-    <Compile Include="CalcColumnInfoCollection.cs" />
-    <Compile Include="CCCFactory.cs" />
-    <Compile Include="CommandLineOptions.cs" />
+    <Compile Include="code\CalcColumnInfo.cs" />
+    <Compile Include="code\CalcColumnInfoCollection.cs" />
+    <Compile Include="code\CCCFactory.cs" />
+    <Compile Include="code\CommandLineOptions.cs" />
     <Compile Include="Configs\Config.cs" />
     <Compile Include="CurveStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CurveStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="CZGRQRCApp.cs" />
-    <Compile Include="DataColumnFormulas.cs" />
-    <Compile Include="DataColumnNames.cs" />
-    <Compile Include="DataGridViewCellFormatter.cs" />
-    <Compile Include="DataGridViewFormatters.cs" />
-    <Compile Include="DGVColumnConfig.cs" />
-    <Compile Include="DGVColumnConfigCollection.cs" />
-    <Compile Include="DGVColumnConfigs.cs" />
-    <Compile Include="Enums.cs" />
+    <Compile Include="code\CZGRQRCApp.cs" />
+    <Compile Include="code\DataColumnFormulas.cs" />
+    <Compile Include="code\DataColumnNames.cs" />
+    <Compile Include="code\DataGridViewCellFormatter.cs" />
+    <Compile Include="code\DataGridViewFormatters.cs" />
+    <Compile Include="code\DGVColumnConfig.cs" />
+    <Compile Include="code\DGVColumnConfigCollection.cs" />
+    <Compile Include="code\DGVColumnConfigs.cs" />
+    <Compile Include="code\Enums.cs" />
     <Compile Include="Forms\frmContrastCurveSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,12 +257,12 @@
     <Compile Include="Forms\frmShouZhanLast.Designer.cs">
       <DependentUpon>frmShouZhanLast.cs</DependentUpon>
     </Compile>
-    <Compile Include="GatherClass.cs" />
-    <Compile Include="GRAlarmData.cs" />
-    <Compile Include="GRAlarmDataCollection.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="Interface.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="code\GatherClass.cs" />
+    <Compile Include="code\GRAlarmData.cs" />
+    <Compile Include="code\GRAlarmDataCollection.cs" />
+    <Compile Include="code\Helper.cs" />
+    <Compile Include="code\Interface.cs" />
+    <Compile Include="code\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CurveStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -447,17 +447,17 @@
     <Compile Include="Render\ForeColorRenderer.cs" />
     <Compile Include="Render\RangeAlarmDefine.cs" />
     <Compile Include="Render\Renderer.cs" />
-    <Compile Include="SoundPlayer.cs" />
-    <Compile Include="StationDevice.cs" />
-    <Compile Include="StationDeviceCollection.cs" />
-    <Compile Include="StationNameFiller.cs" />
-    <Compile Include="StationNameFilter.cs" />
+    <Compile Include="code\SoundPlayer.cs" />
+    <Compile Include="code\StationDevice.cs" />
+    <Compile Include="code\StationDeviceCollection.cs" />
+    <Compile Include="code\StationNameFiller.cs" />
+    <Compile Include="code\StationNameFilter.cs" />
     <Compile Include="strings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="T.cs" />
+    <Compile Include="code\T.cs" />
     <Compile Include="Forms\TM\frmTMCardItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -515,9 +515,9 @@
     <Compile Include="UC\UCSelectCondition.Designer.cs">
       <DependentUpon>UCSelectCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
+    <Compile Include="code\User.cs" />
     <Compile Include="Utility\DataGridViewColumnFactory.cs" />
-    <Compile Include="WavePlayer.cs" />
+    <Compile Include="code\WavePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CZGRCommon\CZGRCommon.csproj">

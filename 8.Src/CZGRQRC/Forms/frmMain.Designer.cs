@@ -48,6 +48,7 @@
             this.mnuOT = new System.Windows.Forms.MenuItem();
             this.mnuEM = new System.Windows.Forms.MenuItem();
             this.mnuRecruit = new System.Windows.Forms.MenuItem();
+            this.mnuShuoZhan = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.mnuHeat = new System.Windows.Forms.MenuItem();
             this.mnuStationHeat = new System.Windows.Forms.MenuItem();
@@ -86,7 +87,6 @@
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ucAlarm1 = new FNGRQRC.UC.UCAlarm();
-            this.mnuShuoZhan = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -225,6 +225,12 @@
             this.mnuRecruit.Text = "补水数据(&B))";
             this.mnuRecruit.Visible = false;
             this.mnuRecruit.Click += new System.EventHandler(this.mnuRecruit_Click);
+            // 
+            // mnuShuoZhan
+            // 
+            this.mnuShuoZhan.Index = 7;
+            this.mnuShuoZhan.Text = "首站数据(H)...";
+            this.mnuShuoZhan.Click += new System.EventHandler(this.mnuShuoZhan_Click);
             // 
             // menuItem2
             // 
@@ -371,18 +377,6 @@
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbGis,
-            this.tsbMap,
-            this.toolStripSeparator4,
-            this.tsbGRDataLast,
-            this.tsbGRDataHistory,
-            this.tsbGRAlarm,
-            this.toolStripSeparator5,
-            this.tsbTempCurve,
-            this.tsbPressCurve,
-            this.toolStripSeparator6,
-            this.tsbExit1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -523,12 +517,6 @@
             this.ucAlarm1.Name = "ucAlarm1";
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
-            // 
-            // mnuShuoZhan
-            // 
-            this.mnuShuoZhan.Index = 7;
-            this.mnuShuoZhan.Text = "首站数据(H)...";
-            this.mnuShuoZhan.Click += new System.EventHandler(this.mnuShuoZhan_Click);
             // 
             // frmMain
             // 
