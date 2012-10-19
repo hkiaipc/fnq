@@ -404,6 +404,15 @@ namespace CZGRWEBDBI
         }
         #endregion //ExecuteScalar
 
+        public DataTable ExecuteFirstStationPressTable(DateTime b, DateTime e, string st)
+        {
+            string s = string.Format(
+                "select * from ",
+                st, b, e);
+
+            return ExecuteDataTable (s);
+        }
+
         #region ExecutePressTable
         /// <summary>
         /// 读取压力表
@@ -499,7 +508,7 @@ namespace CZGRWEBDBI
         public DataTable ExecuteXd100eDataTable(string stationName, DateTime begin, DateTime end)
         {
             string s = string.Format(
-                "select * from vXd100eData where stationName = '{0}' and dt >= '{1}' and dt < '{2}'",
+                "select * from vXd100eData where stationName = '{0}' and dt >= '{1}' and dt < '{2}' order by dt",
                 stationName , begin, end );
             return ExecuteDataTable(s);
         }
@@ -507,7 +516,7 @@ namespace CZGRWEBDBI
         public DataTable ExecuteXd100eDataTable(DateTime begin, DateTime end)
         {
             string s = string.Format(
-                "select * from vXd100eData where dt >= '{0}' and dt < '{1}'",
+                "select * from vXd100eData where dt >= '{0}' and dt < '{1}' order by dt",
                 begin, end);
             return ExecuteDataTable(s);
         }

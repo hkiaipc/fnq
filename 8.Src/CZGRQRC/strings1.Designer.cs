@@ -178,6 +178,24 @@ namespace FNGRQRC {
         }
         
         /// <summary>
+        ///   查找类似 首站压力曲线 的本地化字符串。
+        /// </summary>
+        internal static string FirstStationPressCurve {
+            get {
+                return ResourceManager.GetString("FirstStationPressCurve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 首站温度曲线 的本地化字符串。
+        /// </summary>
+        internal static string FirstStationTempCurve {
+            get {
+                return ResourceManager.GetString("FirstStationTempCurve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 流量 的本地化字符串。
         /// </summary>
         internal static string Flux {

@@ -1086,6 +1086,42 @@ namespace FNGRQRC
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        private frmFirstStationPressCurve  GetFirstStationPressCurveForm()
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmFirstStationPressCurve )
+                {
+                    return (frmFirstStationPressCurve)f;
+                }
+            }
+            frmFirstStationPressCurve nf = new frmFirstStationPressCurve();
+            nf.MdiParent = this;
+            return nf;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private frmFirstStationTempCurve  GetFirstStationTempCurveForm()
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmFirstStationTempCurve )
+                {
+                    return (frmFirstStationTempCurve)f;
+                }
+            }
+            frmFirstStationTempCurve nf = new frmFirstStationTempCurve();
+            nf.MdiParent = this;
+            return nf;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void mnuFirstStationDataHistory_Click(object sender, EventArgs e)
@@ -1094,5 +1130,33 @@ namespace FNGRQRC
             f.Show();
             f.Activate();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuFirstStationPressCurve_Click(object sender, EventArgs e)
+        {
+            frmFirstStationPressCurve f = GetFirstStationPressCurveForm();
+            f.Show();
+            f.Activate();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuFirstStationTempCurve_Click(object sender, EventArgs e)
+        {
+            frmFirstStationTempCurve f = GetFirstStationTempCurveForm();
+            f.Show();
+            f.Activate();
+        }
+
+
+
+
     }
 }
