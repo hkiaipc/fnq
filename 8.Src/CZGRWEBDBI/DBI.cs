@@ -233,7 +233,8 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteStationName()
         {
-            string[] deviceTypes = new string[] { "grdevice", "grdeviceModbus" };
+            //string[] deviceTypes = new string[] { "grdevice", "grdeviceModbus" };
+            string[] deviceTypes = new string[] { "xd1100Device" };
             return ExecuteStationName(deviceTypes);
         }
 

@@ -58,10 +58,6 @@ namespace FNGRQRC
         {
             get
             {
-                if (_rightEnum == null)
-                {
-                    _rightEnum = new RightEnum();
-                }
                 return _rightEnum;
             }
             set

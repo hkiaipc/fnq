@@ -64,5 +64,15 @@ namespace FNGRQRC
         {
             Fill();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Fill();
+        }
     }
 }

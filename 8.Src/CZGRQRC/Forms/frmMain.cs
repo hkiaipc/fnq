@@ -7,9 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using Xdgk.Common;
 using CZGRCommon;
-//using CZGRMap;
-//using frmArcGis;
-//using btGR;
 using Xdgk.GRCommon;
 
 namespace FNGRQRC
