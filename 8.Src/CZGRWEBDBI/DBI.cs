@@ -244,9 +244,12 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteStationName(string[] deviceTypes)
         {
-            string selectCommand = "SELECT [StationID], [StationName], [DeviceName] FROM [vStationGRDevice] " +
+            // TODO: 2012-10-18 get station by device type
+            //
+            string selectCommand = "SELECT [StationID], [StationName], [DeviceName] FROM [vStationDevice] " +
                 //"WHERE (DeviceType = 'grdevice' OR DeviceType = 'grdeviceModbus') AND StationDeleted = 0 AND DeviceDeleted = 0 " +
                 //"WHERE (" + CreateDeviceCondition(deviceTypes) + ") AND StationDeleted = 0 AND DeviceDeleted = 0 " +
+                "where (" + CreateDeviceCondition (deviceTypes ) + ") " +
                 "ORDER BY [StationName], [DeviceName]";
             return ExecuteDataTable(selectCommand);
         }
@@ -488,7 +491,24 @@ namespace CZGRWEBDBI
         public DataTable ExecuteXD100eLastDataTable()
         {
             //string s = "select * from vXd100eDataLast";
-            string s = "SELECT [站名],  [时间], [一次供温], [一次回温], [一次供压], [一次回压], [瞬时流量] FROM [vXd100eDataLast]";
+            //string s = "SELECT [站名],  [时间], [一次供温], [一次回温], [一次供压], [一次回压], [瞬时流量] FROM [vXd100eDataLast]";
+            string s = "select * from vXd100eDataLast";
+            return ExecuteDataTable(s);
+        }
+
+        public DataTable ExecuteXd100eDataTable(string stationName, DateTime begin, DateTime end)
+        {
+            string s = string.Format(
+                "select * from vXd100eData where stationName = '{0}' and dt >= '{1}' and dt < '{2}'",
+                stationName , begin, end );
+            return ExecuteDataTable(s);
+        }
+
+        public DataTable ExecuteXd100eDataTable(DateTime begin, DateTime end)
+        {
+            string s = string.Format(
+                "select * from vXd100eData where dt >= '{0}' and dt < '{1}'",
+                begin, end);
             return ExecuteDataTable(s);
         }
 

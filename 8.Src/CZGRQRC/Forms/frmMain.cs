@@ -42,11 +42,7 @@ namespace FNGRQRC
             this.mnu2Data.Visible = Config.Default.Show2DataGather;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private string GetMainFormText()
+        string GetMainFormText()
         {
             string s = System.Configuration.ConfigurationSettings.AppSettings["text"];
             return s;
@@ -202,7 +198,7 @@ namespace FNGRQRC
                     base.DefWndProc(ref m);
                     break;
             }
-            
+
         }
 
         /// <summary>
@@ -306,7 +302,7 @@ namespace FNGRQRC
         /// <param name="e"></param>
         private void mnuAbout_Click(object sender, EventArgs e)
         {
-            string s = string.Format("{0}\r\n\r\n版本: {1}", 
+            string s = string.Format("{0}\r\n\r\n版本: {1}",
                 //strings.AppText,
                 GetMainFormText(),
                 Application.ProductVersion);
@@ -324,7 +320,7 @@ namespace FNGRQRC
             frmTempCurve f = GetTempCurveForm();
             f.Show();
             f.Activate();
-           
+
         }
 
         /// <summary>
@@ -482,7 +478,7 @@ namespace FNGRQRC
         //        // TODO: getdisplayname
         //        //
         //        string displayname = CZGRQRCApp.Default.DBI.GetGRDeviceDisplayName(e.StationName);
-                
+
         //        frmGRFlow.PopupGRFlowForm(displayname, this);
         //    }
         //    catch( Exception ex )
@@ -1020,13 +1016,13 @@ namespace FNGRQRC
         {
             foreach (Form f in this.MdiChildren)
             {
-                if (f is frmUserManager )
+                if (f is frmUserManager)
                 {
-                    return (frmUserManager )f;
+                    return (frmUserManager)f;
                 }
             }
 
-            frmUserManager  nf = new frmUserManager ();
+            frmUserManager nf = new frmUserManager();
             nf.MdiParent = this;
             return nf;
 
@@ -1046,7 +1042,7 @@ namespace FNGRQRC
         /// <param name="e"></param>
         private void mnuShuoZhan_Click(object sender, EventArgs e)
         {
-            frmShouZhanLast f = GetShouZhanForm();
+            frmFirstStationDataLast f = GetShouZhanForm();
             f.Show();
             f.Activate();
         }
@@ -1055,18 +1051,48 @@ namespace FNGRQRC
         /// 
         /// </summary>
         /// <returns></returns>
-        private frmShouZhanLast GetShouZhanForm()
+        private frmFirstStationDataLast GetShouZhanForm()
         {
-           foreach (Form f in this.MdiChildren)
+            foreach (Form f in this.MdiChildren)
             {
-                if (f is frmShouZhanLast )
+                if (f is frmFirstStationDataLast)
                 {
-                    return (frmShouZhanLast)f;
+                    return (frmFirstStationDataLast)f;
                 }
             }
-           frmShouZhanLast nf = new frmShouZhanLast();
-           nf.MdiParent = this;
-           return nf;
+            frmFirstStationDataLast nf = new frmFirstStationDataLast();
+            nf.MdiParent = this;
+            return nf;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private frmFirstStationDataHistory GetFirstStationDataHistoryForm()
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmFirstStationDataHistory)
+                {
+                    return (frmFirstStationDataHistory)f;
+                }
+            }
+            frmFirstStationDataHistory nf = new frmFirstStationDataHistory();
+            nf.MdiParent = this;
+            return nf;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuFirstStationDataHistory_Click(object sender, EventArgs e)
+        {
+            frmFirstStationDataHistory f = GetFirstStationDataHistoryForm();
+            f.Show();
+            f.Activate();
         }
     }
 }

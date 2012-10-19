@@ -235,6 +235,30 @@ namespace FNGRQRC
         } static private DGVColumnConfigCollection _grHistory;
         #endregion //GRHistory
 
+        #region FirstStation
+        /// <summary>
+        /// 
+        /// </summary>
+        static public DGVColumnConfigCollection FirstStation
+        {
+            get
+            {
+                if (_firstStation == null)
+                {
+                    _firstStation = new DGVColumnConfigCollection();
+                    _firstStation.Add(new DGVColumnConfig("StationName", noFormat,"站名"));
+                    _firstStation.Add(new DGVColumnConfig("DT", noFormat, "时间"));
+                    _firstStation.Add(new DGVColumnConfig("AI1", floatFormat , "一次供温"));
+                    _firstStation.Add(new DGVColumnConfig("AI2", floatFormat, "一次回温"));
+                    _firstStation.Add(new DGVColumnConfig("AI3", floatFormat, "一次供压"));
+                    _firstStation.Add(new DGVColumnConfig("AI4", floatFormat, "一次回压"));
+                    _firstStation.Add(new DGVColumnConfig("AI5", floatFormat, "瞬时流量"));
+                }
+                return _firstStation;
+            }
+        } static private DGVColumnConfigCollection _firstStation;
+        #endregion //FirstStation
+
         //#region Heat
         ///// <summary>
         ///// 

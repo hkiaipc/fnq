@@ -1,6 +1,6 @@
 ﻿namespace FNGRQRC
 {
-    partial class frmShouZhanLast
+    partial class frmFirstStationDataLast
     {
         /// <summary>
         /// Required designer variable.
@@ -62,15 +62,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // frmShouZhanLast
+            // frmFirstStationDataLast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(529, 341);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "frmShouZhanLast";
-            this.Text = "frmShouZhanLast";
+            this.Name = "frmFirstStationDataLast";
+            this.Text = "首站最新数据";
             this.Load += new System.EventHandler(this.frmShouZhanLast_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

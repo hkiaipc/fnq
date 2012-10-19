@@ -48,11 +48,13 @@
             this.mnuOT = new System.Windows.Forms.MenuItem();
             this.mnuEM = new System.Windows.Forms.MenuItem();
             this.mnuRecruit = new System.Windows.Forms.MenuItem();
-            this.mnuShuoZhan = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.mnuHeat = new System.Windows.Forms.MenuItem();
             this.mnuStationHeat = new System.Windows.Forms.MenuItem();
             this.mnu2Data = new System.Windows.Forms.MenuItem();
+            this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.mnuShuoZhan = new System.Windows.Forms.MenuItem();
+            this.mnuFirstStationDataHistory = new System.Windows.Forms.MenuItem();
             this.mnuCurve = new System.Windows.Forms.MenuItem();
             this.mnuTempCurve = new System.Windows.Forms.MenuItem();
             this.mnuPressCurve = new System.Windows.Forms.MenuItem();
@@ -97,6 +99,7 @@
             this.mnuFile,
             this.mnuView,
             this.menuItem1,
+            this.menuItem6,
             this.mnuCurve,
             this.mnuConfig,
             this.mnuHelp});
@@ -174,7 +177,6 @@
             this.mnuOT,
             this.mnuEM,
             this.mnuRecruit,
-            this.mnuShuoZhan,
             this.menuItem2,
             this.mnuHeat,
             this.mnuStationHeat,
@@ -226,42 +228,56 @@
             this.mnuRecruit.Visible = false;
             this.mnuRecruit.Click += new System.EventHandler(this.mnuRecruit_Click);
             // 
-            // mnuShuoZhan
-            // 
-            this.mnuShuoZhan.Index = 7;
-            this.mnuShuoZhan.Text = "首站数据(H)...";
-            this.mnuShuoZhan.Click += new System.EventHandler(this.mnuShuoZhan_Click);
-            // 
             // menuItem2
             // 
-            this.menuItem2.Index = 8;
+            this.menuItem2.Index = 7;
             this.menuItem2.Text = "-";
             this.menuItem2.Visible = false;
             // 
             // mnuHeat
             // 
-            this.mnuHeat.Index = 9;
+            this.mnuHeat.Index = 8;
             this.mnuHeat.Text = "日耗热量(&H)";
             this.mnuHeat.Visible = false;
             this.mnuHeat.Click += new System.EventHandler(this.mnuHeat_Click);
             // 
             // mnuStationHeat
             // 
-            this.mnuStationHeat.Index = 10;
+            this.mnuStationHeat.Index = 9;
             this.mnuStationHeat.Text = "阶段耗热量(&R)";
             this.mnuStationHeat.Visible = false;
             this.mnuStationHeat.Click += new System.EventHandler(this.mnuStationHeat_Click);
             // 
             // mnu2Data
             // 
-            this.mnu2Data.Index = 11;
+            this.mnu2Data.Index = 10;
             this.mnu2Data.Text = "二次数据统计...";
             this.mnu2Data.Visible = false;
             this.mnu2Data.Click += new System.EventHandler(this.mnu2Data_Click);
             // 
+            // menuItem6
+            // 
+            this.menuItem6.Index = 3;
+            this.menuItem6.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mnuShuoZhan,
+            this.mnuFirstStationDataHistory});
+            this.menuItem6.Text = "首站(&O)";
+            // 
+            // mnuShuoZhan
+            // 
+            this.mnuShuoZhan.Index = 0;
+            this.mnuShuoZhan.Text = "最新数据(&L)";
+            this.mnuShuoZhan.Click += new System.EventHandler(this.mnuShuoZhan_Click);
+            // 
+            // mnuFirstStationDataHistory
+            // 
+            this.mnuFirstStationDataHistory.Index = 1;
+            this.mnuFirstStationDataHistory.Text = "历史数据(&H)";
+            this.mnuFirstStationDataHistory.Click += new System.EventHandler(this.mnuFirstStationDataHistory_Click);
+            // 
             // mnuCurve
             // 
-            this.mnuCurve.Index = 3;
+            this.mnuCurve.Index = 4;
             this.mnuCurve.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuTempCurve,
             this.mnuPressCurve,
@@ -304,7 +320,7 @@
             // 
             // mnuConfig
             // 
-            this.mnuConfig.Index = 4;
+            this.mnuConfig.Index = 5;
             this.mnuConfig.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuFont,
             this.mnuOptions,
@@ -332,7 +348,7 @@
             // 
             // mnuHelp
             // 
-            this.mnuHelp.Index = 5;
+            this.mnuHelp.Index = 6;
             this.mnuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuAbout,
             this.mnuTest});
@@ -357,7 +373,7 @@
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 466);
+            this.statusBar1.Location = new System.Drawing.Point(0, 446);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.statusBarPanel1});
@@ -377,6 +393,18 @@
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbGis,
+            this.tsbMap,
+            this.toolStripSeparator4,
+            this.tsbGRDataLast,
+            this.tsbGRDataHistory,
+            this.tsbGRAlarm,
+            this.toolStripSeparator5,
+            this.tsbTempCurve,
+            this.tsbPressCurve,
+            this.toolStripSeparator6,
+            this.tsbExit1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -504,7 +532,7 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 357);
+            this.splitter1.Location = new System.Drawing.Point(0, 337);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(838, 4);
             this.splitter1.TabIndex = 11;
@@ -513,7 +541,7 @@
             // ucAlarm1
             // 
             this.ucAlarm1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucAlarm1.Location = new System.Drawing.Point(0, 361);
+            this.ucAlarm1.Location = new System.Drawing.Point(0, 341);
             this.ucAlarm1.Name = "ucAlarm1";
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
@@ -523,7 +551,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(838, 488);
+            this.ClientSize = new System.Drawing.Size(838, 468);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ucAlarm1);
             this.Controls.Add(this.toolStrip1);
@@ -610,6 +638,8 @@
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem mnuUserManager;
         private System.Windows.Forms.MenuItem mnuShuoZhan;
+        private System.Windows.Forms.MenuItem mnuFirstStationDataHistory;
+        private System.Windows.Forms.MenuItem menuItem6;
     }
 }
 
