@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Code\FlowConverter.cs" />
     <Compile Include="Code\FlStatusColor.cs" />
+    <Compile Include="DynamicLibrary.cs" />
     <Compile Include="Forms\frmFlow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +93,11 @@
     </Compile>
     <Compile Include="Forms\frmColumnSelect.Designer.cs">
       <DependentUpon>frmColumnSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resource\Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
     </Compile>
     <Compile Include="Right\AdminRight.cs" />
     <Compile Include="Code\App.cs" />
@@ -191,12 +197,17 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Flow.rdlc" />
+    <EmbeddedResource Include="Resource\Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCCondition.resx">
+    <EmbeddedResource Include="UC\UCCondition.resx">
       <DependentUpon>UCCondition.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -252,10 +263,10 @@
     </Compile>
     <Compile Include="Code\FLStatus.cs" />
     <Compile Include="Code\tblFlowExtend.cs" />
-    <Compile Include="UCCondition.cs">
+    <Compile Include="UC\UCCondition.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCCondition.Designer.cs">
+    <Compile Include="UC\UCCondition.Designer.cs">
       <DependentUpon>UCCondition.cs</DependentUpon>
     </Compile>
     <Compile Include="UC\UCDateTimePicker.cs">
@@ -311,6 +322,10 @@
       <Project>{C8097522-7C96-4ADD-9F84-288E64B0757D}</Project>
       <Name>BXDB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\Delete.ico" />
+    <Content Include="Resource\edit.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

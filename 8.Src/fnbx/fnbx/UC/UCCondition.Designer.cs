@@ -28,31 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.chkTime = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.cmbIt = new System.Windows.Forms.ComboBox();
             this.dtpEnd = new fnbx.UCDateTimePicker();
             this.dtpBegin = new fnbx.UCDateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkIT = new System.Windows.Forms.CheckBox();
+            this.chkStatus = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(9, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "状态:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // cmbStatus
             // 
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Location = new System.Drawing.Point(6, 42);
             this.cmbStatus.Name = "cmbStatus";
@@ -74,14 +66,14 @@
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 6;
-            this.btnOK.Text = "OK";
+            this.btnOK.Text = "查询";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // chkTime
             // 
             this.chkTime.AutoSize = true;
-            this.chkTime.Location = new System.Drawing.Point(6, 79);
+            this.chkTime.Location = new System.Drawing.Point(6, 83);
             this.chkTime.Name = "chkTime";
             this.chkTime.Size = new System.Drawing.Size(54, 16);
             this.chkTime.TabIndex = 7;
@@ -97,15 +89,6 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "从:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(9, 207);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 23);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "联系人:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // cmbIt
             // 
@@ -135,10 +118,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkIT);
+            this.groupBox1.Controls.Add(this.chkStatus);
             this.groupBox1.Controls.Add(this.chkTime);
             this.groupBox1.Controls.Add(this.cmbIt);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cmbStatus);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtpBegin);
@@ -150,6 +133,28 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条件";
+            // 
+            // chkIT
+            // 
+            this.chkIT.AutoSize = true;
+            this.chkIT.Location = new System.Drawing.Point(6, 211);
+            this.chkIT.Name = "chkIT";
+            this.chkIT.Size = new System.Drawing.Size(66, 16);
+            this.chkIT.TabIndex = 12;
+            this.chkIT.Text = "联系人:";
+            this.chkIT.UseVisualStyleBackColor = true;
+            this.chkIT.CheckedChanged += new System.EventHandler(this.chkIT_CheckedChanged);
+            // 
+            // chkStatus
+            // 
+            this.chkStatus.AutoSize = true;
+            this.chkStatus.Location = new System.Drawing.Point(6, 20);
+            this.chkStatus.Name = "chkStatus";
+            this.chkStatus.Size = new System.Drawing.Size(54, 16);
+            this.chkStatus.TabIndex = 11;
+            this.chkStatus.Text = "状态:";
+            this.chkStatus.UseVisualStyleBackColor = true;
+            this.chkStatus.CheckedChanged += new System.EventHandler(this.chkStatus_CheckedChanged);
             // 
             // UCCondition
             // 
@@ -168,7 +173,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbStatus;
         private UCDateTimePicker dtpBegin;
         private System.Windows.Forms.Label label3;
@@ -176,8 +180,9 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.CheckBox chkTime;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbIt;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkIT;
+        private System.Windows.Forms.CheckBox chkStatus;
     }
 }

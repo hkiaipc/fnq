@@ -12,11 +12,13 @@ namespace fnbx
 {
     public partial class UCCondition : UserControl
     {
+
         /// <summary>
         /// 
         /// </summary>
         public event EventHandler QuertyEvent;
 
+        #region UCCondition
         /// <summary>
         /// 
         /// </summary>
@@ -24,7 +26,9 @@ namespace fnbx
         {
             InitializeComponent();
         }
+        #endregion //UCCondition
 
+        #region btnOK_Click
         /// <summary>
         /// 
         /// </summary>
@@ -37,9 +41,14 @@ namespace fnbx
                 this.QuertyEvent(this, EventArgs.Empty);
             }
         }
-
-        
-
+        #endregion //btnOK_Click
+       
+        #region UCCondition_Load 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UCCondition_Load(object sender, EventArgs e)
         {
             SetDtpStyles();
@@ -49,8 +58,19 @@ namespace fnbx
 
             this.dtpBegin.Value = DateTime.Now.Date - TimeSpan.FromDays(1);
             this.dtpEnd.Value = DateTime.Now.Date + TimeSpan.FromDays(1);
-        }
 
+            this.chkIT.Checked = false;
+            this.cmbIt.Enabled = false;
+
+            this.chkStatus.Checked = false;
+            this.cmbStatus.Enabled = false;
+        }
+        #endregion //UCCondition_Load
+
+        #region BindItName
+        /// <summary>
+        /// 
+        /// </summary>
         private void BindItName()
         {
             using (var db = DBFactory.GetBxdbDataContext())
@@ -60,7 +80,9 @@ namespace fnbx
                 this.cmbIt.DataSource = its;
             }
         }
+        #endregion //BindItName
 
+        #region GetStatusDataSource
         /// <summary>
         /// 
         /// </summary>
@@ -76,13 +98,35 @@ namespace fnbx
                 ds.Add(new KeyValuePair<string, FLStatus>(name, item));
             }
             return ds;
-
-
-            //this.cmbNewMTStatus.DisplayMember = "Key";
-            //this.cmbNewMTStatus.ValueMember = "Value";
-            //this.cmbNewMTStatus.DataSource = ds;
         }
+        #endregion //GetStatusDataSource
 
+        #region SelectedFLStatus
+        /// <summary>
+        /// 
+        /// </summary>
+        public FLStatus SelectedFLStatus
+        {
+            get 
+            {
+                if (this.cmbStatus.SelectedValue != null)
+                {
+                    return (FLStatus)this.cmbStatus.SelectedValue;
+                }
+                else
+                {
+                    return FLStatus.New;
+                }
+            }
+            set
+            {
+                this.cmbStatus.SelectedValue = value;
+                
+            }
+        }
+        #endregion //SelectedFLStatus
+
+        #region BindStatus
         /// <summary>
         /// 
         /// </summary>
@@ -98,7 +142,9 @@ namespace fnbx
             //    this.cmbStatus.DataSource = mls;
             //}
         }
+        #endregion //BindStatus
 
+        #region ML
         /// <summary>
         /// 
         /// </summary>
@@ -107,40 +153,92 @@ namespace fnbx
             get { return _ml; }
             set { _ml = value; }
         } private tblMaintainLevel _ml;
+        #endregion //ML
 
-        public bool IsTime
+        #region EnabledDateTime
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool EnabledDateTime
         {
             get { return this.chkTime.Checked; }
             set { this.chkTime.Checked = value; }
         }
+        #endregion //EnabledDateTime
 
+        #region Begin
         public DateTime Begin
         {
             get { return this.dtpBegin.Value; }
             set { this.dtpBegin.Value = value; }
         }
+        #endregion //Begin
 
+        #region End
         public DateTime End
         {
             get { return this.dtpEnd .Value; }
             set { this.dtpEnd.Value = value; }
         }
+        #endregion //End
 
+        #region EnabledIt
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool EnabledIt
+        {
+            get { return this.chkIT.Checked; }
+            set { this.chkIT.Checked = value; }
+        }
+        #endregion //EnabledIt
+
+        #region EnabledFLStatus
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool EnabledFLStatus
+        {
+            get { return this.chkStatus.Checked; }
+            set { this.chkStatus.Checked = value; }
+        }
+        #endregion //EnabledFLStatus
+
+        #region ItName
         public string ItName
         {
             get { return this.cmbIt.Text; }
             set { this.cmbIt.Text = value; }
         }
+        #endregion //ItName
 
+        #region chkTime_CheckedChanged
         private void chkTime_CheckedChanged(object sender, EventArgs e)
         {
             SetDtpStyles();
         }
+        #endregion //chkTime_CheckedChanged
 
+        #region SetDtpStyles
         private void SetDtpStyles()
         {
             this.dtpBegin.Enabled = this.chkTime.Checked;
             this.dtpEnd.Enabled = this.chkTime.Checked;
         }
+        #endregion //SetDtpStyles
+
+        #region chkStatus_CheckedChanged
+        private void chkStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            this.cmbStatus.Enabled = this.chkStatus.Checked;
+        }
+        #endregion //chkStatus_CheckedChanged
+
+        #region chkIT_CheckedChanged
+        private void chkIT_CheckedChanged(object sender, EventArgs e)
+        {
+            this.cmbIt.Enabled = this.chkIT.Checked;
+        }
+        #endregion //chkIT_CheckedChanged
     }
 }

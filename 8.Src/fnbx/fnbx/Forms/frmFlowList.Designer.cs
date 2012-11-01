@@ -36,6 +36,7 @@
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbFind = new System.Windows.Forms.ToolStripButton();
             this.ucCondition1 = new fnbx.UCCondition();
+            this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +62,8 @@
             this.新建NToolStripButton,
             this.tsbView,
             this.tsbDelete,
-            this.tsbFind});
+            this.tsbFind,
+            this.tsbRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -74,8 +76,8 @@
             this.新建NToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("新建NToolStripButton.Image")));
             this.新建NToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.新建NToolStripButton.Name = "新建NToolStripButton";
-            this.新建NToolStripButton.Size = new System.Drawing.Size(50, 33);
-            this.新建NToolStripButton.Text = "新建(&N)";
+            this.新建NToolStripButton.Size = new System.Drawing.Size(35, 33);
+            this.新建NToolStripButton.Text = "新建";
             this.新建NToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.新建NToolStripButton.Click += new System.EventHandler(this.新建NToolStripButton_Click);
             // 
@@ -84,8 +86,8 @@
             this.tsbView.Image = ((System.Drawing.Image)(resources.GetObject("tsbView.Image")));
             this.tsbView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbView.Name = "tsbView";
-            this.tsbView.Size = new System.Drawing.Size(33, 33);
-            this.tsbView.Text = "View";
+            this.tsbView.Size = new System.Drawing.Size(35, 33);
+            this.tsbView.Text = "修改";
             this.tsbView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbView.Click += new System.EventHandler(this.tsbView_Click);
             // 
@@ -94,8 +96,8 @@
             this.tsbDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbDelete.Image")));
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(42, 33);
-            this.tsbDelete.Text = "Delete";
+            this.tsbDelete.Size = new System.Drawing.Size(35, 33);
+            this.tsbDelete.Text = "删除";
             this.tsbDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
@@ -104,23 +106,37 @@
             this.tsbFind.Image = ((System.Drawing.Image)(resources.GetObject("tsbFind.Image")));
             this.tsbFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFind.Name = "tsbFind";
-            this.tsbFind.Size = new System.Drawing.Size(31, 33);
-            this.tsbFind.Text = "Find";
+            this.tsbFind.Size = new System.Drawing.Size(35, 33);
+            this.tsbFind.Text = "查询";
             this.tsbFind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbFind.Click += new System.EventHandler(this.tsbFind_Click);
             // 
             // ucCondition1
             // 
-            this.ucCondition1.Begin = new System.DateTime(2012, 9, 23, 0, 0, 0, 0);
+            this.ucCondition1.Begin = new System.DateTime(2012, 10, 31, 0, 0, 0, 0);
             this.ucCondition1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ucCondition1.End = new System.DateTime(2012, 9, 25, 0, 0, 0, 0);
-            this.ucCondition1.IsTime = false;
+            this.ucCondition1.EnabledDateTime = false;
+            this.ucCondition1.EnabledFLStatus = false;
+            this.ucCondition1.EnabledIt = false;
+            this.ucCondition1.End = new System.DateTime(2012, 11, 2, 0, 0, 0, 0);
             this.ucCondition1.ItName = "unknown name";
             this.ucCondition1.Location = new System.Drawing.Point(0, 36);
             this.ucCondition1.ML = null;
             this.ucCondition1.Name = "ucCondition1";
+            this.ucCondition1.SelectedFLStatus = fnbx.FLStatus.Created;
             this.ucCondition1.Size = new System.Drawing.Size(221, 409);
             this.ucCondition1.TabIndex = 4;
+            this.ucCondition1.QuertyEvent += new System.EventHandler(this.ucCondition1_QuertyEvent);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Image")));
+            this.tsbRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.Size = new System.Drawing.Size(35, 33);
+            this.tsbRefresh.Text = "刷新";
+            this.tsbRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbRefresh.Click += new System.EventHandler(this.tsbRefresh_Click);
             // 
             // frmFlowList
             // 
@@ -150,5 +166,6 @@
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ToolStripButton tsbFind;
         private UCCondition ucCondition1;
+        private System.Windows.Forms.ToolStripButton tsbRefresh;
     }
 }

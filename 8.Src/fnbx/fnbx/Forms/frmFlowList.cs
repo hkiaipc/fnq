@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq.Dynamic;
 using BXDB;
 using Xdgk.Common;
 
@@ -94,17 +95,129 @@ namespace fnbx
         {
             //this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Programmatic;
 
-            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            if (this.ucCondition1.Visible)
+            {
+                FillWithCondition();
+            }
+            else
+            {
+                BxdbDataContext dc = DBFactory.GetBxdbDataContext();
 
-            var r = from q in dc.tblFlow
-                    select q;
+                var r = from q in dc.tblFlow
+                        select q;
 
-            FlowData[] fs =FlowConverter.Convert(r.ToArray());
-            DataTable tbl = FlowConverter.Convert(fs);
-            this.dataGridView1.DataSource = tbl;
+                BindToDataGridView(r);
+            }
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void FillWithCondition()
+        {
+            bool hasStatus = this.ucCondition1.EnabledFLStatus;
+            FLStatus status = this.ucCondition1.SelectedFLStatus ;
+
+            bool hasDT = this.ucCondition1.EnabledDateTime ;
+            DateTime begin = this.ucCondition1.Begin ;
+            DateTime end = this.ucCondition1.End ;
+
+            bool hasIt = this.ucCondition1.EnabledIt;
+            string it = this.ucCondition1.ItName ;
+
+
+            Fill(hasStatus, status, hasDT, begin, end, hasIt, it);
         }
         #endregion //Fill
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r"></param>
+        private void BindToDataGridView(IQueryable<tblFlow> r)
+        {
+            FlowData[] fs = FlowConverter.Convert(r.ToArray());
+            DataTable tbl = FlowConverter.Convert(fs);
+            this.dataGridView1.DataSource = tbl;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="hasDT"></param>
+        /// <param name="begin"></param>
+        /// <param name="end"></param>
+        /// <param name="it"></param>
+        private void Fill(bool hasStatus, FLStatus status, bool hasDT, DateTime begin, DateTime end, bool hasIt, string it)
+        {
+            BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+
+            //if 
+            //var r = from q in dc.tblFlow
+            //        where
+            //        q.fl_status == 1 &&
+            //            q.tblMaintain.mt_pose_dt >= begin &&
+            //            q.tblMaintain.mt_pose_dt < end &&
+            //            q.tblMaintain.mt_id == 77 &&
+            //            q.tblIntroducer.it_name == it 
+
+            //        select q;
+
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
+            List<object> paramList = new List<object>();
+
+
+            if (hasStatus)
+            {
+                sb.AppendFormat("fl_status == @{0}", count++);
+
+                paramList.Add((int)status);
+            }
+
+            if (hasDT)
+            {
+                CheckAnd(sb);
+
+                sb.AppendFormat (
+                    "tblMaintain.mt_pose_dt >= @{0} and tblMaintain.mt_pose_dt < @{1}",
+                    count++, count++);
+
+                paramList.Add(begin);
+                paramList.Add(end);
+            }
+
+            if (hasIt)
+            {
+                CheckAnd(sb);
+                sb.AppendFormat(
+                    "tblIntroducer.it_name = @{0}",
+                    count++);
+                paramList.Add(it);
+            }
+            if (sb.Length == 0)
+            {
+                sb.Append("true");
+            }
+            var r1 = from q in dc.tblFlow
+                    .Where(sb.ToString(), paramList.ToArray ())
+                    select q;
+
+            BindToDataGridView(r1);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sb"></param>
+        private static void CheckAnd(StringBuilder sb)
+        {
+            if (sb.Length > 0)
+            {
+                sb.Append(" AND ");
+            }
+        }
 
         #region CheckSelectedFlow
         /// <summary>
@@ -142,7 +255,8 @@ namespace fnbx
         }
         #endregion //GetSelectedFlow
 
-     
+    
+        #region dataGridView1_CellContentClick 
         /// <summary>
         /// 
         /// </summary>
@@ -152,6 +266,7 @@ namespace fnbx
         {
 
         }
+        #endregion //dataGridView1_CellContentClick
 
         #region 新建
         /// <summary>
@@ -275,6 +390,11 @@ namespace fnbx
         /// <param name="e"></param>
         private void tsbFind_Click(object sender, EventArgs e)
         {
+            this.tsbFind.Checked = !this.tsbFind.Checked;
+            this.ucCondition1.Visible = this.tsbFind.Checked;
+
+            return;
+
             NUnit.UiKit.UserMessage.DisplayFailure("NotImplemented");
 
             if (new frmColumnSelect().ShowDialog() == DialogResult.OK)
@@ -285,6 +405,7 @@ namespace fnbx
         }
         #endregion //tsbFind_Click
 
+        #region dataGridView1_RowsAdded
         /// <summary>
         /// 
         /// </summary>
@@ -294,7 +415,9 @@ namespace fnbx
         {
             return;
         }
+        #endregion //dataGridView1_RowsAdded
 
+        #region dataGridView1_DataBindingComplete
         /// <summary>
         /// 
         /// </summary>
@@ -310,7 +433,9 @@ namespace fnbx
                 rv.DefaultCellStyle.BackColor = c;
             }
         }
+        #endregion //dataGridView1_DataBindingComplete
 
+        #region GetColor
         /// <summary>
         /// 
         /// </summary>
@@ -321,7 +446,9 @@ namespace fnbx
             Color c = App.Default.Config.StatusColors.GetColor(fLStatus);
             return c;
         }
+        #endregion //GetColor
 
+        #region GetTblFlow
         /// <summary>
         /// 
         /// </summary>
@@ -333,5 +460,29 @@ namespace fnbx
             tblFlow flow = (tblFlow)view.Row["tblFlow"];
             return flow;
         }
+        #endregion //GetTblFlow
+
+        #region ucCondition1_QuertyEvent
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ucCondition1_QuertyEvent(object sender, EventArgs e)
+        {
+            FillWithCondition();          
+        }
+        #endregion //ucCondition1_QuertyEvent
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbRefresh_Click(object sender, EventArgs e)
+        {
+            Fill();
+        }
+
     }
 }

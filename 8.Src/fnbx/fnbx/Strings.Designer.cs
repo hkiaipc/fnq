@@ -151,6 +151,15 @@ namespace fnbx {
         }
         
         /// <summary>
+        ///   查找类似 &lt;全部&gt; 的本地化字符串。
+        /// </summary>
+        internal static string ItAll {
+            get {
+                return ResourceManager.GetString("ItAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 联系人 的本地化字符串。
         /// </summary>
         internal static string ItName {
