@@ -66,12 +66,12 @@ namespace fnbx
         //    return r;
         //}
 
-        public override bool CanActivateForFL(ADEState ade, FLStatus current)
+        public override bool CanActivateForFL(ADEStatus ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
             {
-                case ADEState.Edit:
+                case ADEStatus.Edit:
                     r = current == FLStatus.Completed || current == FLStatus.Received;
                     break;
 

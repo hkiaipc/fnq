@@ -72,7 +72,7 @@ namespace fnbx
         /// </summary>
         /// <returns></returns>
         abstract public bool CanModifyFLStatus(FLStatus current);
-        abstract public bool CanActivateForFL(ADEState ade, FLStatus current);
+        abstract public bool CanActivateForFL(ADEStatus ade, FLStatus current);
         //abstract public bool CanActivateForRp(ADEState ade, FLStatus current);
 
         /// <summary>

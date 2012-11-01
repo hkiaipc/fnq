@@ -54,19 +54,19 @@ namespace fnbx
             return r;
         }
 
-        public override bool CanActivateForFL(ADEState ade, FLStatus current)
+        public override bool CanActivateForFL(ADEStatus ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
             {
-                case ADEState.Add:
+                case ADEStatus.Add:
                     break;
 
-                case ADEState.Delete:
+                case ADEStatus.Delete:
                     r = true;
                     break;
 
-                case ADEState.Edit:
+                case ADEStatus.Edit:
                     break;
 
                 default:

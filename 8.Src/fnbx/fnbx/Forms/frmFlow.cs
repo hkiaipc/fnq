@@ -89,7 +89,7 @@ namespace fnbx
         {
             Right rt = App.Default.GetLoginOperatorRight();
 
-            bool b = rt.CanActivateForFL(Xdgk.Common.ADEState.Edit, this.FL.GetFLStatus());
+            bool b = rt.CanActivateForFL(Xdgk.Common.ADEStatus.Edit, this.FL.GetFLStatus());
             this.保存SToolStripButton.Enabled = b;
         }
         #endregion //frmFlow_Load
@@ -163,7 +163,7 @@ namespace fnbx
         {
             Right rt = App.Default.GetLoginOperatorRight();
 
-            if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Edit, this.FL.GetFLStatus()))
+            if (!rt.CanActivateForFL(Xdgk.Common.ADEStatus.Edit, this.FL.GetFLStatus()))
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotEditMT);
                 return;

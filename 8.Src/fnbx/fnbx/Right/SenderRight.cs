@@ -65,20 +65,20 @@ namespace fnbx
         /// <param name="ade"></param>
         /// <param name="current"></param>
         /// <returns></returns>
-        public override bool CanActivateForFL(ADEState ade, FLStatus current)
+        public override bool CanActivateForFL(ADEStatus ade, FLStatus current)
         {
             bool r = false;
             switch (ade)
             {
-                case ADEState.Add:
+                case ADEStatus.Add:
                     r = true;
                     break;
 
-                case ADEState.Delete:
+                case ADEStatus.Delete:
                     r = current == FLStatus.Created || current == FLStatus.New;
                     break;
 
-                case ADEState.Edit:
+                case ADEStatus.Edit:
                     r = current == FLStatus.Created || current == FLStatus.New || current == FLStatus.Closed;
                     break;
 

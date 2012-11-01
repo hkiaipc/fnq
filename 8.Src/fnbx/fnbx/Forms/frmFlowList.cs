@@ -28,7 +28,7 @@ namespace fnbx
         private void AddFL()
         {
             Right rt = App.Default.GetLoginOperatorRight();
-            if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Add, FLStatus.Created))
+            if (!rt.CanActivateForFL(Xdgk.Common.ADEStatus.Add, FLStatus.Created))
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotCreateMT);
                 return;
@@ -226,7 +226,7 @@ namespace fnbx
             }
 
             Right rt = App.Default.GetLoginOperatorRight();
-            if (!rt.CanActivateForFL(Xdgk.Common.ADEState.Delete, fl.GetFLStatus()))
+            if (!rt.CanActivateForFL(Xdgk.Common.ADEStatus.Delete, fl.GetFLStatus()))
             {
                 NUnit.UiKit.UserMessage.DisplayFailure(Strings.CannotDeleteMT);
                 return;
