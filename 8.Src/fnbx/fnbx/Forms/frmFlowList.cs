@@ -130,6 +130,7 @@ namespace fnbx
         }
         #endregion //Fill
 
+        #region BindToDataGridView
         /// <summary>
         /// 
         /// </summary>
@@ -140,7 +141,9 @@ namespace fnbx
             DataTable tbl = FlowConverter.Convert(fs);
             this.dataGridView1.DataSource = tbl;
         }
+        #endregion //BindToDataGridView
 
+        #region Fill
         /// <summary>
         /// 
         /// </summary>
@@ -206,7 +209,9 @@ namespace fnbx
 
             BindToDataGridView(r1);
         }
+        #endregion //Fill
 
+        #region CheckAnd
         /// <summary>
         /// 
         /// </summary>
@@ -218,6 +223,7 @@ namespace fnbx
                 sb.Append(" AND ");
             }
         }
+        #endregion //CheckAnd
 
         #region CheckSelectedFlow
         /// <summary>
@@ -254,7 +260,6 @@ namespace fnbx
             }
         }
         #endregion //GetSelectedFlow
-
     
         #region dataGridView1_CellContentClick 
         /// <summary>
@@ -474,6 +479,7 @@ namespace fnbx
         }
         #endregion //ucCondition1_QuertyEvent
 
+        #region tsbRefresh_Click
         /// <summary>
         /// 
         /// </summary>
@@ -483,6 +489,6 @@ namespace fnbx
         {
             Fill();
         }
-
+        #endregion //tsbRefresh_Click
     }
 }

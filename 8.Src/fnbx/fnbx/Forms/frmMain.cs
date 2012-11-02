@@ -98,5 +98,27 @@ namespace fnbx
         private void mnuAbout_Click(object sender, EventArgs e)
         {
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuLoginManage_Click(object sender, EventArgs e)
+        {
+            frmOperatorList  f = new frmOperatorList();
+            f.ShowDialog();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuML_Click(object sender, EventArgs e)
+        {
+            frmMLList f = new frmMLList();
+            f.ShowDialog();
+        }
     }
 }

@@ -130,7 +130,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAdd);
             this.Name = "frmOperatorList";
-            this.Text = "接线员";
+            this.Text = "登录管理";
             this.Load += new System.EventHandler(this.frmOperator_Load);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);

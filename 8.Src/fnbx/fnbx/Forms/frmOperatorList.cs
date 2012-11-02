@@ -60,7 +60,7 @@ namespace fnbx
                 DialogResult dr = f.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                
+                    Fill();
                 }
             }
         }

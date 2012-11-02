@@ -17,7 +17,7 @@ namespace fnbx
         /// <summary>
         /// 
         /// </summary>
-        public frmML(tblMaintainLevel ml )
+        public frmML(tblMaintainLevel ml)
         {
             InitializeComponent();
 
@@ -62,12 +62,20 @@ namespace fnbx
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            _ml.ml_arrive_hl = this.ucArriveHL.Value;
-            _ml.ml_reply_hl = this.ucReplyHL.Value;
+            //_ml.ml_arrive_hl = this.ucArriveHL.Value;
+            //_ml.ml_reply_hl = this.ucReplyHL.Value;
 
             BXDB.BxdbDataContext dc = DBFactory.GetBxdbDataContext();
+            var r = from q in dc.tblMaintainLevel
+                    where q.ml_id == _ml.ml_id
+                    select q;
+
+            tblMaintainLevel ml = r.First();
+            ml.ml_arrive_hl = this.ucArriveHL.Value;
+            ml.ml_reply_hl = this.ucReplyHL.Value;
             dc.SubmitChanges();
 
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

@@ -31,23 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tblMaintainLevelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.ml_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ml_arrive_hl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ml_reply_hl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblMaintainLevelBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // okButton
-            // 
-            //this.okButton.Location = new System.Drawing.Point(358, 393);
-            //this.okButton.Text = "修改";
-            //this.okButton.Click += new System.EventHandler(this.okButton_Click);
-            //// 
-            //// cancelButton
-            //// 
-            //this.cancelButton.Location = new System.Drawing.Point(446, 393);
-            //this.cancelButton.Text = "关闭";
             // 
             // dataGridView1
             // 
@@ -70,6 +62,38 @@
             // tblMaintainLevelBindingSource
             // 
             this.tblMaintainLevelBindingSource.DataSource = typeof(BXDB.tblMaintainLevel);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(174, 381);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 25;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(12, 381);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 24;
+            this.btnEdit.Text = "修改";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(255, 381);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 23;
+            this.btnAdd.Text = "添加";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Visible = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // ml_name
             // 
@@ -98,14 +122,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 429);
+            this.ClientSize = new System.Drawing.Size(532, 413);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmMLList";
             this.Text = "报修等级";
             this.Load += new System.EventHandler(this.frmMLList_Load);
-            //this.Controls.SetChildIndex(this.okButton, 0);
-            //this.Controls.SetChildIndex(this.cancelButton, 0);
+            this.Controls.SetChildIndex(this.okButton, 0);
+            this.Controls.SetChildIndex(this.cancelButton, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
+            this.Controls.SetChildIndex(this.btnAdd, 0);
+            this.Controls.SetChildIndex(this.btnEdit, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblMaintainLevelBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -116,6 +146,9 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource tblMaintainLevelBindingSource;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ml_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn ml_arrive_hl;
         private System.Windows.Forms.DataGridViewTextBoxColumn ml_reply_hl;

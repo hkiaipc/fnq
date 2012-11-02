@@ -14,9 +14,21 @@ namespace fnbx
     {
         private tblOperator _op = null;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public frmOperator()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool IsAdd()
+        {
+            return _op == null;
         }
 
         /// <summary>
@@ -53,16 +65,19 @@ namespace fnbx
         private void okButton_Click(object sender, EventArgs e)
         {
             BxdbDataContext dc = DBFactory.GetBxdbDataContext();
-            if (_op != null)
+            if (IsAdd())
             {
-                _op.op_name = this.txtName.Text.Trim();
+                tblOperator op = new tblOperator();
+                op.op_name = this.txtName.Text.Trim();
+                dc.tblOperator.InsertOnSubmit(op);
             }
             else
             {
-                _op = new tblOperator();
-                _op.op_name = this.txtName.Text.Trim();
-                //_op.tblRight 
-                //db.tblOperator.InsertOnSubmit(_op);
+                var r = from q in dc.tblOperator
+                        where q.op_id == _op.op_id
+                        select q;
+                tblOperator op = r.First();
+                op.op_name = this.txtName.Text.Trim();
             }
             dc.SubmitChanges();
 
