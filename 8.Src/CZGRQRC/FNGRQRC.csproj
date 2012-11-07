@@ -281,6 +281,12 @@
     <Compile Include="Forms\frmFirstStationTempCurve.Designer.cs">
       <DependentUpon>frmFirstStationTempCurve.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmFirstStationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFirstStationDetail.Designer.cs">
+      <DependentUpon>frmFirstStationDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CurveStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -401,6 +407,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFirstStationTempCurve.resx">
       <DependentUpon>frmFirstStationTempCurve.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFirstStationDetail.resx">
+      <DependentUpon>frmFirstStationDetail.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
