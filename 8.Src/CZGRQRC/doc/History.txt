@@ -1,3 +1,9 @@
 v1.2.0.0    2012-10-19
     add frmFirstStation temp/press curve
     add frmFirstStation last data auto refresh, timespan 1 minute
+
+v1.3.0.0	2012-11-08
+	add multi first grdata form
+	add grdaata street filter
+	add first station ir sr, recurit value detail
+ 
