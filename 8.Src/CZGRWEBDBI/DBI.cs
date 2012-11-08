@@ -487,10 +487,28 @@ namespace CZGRWEBDBI
         /// <summary>
         /// 
         /// </summary>
+        /// <remarks>street is null query all</remarks>
         /// <returns></returns>
-        public DataTable ExecuteGRLastDataTable()
+        public DataTable ExecuteGRLastDataTableWithStreet(string street)
+        //public DataTable ExecuteGRLastDataTable(string street)
         {
-            string s = "select * from vGRDataLast";
+            //string street = null;
+            if (street != null)
+            {
+                street = street.Trim();
+            }
+
+            string s = string.Empty;
+            if (string.IsNullOrEmpty(street))
+            {
+                s = "select * from vGRDataLast";
+            }
+            else
+            {
+                s = string.Format(
+                    "select * from vGRDataLast where Street = '{0}'",
+                    street);
+            }
             return ExecuteDataTable(s);
         }
 
@@ -1364,6 +1382,16 @@ namespace CZGRWEBDBI
         {
             string s = string.Format("select DeviceExtend from tblDevice where deviceid = {0}", deviceID);
             return ExecuteScalar(s).ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DataTable ExecuteStreetDataTable()
+        {
+            string s = "select DISTINCT street from tblStation order by street";
+            return ExecuteDataTable(s);
         }
     }
 

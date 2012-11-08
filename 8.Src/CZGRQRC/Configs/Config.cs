@@ -349,5 +349,15 @@ namespace FNGRQRC
         #endregion //EnableGRAlarmPopup
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnore]
+        public bool EnabledMultiGRDataLastForm
+        {
+            get { return _enabledMultiGRDataLastForm; }
+            set { _enabledMultiGRDataLastForm = value; }
+        }
+        private bool _enabledMultiGRDataLastForm = true;
     }
 }

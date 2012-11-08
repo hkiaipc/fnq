@@ -37,6 +37,8 @@
             this.btnTempCurve = new System.Windows.Forms.Button();
             this.btnHistoryData = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cmbStreet = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(484, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(697, 279);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -63,7 +65,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRefresh.Location = new System.Drawing.Point(12, 268);
+            this.btnRefresh.Location = new System.Drawing.Point(12, 297);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 1;
@@ -74,7 +76,7 @@
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.Location = new System.Drawing.Point(93, 268);
+            this.btnExport.Location = new System.Drawing.Point(93, 297);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 2;
@@ -85,10 +87,10 @@
             // btnPressCurve
             // 
             this.btnPressCurve.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPressCurve.Location = new System.Drawing.Point(421, 268);
+            this.btnPressCurve.Location = new System.Drawing.Point(634, 297);
             this.btnPressCurve.Name = "btnPressCurve";
             this.btnPressCurve.Size = new System.Drawing.Size(75, 23);
-            this.btnPressCurve.TabIndex = 3;
+            this.btnPressCurve.TabIndex = 7;
             this.btnPressCurve.Text = "压力曲线";
             this.btnPressCurve.UseVisualStyleBackColor = true;
             this.btnPressCurve.Click += new System.EventHandler(this.btnPressCurve_Click);
@@ -96,10 +98,10 @@
             // btnTempCurve
             // 
             this.btnTempCurve.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTempCurve.Location = new System.Drawing.Point(340, 268);
+            this.btnTempCurve.Location = new System.Drawing.Point(553, 297);
             this.btnTempCurve.Name = "btnTempCurve";
             this.btnTempCurve.Size = new System.Drawing.Size(75, 23);
-            this.btnTempCurve.TabIndex = 4;
+            this.btnTempCurve.TabIndex = 6;
             this.btnTempCurve.Text = "温度曲线";
             this.btnTempCurve.UseVisualStyleBackColor = true;
             this.btnTempCurve.Click += new System.EventHandler(this.btnTempCurve_Click);
@@ -107,7 +109,7 @@
             // btnHistoryData
             // 
             this.btnHistoryData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHistoryData.Location = new System.Drawing.Point(259, 268);
+            this.btnHistoryData.Location = new System.Drawing.Point(472, 297);
             this.btnHistoryData.Name = "btnHistoryData";
             this.btnHistoryData.Size = new System.Drawing.Size(75, 23);
             this.btnHistoryData.TabIndex = 5;
@@ -121,11 +123,34 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // cmbStreet
+            // 
+            this.cmbStreet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbStreet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStreet.FormattingEnabled = true;
+            this.cmbStreet.Location = new System.Drawing.Point(221, 299);
+            this.cmbStreet.Name = "cmbStreet";
+            this.cmbStreet.Size = new System.Drawing.Size(121, 20);
+            this.cmbStreet.TabIndex = 4;
+            this.cmbStreet.SelectedIndexChanged += new System.EventHandler(this.cmbStreet_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(174, 302);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "分区:";
+            // 
             // frmGRDataLast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 303);
+            this.ClientSize = new System.Drawing.Size(721, 332);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbStreet);
             this.Controls.Add(this.btnHistoryData);
             this.Controls.Add(this.btnTempCurve);
             this.Controls.Add(this.btnPressCurve);
@@ -137,6 +162,7 @@
             this.Load += new System.EventHandler(this.frmGRDataLast_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,5 +175,7 @@
         private System.Windows.Forms.Button btnTempCurve;
         private System.Windows.Forms.Button btnHistoryData;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ComboBox cmbStreet;
+        private System.Windows.Forms.Label label1;
     }
 }

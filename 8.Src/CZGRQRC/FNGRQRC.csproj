@@ -597,9 +597,9 @@
     <Content Include="doc\History.txt" />
     <Content Include="doc\Request.txt" />
     <Content Include="doc\Todo.txt" />
-    <Content Include="Resources\bg.jpg">
+    <None Include="Resources\bg.jpg.bak">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="Resources\ico\split.ico" />
     <None Include="Resources\pictureBox1.Image.jpg" />
     <None Include="Resources\zg.jpg" />

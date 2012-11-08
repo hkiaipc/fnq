@@ -96,9 +96,28 @@ namespace FNGRQRC
         /// <param name="e"></param>
         private void frmGRDataLast_Load(object sender, EventArgs e)
         {
+            FillStreet();
             Queries();
         }
         #endregion //frmGRDataLast_Load
+
+        #region FillStreet
+        /// <summary>
+        /// 
+        /// </summary>
+        private void FillStreet()
+        {
+            DataTable tbl = CZGRQRCApp.Default.DBI.ExecuteStreetDataTable();
+            DataRow row = tbl.NewRow();
+            row[0] = strings.All;
+            tbl.Rows.InsertAt(row, 0);
+
+            this.cmbStreet.DisplayMember = "Street";
+            this.cmbStreet.ValueMember = "Street";
+            this.cmbStreet.DataSource = tbl;
+
+        }
+        #endregion //FillStreet
 
         #region btnRefresh_Click
         /// <summary>
@@ -192,12 +211,16 @@ namespace FNGRQRC
         /// </summary>
         public void Query()
         {
-            DataGridViewRow dgvr = this.dataGridView1.CurrentRow;
             int index = 0;
+            DataGridViewRow dgvr = this.dataGridView1.CurrentRow;
             if (dgvr != null)
+            {
                 index = dgvr.Index;
+            }
 
-            DataTable tbl = CZGRQRCApp.Default.DBI.ExecuteGRLastDataTable();
+            DataTable tbl = CZGRQRCApp.Default.DBI.ExecuteGRLastDataTableWithStreet(
+                this.GetSelectedStreet()
+                );
 
             Helper.AddCalcColumn(tbl, CalcColumnInfoCollection.GRDataCalcColumns);
 
@@ -207,16 +230,18 @@ namespace FNGRQRC
 
             // TODO:
             //
-            if (this.dataGridView1.DataSource == null)
-            {
-                this.dataGridView1.DataSource = tbl;
-            }
-            else
-            {
-                DataTable dest = this.dataGridView1.DataSource as DataTable;
-                UpdateDataTable(tbl, dest);
-                this.dataGridView1.Refresh();
-            }
+            //if (this.dataGridView1.DataSource == null)
+            //{
+            //    this.dataGridView1.DataSource = tbl;
+            //}
+            //else
+            //{
+            //    DataTable dest = this.dataGridView1.DataSource as DataTable;
+            //    UpdateDataTable(tbl, dest);
+            //    this.dataGridView1.Refresh();
+            //}
+
+            this.dataGridView1.DataSource = tbl;
 
             // set datagridview selected row
             //
@@ -869,5 +894,32 @@ namespace FNGRQRC
             }
         }
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbStreet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Query();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private string GetSelectedStreet()
+        {
+            string r = null;
+            if (this.cmbStreet.SelectedIndex >= 0)
+            {
+                if (this.cmbStreet.Text != strings.All)
+                {
+                    r = this.cmbStreet.Text;
+                }
+            }
+            return r;
+        }
     }
 }

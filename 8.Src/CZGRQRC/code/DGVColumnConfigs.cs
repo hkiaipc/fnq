@@ -116,7 +116,7 @@ namespace FNGRQRC
                 {
                     _gr = new DGVColumnConfigCollection();
 
-                    //_gr.Add(new DGVColumnConfig("Street", noFormat, "街道"));
+                    _gr.Add(new DGVColumnConfig("Street", noFormat, "分区"));
 
                     _gr.Add(new DGVColumnConfig("StationOrdinal", noFormat, "序号"));
                     _gr.Add(new DGVColumnConfig("StationName", noFormat, "站名"));

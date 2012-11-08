@@ -422,16 +422,26 @@ namespace FNGRQRC
         /// <returns></returns>
         private frmGRDataLast GetGRDataLastForm()
         {
-            foreach (Form f in this.MdiChildren)
+            if (Config.Default.EnabledMultiGRDataLastForm)
             {
-                if (f is frmGRDataLast)
-                {
-                    return (frmGRDataLast)f;
-                }
+                frmGRDataLast nf = new frmGRDataLast();
+                nf.MdiParent = this;
+                return nf;
             }
-            frmGRDataLast nf = new frmGRDataLast();
-            nf.MdiParent = this;
-            return nf;
+            else
+            {
+                foreach (Form f in this.MdiChildren)
+                {
+                    if (f is frmGRDataLast)
+                    {
+                        return (frmGRDataLast)f;
+                    }
+                }
+
+                frmGRDataLast nf = new frmGRDataLast();
+                nf.MdiParent = this;
+                return nf;
+            }
         }
 
         /// <summary>
