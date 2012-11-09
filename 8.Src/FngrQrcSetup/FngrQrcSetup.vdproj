@@ -39,12 +39,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_54D3DA2F2EC64F4EAAB33133A29A9B16"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5FEE07E8BF275B41795B0EB1EED78F6A"
         "OwnerKey" = "8:_494FCD2A35038173B3B79BE430717EDD"
         "MsmSig" = "8:_UNDEFINED"
@@ -112,6 +106,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A17A45D4C9BE43D7289C6C7A63881726"
+        "OwnerKey" = "8:_A41AD97C2BD3A7CD24C4C02F571DAF81"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A17A45D4C9BE43D7289C6C7A63881726"
         "OwnerKey" = "8:_FA0DF5CCC28343AFB6DD14CC5467D136"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -137,12 +137,6 @@
         {
         "MsmKey" = "8:_FA0DF5CCC28343AFB6DD14CC5467D136"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5FEE07E8BF275B41795B0EB1EED78F6A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -191,6 +185,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A17A45D4C9BE43D7289C6C7A63881726"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5FEE07E8BF275B41795B0EB1EED78F6A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -248,6 +248,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -388,26 +396,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54D3DA2F2EC64F4EAAB33133A29A9B16"
-            {
-            "SourcePath" = "8:..\\CZGRQRC\\bin\\Debug\\Resources\\bg.jpg"
-            "TargetName" = "8:bg.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_639F407560754A07B795546F36B67CE6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5FEE07E8BF275B41795B0EB1EED78F6A"
@@ -629,7 +617,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:fngrqrc, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:fngrqrc, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_FA0DF5CCC28343AFB6DD14CC5467D136"
@@ -1228,7 +1216,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:安装程序将引导您完成在您的计算机上安装 [ProductName] v1.2 所需的步骤。"
+                            "Value" = "8:安装程序将引导您完成在您的计算机上安装 [ProductName] v1.3 所需的步骤。"
                             "DefaultValue" = "8:#1203"
                             "UsePlugInResources" = "11:TRUE"
                             }
