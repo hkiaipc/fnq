@@ -254,7 +254,8 @@ namespace FNGRQRC
                     _firstStation.Add(new DGVColumnConfig("AI2", floatFormat, "一次回温"));
                     _firstStation.Add(new DGVColumnConfig("AI3", floatFormat, "一次供压"));
                     _firstStation.Add(new DGVColumnConfig("AI4", floatFormat, "一次回压"));
-                    _firstStation.Add(new DGVColumnConfig("AI5", floatFormat, "瞬时流量"));
+                    _firstStation.Add(new DGVColumnConfig("AI5", floatFormat, "一次瞬时"));
+                    _firstStation.Add(new DGVColumnConfig("sf1", floatFormat, "一次累计"));
                     _firstStation.Add(new DGVColumnConfig("IR", floatFormat, "补水瞬时"));
                     _firstStation.Add(new DGVColumnConfig("SR", noFormat, "补水累计"));
                 }

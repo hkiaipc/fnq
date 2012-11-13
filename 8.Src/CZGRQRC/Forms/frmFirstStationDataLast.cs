@@ -128,30 +128,48 @@ namespace FNGRQRC
         /// <param name="tbl"></param>
         private void GetRecuritValues(string recuritEx, DataTable tbl)
         {
-            int no = 0;
+            //int no = 0;
 
             string[] items = recuritEx.Split('|');
+            //if (items.Length != 4)
+            //{
+            //    return;
+            //}
 
             foreach (string item in items)
             {
-                no++;
+                //no++;
 
                 string[] values = item.Split(',');
-                Debug.Assert(values.Length == 4);
 
-                DateTime dt = Convert.ToDateTime(values[0]);
-                string name = values[1].ToString();
-                double ir = Convert.ToDouble(values[2]);
-                double sr = Convert.ToDouble(values[3]);
+                if (values.Length == 4)
+                {
+                    Debug.Assert(values.Length == 4);
 
-                DataRow row = tbl.NewRow();
-                row["DT"] = DateTime.Now;
-                row["IR"] = ir;
-                row["SR"] = sr;
-                row["Name"] = name;
+                    DateTime dt = Convert.ToDateTime(values[0]);
+                    string name = values[1].ToString();
+                    double ir = Convert.ToDouble(values[2]);
+                    double sr = Convert.ToDouble(values[3]);
 
-                tbl.Rows.Add(row);
+                    DataRow row = tbl.NewRow();
+                    row["DT"] = DateTime.Now;
+                    row["IR"] = ir;
+                    row["SR"] = sr;
+                    row["Name"] = name;
+
+                    tbl.Rows.Add(row);
+                }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ShowDetail();
         }
     }
 }
