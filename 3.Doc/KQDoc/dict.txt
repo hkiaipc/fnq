@@ -1,0 +1,3 @@
+work define
+time define
+

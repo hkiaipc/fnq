@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="KQ" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KQ;User ID=sa" SettingsObjectName="KDB.Properties.Settings" SettingsPropertyName="KQConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblGroup" Member="tblGroup">
+    <Type Name="tblGroup">
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblGroup_tblPerson" Member="tblPerson" OtherKey="GroupID" Type="tblPerson" />
+      <Association Name="tblWorkDefine_tblGroup" Member="tblWorkDefine" ThisKey="WorkDefineID" Type="tblWorkDefine" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblLeave" Member="tblLeave">
+    <Type Name="tblLeave">
+      <Column Name="LeaveID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LeaveType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LeaveRemark" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LeaveBegin" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LeaveEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblPerson_tblLeave" Member="tblPerson" ThisKey="PersonID" Type="tblPerson" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPerson" Member="tblPerson">
+    <Type Name="tblPerson">
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TmID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tblPerson_tblLeave" Member="tblLeave" OtherKey="PersonID" Type="tblLeave" />
+      <Association Name="tblGroup_tblPerson" Member="tblGroup" ThisKey="GroupID" Type="tblGroup" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="tblTM_tblPerson" Member="tblTM" ThisKey="TmID" Type="tblTM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTimeDefine" Member="tblTimeDefine">
+    <Type Name="tblTimeDefine">
+      <Column Name="TimeDefineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EndTime" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DayOffset" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsCrossDay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblWorkDefine_tblTimeDefine" Member="tblWorkDefine" ThisKey="WorkDefineID" Type="tblWorkDefine" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTM" Member="tblTM">
+    <Type Name="tblTM">
+      <Column Name="TmID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TmSN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tblTM_tblPerson" Member="tblPerson" OtherKey="TmID" Type="tblPerson" />
+      <Association Name="tblTM_tblTmData" Member="tblTmData" OtherKey="TmID" Type="tblTmData" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTmData" Member="tblTmData">
+    <Type Name="tblTmData">
+      <Column Name="TmDataID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TmID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TmDataDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tblTM_tblTmData" Member="tblTM" ThisKey="TmID" Type="tblTM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblWorkDefine" Member="tblWorkDefine">
+    <Type Name="tblWorkDefine">
+      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorkDefineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineStart" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineDayOfCycle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblWorkDefine_tblGroup" Member="tblGroup" OtherKey="WorkDefineID" Type="tblGroup" />
+      <Association Name="tblWorkDefine_tblTimeDefine" Member="tblTimeDefine" OtherKey="WorkDefineID" Type="tblTimeDefine" />
+    </Type>
+  </Table>
+</Database>

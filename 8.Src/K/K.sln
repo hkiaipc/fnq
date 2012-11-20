@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K", "K\K.csproj", "{EAC9B2EC-FE08-40D9-A417-EA088ED144F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KDB", "KDB\KDB.csproj", "{DD6D8FE1-ECAA-44FD-84CD-BB4847B6FB24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAC9B2EC-FE08-40D9-A417-EA088ED144F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC9B2EC-FE08-40D9-A417-EA088ED144F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC9B2EC-FE08-40D9-A417-EA088ED144F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC9B2EC-FE08-40D9-A417-EA088ED144F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6D8FE1-ECAA-44FD-84CD-BB4847B6FB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6D8FE1-ECAA-44FD-84CD-BB4847B6FB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6D8FE1-ECAA-44FD-84CD-BB4847B6FB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6D8FE1-ECAA-44FD-84CD-BB4847B6FB24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
