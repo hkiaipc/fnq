@@ -1,6 +1,6 @@
-﻿namespace K.Forms
+﻿namespace K.Forms.WD
 {
-    partial class frmPerson
+    partial class frmWorkDefine
     {
         /// <summary>
         /// Required designer variable.
@@ -72,18 +72,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(475, 287);
             this.dataGridView1.TabIndex = 4;
             // 
-            // frmPerson
+            // frmWorkDefine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 399);
+            this.ClientSize = new System.Drawing.Size(615, 363);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "frmPerson";
-            this.Text = "frmPerson";
-            this.Load += new System.EventHandler(this.frmPerson_Load);
+            this.Name = "frmWorkDefine";
+            this.Text = "frmWorkDefine";
+            this.Load += new System.EventHandler(this.frmWorkDefine_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

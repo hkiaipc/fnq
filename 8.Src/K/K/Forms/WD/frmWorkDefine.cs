@@ -8,33 +8,35 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace K.Forms
+namespace K.Forms.WD
 {
-    public partial class frmPerson : Form
+    public partial class frmWorkDefine : Form
     {
-        public frmPerson()
+        public frmWorkDefine()
         {
             InitializeComponent();
+        }
+
+        private void frmWorkDefine_Load(object sender, EventArgs e)
+        {
+            Fill();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void Fill()
+        {
+            DB db = DBFactory.GetDB();
+            var r = from q in db.tblWorkDefine
+                    select q;
+
+            this.dataGridView1.DataSource = r;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void frmPerson_Load(object sender, EventArgs e)
-        {
-            Fill();
-        }
-
-        void Fill()
-        {
-            DB db = DBFactory.GetDB();
-            var r = from q in db.tblPerson
-                    orderby q.PersonName
-                    select q;
-
-            this.dataGridView1.DataSource = r;
         }
     }
 }

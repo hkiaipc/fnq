@@ -98,6 +98,7 @@
             this.mnuTM.Name = "mnuTM";
             this.mnuTM.Size = new System.Drawing.Size(152, 22);
             this.mnuTM.Text = "TM卡";
+            this.mnuTM.Click += new System.EventHandler(this.mnuTM_Click);
             // 
             // mnuWorkDefine
             // 

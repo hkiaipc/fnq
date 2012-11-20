@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using K.Forms;
+using K.Forms.TM;
 
 namespace K
 {
@@ -25,6 +26,12 @@ namespace K
         private void mnuPerson_Click(object sender, EventArgs e)
         {
             frmPerson f = new frmPerson();
+            f.ShowDialog();
+        }
+
+        private void mnuTM_Click(object sender, EventArgs e)
+        {
+            frmTM f = new frmTM();
             f.ShowDialog();
         }
     }
