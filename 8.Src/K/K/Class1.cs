@@ -169,7 +169,31 @@ namespace K
     [Serializable]
     public class TimeDefineCollection : Collection<TimeDefine>
     {
+        protected override void InsertItem(int index, TimeDefine item)
+        {
+            for (int i = 0; i < this.Count; i++)
+            {
+                TimeDefine td = this[i];
+                if (TimeDefineHelper.IsOverlapped(td, item))
+                {
+                    string msg = string.Format(
+                        "{0} {1} is overlapped", 
+                        td, item);
+                    throw new ArgumentException(msg);
+                }
+            }
+            base.InsertItem(index, item);
+        }
+    }
 
+    internal class TimeDefineHelper
+    {
+        static public bool IsOverlapped(TimeDefine td1, TimeDefine td2)
+        {
+            // TODO: check timedefine overlapped
+            //
+            return false;
+        }
     }
 
     [Serializable]
@@ -182,6 +206,17 @@ namespace K
             StringWriter sw = new StringWriter();
             s.Serialize(sw, wd);
             return sw.ToString();
+        }
+
+        static public WorkDefine Deserialize(string context)
+        {
+            XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
+            StringReader sr = new StringReader(context);
+            WorkDefine wd = s.Deserialize(sr) as WorkDefine;
+
+            Debug.Assert(wd != null, "Deserialize WorkDefine error");
+            return wd;
+
         }
 
 

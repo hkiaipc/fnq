@@ -39,7 +39,35 @@ namespace K.Forms.WD
             frmWorkDefineItem f = new frmWorkDefineItem();
             f.WorkDefine = new WorkDefine();
             f.IsAdd = true; 
-            f.ShowDialog();
+            if(f.ShowDialog() == DialogResult.OK )
+            {
+                Fill();
+            }
+        }
+
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            tblWorkDefine wd = GetSelectedWorkDefine();
+            if (wd != null)
+            {
+                frmWorkDefineItem f = new frmWorkDefineItem();
+                f.TblWorkDefine = wd;
+                f.IsAdd = false;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Fill();
+                }
+            }
+        }
+
+        private tblWorkDefine GetSelectedWorkDefine()
+        {
+            if (this.dataGridView1.CurrentRow != null)
+            {
+                return this.dataGridView1.CurrentRow.DataBoundItem as tblWorkDefine;
+            }
+            return null;
         }
     }
 }

@@ -206,6 +206,9 @@ namespace K.Forms.WD
             set
             {
                 _tblWorkDefine = value;
+
+                WorkDefine wd = WorkDefine.Deserialize(_tblWorkDefine.WorkDefineContext);
+                this.WorkDefine = wd;
             }
         } private tblWorkDefine _tblWorkDefine;
         #endregion //TblWorkDefine
