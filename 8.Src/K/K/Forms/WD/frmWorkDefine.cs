@@ -36,7 +36,10 @@ namespace K.Forms.WD
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            frmWorkDefineItem f = new frmWorkDefineItem();
+            f.WorkDefine = new WorkDefine();
+            f.IsAdd = true; 
+            f.ShowDialog();
         }
     }
 }

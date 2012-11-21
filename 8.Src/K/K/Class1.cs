@@ -1,8 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Text;
-using Xdgk.Common;
 using System.Diagnostics;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using Xdgk.Common;
 
 namespace K
 {
@@ -33,41 +36,81 @@ namespace K
         #endregion //ID
     }
 
-    class TimeDefine
+    [Serializable]
+    public class TimeDefine
     {
         #region Begin
         /// <summary>
         /// 
         /// </summary>
+        [XmlIgnore]
         public TimeSpan Begin
         {
             get
             {
-                return _begin;
+                return this.BeginTime.TimeOfDay;
             }
             set
             {
-                _begin = value;
+                this.BeginTime = TimeSpanHelper.TimeSpanToDateTime(value);
             }
-        } private TimeSpan _begin;
+        }
         #endregion //Begin
 
         #region End
         /// <summary>
         /// 
         /// </summary>
+        [XmlIgnore]
         public TimeSpan End
         {
             get
             {
-                return _end;
+                return this.EndTime.TimeOfDay;
             }
             set
             {
-                _end = value;
+                this.EndTime = TimeSpanHelper.TimeSpanToDateTime(value);
             }
-        } private TimeSpan _end;
+        }
         #endregion //End
+
+        #region BeginDT
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlElement("Begin")]
+        public DateTime BeginTime
+        {
+            get
+            {
+                return _beginTime;
+            }
+            set
+            {
+                _beginTime = value;
+            }
+        } private DateTime _beginTime;
+        #endregion //BeginDT
+
+        #region EndDT
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlElement("End")]
+        public DateTime EndTime
+        {
+            get
+            {
+                return _endTime;
+            }
+            set
+            {
+                _endTime = value;
+            }
+        } private DateTime _endTime;
+        #endregion //EndDT
+
 
         #region DayOffset
         /// <summary>
@@ -123,12 +166,25 @@ namespace K
 
     }
 
-    class TimeDefineCollection : Collection<TimeDefine>
+    [Serializable]
+    public class TimeDefineCollection : Collection<TimeDefine>
     {
 
     }
-    class WorkDefine
+
+    [Serializable]
+    public class WorkDefine
     {
+
+        static public string Serialize(WorkDefine wd)
+        {
+            XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
+            StringWriter sw = new StringWriter();
+            s.Serialize(sw, wd);
+            return sw.ToString();
+        }
+
+
         #region Name
         /// <summary>
         /// 
@@ -165,7 +221,7 @@ namespace K
                 Debug.Assert(_dayOfCycle >= 1);
                 _dayOfCycle = value;
             }
-        } private int _dayOfCycle;
+        } private int _dayOfCycle = 7;
         #endregion //DayOfCycle
 
         #region StartDateTime
@@ -205,13 +261,30 @@ namespace K
             }
         } private TimeDefineCollection _timeDefines;
         #endregion //TimeDefines
+
+        #region CycleType
+        /// <summary>
+        /// 
+        /// </summary>
+        public CycleTypeEnum CycleType
+        {
+            get
+            {
+                return _cycleType;
+            }
+            set
+            {
+                _cycleType = value;
+            }
+        } private CycleTypeEnum _cycleType = CycleTypeEnum.Week;
+        #endregion //CycleType
     }
 
-    class WorkDefineCollection : Collection<WorkDefine>
+    public class WorkDefineCollection : Collection<WorkDefine>
     {
     }
 
-    class Person : IDBase 
+    class Person : IDBase
     {
         #region Tm
         /// <summary>
@@ -272,7 +345,7 @@ namespace K
     {
     }
 
-    class Group : IDBase 
+    class Group : IDBase
     {
         #region Name
         /// <summary>
@@ -339,9 +412,6 @@ namespace K
         {
             get
             {
-                if (_leaveEnum == null)
-                {
-                }
                 return _leaveEnum;
             }
             set
@@ -410,7 +480,7 @@ namespace K
     {
     }
 
-    class Tm : IDBase 
+    class Tm : IDBase
     {
         #region SN
         /// <summary>
@@ -460,7 +530,7 @@ namespace K
         /// <param name="begin"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public TmDataCollection GetTmDatas(string begin , string end)
+        public TmDataCollection GetTmDatas(string begin, string end)
         {
             throw new NotImplementedException();
         }
@@ -470,7 +540,7 @@ namespace K
     {
     }
 
-    class TmData : IDBase 
+    class TmData : IDBase
     {
         #region DT
         /// <summary>

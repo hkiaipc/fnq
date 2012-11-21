@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Xdgk.Common;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,7 +71,7 @@ namespace K.UC
         /// <param name="e"></param>
         private void UCTimeDefine_Load(object sender, EventArgs e)
         {
-
+            FillDayOffset();
         }
 
         void FillDayOffset()
@@ -97,17 +98,62 @@ namespace K.UC
                 ds = kvs;
             }
 
-            else if (this.CycleType == CycleTypeEnum.UserDefine )
+            else if (this.CycleType == CycleTypeEnum.UserDefine)
             {
                 KeyValueCollection kvs = new KeyValueCollection();
                 for (int i = 0; i < this.CycleDayCount; i++)
                 {
                     string key = string.Format("第{0}天", i + 1);
-                    kvs.Add(new KeyValue(key,i));
+                    kvs.Add(new KeyValue(key, i));
                 }
                 ds = kvs;
             }
             return ds;
         }
+
+        private void dtpEnd_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        internal WorkDefine WorkDefine
+        {
+            get { return _workDefine; }
+            set
+            {
+                Debug.Assert(value != null);
+
+                _workDefine = value;
+
+                this.CycleType = _workDefine.CycleType;
+                this.CycleDayCount = _workDefine.DayOfCycle;
+            }
+        } private WorkDefine _workDefine;
+
+        internal TimeDefine TimeDefine
+        {
+            get { return _timeDefine; }
+            set
+            {
+                _timeDefine = value;
+
+                this.dtpBegin.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.Begin);
+                this.dtpEnd.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.End);
+                this.cmbDayOffset.SelectedValue = _timeDefine.DayOffset;
+            }
+        } private TimeDefine _timeDefine;
+
+        internal TimeDefine CreateTimeDefineByUI()
+        {
+            TimeDefine td = new TimeDefine();
+            td.DayOffset = (int)this.cmbDayOffset.SelectedValue;
+            td.Begin = this.dtpBegin.Value.TimeOfDay;
+            td.End = this.dtpEnd.Value.TimeOfDay;
+
+            return td;
+        }
+
+     
+
     }
 }

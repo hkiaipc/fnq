@@ -43,6 +43,7 @@
             this.dtpBegin.ShowUpDown = true;
             this.dtpBegin.Size = new System.Drawing.Size(97, 21);
             this.dtpBegin.TabIndex = 0;
+            this.dtpBegin.Value = new System.DateTime(2012, 11, 21, 0, 0, 0, 0);
             // 
             // dtpEnd
             // 
@@ -52,6 +53,8 @@
             this.dtpEnd.ShowUpDown = true;
             this.dtpEnd.Size = new System.Drawing.Size(97, 21);
             this.dtpEnd.TabIndex = 1;
+            this.dtpEnd.Value = new System.DateTime(2012, 11, 21, 0, 0, 0, 0);
+            this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
             // label1
             // 
@@ -71,12 +74,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "至";
             // 
-            // cmdDayOffset
+            // cmbDayOffset
             // 
             this.cmbDayOffset.FormattingEnabled = true;
-            this.cmbDayOffset.Location = new System.Drawing.Point(3, 4);
-            this.cmbDayOffset.Name = "cmdDayOffset";
-            this.cmbDayOffset.Size = new System.Drawing.Size(121, 20);
+            this.cmbDayOffset.Location = new System.Drawing.Point(0, 4);
+            this.cmbDayOffset.Name = "cmbDayOffset";
+            this.cmbDayOffset.Size = new System.Drawing.Size(150, 20);
             this.cmbDayOffset.TabIndex = 4;
             // 
             // UCTimeDefine

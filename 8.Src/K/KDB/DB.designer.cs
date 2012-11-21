@@ -39,9 +39,6 @@ namespace KDB
     partial void InserttblPerson(tblPerson instance);
     partial void UpdatetblPerson(tblPerson instance);
     partial void DeletetblPerson(tblPerson instance);
-    partial void InserttblTimeDefine(tblTimeDefine instance);
-    partial void UpdatetblTimeDefine(tblTimeDefine instance);
-    partial void DeletetblTimeDefine(tblTimeDefine instance);
     partial void InserttblTM(tblTM instance);
     partial void UpdatetblTM(tblTM instance);
     partial void DeletetblTM(tblTM instance);
@@ -104,14 +101,6 @@ namespace KDB
 			get
 			{
 				return this.GetTable<tblPerson>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tblTimeDefine> tblTimeDefine
-		{
-			get
-			{
-				return this.GetTable<tblTimeDefine>();
 			}
 		}
 		
@@ -786,229 +775,6 @@ namespace KDB
 		}
 	}
 	
-	[Table(Name="dbo.tblTimeDefine")]
-	public partial class tblTimeDefine : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _TimeDefineID;
-		
-		private string _StartTime;
-		
-		private string _EndTime;
-		
-		private int _DayOffset;
-		
-		private bool _IsCrossDay;
-		
-		private int _WorkDefineID;
-		
-		private EntityRef<tblWorkDefine> _tblWorkDefine;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTimeDefineIDChanging(int value);
-    partial void OnTimeDefineIDChanged();
-    partial void OnStartTimeChanging(string value);
-    partial void OnStartTimeChanged();
-    partial void OnEndTimeChanging(string value);
-    partial void OnEndTimeChanged();
-    partial void OnDayOffsetChanging(int value);
-    partial void OnDayOffsetChanged();
-    partial void OnIsCrossDayChanging(bool value);
-    partial void OnIsCrossDayChanged();
-    partial void OnWorkDefineIDChanging(int value);
-    partial void OnWorkDefineIDChanged();
-    #endregion
-		
-		public tblTimeDefine()
-		{
-			this._tblWorkDefine = default(EntityRef<tblWorkDefine>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_TimeDefineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int TimeDefineID
-		{
-			get
-			{
-				return this._TimeDefineID;
-			}
-			set
-			{
-				if ((this._TimeDefineID != value))
-				{
-					this.OnTimeDefineIDChanging(value);
-					this.SendPropertyChanging();
-					this._TimeDefineID = value;
-					this.SendPropertyChanged("TimeDefineID");
-					this.OnTimeDefineIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_StartTime", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string StartTime
-		{
-			get
-			{
-				return this._StartTime;
-			}
-			set
-			{
-				if ((this._StartTime != value))
-				{
-					this.OnStartTimeChanging(value);
-					this.SendPropertyChanging();
-					this._StartTime = value;
-					this.SendPropertyChanged("StartTime");
-					this.OnStartTimeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_EndTime", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string EndTime
-		{
-			get
-			{
-				return this._EndTime;
-			}
-			set
-			{
-				if ((this._EndTime != value))
-				{
-					this.OnEndTimeChanging(value);
-					this.SendPropertyChanging();
-					this._EndTime = value;
-					this.SendPropertyChanged("EndTime");
-					this.OnEndTimeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_DayOffset", DbType="Int NOT NULL")]
-		public int DayOffset
-		{
-			get
-			{
-				return this._DayOffset;
-			}
-			set
-			{
-				if ((this._DayOffset != value))
-				{
-					this.OnDayOffsetChanging(value);
-					this.SendPropertyChanging();
-					this._DayOffset = value;
-					this.SendPropertyChanged("DayOffset");
-					this.OnDayOffsetChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_IsCrossDay", DbType="Bit NOT NULL")]
-		public bool IsCrossDay
-		{
-			get
-			{
-				return this._IsCrossDay;
-			}
-			set
-			{
-				if ((this._IsCrossDay != value))
-				{
-					this.OnIsCrossDayChanging(value);
-					this.SendPropertyChanging();
-					this._IsCrossDay = value;
-					this.SendPropertyChanged("IsCrossDay");
-					this.OnIsCrossDayChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_WorkDefineID", DbType="Int NOT NULL")]
-		public int WorkDefineID
-		{
-			get
-			{
-				return this._WorkDefineID;
-			}
-			set
-			{
-				if ((this._WorkDefineID != value))
-				{
-					if (this._tblWorkDefine.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnWorkDefineIDChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineID = value;
-					this.SendPropertyChanged("WorkDefineID");
-					this.OnWorkDefineIDChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblWorkDefine_tblTimeDefine", Storage="_tblWorkDefine", ThisKey="WorkDefineID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public tblWorkDefine tblWorkDefine
-		{
-			get
-			{
-				return this._tblWorkDefine.Entity;
-			}
-			set
-			{
-				tblWorkDefine previousValue = this._tblWorkDefine.Entity;
-				if (((previousValue != value) 
-							|| (this._tblWorkDefine.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblWorkDefine.Entity = null;
-						previousValue.tblTimeDefine.Remove(this);
-					}
-					this._tblWorkDefine.Entity = value;
-					if ((value != null))
-					{
-						value.tblTimeDefine.Add(this);
-						this._WorkDefineID = value.WorkDefineID;
-					}
-					else
-					{
-						this._WorkDefineID = default(int);
-					}
-					this.SendPropertyChanged("tblWorkDefine");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[Table(Name="dbo.tblTM")]
 	public partial class tblTM : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1308,37 +1074,46 @@ namespace KDB
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private string _WorkDefineContext;
+		
 		private int _WorkDefineID;
 		
-		private string _WorkDefineName;
-		
-		private string _WorkDefineStart;
-		
-		private int _WorkDefineDayOfCycle;
-		
 		private EntitySet<tblGroup> _tblGroup;
-		
-		private EntitySet<tblTimeDefine> _tblTimeDefine;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnWorkDefineContextChanging(string value);
+    partial void OnWorkDefineContextChanged();
     partial void OnWorkDefineIDChanging(int value);
     partial void OnWorkDefineIDChanged();
-    partial void OnWorkDefineNameChanging(string value);
-    partial void OnWorkDefineNameChanged();
-    partial void OnWorkDefineStartChanging(string value);
-    partial void OnWorkDefineStartChanged();
-    partial void OnWorkDefineDayOfCycleChanging(int value);
-    partial void OnWorkDefineDayOfCycleChanged();
     #endregion
 		
 		public tblWorkDefine()
 		{
 			this._tblGroup = new EntitySet<tblGroup>(new Action<tblGroup>(this.attach_tblGroup), new Action<tblGroup>(this.detach_tblGroup));
-			this._tblTimeDefine = new EntitySet<tblTimeDefine>(new Action<tblTimeDefine>(this.attach_tblTimeDefine), new Action<tblTimeDefine>(this.detach_tblTimeDefine));
 			OnCreated();
+		}
+		
+		[Column(Storage="_WorkDefineContext", DbType="NVarChar(2000) NOT NULL", CanBeNull=false)]
+		public string WorkDefineContext
+		{
+			get
+			{
+				return this._WorkDefineContext;
+			}
+			set
+			{
+				if ((this._WorkDefineContext != value))
+				{
+					this.OnWorkDefineContextChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineContext = value;
+					this.SendPropertyChanged("WorkDefineContext");
+					this.OnWorkDefineContextChanged();
+				}
+			}
 		}
 		
 		[Column(Storage="_WorkDefineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
@@ -1361,66 +1136,6 @@ namespace KDB
 			}
 		}
 		
-		[Column(Storage="_WorkDefineName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string WorkDefineName
-		{
-			get
-			{
-				return this._WorkDefineName;
-			}
-			set
-			{
-				if ((this._WorkDefineName != value))
-				{
-					this.OnWorkDefineNameChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineName = value;
-					this.SendPropertyChanged("WorkDefineName");
-					this.OnWorkDefineNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_WorkDefineStart", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string WorkDefineStart
-		{
-			get
-			{
-				return this._WorkDefineStart;
-			}
-			set
-			{
-				if ((this._WorkDefineStart != value))
-				{
-					this.OnWorkDefineStartChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineStart = value;
-					this.SendPropertyChanged("WorkDefineStart");
-					this.OnWorkDefineStartChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_WorkDefineDayOfCycle", DbType="Int NOT NULL")]
-		public int WorkDefineDayOfCycle
-		{
-			get
-			{
-				return this._WorkDefineDayOfCycle;
-			}
-			set
-			{
-				if ((this._WorkDefineDayOfCycle != value))
-				{
-					this.OnWorkDefineDayOfCycleChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineDayOfCycle = value;
-					this.SendPropertyChanged("WorkDefineDayOfCycle");
-					this.OnWorkDefineDayOfCycleChanged();
-				}
-			}
-		}
-		
 		[Association(Name="tblWorkDefine_tblGroup", Storage="_tblGroup", OtherKey="WorkDefineID")]
 		public EntitySet<tblGroup> tblGroup
 		{
@@ -1431,19 +1146,6 @@ namespace KDB
 			set
 			{
 				this._tblGroup.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblWorkDefine_tblTimeDefine", Storage="_tblTimeDefine", OtherKey="WorkDefineID")]
-		public EntitySet<tblTimeDefine> tblTimeDefine
-		{
-			get
-			{
-				return this._tblTimeDefine;
-			}
-			set
-			{
-				this._tblTimeDefine.Assign(value);
 			}
 		}
 		
@@ -1474,18 +1176,6 @@ namespace KDB
 		}
 		
 		private void detach_tblGroup(tblGroup entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblWorkDefine = null;
-		}
-		
-		private void attach_tblTimeDefine(tblTimeDefine entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblWorkDefine = this;
-		}
-		
-		private void detach_tblTimeDefine(tblTimeDefine entity)
 		{
 			this.SendPropertyChanging();
 			entity.tblWorkDefine = null;

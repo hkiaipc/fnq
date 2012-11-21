@@ -105,6 +105,7 @@
             this.mnuWorkDefine.Name = "mnuWorkDefine";
             this.mnuWorkDefine.Size = new System.Drawing.Size(152, 22);
             this.mnuWorkDefine.Text = "班次";
+            this.mnuWorkDefine.Click += new System.EventHandler(this.mnuWorkDefine_Click);
             // 
             // mnuHelp
             // 
