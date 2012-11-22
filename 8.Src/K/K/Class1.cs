@@ -273,7 +273,7 @@ namespace K
             {
                 _startDateTime = value;
             }
-        } private DateTime _startDateTime;
+        } private DateTime _startDateTime = DateTime.Parse("2000-01-01");
         #endregion //StartDateTime
 
         #region TimeDefines

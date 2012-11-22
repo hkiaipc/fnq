@@ -76,6 +76,7 @@
             // 
             // cmbDayOffset
             // 
+            this.cmbDayOffset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDayOffset.FormattingEnabled = true;
             this.cmbDayOffset.Location = new System.Drawing.Point(0, 4);
             this.cmbDayOffset.Name = "cmbDayOffset";

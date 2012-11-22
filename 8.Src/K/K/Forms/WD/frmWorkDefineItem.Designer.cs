@@ -78,9 +78,6 @@
             // 
             this.cmbCycle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCycle.FormattingEnabled = true;
-            this.cmbCycle.Items.AddRange(new object[] {
-            "周",
-            "自定义"});
             this.cmbCycle.Location = new System.Drawing.Point(131, 39);
             this.cmbCycle.Name = "cmbCycle";
             this.cmbCycle.Size = new System.Drawing.Size(150, 20);

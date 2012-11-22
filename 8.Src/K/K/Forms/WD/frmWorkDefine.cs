@@ -46,6 +46,11 @@ namespace K.Forms.WD
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             tblWorkDefine wd = GetSelectedWorkDefine();
