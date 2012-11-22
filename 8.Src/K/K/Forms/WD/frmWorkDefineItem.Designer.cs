@@ -136,6 +136,7 @@
             this.cmbCycleDayCount.Name = "cmbCycleDayCount";
             this.cmbCycleDayCount.Size = new System.Drawing.Size(100, 20);
             this.cmbCycleDayCount.TabIndex = 30;
+            this.cmbCycleDayCount.SelectedIndexChanged += new System.EventHandler(this.cmbCycleDayCount_SelectedIndexChanged);
             // 
             // lblStart
             // 

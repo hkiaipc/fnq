@@ -62,6 +62,7 @@ namespace K.UC
         public UCTimeDefine()
         {
             InitializeComponent();
+            FillDayOffset();
         }
 
         /// <summary>
@@ -71,9 +72,11 @@ namespace K.UC
         /// <param name="e"></param>
         private void UCTimeDefine_Load(object sender, EventArgs e)
         {
-            FillDayOffset();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void FillDayOffset()
         {
             this.cmbDayOffset.DisplayMember = "Key";
@@ -81,12 +84,26 @@ namespace K.UC
             this.cmbDayOffset.DataSource = GetDayOffsetDataSource();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>key value collection, key - name, value - offset</returns>
         private object GetDayOffsetDataSource()
         {
             object ds = null;
             if (this.CycleType == CycleTypeEnum.Week)
             {
                 KeyValueCollection kvs = new KeyValueCollection();
+                string[] weekNames = new string[] { 
+                    "星期一", "星期二", "星期三", 
+                    "星期四", "星期五", "星期六", "星期日" };
+
+                for (int i = 0; i < weekNames.Length; i++)
+                {
+                    kvs.Add(new KeyValue(weekNames[i], i));
+                }
+
+                /*
                 kvs.Add(new KeyValue("星期一", DayOfWeek.Monday));
                 kvs.Add(new KeyValue("星期二", DayOfWeek.Tuesday));
                 kvs.Add(new KeyValue("星期三", DayOfWeek.Wednesday));
@@ -94,6 +111,7 @@ namespace K.UC
                 kvs.Add(new KeyValue("星期五", DayOfWeek.Friday));
                 kvs.Add(new KeyValue("星期六", DayOfWeek.Saturday));
                 kvs.Add(new KeyValue("星期日", DayOfWeek.Sunday));
+                */
 
                 ds = kvs;
             }
@@ -104,6 +122,7 @@ namespace K.UC
                 for (int i = 0; i < this.CycleDayCount; i++)
                 {
                     string key = string.Format("第{0}天", i + 1);
+                    int value = i;
                     kvs.Add(new KeyValue(key, i));
                 }
                 ds = kvs;

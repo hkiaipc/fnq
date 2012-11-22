@@ -182,7 +182,11 @@ namespace K.Forms.WD
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            Verify();
+            if (!Verify())
+            {
+                return;
+            }
+
             if (IsAdd)
             {
                 Add();
@@ -212,6 +216,7 @@ namespace K.Forms.WD
         }
         #endregion //Edit
 
+        #region CreateWorkDefine
         /// <summary>
         /// 
         /// </summary>
@@ -229,6 +234,7 @@ namespace K.Forms.WD
             SetTimeDefines(wd);
             return wd;
         }
+        #endregion //CreateWorkDefine
 
         #region Add
         /// <summary>
@@ -295,6 +301,12 @@ namespace K.Forms.WD
         {
             // TODO:
             //
+            if (this.txtWorkDefineName.Text.Trim().Length == 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("名称不能为空");
+                return false;
+            }
+
             return true;
         }
         #endregion //Verify
@@ -381,5 +393,18 @@ namespace K.Forms.WD
             return ucTd;
         }
         #endregion //CreateTimeDefineControl
+
+        #region cmbCycleDayCount_SelectedIndexChanged
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbCycleDayCount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.flowLayoutPanel1.Controls.Clear();
+            this.WorkDefine.DayOfCycle = this.SelectedCycleDayCount;
+        }
+        #endregion //cmbCycleDayCount_SelectedIndexChanged
     }
 }

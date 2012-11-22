@@ -48,11 +48,12 @@ namespace K
         {
             get
             {
-                return this.BeginTime.TimeOfDay;
+                //return this.BeginTime.TimeOfDay;
+                return TimeSpan.Parse(this.BeginTime);
             }
             set
             {
-                this.BeginTime = TimeSpanHelper.TimeSpanToDateTime(value);
+                this.BeginTime = value.ToString();
             }
         }
         #endregion //Begin
@@ -66,11 +67,11 @@ namespace K
         {
             get
             {
-                return this.EndTime.TimeOfDay;
+                return TimeSpan.Parse(this.EndTime);
             }
             set
             {
-                this.EndTime = TimeSpanHelper.TimeSpanToDateTime(value);
+                this.EndTime = value.ToString ();
             }
         }
         #endregion //End
@@ -80,7 +81,7 @@ namespace K
         /// 
         /// </summary>
         [XmlElement("Begin")]
-        public DateTime BeginTime
+        public string BeginTime
         {
             get
             {
@@ -90,7 +91,7 @@ namespace K
             {
                 _beginTime = value;
             }
-        } private DateTime _beginTime;
+        } private string _beginTime;
         #endregion //BeginDT
 
         #region EndDT
@@ -98,7 +99,7 @@ namespace K
         /// 
         /// </summary>
         [XmlElement("End")]
-        public DateTime EndTime
+        public string EndTime
         {
             get
             {
@@ -108,7 +109,7 @@ namespace K
             {
                 _endTime = value;
             }
-        } private DateTime _endTime;
+        } private string _endTime;
         #endregion //EndDT
 
 
@@ -137,13 +138,13 @@ namespace K
         {
             get
             {
-                return _isCrossDay;
+                return this.Begin >= this.End;
             }
-            set
-            {
-                _isCrossDay = value;
-            }
-        } private bool _isCrossDay;
+            //set
+            //{
+                //_isCrossDay = value;
+            //}
+        } //private bool _isCrossDay;
         #endregion //IsCrossDay
 
         #region Hold
@@ -186,12 +187,35 @@ namespace K
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     internal class TimeDefineHelper
     {
         static public bool IsOverlapped(TimeDefine td1, TimeDefine td2)
         {
             // TODO: check timedefine overlapped
             //
+            TimeSpan td1Begin = td1.Begin + TimeSpan.FromDays(td1.DayOffset);
+            TimeSpan td1End = td1.End + TimeSpan.FromDays(td1.DayOffset);
+            if (td1.IsCrossDay)
+            {
+                td1End += TimeSpan.FromDays(1d);
+            }
+
+            TimeSpan td2Begin = td2.Begin + TimeSpan.FromDays(td2.DayOffset);
+            TimeSpan td2End = td2.End + TimeSpan.FromDays(td2.DayOffset);
+            if (td2.IsCrossDay)
+            {
+                td2End += TimeSpan.FromDays(1d);
+            }
+
+            if ((td2Begin >= td1Begin && td2Begin <= td1End) ||
+                (td2End >= td1Begin && td2End <= td1End))
+            {
+                return true;
+            }
+
             return false;
         }
     }

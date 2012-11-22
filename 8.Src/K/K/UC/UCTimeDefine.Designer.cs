@@ -43,7 +43,7 @@
             this.dtpBegin.ShowUpDown = true;
             this.dtpBegin.Size = new System.Drawing.Size(97, 21);
             this.dtpBegin.TabIndex = 0;
-            this.dtpBegin.Value = new System.DateTime(2012, 11, 21, 0, 0, 0, 0);
+            this.dtpBegin.Value = new System.DateTime(2012, 11, 21, 8, 0, 0, 0);
             // 
             // dtpEnd
             // 
@@ -53,7 +53,7 @@
             this.dtpEnd.ShowUpDown = true;
             this.dtpEnd.Size = new System.Drawing.Size(97, 21);
             this.dtpEnd.TabIndex = 1;
-            this.dtpEnd.Value = new System.DateTime(2012, 11, 21, 0, 0, 0, 0);
+            this.dtpEnd.Value = new System.DateTime(2012, 11, 21, 18, 0, 0, 0);
             this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
             // label1

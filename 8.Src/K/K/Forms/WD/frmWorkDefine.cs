@@ -74,5 +74,23 @@ namespace K.Forms.WD
             }
             return null;
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            tblWorkDefine wd = this.GetSelectedWorkDefine();
+            if (wd != null)
+            {
+                DB db = DBFactory.GetDB();
+                tblWorkDefine temp = db.tblWorkDefine.Single(
+                    c => c.WorkDefineID == wd.WorkDefineID);
+
+                db.tblWorkDefine.DeleteOnSubmit(temp);
+
+                db.SubmitChanges();
+
+                Fill();
+            }
+        }
     }
 }
