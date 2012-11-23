@@ -38,8 +38,8 @@ namespace K.Forms.WD
         {
             frmWorkDefineItem f = new frmWorkDefineItem();
             f.WorkDefine = new WorkDefine();
-            f.IsAdd = true; 
-            if(f.ShowDialog() == DialogResult.OK )
+            f.IsAdd = true;
+            if (f.ShowDialog() == DialogResult.OK)
             {
                 Fill();
             }
@@ -81,15 +81,19 @@ namespace K.Forms.WD
             tblWorkDefine wd = this.GetSelectedWorkDefine();
             if (wd != null)
             {
-                DB db = DBFactory.GetDB();
-                tblWorkDefine temp = db.tblWorkDefine.Single(
-                    c => c.WorkDefineID == wd.WorkDefineID);
+                if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
+                {
 
-                db.tblWorkDefine.DeleteOnSubmit(temp);
+                    DB db = DBFactory.GetDB();
+                    tblWorkDefine temp = db.tblWorkDefine.Single(
+                        c => c.WorkDefineID == wd.WorkDefineID);
 
-                db.SubmitChanges();
+                    db.tblWorkDefine.DeleteOnSubmit(temp);
 
-                Fill();
+                    db.SubmitChanges();
+
+                    Fill();
+                }
             }
         }
     }

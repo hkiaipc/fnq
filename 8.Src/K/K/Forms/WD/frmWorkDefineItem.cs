@@ -187,14 +187,23 @@ namespace K.Forms.WD
                 return;
             }
 
-            if (IsAdd)
+            try
             {
-                Add();
+                if (IsAdd)
+                {
+                    Add();
+                }
+                else
+                {
+                    Edit();
+                }
             }
-            else
+            catch (KConfigException kex)
             {
-                Edit();
+                NUnit.UiKit.UserMessage.DisplayFailure(kex.Message);
+                return;
             }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

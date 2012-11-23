@@ -82,6 +82,7 @@
             this.btnTmSelect.TabIndex = 25;
             this.btnTmSelect.Text = "选择...";
             this.btnTmSelect.UseVisualStyleBackColor = true;
+            this.btnTmSelect.Click += new System.EventHandler(this.btnTmSelect_Click);
             // 
             // frmPersonItem
             // 

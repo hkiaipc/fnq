@@ -51,6 +51,12 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
+    <Compile Include="Forms\frmKResultGenerate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmKResultGenerate.Designer.cs">
+      <DependentUpon>frmKResultGenerate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Group\frmGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,12 @@
     <Compile Include="Forms\TM\frmTMItem.Designer.cs">
       <DependentUpon>frmTMItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TM\frmTMSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TM\frmTMSelect.Designer.cs">
+      <DependentUpon>frmTMSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WD\frmWorkDefine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +125,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmKResultGenerate.resx">
+      <DependentUpon>frmKResultGenerate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Group\frmGroup.resx">
       <DependentUpon>frmGroup.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -143,6 +159,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TM\frmTMItem.resx">
       <DependentUpon>frmTMItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TM\frmTMSelect.resx">
+      <DependentUpon>frmTMSelect.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WD\frmWorkDefine.resx">

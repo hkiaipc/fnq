@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using K.Forms.TM;
 using KDB ;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -115,6 +117,18 @@ namespace K.Forms
                 {
                     this.txtTM.Text = this.TblPerson.tblTM.TmSN;
                 }
+            }
+        }
+
+        private void btnTmSelect_Click(object sender, EventArgs e)
+        {
+            frmTMSelect f = new frmTMSelect();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                tblTM tm = f.SelectedTM;
+                Debug.Assert(tm != null);
+
+                this.txtTM.Text = tm.TmSN;
             }
         }
     }

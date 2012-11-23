@@ -41,5 +41,11 @@ namespace K
             frmWorkDefine f = new frmWorkDefine();
             f.ShowDialog();
         }
+
+        private void mnuKResult_Click(object sender, EventArgs e)
+        {
+            frmKResultGenerate f = new frmKResultGenerate();
+            f.ShowDialog();
+        }
     }
 }

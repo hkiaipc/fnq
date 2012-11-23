@@ -9,6 +9,14 @@ using Xdgk.Common;
 
 namespace K
 {
+    class KConfigException : Exception
+    {
+        public KConfigException(string msg)
+            : base(msg)
+        {
+
+        }
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -180,7 +188,7 @@ namespace K
                     string msg = string.Format(
                         "{0} {1} is overlapped", 
                         td, item);
-                    throw new ArgumentException(msg);
+                    throw new KConfigException(msg);
                 }
             }
             base.InsertItem(index, item);

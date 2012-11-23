@@ -38,6 +38,7 @@
             this.mnuWorkDefine = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKResult = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(112, 22);
+            this.mnuExit.Size = new System.Drawing.Size(152, 22);
             this.mnuExit.Text = "退出(&X)";
             // 
             // mnuOption
@@ -74,7 +75,8 @@
             this.mnuGroup,
             this.mnuPerson,
             this.mnuTM,
-            this.mnuWorkDefine});
+            this.mnuWorkDefine,
+            this.mnuKResult});
             this.mnuOption.Name = "mnuOption";
             this.mnuOption.Size = new System.Drawing.Size(43, 20);
             this.mnuOption.Text = "操作";
@@ -121,6 +123,13 @@
             this.mnuAbout.Size = new System.Drawing.Size(113, 22);
             this.mnuAbout.Text = "关于(&A)";
             // 
+            // mnuKResult
+            // 
+            this.mnuKResult.Name = "mnuKResult";
+            this.mnuKResult.Size = new System.Drawing.Size(152, 22);
+            this.mnuKResult.Text = "KResult";
+            this.mnuKResult.Click += new System.EventHandler(this.mnuKResult_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -149,6 +158,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPerson;
         private System.Windows.Forms.ToolStripMenuItem mnuTM;
         private System.Windows.Forms.ToolStripMenuItem mnuWorkDefine;
+        private System.Windows.Forms.ToolStripMenuItem mnuKResult;
     }
 }
 
