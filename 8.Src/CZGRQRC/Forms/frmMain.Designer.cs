@@ -391,7 +391,7 @@
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 518);
+            this.statusBar1.Location = new System.Drawing.Point(0, 378);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.statusBarPanel1});
@@ -550,7 +550,7 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 409);
+            this.splitter1.Location = new System.Drawing.Point(0, 269);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(838, 4);
             this.splitter1.TabIndex = 11;
@@ -565,7 +565,7 @@
             // ucAlarm1
             // 
             this.ucAlarm1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucAlarm1.Location = new System.Drawing.Point(0, 413);
+            this.ucAlarm1.Location = new System.Drawing.Point(0, 273);
             this.ucAlarm1.Name = "ucAlarm1";
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
@@ -575,7 +575,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(838, 540);
+            this.ClientSize = new System.Drawing.Size(838, 400);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ucAlarm1);
             this.Controls.Add(this.toolStrip1);

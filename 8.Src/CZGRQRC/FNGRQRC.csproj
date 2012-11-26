@@ -634,6 +634,9 @@
     <None Include="Resources\ico\Alarm.ICO" />
     <None Include="Resources\ico\Map.ICO" />
     <None Include="Resources\ico\Last.ico" />
+    <None Include="RT\FirstStationCost.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="RT\StationCost.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

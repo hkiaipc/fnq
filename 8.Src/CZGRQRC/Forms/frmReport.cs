@@ -13,7 +13,7 @@ using FlexCel.XlsAdapter;
 
 namespace FNGRQRC.Forms
 {
-    public partial class frmReport : Form
+    public partial class frmReport : NUnit.UiKit.SettingsDialogBase 
     {
         /// <summary>
         /// 
@@ -31,26 +31,53 @@ namespace FNGRQRC.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOK_Click(object sender, EventArgs e)
+        private void okButton_Click(object sender, EventArgs e)
         {
-            // 1. all station: avg ot, gt1, bt1, if
-            // 2. one station: heat, sum of rf
-            // 3. 
-
-            new StationRangeDataExporter(this.dtpBegin.Value,
-                this.dtpEnd.Value).Export();
-            /*
-            string path = "e:\\_\\1.xls";
-            string path2 = "e:\\_\\2.xls";
-            FlexCel.XlsAdapter.XlsFile xls = new XlsFile(path);
-            xls.SetCellValue(1, 1, "a string" + DateTime.Now.ToString());
-            xls.Save(path2);
-             */
-
+            if (false)
+            {
+                new StationRangeDataExporter(this.dtpBegin.Value,
+                    this.dtpEnd.Value).Export();
+            }
+            else
+            {
+                new FirstStationExporter(this.dtpBegin.Value,
+                    this.dtpEnd.Value).Export();
+            }
         }
     }
 
-    internal class StationRangeDataExporter
+    class ExporterBase
+    {
+        internal void Open(string filename)
+        {
+            ProcessStartInfo si = new ProcessStartInfo(filename);
+            si.ErrorDialog = true;
+
+            Process process = new Process();
+            process.StartInfo = si;
+            try
+            {
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+            }
+            process.Dispose();
+        }
+
+        internal void SetCellValue(XlsFile xls, Point pt, object value)
+        {
+            xls.SetCellValue(pt.X, pt.Y, value);
+        }
+
+        internal virtual void Export()
+        {
+        }
+    }
+
+    #region StationRangeDataExporter
+    internal class StationRangeDataExporter : ExporterBase 
     {
         internal class ReportConfig
         {
@@ -82,12 +109,8 @@ namespace FNGRQRC.Forms
             this._e = e;
         }
 
-        void SetCellValue(XlsFile xls, Point pt, object value)
-        {
-            xls.SetCellValue(pt.X, pt.Y, value);
-        }
 
-        internal void Export()
+        override internal void Export()
         {
             XlsFile xls = new XlsFile();
             xls.Open(_xlsPath);
@@ -144,26 +167,93 @@ namespace FNGRQRC.Forms
 
         }
 
-        internal void Open(string filename)
-        {
-            ProcessStartInfo si = new ProcessStartInfo(filename);
-            si.ErrorDialog = true;
-
-            Process process = new Process();
-            process.StartInfo = si;
-            try
-            {
-                process.Start();
-            }
-            catch (Exception ex)
-            {
-                NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
-            }
-            process.Dispose();
-        }
 
     }
+    #endregion //StationRangeDataExporter
 
+    #region i
+    internal class FirstStationExporter : ExporterBase 
+    {
+        internal class ReportConfig
+        {
+            internal static Point
+                Title = new Point(1, 1),
+                AVGOT = new Point(3, 3),
+                AVGGT1 = new Point(3, 5),
+                AVGBT1 = new Point(3, 7),
+                AVGI1 = new Point(3, 9),
+                DT = new Point(2, 9)
+                ;
+
+            internal static int
+                StationStartRow = 5,
+                RecuritFluxCol = 3,
+                StationNameCol = 1
+                ;
+        }
+
+        string _xlsPath = Path.Combine(
+            Application.StartupPath, 
+            "RT\\FirstStationCost.xls");
+
+        DateTime _b, _e;
+        internal FirstStationExporter(DateTime b, DateTime e)
+        {
+            _b = b;
+            _e = e;
+        }
+
+
+        internal override void  Export()
+        {
+            XlsFile xls = new XlsFile();
+            xls.Open(_xlsPath);
+
+            string title = string.Format(
+                "{0}-{1} ~ {2}-{3} 热源厂成本对比",
+                _b.Month, _b.Day, _e.Month, _e.Day);
+
+            SetCellValue(xls, ReportConfig.Title, title);
+            SetCellValue(xls, ReportConfig.AVGOT, ReportHelper.GetAvgOT(_b, _e));
+
+            double[] values = ReportHelper.GetFirstValues (_b,_e);
+
+            SetCellValue(xls, ReportConfig.AVGGT1, values[0]);
+            SetCellValue(xls, ReportConfig.AVGBT1, values[1]);
+            SetCellValue(xls, ReportConfig.AVGI1, values[2]);
+
+            SetCellValue(xls, ReportConfig.DT, DateTime.Now.ToString("yyyy-MM-dd"));
+
+            DataTable tbl = ReportHelper .GetFirstRecuriteDataTable ( _b,_e );
+
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                DataRow row = tbl.Rows[i];
+
+                string name = row["stationname"].ToString();
+                double usedRecurit = Math.Round(
+                    Convert.ToDouble(row["usedr"]),
+                    ReportHelper.DotNumber);
+
+                int r = ReportConfig.StationStartRow + i;
+                xls.SetCellValue(r, ReportConfig.StationNameCol, name);
+                xls.SetCellValue(r, ReportConfig.RecuritFluxCol, usedRecurit);
+            }
+
+
+            string output = Xdgk.Common.Path.GetTempFileName("xls");
+            xls.Save(output);
+
+
+            Open(output);
+
+        }
+
+
+    }
+    #endregion //i
+
+    #region ReportHelper
     internal class ReportHelper
     {
         static public int DotNumber = 2;
@@ -267,5 +357,49 @@ namespace FNGRQRC.Forms
             return GetDBI().ExecuteDataTable(s);
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_b"></param>
+        /// <param name="_e"></param>
+        /// <returns>double[]: gt1, bt1, i1</returns>
+        internal static double[] GetFirstValues(DateTime _b, DateTime _e)
+        {
+            string s = string.Format(
+                @"select avg (ai1 ) as gt1 , avg(ai2) as bt1, avg(ai5) as i1
+                from tblxd100edata 
+                where dt >= '{0}' and dt < '{1}'",
+                _b, _e);
+
+            DataTable tbl = GetDBI().ExecuteDataTable(s);
+            DataRow row = tbl.Rows[0];
+            List<double> list = new List<double>();
+            list.Add(Math.Round(ConvertToDoubleSafe(row["gt1"]), DotNumber));
+            list.Add(Math.Round(ConvertToDoubleSafe(row["bt1"]), DotNumber));
+            list.Add(Math.Round(ConvertToDoubleSafe(row["i1"]), DotNumber));
+            return list.ToArray ();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        internal static DataTable GetFirstRecuriteDataTable(DateTime b, DateTime e)
+        {
+            string s = string.Format (
+                @"select stationname, max(sr) as maxsr, min(sr) as minsr, max(sr) - min(sr) as usedr
+                from vXd100eData
+                where dt >= '{0}' and dt < = '{1}'
+                group by stationname
+                order by stationName",
+                                     b,e );
+
+            return GetDBI().ExecuteDataTable(s);
+
+        }
     }
+    #endregion //ReportHelper
 }

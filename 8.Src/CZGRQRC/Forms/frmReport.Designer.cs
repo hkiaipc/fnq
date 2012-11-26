@@ -28,22 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnOK = new System.Windows.Forms.Button();
             this.dtpBegin = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // btnOK
+            // okButton
             // 
-            this.btnOK.Location = new System.Drawing.Point(146, 101);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "生成";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // dtpBegin
             // 
@@ -89,9 +82,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpBegin);
-            this.Controls.Add(this.btnOK);
             this.Name = "frmReport";
             this.Text = "报表";
+            this.Controls.SetChildIndex(this.dtpBegin, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.dtpEnd, 0);
+            this.Controls.SetChildIndex(this.okButton, 0);
+            this.Controls.SetChildIndex(this.cancelButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,7 +97,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.DateTimePicker dtpBegin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
