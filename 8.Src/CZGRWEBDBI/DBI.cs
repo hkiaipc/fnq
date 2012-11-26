@@ -384,7 +384,7 @@ namespace CZGRWEBDBI
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        private object ExecuteScalar( string sql )
+        public object ExecuteScalar( string sql )
         {
             SqlCommand cmd = this._connection.CreateCommand();
             cmd.CommandText = sql;

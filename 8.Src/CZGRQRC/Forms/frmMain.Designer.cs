@@ -91,6 +91,7 @@
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ucAlarm1 = new FNGRQRC.UC.UCAlarm();
+            this.mnuReport = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -367,7 +368,8 @@
             this.mnuHelp.Index = 6;
             this.mnuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuAbout,
-            this.mnuTest});
+            this.mnuTest,
+            this.mnuReport});
             this.mnuHelp.Text = "帮助(&H)";
             // 
             // mnuAbout
@@ -562,6 +564,12 @@
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
             // 
+            // mnuReport
+            // 
+            this.mnuReport.Index = 2;
+            this.mnuReport.Text = "report";
+            this.mnuReport.Click += new System.EventHandler(this.mnuReport_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -658,6 +666,7 @@
         private System.Windows.Forms.MenuItem menuItem6;
         private System.Windows.Forms.MenuItem mnuFirstStationPressCurve;
         private System.Windows.Forms.MenuItem mnuFirstStationTempCurve;
+        private System.Windows.Forms.MenuItem mnuReport;
     }
 }
 

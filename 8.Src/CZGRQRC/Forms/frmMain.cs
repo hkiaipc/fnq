@@ -1162,8 +1162,10 @@ namespace FNGRQRC
             f.Activate();
         }
 
-
-
-
+        private void mnuReport_Click(object sender, EventArgs e)
+        {
+            Forms.frmReport f = new FNGRQRC.Forms.frmReport();
+            f.ShowDialog();
+        }
     }
 }

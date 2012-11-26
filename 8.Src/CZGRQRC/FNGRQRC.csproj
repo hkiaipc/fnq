@@ -179,6 +179,12 @@
     <Compile Include="Forms\frmRecruitDataQR.Designer.cs">
       <DependentUpon>frmRecruitDataQR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -356,6 +362,9 @@
     <EmbeddedResource Include="Forms\frmRecruitDataQR.resx">
       <DependentUpon>frmRecruitDataQR.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
@@ -625,6 +634,9 @@
     <None Include="Resources\ico\Alarm.ICO" />
     <None Include="Resources\ico\Map.ICO" />
     <None Include="Resources\ico\Last.ico" />
+    <None Include="RT\StationCost.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
