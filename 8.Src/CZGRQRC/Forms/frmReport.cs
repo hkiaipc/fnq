@@ -164,14 +164,11 @@ namespace FNGRQRC.Forms
             xls.Save(outputPath);
 
             Open(outputPath);
-
         }
-
-
     }
     #endregion //StationRangeDataExporter
 
-    #region i
+    #region FirstStationExporter
     internal class FirstStationExporter : ExporterBase 
     {
         internal class ReportConfig
@@ -251,7 +248,7 @@ namespace FNGRQRC.Forms
 
 
     }
-    #endregion //i
+    #endregion //FirstStationExporter
 
     #region ReportHelper
     internal class ReportHelper

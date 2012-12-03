@@ -70,6 +70,7 @@
             this.mnuHelp = new System.Windows.Forms.MenuItem();
             this.mnuAbout = new System.Windows.Forms.MenuItem();
             this.mnuTest = new System.Windows.Forms.MenuItem();
+            this.mnuReport = new System.Windows.Forms.MenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusBar1 = new System.Windows.Forms.StatusBar();
             this.statusBarPanel1 = new System.Windows.Forms.StatusBarPanel();
@@ -90,7 +91,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.mnuReport = new System.Windows.Forms.MenuItem();
             this.ucAlarm1 = new FNGRQRC.UC.UCAlarm();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -385,13 +385,19 @@
             this.mnuTest.Visible = false;
             this.mnuTest.Click += new System.EventHandler(this.menuItem2_Click);
             // 
+            // mnuReport
+            // 
+            this.mnuReport.Index = 2;
+            this.mnuReport.Text = "report";
+            this.mnuReport.Click += new System.EventHandler(this.mnuReport_Click);
+            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 378);
+            this.statusBar1.Location = new System.Drawing.Point(0, 481);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.statusBarPanel1});
@@ -550,22 +556,16 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 269);
+            this.splitter1.Location = new System.Drawing.Point(0, 372);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(838, 4);
             this.splitter1.TabIndex = 11;
             this.splitter1.TabStop = false;
             // 
-            // mnuReport
-            // 
-            this.mnuReport.Index = 2;
-            this.mnuReport.Text = "report";
-            this.mnuReport.Click += new System.EventHandler(this.mnuReport_Click);
-            // 
             // ucAlarm1
             // 
             this.ucAlarm1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucAlarm1.Location = new System.Drawing.Point(0, 273);
+            this.ucAlarm1.Location = new System.Drawing.Point(0, 376);
             this.ucAlarm1.Name = "ucAlarm1";
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
@@ -575,7 +575,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(838, 400);
+            this.ClientSize = new System.Drawing.Size(838, 503);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ucAlarm1);
             this.Controls.Add(this.toolStrip1);

@@ -15,7 +15,7 @@ namespace FNGRQRC
     /// <summary>
     /// 
     /// </summary>
-    public partial class frmGRDataLast : Form, IDataGridViewFont 
+    public partial class frmGRDataLast : Form, IDataGridViewFont
     {
         static NLog.Logger logger = NLog.LogManager.GetLogger("console");
 
@@ -127,8 +127,6 @@ namespace FNGRQRC
         /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            //Query();
-            //QueryGRAlarm();
             Queries();
         }
         #endregion //btnRefresh_Click
@@ -179,8 +177,8 @@ namespace FNGRQRC
         {
             foreach (AlarmDefine ad in ads)
             {
-                RangeAlarmDefine rad = ad as RangeAlarmDefine ;
-                if( rad != null )
+                RangeAlarmDefine rad = ad as RangeAlarmDefine;
+                if (rad != null)
                 {
                     string filter = string.Format(" DT > '{0}' and ({1} < {2} or {1} > {3})",
                        lastDateTime, rad.Name, rad.Min, rad.Max);
@@ -211,6 +209,8 @@ namespace FNGRQRC
         /// </summary>
         public void Query()
         {
+            Point currentCellAddress = this.dataGridView1.CurrentCellAddress;
+
             int index = 0;
             DataGridViewRow dgvr = this.dataGridView1.CurrentRow;
             if (dgvr != null)
@@ -228,28 +228,7 @@ namespace FNGRQRC
             AddGRAlarmDataCollectionColumn(tbl);
             //AddDataColumns(tbl);
 
-            // TODO:
-            //
-            //if (this.dataGridView1.DataSource == null)
-            //{
-            //    this.dataGridView1.DataSource = tbl;
-            //}
-            //else
-            //{
-            //    DataTable dest = this.dataGridView1.DataSource as DataTable;
-            //    UpdateDataTable(tbl, dest);
-            //    this.dataGridView1.Refresh();
-            //}
-
             this.dataGridView1.DataSource = tbl;
-
-            // set datagridview selected row
-            //
-            if (this.dataGridView1.Rows.Count > index)
-            {
-                this.dataGridView1.Rows[index].Selected = true;
-                this.dataGridView1.CurrentCell = this.dataGridView1.Rows[index].Cells[0];
-            }
 
             bool hasException = HasExceptionValue(tbl, _lastDataDateTime, Config.Default.AlarmDefineCollection);
             logger.Info(hasException);
@@ -257,10 +236,38 @@ namespace FNGRQRC
             {
                 SoundPlayer.PlayAlarmSound();
             }
-            //this._t.Last = DateTime.Now;
+
+            this.SortGridviewWithOldSetting();
+
+            if (currentCellAddress != null)
+            {
+                if (IsCurrentCellAddressValid(currentCellAddress))
+                {
+                    this.dataGridView1.CurrentCell = this.dataGridView1[
+                        currentCellAddress.X,
+                        currentCellAddress.Y];
+                }
+            }
+
             MarkLastDateTime(tbl);
         }
         #endregion //Query
+
+        #region IsCurrentCellAddressValid
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        private bool IsCurrentCellAddressValid(Point address)
+        {
+            return address.X >= 0 &&
+                address.Y >= 0 &&
+                address.X < this.dataGridView1.Columns.Count &&
+                address.Y < this.dataGridView1.Rows.Count;
+
+        }
+        #endregion //IsCurrentCellAddressValid
 
         #region AddDataColumns
         /// <summary>
@@ -276,9 +283,9 @@ namespace FNGRQRC
             // 3. 实际流量与计划流量差列: I1 - (2)
             //
 
-            DataColumn c = new DataColumn("DPQ", typeof(float ));
+            DataColumn c = new DataColumn("DPQ", typeof(float));
             tbl.Columns.Add(c);
-            foreach( DataRow r in tbl.Rows )
+            foreach (DataRow r in tbl.Rows)
             {
                 int grDeviceID = Convert.ToInt32(r["DeviceID"]);
                 DateTime dt = Convert.ToDateTime(r["DT"]);
@@ -326,10 +333,10 @@ namespace FNGRQRC
             DataTable gralarmTbl = CZGRQRCApp.Default.DBI.ExecuteGRAlarmDataTable(
                 this.QueryGRAlarmDateTime);
             bool hasAlarm = gralarmTbl.Rows.Count > 0;
-            
+
 
             UpdateDataGridViewAlarm(gralarmTbl);
-            
+
 
             // TODOX:
             //
@@ -377,7 +384,7 @@ namespace FNGRQRC
                 //this.dataGridView1.
                 //int displayNameColumnIndex = 2;
                 //DataGridViewRow dgvrow = GetDataGridViewRow(displayNameColumnIndex, stationName);
-                
+
                 //if (dgvrow != null)
                 //{
                 //    Icon ico =FNGRQRC.Properties.Resources.Exclamation16; 
@@ -496,15 +503,15 @@ namespace FNGRQRC
             string columnName = "StationName";
             foreach (DataRow row in source.Rows)
             {
-                string expression = string.Format("{0} = '{1}'",columnName, row[columnName].ToString());
+                string expression = string.Format("{0} = '{1}'", columnName, row[columnName].ToString());
                 DataRow[] selectedRows = destination.Select(expression);
                 if (selectedRows.Length > 0)
                 {
-                    
+
                     DataRow selectedRow1 = selectedRows[0];
                     for (int i = 0; i < selectedRow1.Table.Columns.Count; i++)
                     {
-                        if (selectedRow1.Table.Columns[i].ColumnName == "GRAlarm" || 
+                        if (selectedRow1.Table.Columns[i].ColumnName == "GRAlarm" ||
                             selectedRow1.Table.Columns[i].ColumnName == "GRAlarmDatas")
                         {
                             continue;
@@ -522,7 +529,7 @@ namespace FNGRQRC
                     //
                     //DataRow newRow = destination.NewRow();
                     //destination.Rows.Add(newRow);
-                    
+
                 }
             }
         }
@@ -637,6 +644,7 @@ namespace FNGRQRC
         }
         #endregion //btnHistoryData_Click
 
+        #region GetSelectedGRDeviceID
         /// <summary>
         /// 
         /// </summary>
@@ -652,6 +660,7 @@ namespace FNGRQRC
             }
             return -1;
         }
+        #endregion //GetSelectedGRDeviceID
 
         #region GetSelectedGRDeviceName
         /// <summary>
@@ -717,8 +726,6 @@ namespace FNGRQRC
         {
             if (_t.IsTimeOut())
             {
-                //this.Query();
-                //this.QueryGRAlarm();
                 this.Queries();
             }
         }
@@ -731,8 +738,8 @@ namespace FNGRQRC
         public bool AutoRefresh
         {
             get { return _autoRefresh; }
-            set 
-            { 
+            set
+            {
                 _autoRefresh = value;
                 this.timer1.Enabled = _autoRefresh;
             }
@@ -808,11 +815,11 @@ namespace FNGRQRC
         {
             string displayName = GetSelectedGRDeviceName();
             int deviceID = GetSelectedGRDeviceID();
-            if ( deviceID > 0 )
+            if (deviceID > 0)
             {
 
-            //if (displayName != null)
-            //{
+                //if (displayName != null)
+                //{
                 //if (IsZGStation(displayName))
                 if (IsZGStation(deviceID))
                 {
@@ -822,13 +829,13 @@ namespace FNGRQRC
                 {
                     frmGRFlowJG.PopupGRFlowJGForm(displayName, this);
                 }
-                
+
             }
         }
         #endregion //PopupGRDataForm
 
 
-
+        #region IsZGStation
         /// <summary>
         /// 
         /// </summary>
@@ -841,11 +848,23 @@ namespace FNGRQRC
             KeyValue r = keyValues.Find("HtmMode");
             if (r != null)
             {
-                return StringHelper.Equal(r.Value.ToString (),"Direct");
+                return StringHelper.Equal(r.Value.ToString(), "Direct");
             }
-                return false;
+            return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayname"></param>
+        /// <returns></returns>
+        private bool IsZGStation(string displayname)
+        {
+            return CZGRQRCApp.Default.ZGStationList.Include(displayname);
+        }
+        #endregion //IsZGStation
+
+        #region Split
         private KeyValueCollection Split(string config)
         {
             KeyValueCollection r = new KeyValueCollection();
@@ -864,16 +883,7 @@ namespace FNGRQRC
             }
             return r;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="displayname"></param>
-        /// <returns></returns>
-        private bool IsZGStation(string displayname)
-        {
-            return CZGRQRCApp.Default.ZGStationList.Include(displayname);
-        }
+        #endregion //Split
 
         #region IDataGridViewFont 成员
 
@@ -895,6 +905,7 @@ namespace FNGRQRC
         }
         #endregion
 
+        #region cmbStreet_SelectedIndexChanged
         /// <summary>
         /// 
         /// </summary>
@@ -904,7 +915,9 @@ namespace FNGRQRC
         {
             Query();
         }
+        #endregion //cmbStreet_SelectedIndexChanged
 
+        #region GetSelectedStreet
         /// <summary>
         /// 
         /// </summary>
@@ -921,5 +934,35 @@ namespace FNGRQRC
             }
             return r;
         }
+        #endregion //GetSelectedStreet
+
+        #region dataGridView1_Sorted
+        private DataGridViewColumn _gdSortColumn;
+        private SortOrder _gdOrder;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            _gdSortColumn = this.dataGridView1.SortedColumn;
+            _gdOrder = this.dataGridView1.SortOrder;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SortGridviewWithOldSetting()
+        {
+            if (_gdSortColumn != null && _gdOrder != SortOrder.None)
+            {
+                ListSortDirection listSortDir = _gdOrder == SortOrder.Ascending ?
+                    ListSortDirection.Ascending : ListSortDirection.Descending;
+                this.dataGridView1.Sort(_gdSortColumn, listSortDir);
+            }
+        }
+        #endregion //dataGridView1_Sorted
     }
 }

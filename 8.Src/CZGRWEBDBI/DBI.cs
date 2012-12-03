@@ -1390,7 +1390,7 @@ namespace CZGRWEBDBI
         /// <returns></returns>
         public DataTable ExecuteStreetDataTable()
         {
-            string s = "select DISTINCT street from tblStation order by street";
+            string s = "select DISTINCT street from tblStation where street is not null order by street";
             return ExecuteDataTable(s);
         }
     }

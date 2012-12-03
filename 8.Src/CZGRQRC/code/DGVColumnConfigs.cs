@@ -140,6 +140,9 @@ namespace FNGRQRC
                     _gr.Add(new DGVColumnConfig("I1", floatFormat, "一次瞬时流量"));
                     _gr.Add(new DGVColumnConfig("S1", noFormat, "一次累计流量"));
 
+                    _gr.Add(new DGVColumnConfig("IH1", floatFormat, "一次瞬时热量"));
+                    _gr.Add(new DGVColumnConfig("SH1", noFormat, "一次累计热量"));
+                    
                     //_gr.Add(new DGVColumnConfig("I2", floatFormat, "二次瞬时流量"));
                     //_gr.Add(new DGVColumnConfig("S2", noFormat, "二次累计流量"));
 
@@ -258,6 +261,8 @@ namespace FNGRQRC
                     _firstStation.Add(new DGVColumnConfig("sf1", floatFormat, "一次累计"));
                     _firstStation.Add(new DGVColumnConfig("IR", floatFormat, "补水瞬时"));
                     _firstStation.Add(new DGVColumnConfig("SR", noFormat, "补水累计"));
+                    _firstStation.Add(new DGVColumnConfig("IH1", noFormat, "瞬时热量"));
+                    _firstStation.Add(new DGVColumnConfig("SH1", noFormat, "累计热量"));
                 }
                 return _firstStation;
             }

@@ -52,6 +52,8 @@ namespace FNGRQRC
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
+            this.mnuReport.Visible = false;
+
             //Application.StartupPath 
             //this.toolStrip1.ImageList = this.imageList1;
             //this.tsbMap.ImageIndex = 0;
