@@ -84,6 +84,7 @@
             this.Controls.Add(this.dtpBegin);
             this.Name = "frmReport";
             this.Text = "报表";
+            this.Load += new System.EventHandler(this.frmReport_Load);
             this.Controls.SetChildIndex(this.dtpBegin, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
