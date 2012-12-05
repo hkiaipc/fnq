@@ -243,6 +243,11 @@
     </Compile>
     <Compile Include="Forms\PlanHeat\PlanHeatItem.cs" />
     <Compile Include="Forms\Report\ReportHelper.cs" />
+    <Compile Include="Forms\Report\ReportStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Report\StationRangeDataExporter.cs" />
     <Compile Include="Forms\Report\XfDayReportExporter.cs" />
     <Compile Include="Forms\TM\DBCard.cs" />
@@ -402,6 +407,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PlanHeat\frmPlanHeatItem.resx">
       <DependentUpon>frmPlanHeatItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\ReportStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportStrings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TM\TMCardListView.resx">
@@ -640,6 +650,9 @@
     <None Include="Resources\ico\Alarm.ICO" />
     <None Include="Resources\ico\Map.ICO" />
     <None Include="Resources\ico\Last.ico" />
+    <None Include="RT\Day.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="RT\FirstStationCost.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

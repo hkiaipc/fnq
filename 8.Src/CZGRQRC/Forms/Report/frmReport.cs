@@ -33,6 +33,9 @@ namespace FNGRQRC.Forms
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
+            new XfDayReportExporter(this.dtpBegin.Value, this.dtpEnd.Value).Export();
+            return;
+
             if (false)
             {
                 new StationRangeDataExporter(this.dtpBegin.Value,

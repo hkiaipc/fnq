@@ -52,7 +52,6 @@ namespace FNGRQRC
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.mnuReport.Visible = false;
 
             //Application.StartupPath 
             //this.toolStrip1.ImageList = this.imageList1;
@@ -66,6 +65,7 @@ namespace FNGRQRC
             //
             this.splitter1.Visible = false;
             this.ucAlarm1.Visible = false;
+            mnuReport_Click(null, null);
         }
 
         /// <summary>

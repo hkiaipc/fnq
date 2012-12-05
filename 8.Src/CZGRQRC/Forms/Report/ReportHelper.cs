@@ -109,7 +109,7 @@ namespace FNGRQRC.Forms
                     max(sr) as maxsr, min(sr) as minsr
                     from vgrdata 
                     where dt >= '{0}' and dt < '{1}' 
-                    group by stationname 
+                    group by street, stationname 
                     order by street, stationname",
                     b, e);
 
