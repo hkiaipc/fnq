@@ -23,11 +23,13 @@ namespace FNGRQRC.Forms
         /// </summary>
         internal class Config
         {
-            static internal Point
-                Title = new Point(1, 1),
-                Range = new Point(2, ColumnCount),
-                FirstStationTitle = new Point(3, 1)
+            static internal Rectangle TitleArea = new Rectangle(1, 1, ColumnCount, 1),
+                FirstStationTitleArea = new Rectangle(1, 3, ColumnCount, 1)
                 ;
+
+            //static internal Point
+            //    Range = new Point(2, ColumnCount)
+            //    ;
 
             internal const int ColumnCount = 12,
                 StationTitleColumn = 1,
@@ -41,7 +43,7 @@ namespace FNGRQRC.Forms
 
             static internal string[] FirstColumnNames = new string[] {
                 "序号", "热源厂", "一次供温", "一次回温", "一次供压", "一次回压", 
-                "一次瞬时", "一次累计", "补水瞬时", "补水累计", "备注" };
+                "一次瞬时", "一次累计", "补水瞬时", "补水累计", "备注", null };
 
             static internal string[] StationColumnNames = new string[] {
                 "序号", "站名", "一次供温", "一次回温", "二次供温", "二次回温", "一次供压", 
@@ -76,11 +78,9 @@ namespace FNGRQRC.Forms
             _xls.Open(_xlsPath);
 
             //_xls.SetCellValue (Config.
-            SetCellValue(_xls, Config.Title,
-                string.Format(ReportStrings.Title, B, E));
-
-            MergeCells(_xls, Config.Title.X, Config.Title.Y,
-                Config.ColumnCount, false);
+            SetCellValue(_xls, Config.TitleArea,
+                string.Format(ReportStrings.Title, B, E), false);
+            MergeCells(_xls, Config.TitleArea);
 
             //SetCellValue(_xls, Config.Range, "TODO: 2012-1-1");
 
@@ -88,7 +88,7 @@ namespace FNGRQRC.Forms
             // set first column names
             //
 
-            int row = ExportFirst(9);
+            int row = ExportFirst(5);
             ExportStations(row);
 
             string filename = Xdgk.Common.Path.GetTempFileName("xls");
@@ -113,8 +113,12 @@ namespace FNGRQRC.Forms
 
             int row = startRow;
             //_xls.SetCellValue(row, Config.TitleColumn, ReportStrings.StationTitle);
-            SetCellValue(_xls, row, Config.TitleColumn, ReportStrings.StationTitle);
-            MergeCells(_xls, row, Config.TitleColumn, Config.ColumnCount);
+            //SetCellValue(_xls, row, Config.TitleColumn, ReportStrings.StationTitle);
+            //MergeCells(_xls, row, Config.TitleColumn, Config.ColumnCount);
+            Rectangle a = new Rectangle(1, row, Config.ColumnCount, 1);
+            SetCellValue(_xls, a, ReportStrings.StationTitle, true);
+            MergeCells(_xls, a);
+            SetBorder(_xls, a, true);
 
             row++;
 
@@ -136,24 +140,34 @@ namespace FNGRQRC.Forms
             int no = 1;
             foreach (DataRow dr in stationDataTable.Rows)
             {
+
                 string street = dr["street"].ToString().Trim();
                 if (street != lastStreetName)
                 {
-                    SetCellValue(_xls, row, 1, street);
-                    MergeCells(_xls, row, 1, Config.ColumnCount);
+                    //SetCellValue(_xls, row, 1, street);
+                    //MergeCells(_xls, row, 1, Config.ColumnCount);
+                    Rectangle area = new Rectangle(1, row, Config.ColumnCount, 1);
+                    SetCellValue(_xls, area, street, true);
+                    MergeCells(_xls, area);
+                    SetBorder(_xls, area, true);
                     row++;
                 }
 
                 //_xls.SetCellValue(row, 1, no++);
-                SetCellValue(_xls, row, 1, no++);
+                //SetCellValue(_xls, row, 1, no++);
+                List<object> valueList = new List<object>();
+                valueList.Add(no++);
+
                 for (int i = 0; i < columnNameList.Count; i++)
                 {
                     object value = dr[columnNameList[i]];
                     value = Format(value);
                     int col = Config.StationDataColumnOffset + i;
                     //_xls.SetCellValue(row, col, value);
-                    SetCellValue(_xls, row, col, value);
+                    //SetCellValue(_xls, row, col, value);
+                    valueList.Add(value);
                 }
+                SetCellValues(_xls, row, 1, valueList);
                 row++;
             }
 
@@ -167,9 +181,8 @@ namespace FNGRQRC.Forms
         /// <returns></returns>
         private int ExportFirst(int startRow)
         {
-            SetCellValue(_xls, Config.FirstStationTitle, ReportStrings.FirstTitle);
-            MergeCells(_xls, Config.FirstStationTitle.X,
-                Config.FirstStationTitle.Y, Config.ColumnCount);
+            SetCellValue(_xls, Config.FirstStationTitleArea, ReportStrings.FirstTitle, true);
+            MergeCells(_xls, Config.FirstStationTitleArea);
 
             int lastCol = SetCellValues(_xls, Config.FirstTitleRow, 1, Config.FirstColumnNames);
             if (lastCol < Config.ColumnCount)
@@ -180,7 +193,7 @@ namespace FNGRQRC.Forms
             DataTable first = ReportHelper.GetFirstStationDataTable(this.B, this.E);
 
             List<string> columnNameList = new List<string>(new string[]{
-                "StationName", "gt1", "bt1", "gp1", "bp1", "ir", "sr", "if1", "sf1"});
+                "StationName", "gt1", "bt1", "gp1", "bp1", "ir", "sr", "if1", "sf1", "remark", null});
 
             // set values
             //
@@ -189,19 +202,32 @@ namespace FNGRQRC.Forms
             int no = 1;
             foreach (DataRow dr in first.Rows)
             {
+                List<object> valueList = new List<object>();
+                valueList.Add(no++);
+
                 //_xls.SetCellValue(row, Config.NoColumn, no++);
-                SetCellValue(_xls, row, Config.NoColumn, no++);
+                //SetCellValue(_xls, row, Config.NoColumn, no++);
 
                 for (int i = 0; i < columnNameList.Count; i++)
                 {
                     string colName = columnNameList[i];
-                    int col = Config.FirstDataColumnOffset + i;
-                    object val = Format(dr[colName]);
-                    //_xls.SetCellValue(row, col, val);
+                    if (colName == null)
+                    {
+                        valueList.Add(null);
+                    }
+                    else
+                    {
+                        //int col = Config.FirstDataColumnOffset + i;
+                        object val = Format(dr[colName]);
+                        //_xls.SetCellValue(row, col, val);
 
-                    SetCellValue(_xls, row, col, val);
+                        //SetCellValue(_xls, row, col, val);
+                        valueList.Add(val);
+                    }
 
                 }
+
+                SetCellValues(_xls, row, 1, valueList);
                 row++;
             }
 

@@ -170,7 +170,7 @@ namespace FNGRQRC.Forms
         {
             string s =
                 @"select stationname, avg(ai1) as gt1, avg(ai2) as bt1, avg(ai3) as gp1, avg(ai4) as bp1,
-                avg(ir) as ir,  max(sr) as sr, avg(if1) as if1, max(sf1) as sf1
+                avg(ir) as ir,  max(sr) as sr, avg(if1) as if1, max(sf1) as sf1, '' as remark
                 from vXd100eData
                 where dt >= '{0}' and dt < '{1}' 
                 group by stationName";

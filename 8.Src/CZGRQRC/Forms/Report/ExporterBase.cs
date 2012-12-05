@@ -22,8 +22,19 @@ namespace FNGRQRC.Forms
             foreach (object val in enumerable)
             {
                 //xls.SetCellValue(row, col, val);
-                SetCellValue(xls, row, col, val);
-                col++;
+                if (val == null)
+                {
+                    // mer
+                    //
+                    Rectangle area = new Rectangle(col - 1, row, 2, 1);
+                    MergeCells(xls, area);
+                    SetBorder(xls, area, true);
+                }
+                else
+                {
+                    SetCellValue(xls, row, col, val);
+                }
+                    col++;
             }
 
             return col - 1;
@@ -98,6 +109,14 @@ namespace FNGRQRC.Forms
             process.Dispose();
         }
 
+        internal void SetCellValue(XlsFile xls, Rectangle area, object value, bool hasBorder)
+        {
+            xls.SetCellValue(area.Top, area.Left, value);
+            if( hasBorder )
+            {
+                SetBorder(xls, area, hasBorder);
+            }
+        }
         internal void SetCellValue(XlsFile xls, Point pt, object value)
         {
             SetCellValue(xls, pt.X, pt.Y, value);
@@ -121,7 +140,7 @@ namespace FNGRQRC.Forms
             }
         }
 
-        internal void MergeCells(XlsFile xls, int row, int col, int colCount )
+        internal void MergeCells(XlsFile xls, int row, int col, int colCount)
         {
             MergeCells(xls, row, col, colCount, false);
         }
@@ -154,10 +173,10 @@ namespace FNGRQRC.Forms
             if (_mergedCellXF == -1)
             {
                 TFlxFormat format = xls.GetDefaultFormat;
-                format.Borders.Bottom.Style = TFlxBorderStyle.Thin;
-                format.Borders.Top.Style = TFlxBorderStyle.Thin;
-                format.Borders.Left.Style = TFlxBorderStyle.Thin;
-                format.Borders.Right.Style = TFlxBorderStyle.Thin;
+                //format.Borders.Bottom.Style = TFlxBorderStyle.Thin;
+                //format.Borders.Top.Style = TFlxBorderStyle.Thin;
+                //format.Borders.Left.Style = TFlxBorderStyle.Thin;
+                //format.Borders.Right.Style = TFlxBorderStyle.Thin;
 
                 format.HAlignment = THFlxAlignment.center;
 
@@ -174,6 +193,22 @@ namespace FNGRQRC.Forms
             xls.SetCellFormat(row, col, row2, col2, xf);
         }
 
+        private int GetThinBorderXF(XlsFile xls)
+        {
+            if (_thinBorderXF == -1)
+            {
+                TFlxFormat format = xls.GetDefaultFormat;
+                format.Borders.Bottom.Style = TFlxBorderStyle.Thin;
+                format.Borders.Top.Style = TFlxBorderStyle.Thin;
+                format.Borders.Left.Style = TFlxBorderStyle.Thin;
+                format.Borders.Right.Style = TFlxBorderStyle.Thin;
+               
+                _thinBorderXF = xls.AddFormat(format);
+            }
+            return _thinBorderXF;
+
+        } private int _thinBorderXF = -1;
+
         internal void SetBorder(XlsFile xls, int row, int col)
         {
             TFlxFormat format = xls.GetDefaultFormat;
@@ -185,6 +220,27 @@ namespace FNGRQRC.Forms
 
             int xf = xls.AddFormat(format);
             xls.SetCellFormat(row, col, xf);
+        }
+
+        internal void SetBorder(XlsFile xls, Rectangle area, bool has)
+        {
+            if (has)
+            {
+                int xf = GetThinBorderXF(xls);
+                xls.SetCellFormat(area.Top, area.Left, area.Bottom-1, area.Right-1, xf);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xls"></param>
+        /// <param name="area"></param>
+        internal void MergeCells(XlsFile xls, Rectangle area)
+        {
+            xls.MergeCells(area.Top, area.Left, area.Bottom-1, area.Right-1);
+            xls.SetCellFormat(area.Top, area.Left, area.Bottom - 1, area.Right - 1, 
+                GetMergedCellFormat(xls));
         }
 
         abstract internal void Export();
