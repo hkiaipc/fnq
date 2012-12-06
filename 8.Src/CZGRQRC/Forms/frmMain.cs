@@ -65,7 +65,7 @@ namespace FNGRQRC
             //
             this.splitter1.Visible = false;
             this.ucAlarm1.Visible = false;
-            mnuReport_Click(null, null);
+            //mnuReport_Click(null, null);
         }
 
         /// <summary>
@@ -1165,6 +1165,15 @@ namespace FNGRQRC
         }
 
         private void mnuReport_Click(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuReportDay_Click(object sender, EventArgs e)
         {
             Forms.frmReport f = new FNGRQRC.Forms.frmReport();
             f.ShowDialog();

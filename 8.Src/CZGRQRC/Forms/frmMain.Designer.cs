@@ -70,7 +70,6 @@
             this.mnuHelp = new System.Windows.Forms.MenuItem();
             this.mnuAbout = new System.Windows.Forms.MenuItem();
             this.mnuTest = new System.Windows.Forms.MenuItem();
-            this.mnuReport = new System.Windows.Forms.MenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusBar1 = new System.Windows.Forms.StatusBar();
             this.statusBarPanel1 = new System.Windows.Forms.StatusBarPanel();
@@ -91,6 +90,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.mnuReport = new System.Windows.Forms.MenuItem();
+            this.mnuReportDay = new System.Windows.Forms.MenuItem();
             this.ucAlarm1 = new FNGRQRC.UC.UCAlarm();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -104,6 +105,7 @@
             this.menuItem1,
             this.menuItem6,
             this.mnuCurve,
+            this.mnuReport,
             this.mnuConfig,
             this.mnuHelp});
             // 
@@ -337,7 +339,7 @@
             // 
             // mnuConfig
             // 
-            this.mnuConfig.Index = 5;
+            this.mnuConfig.Index = 6;
             this.mnuConfig.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuFont,
             this.mnuOptions,
@@ -365,11 +367,10 @@
             // 
             // mnuHelp
             // 
-            this.mnuHelp.Index = 6;
+            this.mnuHelp.Index = 7;
             this.mnuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuAbout,
-            this.mnuTest,
-            this.mnuReport});
+            this.mnuTest});
             this.mnuHelp.Text = "帮助(&H)";
             // 
             // mnuAbout
@@ -385,19 +386,13 @@
             this.mnuTest.Visible = false;
             this.mnuTest.Click += new System.EventHandler(this.menuItem2_Click);
             // 
-            // mnuReport
-            // 
-            this.mnuReport.Index = 2;
-            this.mnuReport.Text = "report";
-            this.mnuReport.Click += new System.EventHandler(this.mnuReport_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 481);
+            this.statusBar1.Location = new System.Drawing.Point(0, 461);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.statusBarPanel1});
@@ -556,16 +551,29 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 372);
+            this.splitter1.Location = new System.Drawing.Point(0, 352);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(838, 4);
             this.splitter1.TabIndex = 11;
             this.splitter1.TabStop = false;
             // 
+            // mnuReport
+            // 
+            this.mnuReport.Index = 5;
+            this.mnuReport.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mnuReportDay});
+            this.mnuReport.Text = "报表(&R)";
+            // 
+            // mnuReportDay
+            // 
+            this.mnuReportDay.Index = 0;
+            this.mnuReportDay.Text = "统计表(&T)";
+            this.mnuReportDay.Click += new System.EventHandler(this.mnuReportDay_Click);
+            // 
             // ucAlarm1
             // 
             this.ucAlarm1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucAlarm1.Location = new System.Drawing.Point(0, 376);
+            this.ucAlarm1.Location = new System.Drawing.Point(0, 356);
             this.ucAlarm1.Name = "ucAlarm1";
             this.ucAlarm1.Size = new System.Drawing.Size(838, 105);
             this.ucAlarm1.TabIndex = 9;
@@ -575,7 +583,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(838, 503);
+            this.ClientSize = new System.Drawing.Size(838, 483);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ucAlarm1);
             this.Controls.Add(this.toolStrip1);
@@ -667,6 +675,7 @@
         private System.Windows.Forms.MenuItem mnuFirstStationPressCurve;
         private System.Windows.Forms.MenuItem mnuFirstStationTempCurve;
         private System.Windows.Forms.MenuItem mnuReport;
+        private System.Windows.Forms.MenuItem mnuReportDay;
     }
 }
 

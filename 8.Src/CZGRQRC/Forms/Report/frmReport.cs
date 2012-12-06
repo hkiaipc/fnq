@@ -36,16 +36,16 @@ namespace FNGRQRC.Forms
             new XfDayReportExporter(this.dtpBegin.Value, this.dtpEnd.Value).Export();
             return;
 
-            if (false)
-            {
-                new StationRangeDataExporter(this.dtpBegin.Value,
-                    this.dtpEnd.Value).Export();
-            }
-            else
-            {
-                new FirstStationExporter(this.dtpBegin.Value,
-                    this.dtpEnd.Value).Export();
-            }
+            //if (false)
+            //{
+            //    new StationRangeDataExporter(this.dtpBegin.Value,
+            //        this.dtpEnd.Value).Export();
+            //}
+            //else
+            //{
+            //    new FirstStationExporter(this.dtpBegin.Value,
+            //        this.dtpEnd.Value).Export();
+            //}
         }
 
         private void frmReport_Load(object sender, EventArgs e)
