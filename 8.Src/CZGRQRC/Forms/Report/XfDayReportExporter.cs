@@ -118,7 +118,7 @@ namespace FNGRQRC.Forms
             Rectangle a = new Rectangle(1, row, Config.ColumnCount, 1);
             SetCellValue(_xls, a, ReportStrings.StationTitle, true);
             MergeCells(_xls, a);
-            SetBorder(_xls, a, true);
+            SetBorder(_xls, a, true, FlexCel.Core.THFlxAlignment.center);
 
             row++;
 
@@ -149,7 +149,7 @@ namespace FNGRQRC.Forms
                     Rectangle area = new Rectangle(1, row, Config.ColumnCount, 1);
                     SetCellValue(_xls, area, street, true);
                     MergeCells(_xls, area);
-                    SetBorder(_xls, area, true);
+                    SetBorder(_xls, area, true, FlexCel.Core.THFlxAlignment.center);
                     row++;
                 }
 
@@ -183,6 +183,7 @@ namespace FNGRQRC.Forms
         {
             SetCellValue(_xls, Config.FirstStationTitleArea, ReportStrings.FirstTitle, true);
             MergeCells(_xls, Config.FirstStationTitleArea);
+            SetBorder(_xls, Config.FirstStationTitleArea, true, FlexCel.Core.THFlxAlignment.center);
 
             int lastCol = SetCellValues(_xls, Config.FirstTitleRow, 1, Config.FirstColumnNames);
             if (lastCol < Config.ColumnCount)

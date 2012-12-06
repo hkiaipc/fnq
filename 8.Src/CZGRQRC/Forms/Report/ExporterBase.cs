@@ -193,21 +193,22 @@ namespace FNGRQRC.Forms
             xls.SetCellFormat(row, col, row2, col2, xf);
         }
 
-        private int GetThinBorderXF(XlsFile xls)
-        {
-            if (_thinBorderXF == -1)
-            {
-                TFlxFormat format = xls.GetDefaultFormat;
-                format.Borders.Bottom.Style = TFlxBorderStyle.Thin;
-                format.Borders.Top.Style = TFlxBorderStyle.Thin;
-                format.Borders.Left.Style = TFlxBorderStyle.Thin;
-                format.Borders.Right.Style = TFlxBorderStyle.Thin;
+        //private int GetThinBorderXF(XlsFile xls)
+        //{
+        //    if (_thinBorderXF == -1)
+        //    {
+        //        TFlxFormat format = xls.GetDefaultFormat;
+        //        format.Borders.Bottom.Style = TFlxBorderStyle.Thin;
+        //        format.Borders.Top.Style = TFlxBorderStyle.Thin;
+        //        format.Borders.Left.Style = TFlxBorderStyle.Thin;
+        //        format.Borders.Right.Style = TFlxBorderStyle.Thin;
+        //        format.HAlignment = THFlxAlignment.
                
-                _thinBorderXF = xls.AddFormat(format);
-            }
-            return _thinBorderXF;
+        //        _thinBorderXF = xls.AddFormat(format);
+        //    }
+        //    return _thinBorderXF;
 
-        } private int _thinBorderXF = -1;
+        //} private int _thinBorderXF = -1;
 
         internal void SetBorder(XlsFile xls, int row, int col)
         {
@@ -224,11 +225,51 @@ namespace FNGRQRC.Forms
 
         internal void SetBorder(XlsFile xls, Rectangle area, bool has)
         {
+            TFlxBorderStyle borderStyle = TFlxBorderStyle.None;
+
             if (has)
             {
-                int xf = GetThinBorderXF(xls);
-                xls.SetCellFormat(area.Top, area.Left, area.Bottom-1, area.Right-1, xf);
+                borderStyle = TFlxBorderStyle.Thin;
             }
+            TFlxFormat format = xls.GetDefaultFormat;
+            format.Borders.Bottom.Style = borderStyle;
+            format.Borders.Top.Style = borderStyle;
+            format.Borders.Left.Style = borderStyle;
+            format.Borders.Right.Style = borderStyle;
+            //format.HAlignment = hAlignment;
+
+            int xf = xls.AddFormat(format);
+
+            //int xf = GetThinBorderXF(xls);
+            xls.SetCellFormat(area.Top, area.Left, area.Bottom - 1, area.Right - 1, xf);
+        }
+
+        internal void SetBorder(XlsFile xls, Rectangle area, bool has, THFlxAlignment hAlignment)
+        {
+            TFlxBorderStyle borderStyle = TFlxBorderStyle.None;
+
+            if (has)
+            {
+                borderStyle = TFlxBorderStyle.Thin;
+            }
+
+            TFlxFormat format = xls.GetDefaultFormat;
+            format.Borders.Bottom.Style = borderStyle;
+            format.Borders.Top.Style = borderStyle;
+            format.Borders.Left.Style = borderStyle;
+            format.Borders.Right.Style = borderStyle;
+            format.HAlignment = hAlignment;
+
+            //format.Font.Style = TFlxFontStyles.Bold;
+
+            // back color
+            //
+            //format.FillPattern.FgColorIndex = xls.NearestColorIndex(Color.Red);
+            //format.FillPattern.Pattern = TFlxPatternStyle.Solid;
+            int xf = xls.AddFormat(format);
+
+            //int xf = GetThinBorderXF(xls);
+            xls.SetCellFormat(area.Top, area.Left, area.Bottom - 1, area.Right - 1, xf);
         }
 
         /// <summary>
