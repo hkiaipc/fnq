@@ -47,5 +47,11 @@ namespace K
             frmKResultGenerate f = new frmKResultGenerate();
             f.ShowDialog();
         }
+
+        private void mnuQuery_Click(object sender, EventArgs e)
+        {
+            frmTMDataQuery f = new frmTMDataQuery();
+            f.ShowDialog();
+        }
     }
 }

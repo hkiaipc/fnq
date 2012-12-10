@@ -57,6 +57,12 @@
     <Compile Include="Forms\frmKResultGenerate.Designer.cs">
       <DependentUpon>frmKResultGenerate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmTMDataQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTMDataQuery.Designer.cs">
+      <DependentUpon>frmTMDataQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Group\frmGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmKResultGenerate.resx">
       <DependentUpon>frmKResultGenerate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTMDataQuery.resx">
+      <DependentUpon>frmTMDataQuery.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Group\frmGroup.resx">

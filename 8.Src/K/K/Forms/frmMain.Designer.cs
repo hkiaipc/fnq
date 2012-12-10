@@ -36,9 +36,10 @@
             this.mnuPerson = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTM = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWorkDefine = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKResult = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuKResult = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,10 +110,18 @@
             this.mnuWorkDefine.Text = "班次";
             this.mnuWorkDefine.Click += new System.EventHandler(this.mnuWorkDefine_Click);
             // 
+            // mnuKResult
+            // 
+            this.mnuKResult.Name = "mnuKResult";
+            this.mnuKResult.Size = new System.Drawing.Size(152, 22);
+            this.mnuKResult.Text = "KResult";
+            this.mnuKResult.Click += new System.EventHandler(this.mnuKResult_Click);
+            // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAbout});
+            this.mnuAbout,
+            this.mnuQuery});
             this.mnuHelp.Name = "mnuHelp";
             this.mnuHelp.Size = new System.Drawing.Size(58, 20);
             this.mnuHelp.Text = "帮助(&H)";
@@ -120,15 +129,15 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(113, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(152, 22);
             this.mnuAbout.Text = "关于(&A)";
             // 
-            // mnuKResult
+            // mnuQuery
             // 
-            this.mnuKResult.Name = "mnuKResult";
-            this.mnuKResult.Size = new System.Drawing.Size(152, 22);
-            this.mnuKResult.Text = "KResult";
-            this.mnuKResult.Click += new System.EventHandler(this.mnuKResult_Click);
+            this.mnuQuery.Name = "mnuQuery";
+            this.mnuQuery.Size = new System.Drawing.Size(152, 22);
+            this.mnuQuery.Text = "Query";
+            this.mnuQuery.Click += new System.EventHandler(this.mnuQuery_Click);
             // 
             // Form1
             // 
@@ -159,6 +168,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTM;
         private System.Windows.Forms.ToolStripMenuItem mnuWorkDefine;
         private System.Windows.Forms.ToolStripMenuItem mnuKResult;
+        private System.Windows.Forms.ToolStripMenuItem mnuQuery;
     }
 }
 
