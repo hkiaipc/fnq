@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
-using KDB;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using KDB;
 
 
 namespace K.Forms
@@ -38,6 +34,11 @@ namespace K.Forms
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
+            if (!CheckInput())
+            {
+                return;
+            }
+
             if (IsAdd())
             {
                 Add();
@@ -50,15 +51,28 @@ namespace K.Forms
             this.Close();
         }
 
+        private bool CheckInput()
+        {
+            if (this.cmbWorkDefine.SelectedItem == null)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("TODO: must select workdefine");
+                return false;
+            }
+            return true;
+        }
+
         void Add()
         {
+            DB db = DBFactory.GetDB();
+
             tblGroup g = new tblGroup();
             g.GroupName = this.txtGroupName.Text.Trim();
+            g.tblWorkDefine = GetSelectedWorkDefine(db);
 
-            DB db = DBFactory.GetDB();
             db.tblGroup.InsertOnSubmit(g);
             db.SubmitChanges();
         }
+
 
         void Edit()
         {
@@ -67,10 +81,20 @@ namespace K.Forms
                          where q.GroupID == this.TblGroup.GroupID
                          select q;
 
-            g.First().GroupName = this.txtGroupName.Text.Trim();
+            tblGroup group = g.First(); 
+            group.GroupName = this.txtGroupName.Text.Trim();
+            group.tblWorkDefine = GetSelectedWorkDefine(db);
 
             db.SubmitChanges();
 
+        }
+
+        tblWorkDefine GetSelectedWorkDefine(DB db)
+        {
+            tblWorkDefine wd = db.tblWorkDefine.First(
+                c => c.WorkDefineID == Convert.ToInt32(this.cmbWorkDefine.SelectedValue));
+            Debug.Assert(wd != null);
+            return wd;
         }
 
         /// <summary>
@@ -89,7 +113,23 @@ namespace K.Forms
         /// <param name="e"></param>
         private void frmGroupItem_Load(object sender, EventArgs e)
         {
+            BindWorkDefineSource();
             Fill();
+            
+        }
+
+        private void BindWorkDefineSource()
+        {
+            DB db = DBFactory.GetDB();
+            var wd = from q in db.tblWorkDefine
+                     select q;
+
+            //wd.First().WorkDefineID 
+            this.cmbWorkDefine.DisplayMember = "WorkDefineName";
+            this.cmbWorkDefine.ValueMember = "WorkDefineID";
+            this.cmbWorkDefine.DataSource = wd;
+
+                     
         }
 
         private void Fill()
@@ -111,6 +151,12 @@ namespace K.Forms
                     this.listView1.Items.Add(CreateLVI(person));
                 }
 
+
+                tblWorkDefine wd = this.TblGroup.tblWorkDefine;
+                if (wd != null)
+                {
+                    this.cmbWorkDefine.SelectedValue = wd.WorkDefineID;
+                }
             }
         }
 

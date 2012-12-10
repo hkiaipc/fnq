@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Database Name="KQ" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KQ;User ID=sa" SettingsObjectName="KDB.Properties.Settings" SettingsPropertyName="KQConnectionString" Provider="System.Data.SqlClient" />
+<Database Name="KQ" Class="DB" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=KQ;Persist Security Info=True;User ID=sa" SettingsObjectName="KDB.Properties.Settings" SettingsPropertyName="KQConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblWorkDefine" Member="tblWorkDefine">
+    <Type Name="tblWorkDefine">
+      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorkDefineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineContext" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
+      <Association Name="tblWorkDefine_tblGroup" Member="tblGroup" OtherKey="WorkDefineID" Type="tblGroup" />
+    </Type>
+  </Table>
   <Table Name="dbo.tblGroup" Member="tblGroup">
     <Type Name="tblGroup">
       <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -28,8 +36,19 @@
       <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TmID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="tblPerson_tblLeave" Member="tblLeave" OtherKey="PersonID" Type="tblLeave" />
+      <Association Name="tblPerson_tblExWork" Member="tblExWork" OtherKey="PersonID" Type="tblExWork" />
       <Association Name="tblGroup_tblPerson" Member="tblGroup" ThisKey="GroupID" Type="tblGroup" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="tblTM_tblPerson" Member="tblTM" ThisKey="TmID" Type="tblTM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTimeDefine" Member="tblTimeDefine">
+    <Type Name="tblTimeDefine">
+      <Column Name="TimeDefineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EndTime" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DayOffset" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsCrossDay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.tblTM" Member="tblTM">
@@ -42,17 +61,47 @@
   </Table>
   <Table Name="dbo.tblTmData" Member="tblTmData">
     <Type Name="tblTmData">
+      <Column Name="DeviceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TmDataID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TmID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TmDataDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="tblTM_tblTmData" Member="tblTM" ThisKey="TmID" Type="tblTM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="tblDevice_tblTmData" Member="tblDevice" ThisKey="DeviceID" Type="tblDevice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblWorkDefine" Member="tblWorkDefine">
-    <Type Name="tblWorkDefine">
-      <Column Name="WorkDefineContext" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
-      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="tblWorkDefine_tblGroup" Member="tblGroup" OtherKey="WorkDefineID" Type="tblGroup" />
+  <Table Name="dbo.tblDevice" Member="tblDevice">
+    <Type Name="tblDevice">
+      <Column Name="DeviceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeviceName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DeviceAddress" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeviceType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DeviceRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="DeviceExtend" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="tblDevice_tblTmData" Member="tblTmData" OtherKey="DeviceID" Type="tblTmData" />
+      <Association Name="tblStation_tblDevice" Member="tblStation" ThisKey="StationID" Type="tblStation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblStation" Member="tblStation">
+    <Type Name="tblStation">
+      <Column Name="StationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StationOrdinal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StationName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="StationRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="StationCPConfig" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="tblStation_tblDevice" Member="tblDevice" OtherKey="StationID" Type="tblDevice" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblExWork" Member="tblExWork">
+    <Type Name="tblExWork">
+      <Column Name="ExWorkID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExWorkName" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="ExWorkBegin" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExWorkEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExWorkRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="tblPerson_tblExWork" Member="tblPerson" ThisKey="PersonID" Type="tblPerson" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

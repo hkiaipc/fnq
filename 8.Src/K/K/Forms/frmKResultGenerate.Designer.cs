@@ -96,6 +96,7 @@
             this.btnGenerate.TabIndex = 27;
             this.btnGenerate.Text = "Gen";
             this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // frmKResultGenerate
             // 

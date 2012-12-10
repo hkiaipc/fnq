@@ -5,10 +5,6 @@ using System.Text;
 
 namespace KDB
 {
-    public class Class1
-    {
-    }
-
     public class DBFactory
     {
         static public KDB.DB GetDB()

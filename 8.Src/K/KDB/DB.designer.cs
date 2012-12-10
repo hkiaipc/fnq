@@ -30,6 +30,9 @@ namespace KDB
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InserttblWorkDefine(tblWorkDefine instance);
+    partial void UpdatetblWorkDefine(tblWorkDefine instance);
+    partial void DeletetblWorkDefine(tblWorkDefine instance);
     partial void InserttblGroup(tblGroup instance);
     partial void UpdatetblGroup(tblGroup instance);
     partial void DeletetblGroup(tblGroup instance);
@@ -39,19 +42,28 @@ namespace KDB
     partial void InserttblPerson(tblPerson instance);
     partial void UpdatetblPerson(tblPerson instance);
     partial void DeletetblPerson(tblPerson instance);
+    partial void InserttblTimeDefine(tblTimeDefine instance);
+    partial void UpdatetblTimeDefine(tblTimeDefine instance);
+    partial void DeletetblTimeDefine(tblTimeDefine instance);
     partial void InserttblTM(tblTM instance);
     partial void UpdatetblTM(tblTM instance);
     partial void DeletetblTM(tblTM instance);
     partial void InserttblTmData(tblTmData instance);
     partial void UpdatetblTmData(tblTmData instance);
     partial void DeletetblTmData(tblTmData instance);
-    partial void InserttblWorkDefine(tblWorkDefine instance);
-    partial void UpdatetblWorkDefine(tblWorkDefine instance);
-    partial void DeletetblWorkDefine(tblWorkDefine instance);
+    partial void InserttblDevice(tblDevice instance);
+    partial void UpdatetblDevice(tblDevice instance);
+    partial void DeletetblDevice(tblDevice instance);
+    partial void InserttblStation(tblStation instance);
+    partial void UpdatetblStation(tblStation instance);
+    partial void DeletetblStation(tblStation instance);
+    partial void InserttblExWork(tblExWork instance);
+    partial void UpdatetblExWork(tblExWork instance);
+    partial void DeletetblExWork(tblExWork instance);
     #endregion
 		
 		public DB() : 
-				base(global::KDB.Properties.Settings.Default.KQConnectionString, mappingSource)
+				base(global::KDB.Properties.Settings.Default.KQConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -80,6 +92,14 @@ namespace KDB
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<tblWorkDefine> tblWorkDefine
+		{
+			get
+			{
+				return this.GetTable<tblWorkDefine>();
+			}
+		}
+		
 		public System.Data.Linq.Table<tblGroup> tblGroup
 		{
 			get
@@ -104,6 +124,14 @@ namespace KDB
 			}
 		}
 		
+		public System.Data.Linq.Table<tblTimeDefine> tblTimeDefine
+		{
+			get
+			{
+				return this.GetTable<tblTimeDefine>();
+			}
+		}
+		
 		public System.Data.Linq.Table<tblTM> tblTM
 		{
 			get
@@ -120,12 +148,166 @@ namespace KDB
 			}
 		}
 		
-		public System.Data.Linq.Table<tblWorkDefine> tblWorkDefine
+		public System.Data.Linq.Table<tblDevice> tblDevice
 		{
 			get
 			{
-				return this.GetTable<tblWorkDefine>();
+				return this.GetTable<tblDevice>();
 			}
+		}
+		
+		public System.Data.Linq.Table<tblStation> tblStation
+		{
+			get
+			{
+				return this.GetTable<tblStation>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblExWork> tblExWork
+		{
+			get
+			{
+				return this.GetTable<tblExWork>();
+			}
+		}
+	}
+	
+	[Table(Name="dbo.tblWorkDefine")]
+	public partial class tblWorkDefine : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _WorkDefineID;
+		
+		private string _WorkDefineName;
+		
+		private string _WorkDefineContext;
+		
+		private EntitySet<tblGroup> _tblGroup;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnWorkDefineIDChanging(int value);
+    partial void OnWorkDefineIDChanged();
+    partial void OnWorkDefineNameChanging(string value);
+    partial void OnWorkDefineNameChanged();
+    partial void OnWorkDefineContextChanging(string value);
+    partial void OnWorkDefineContextChanged();
+    #endregion
+		
+		public tblWorkDefine()
+		{
+			this._tblGroup = new EntitySet<tblGroup>(new Action<tblGroup>(this.attach_tblGroup), new Action<tblGroup>(this.detach_tblGroup));
+			OnCreated();
+		}
+		
+		[Column(Storage="_WorkDefineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int WorkDefineID
+		{
+			get
+			{
+				return this._WorkDefineID;
+			}
+			set
+			{
+				if ((this._WorkDefineID != value))
+				{
+					this.OnWorkDefineIDChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineID = value;
+					this.SendPropertyChanged("WorkDefineID");
+					this.OnWorkDefineIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_WorkDefineName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string WorkDefineName
+		{
+			get
+			{
+				return this._WorkDefineName;
+			}
+			set
+			{
+				if ((this._WorkDefineName != value))
+				{
+					this.OnWorkDefineNameChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineName = value;
+					this.SendPropertyChanged("WorkDefineName");
+					this.OnWorkDefineNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_WorkDefineContext", DbType="NVarChar(4000) NOT NULL", CanBeNull=false)]
+		public string WorkDefineContext
+		{
+			get
+			{
+				return this._WorkDefineContext;
+			}
+			set
+			{
+				if ((this._WorkDefineContext != value))
+				{
+					this.OnWorkDefineContextChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineContext = value;
+					this.SendPropertyChanged("WorkDefineContext");
+					this.OnWorkDefineContextChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblWorkDefine_tblGroup", Storage="_tblGroup", OtherKey="WorkDefineID")]
+		public EntitySet<tblGroup> tblGroup
+		{
+			get
+			{
+				return this._tblGroup;
+			}
+			set
+			{
+				this._tblGroup.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblGroup(tblGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblWorkDefine = this;
+		}
+		
+		private void detach_tblGroup(tblGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblWorkDefine = null;
 		}
 	}
 	
@@ -547,6 +729,8 @@ namespace KDB
 		
 		private EntitySet<tblLeave> _tblLeave;
 		
+		private EntitySet<tblExWork> _tblExWork;
+		
 		private EntityRef<tblGroup> _tblGroup;
 		
 		private EntityRef<tblTM> _tblTM;
@@ -568,6 +752,7 @@ namespace KDB
 		public tblPerson()
 		{
 			this._tblLeave = new EntitySet<tblLeave>(new Action<tblLeave>(this.attach_tblLeave), new Action<tblLeave>(this.detach_tblLeave));
+			this._tblExWork = new EntitySet<tblExWork>(new Action<tblExWork>(this.attach_tblExWork), new Action<tblExWork>(this.detach_tblExWork));
 			this._tblGroup = default(EntityRef<tblGroup>);
 			this._tblTM = default(EntityRef<tblTM>);
 			OnCreated();
@@ -674,6 +859,19 @@ namespace KDB
 			}
 		}
 		
+		[Association(Name="tblPerson_tblExWork", Storage="_tblExWork", OtherKey="PersonID")]
+		public EntitySet<tblExWork> tblExWork
+		{
+			get
+			{
+				return this._tblExWork;
+			}
+			set
+			{
+				this._tblExWork.Assign(value);
+			}
+		}
+		
 		[Association(Name="tblGroup_tblPerson", Storage="_tblGroup", ThisKey="GroupID", IsForeignKey=true, DeleteRule="CASCADE")]
 		public tblGroup tblGroup
 		{
@@ -772,6 +970,200 @@ namespace KDB
 		{
 			this.SendPropertyChanging();
 			entity.tblPerson = null;
+		}
+		
+		private void attach_tblExWork(tblExWork entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblPerson = this;
+		}
+		
+		private void detach_tblExWork(tblExWork entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblPerson = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblTimeDefine")]
+	public partial class tblTimeDefine : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _TimeDefineID;
+		
+		private string _StartTime;
+		
+		private string _EndTime;
+		
+		private int _DayOffset;
+		
+		private bool _IsCrossDay;
+		
+		private int _WorkDefineID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTimeDefineIDChanging(int value);
+    partial void OnTimeDefineIDChanged();
+    partial void OnStartTimeChanging(string value);
+    partial void OnStartTimeChanged();
+    partial void OnEndTimeChanging(string value);
+    partial void OnEndTimeChanged();
+    partial void OnDayOffsetChanging(int value);
+    partial void OnDayOffsetChanged();
+    partial void OnIsCrossDayChanging(bool value);
+    partial void OnIsCrossDayChanged();
+    partial void OnWorkDefineIDChanging(int value);
+    partial void OnWorkDefineIDChanged();
+    #endregion
+		
+		public tblTimeDefine()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_TimeDefineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int TimeDefineID
+		{
+			get
+			{
+				return this._TimeDefineID;
+			}
+			set
+			{
+				if ((this._TimeDefineID != value))
+				{
+					this.OnTimeDefineIDChanging(value);
+					this.SendPropertyChanging();
+					this._TimeDefineID = value;
+					this.SendPropertyChanged("TimeDefineID");
+					this.OnTimeDefineIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_StartTime", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StartTime
+		{
+			get
+			{
+				return this._StartTime;
+			}
+			set
+			{
+				if ((this._StartTime != value))
+				{
+					this.OnStartTimeChanging(value);
+					this.SendPropertyChanging();
+					this._StartTime = value;
+					this.SendPropertyChanged("StartTime");
+					this.OnStartTimeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_EndTime", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string EndTime
+		{
+			get
+			{
+				return this._EndTime;
+			}
+			set
+			{
+				if ((this._EndTime != value))
+				{
+					this.OnEndTimeChanging(value);
+					this.SendPropertyChanging();
+					this._EndTime = value;
+					this.SendPropertyChanged("EndTime");
+					this.OnEndTimeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DayOffset", DbType="Int NOT NULL")]
+		public int DayOffset
+		{
+			get
+			{
+				return this._DayOffset;
+			}
+			set
+			{
+				if ((this._DayOffset != value))
+				{
+					this.OnDayOffsetChanging(value);
+					this.SendPropertyChanging();
+					this._DayOffset = value;
+					this.SendPropertyChanged("DayOffset");
+					this.OnDayOffsetChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_IsCrossDay", DbType="Bit NOT NULL")]
+		public bool IsCrossDay
+		{
+			get
+			{
+				return this._IsCrossDay;
+			}
+			set
+			{
+				if ((this._IsCrossDay != value))
+				{
+					this.OnIsCrossDayChanging(value);
+					this.SendPropertyChanging();
+					this._IsCrossDay = value;
+					this.SendPropertyChanged("IsCrossDay");
+					this.OnIsCrossDayChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_WorkDefineID", DbType="Int NOT NULL")]
+		public int WorkDefineID
+		{
+			get
+			{
+				return this._WorkDefineID;
+			}
+			set
+			{
+				if ((this._WorkDefineID != value))
+				{
+					this.OnWorkDefineIDChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineID = value;
+					this.SendPropertyChanged("WorkDefineID");
+					this.OnWorkDefineIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -923,6 +1315,8 @@ namespace KDB
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _DeviceID;
+		
 		private int _TmDataID;
 		
 		private int _TmID;
@@ -931,10 +1325,14 @@ namespace KDB
 		
 		private EntityRef<tblTM> _tblTM;
 		
+		private EntityRef<tblDevice> _tblDevice;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnDeviceIDChanging(int value);
+    partial void OnDeviceIDChanged();
     partial void OnTmDataIDChanging(int value);
     partial void OnTmDataIDChanged();
     partial void OnTmIDChanging(int value);
@@ -946,7 +1344,32 @@ namespace KDB
 		public tblTmData()
 		{
 			this._tblTM = default(EntityRef<tblTM>);
+			this._tblDevice = default(EntityRef<tblDevice>);
 			OnCreated();
+		}
+		
+		[Column(Storage="_DeviceID", DbType="Int NOT NULL")]
+		public int DeviceID
+		{
+			get
+			{
+				return this._DeviceID;
+			}
+			set
+			{
+				if ((this._DeviceID != value))
+				{
+					if (this._tblDevice.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDeviceIDChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceID = value;
+					this.SendPropertyChanged("DeviceID");
+					this.OnDeviceIDChanged();
+				}
+			}
 		}
 		
 		[Column(Storage="_TmDataID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
@@ -1047,6 +1470,40 @@ namespace KDB
 			}
 		}
 		
+		[Association(Name="tblDevice_tblTmData", Storage="_tblDevice", ThisKey="DeviceID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public tblDevice tblDevice
+		{
+			get
+			{
+				return this._tblDevice.Entity;
+			}
+			set
+			{
+				tblDevice previousValue = this._tblDevice.Entity;
+				if (((previousValue != value) 
+							|| (this._tblDevice.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblDevice.Entity = null;
+						previousValue.tblTmData.Remove(this);
+					}
+					this._tblDevice.Entity = value;
+					if ((value != null))
+					{
+						value.tblTmData.Add(this);
+						this._DeviceID = value.DeviceID;
+					}
+					else
+					{
+						this._DeviceID = default(int);
+					}
+					this.SendPropertyChanged("tblDevice");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1068,84 +1525,245 @@ namespace KDB
 		}
 	}
 	
-	[Table(Name="dbo.tblWorkDefine")]
-	public partial class tblWorkDefine : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.tblDevice")]
+	public partial class tblDevice : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _WorkDefineContext;
+		private int _DeviceID;
 		
-		private int _WorkDefineID;
+		private int _StationID;
 		
-		private EntitySet<tblGroup> _tblGroup;
+		private string _DeviceName;
+		
+		private System.Nullable<int> _DeviceAddress;
+		
+		private string _DeviceType;
+		
+		private string _DeviceRemark;
+		
+		private string _DeviceExtend;
+		
+		private EntitySet<tblTmData> _tblTmData;
+		
+		private EntityRef<tblStation> _tblStation;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnWorkDefineContextChanging(string value);
-    partial void OnWorkDefineContextChanged();
-    partial void OnWorkDefineIDChanging(int value);
-    partial void OnWorkDefineIDChanged();
+    partial void OnDeviceIDChanging(int value);
+    partial void OnDeviceIDChanged();
+    partial void OnStationIDChanging(int value);
+    partial void OnStationIDChanged();
+    partial void OnDeviceNameChanging(string value);
+    partial void OnDeviceNameChanged();
+    partial void OnDeviceAddressChanging(System.Nullable<int> value);
+    partial void OnDeviceAddressChanged();
+    partial void OnDeviceTypeChanging(string value);
+    partial void OnDeviceTypeChanged();
+    partial void OnDeviceRemarkChanging(string value);
+    partial void OnDeviceRemarkChanged();
+    partial void OnDeviceExtendChanging(string value);
+    partial void OnDeviceExtendChanged();
     #endregion
 		
-		public tblWorkDefine()
+		public tblDevice()
 		{
-			this._tblGroup = new EntitySet<tblGroup>(new Action<tblGroup>(this.attach_tblGroup), new Action<tblGroup>(this.detach_tblGroup));
+			this._tblTmData = new EntitySet<tblTmData>(new Action<tblTmData>(this.attach_tblTmData), new Action<tblTmData>(this.detach_tblTmData));
+			this._tblStation = default(EntityRef<tblStation>);
 			OnCreated();
 		}
 		
-		[Column(Storage="_WorkDefineContext", DbType="NVarChar(2000) NOT NULL", CanBeNull=false)]
-		public string WorkDefineContext
+		[Column(Storage="_DeviceID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DeviceID
 		{
 			get
 			{
-				return this._WorkDefineContext;
+				return this._DeviceID;
 			}
 			set
 			{
-				if ((this._WorkDefineContext != value))
+				if ((this._DeviceID != value))
 				{
-					this.OnWorkDefineContextChanging(value);
+					this.OnDeviceIDChanging(value);
 					this.SendPropertyChanging();
-					this._WorkDefineContext = value;
-					this.SendPropertyChanged("WorkDefineContext");
-					this.OnWorkDefineContextChanged();
+					this._DeviceID = value;
+					this.SendPropertyChanged("DeviceID");
+					this.OnDeviceIDChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_WorkDefineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int WorkDefineID
+		[Column(Storage="_StationID", DbType="Int NOT NULL")]
+		public int StationID
 		{
 			get
 			{
-				return this._WorkDefineID;
+				return this._StationID;
 			}
 			set
 			{
-				if ((this._WorkDefineID != value))
+				if ((this._StationID != value))
 				{
-					this.OnWorkDefineIDChanging(value);
+					if (this._tblStation.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStationIDChanging(value);
 					this.SendPropertyChanging();
-					this._WorkDefineID = value;
-					this.SendPropertyChanged("WorkDefineID");
-					this.OnWorkDefineIDChanged();
+					this._StationID = value;
+					this.SendPropertyChanged("StationID");
+					this.OnStationIDChanged();
 				}
 			}
 		}
 		
-		[Association(Name="tblWorkDefine_tblGroup", Storage="_tblGroup", OtherKey="WorkDefineID")]
-		public EntitySet<tblGroup> tblGroup
+		[Column(Storage="_DeviceName", DbType="NVarChar(255)")]
+		public string DeviceName
 		{
 			get
 			{
-				return this._tblGroup;
+				return this._DeviceName;
 			}
 			set
 			{
-				this._tblGroup.Assign(value);
+				if ((this._DeviceName != value))
+				{
+					this.OnDeviceNameChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceName = value;
+					this.SendPropertyChanged("DeviceName");
+					this.OnDeviceNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DeviceAddress", DbType="Int")]
+		public System.Nullable<int> DeviceAddress
+		{
+			get
+			{
+				return this._DeviceAddress;
+			}
+			set
+			{
+				if ((this._DeviceAddress != value))
+				{
+					this.OnDeviceAddressChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceAddress = value;
+					this.SendPropertyChanged("DeviceAddress");
+					this.OnDeviceAddressChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DeviceType", DbType="NVarChar(255)")]
+		public string DeviceType
+		{
+			get
+			{
+				return this._DeviceType;
+			}
+			set
+			{
+				if ((this._DeviceType != value))
+				{
+					this.OnDeviceTypeChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceType = value;
+					this.SendPropertyChanged("DeviceType");
+					this.OnDeviceTypeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DeviceRemark", DbType="NVarChar(1000)")]
+		public string DeviceRemark
+		{
+			get
+			{
+				return this._DeviceRemark;
+			}
+			set
+			{
+				if ((this._DeviceRemark != value))
+				{
+					this.OnDeviceRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceRemark = value;
+					this.SendPropertyChanged("DeviceRemark");
+					this.OnDeviceRemarkChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DeviceExtend", DbType="NVarChar(1000)")]
+		public string DeviceExtend
+		{
+			get
+			{
+				return this._DeviceExtend;
+			}
+			set
+			{
+				if ((this._DeviceExtend != value))
+				{
+					this.OnDeviceExtendChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceExtend = value;
+					this.SendPropertyChanged("DeviceExtend");
+					this.OnDeviceExtendChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblDevice_tblTmData", Storage="_tblTmData", OtherKey="DeviceID")]
+		public EntitySet<tblTmData> tblTmData
+		{
+			get
+			{
+				return this._tblTmData;
+			}
+			set
+			{
+				this._tblTmData.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblStation_tblDevice", Storage="_tblStation", ThisKey="StationID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public tblStation tblStation
+		{
+			get
+			{
+				return this._tblStation.Entity;
+			}
+			set
+			{
+				tblStation previousValue = this._tblStation.Entity;
+				if (((previousValue != value) 
+							|| (this._tblStation.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblStation.Entity = null;
+						previousValue.tblDevice.Remove(this);
+					}
+					this._tblStation.Entity = value;
+					if ((value != null))
+					{
+						value.tblDevice.Add(this);
+						this._StationID = value.StationID;
+					}
+					else
+					{
+						this._StationID = default(int);
+					}
+					this.SendPropertyChanged("tblStation");
+				}
 			}
 		}
 		
@@ -1169,16 +1787,449 @@ namespace KDB
 			}
 		}
 		
-		private void attach_tblGroup(tblGroup entity)
+		private void attach_tblTmData(tblTmData entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblWorkDefine = this;
+			entity.tblDevice = this;
 		}
 		
-		private void detach_tblGroup(tblGroup entity)
+		private void detach_tblTmData(tblTmData entity)
 		{
 			this.SendPropertyChanging();
-			entity.tblWorkDefine = null;
+			entity.tblDevice = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblStation")]
+	public partial class tblStation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _StationID;
+		
+		private string _Street;
+		
+		private int _StationOrdinal;
+		
+		private string _StationName;
+		
+		private string _StationRemark;
+		
+		private string _StationCPConfig;
+		
+		private EntitySet<tblDevice> _tblDevice;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStationIDChanging(int value);
+    partial void OnStationIDChanged();
+    partial void OnStreetChanging(string value);
+    partial void OnStreetChanged();
+    partial void OnStationOrdinalChanging(int value);
+    partial void OnStationOrdinalChanged();
+    partial void OnStationNameChanging(string value);
+    partial void OnStationNameChanged();
+    partial void OnStationRemarkChanging(string value);
+    partial void OnStationRemarkChanged();
+    partial void OnStationCPConfigChanging(string value);
+    partial void OnStationCPConfigChanged();
+    #endregion
+		
+		public tblStation()
+		{
+			this._tblDevice = new EntitySet<tblDevice>(new Action<tblDevice>(this.attach_tblDevice), new Action<tblDevice>(this.detach_tblDevice));
+			OnCreated();
+		}
+		
+		[Column(Storage="_StationID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int StationID
+		{
+			get
+			{
+				return this._StationID;
+			}
+			set
+			{
+				if ((this._StationID != value))
+				{
+					this.OnStationIDChanging(value);
+					this.SendPropertyChanging();
+					this._StationID = value;
+					this.SendPropertyChanged("StationID");
+					this.OnStationIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Street", DbType="NVarChar(50)")]
+		public string Street
+		{
+			get
+			{
+				return this._Street;
+			}
+			set
+			{
+				if ((this._Street != value))
+				{
+					this.OnStreetChanging(value);
+					this.SendPropertyChanging();
+					this._Street = value;
+					this.SendPropertyChanged("Street");
+					this.OnStreetChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_StationOrdinal", DbType="Int NOT NULL")]
+		public int StationOrdinal
+		{
+			get
+			{
+				return this._StationOrdinal;
+			}
+			set
+			{
+				if ((this._StationOrdinal != value))
+				{
+					this.OnStationOrdinalChanging(value);
+					this.SendPropertyChanging();
+					this._StationOrdinal = value;
+					this.SendPropertyChanged("StationOrdinal");
+					this.OnStationOrdinalChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_StationName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string StationName
+		{
+			get
+			{
+				return this._StationName;
+			}
+			set
+			{
+				if ((this._StationName != value))
+				{
+					this.OnStationNameChanging(value);
+					this.SendPropertyChanging();
+					this._StationName = value;
+					this.SendPropertyChanged("StationName");
+					this.OnStationNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_StationRemark", DbType="NVarChar(1000)")]
+		public string StationRemark
+		{
+			get
+			{
+				return this._StationRemark;
+			}
+			set
+			{
+				if ((this._StationRemark != value))
+				{
+					this.OnStationRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._StationRemark = value;
+					this.SendPropertyChanged("StationRemark");
+					this.OnStationRemarkChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_StationCPConfig", DbType="NVarChar(1000)")]
+		public string StationCPConfig
+		{
+			get
+			{
+				return this._StationCPConfig;
+			}
+			set
+			{
+				if ((this._StationCPConfig != value))
+				{
+					this.OnStationCPConfigChanging(value);
+					this.SendPropertyChanging();
+					this._StationCPConfig = value;
+					this.SendPropertyChanged("StationCPConfig");
+					this.OnStationCPConfigChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblStation_tblDevice", Storage="_tblDevice", OtherKey="StationID")]
+		public EntitySet<tblDevice> tblDevice
+		{
+			get
+			{
+				return this._tblDevice;
+			}
+			set
+			{
+				this._tblDevice.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblDevice(tblDevice entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblStation = this;
+		}
+		
+		private void detach_tblDevice(tblDevice entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblStation = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblExWork")]
+	public partial class tblExWork : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ExWorkID;
+		
+		private int _PersonID;
+		
+		private string _ExWorkName;
+		
+		private System.DateTime _ExWorkBegin;
+		
+		private System.DateTime _ExWorkEnd;
+		
+		private string _ExWorkRemark;
+		
+		private EntityRef<tblPerson> _tblPerson;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnExWorkIDChanging(int value);
+    partial void OnExWorkIDChanged();
+    partial void OnPersonIDChanging(int value);
+    partial void OnPersonIDChanged();
+    partial void OnExWorkNameChanging(string value);
+    partial void OnExWorkNameChanged();
+    partial void OnExWorkBeginChanging(System.DateTime value);
+    partial void OnExWorkBeginChanged();
+    partial void OnExWorkEndChanging(System.DateTime value);
+    partial void OnExWorkEndChanged();
+    partial void OnExWorkRemarkChanging(string value);
+    partial void OnExWorkRemarkChanged();
+    #endregion
+		
+		public tblExWork()
+		{
+			this._tblPerson = default(EntityRef<tblPerson>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_ExWorkID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ExWorkID
+		{
+			get
+			{
+				return this._ExWorkID;
+			}
+			set
+			{
+				if ((this._ExWorkID != value))
+				{
+					this.OnExWorkIDChanging(value);
+					this.SendPropertyChanging();
+					this._ExWorkID = value;
+					this.SendPropertyChanged("ExWorkID");
+					this.OnExWorkIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PersonID", DbType="Int NOT NULL")]
+		public int PersonID
+		{
+			get
+			{
+				return this._PersonID;
+			}
+			set
+			{
+				if ((this._PersonID != value))
+				{
+					if (this._tblPerson.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPersonIDChanging(value);
+					this.SendPropertyChanging();
+					this._PersonID = value;
+					this.SendPropertyChanged("PersonID");
+					this.OnPersonIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ExWorkName", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string ExWorkName
+		{
+			get
+			{
+				return this._ExWorkName;
+			}
+			set
+			{
+				if ((this._ExWorkName != value))
+				{
+					this.OnExWorkNameChanging(value);
+					this.SendPropertyChanging();
+					this._ExWorkName = value;
+					this.SendPropertyChanged("ExWorkName");
+					this.OnExWorkNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ExWorkBegin", DbType="DateTime NOT NULL")]
+		public System.DateTime ExWorkBegin
+		{
+			get
+			{
+				return this._ExWorkBegin;
+			}
+			set
+			{
+				if ((this._ExWorkBegin != value))
+				{
+					this.OnExWorkBeginChanging(value);
+					this.SendPropertyChanging();
+					this._ExWorkBegin = value;
+					this.SendPropertyChanged("ExWorkBegin");
+					this.OnExWorkBeginChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ExWorkEnd", DbType="DateTime NOT NULL")]
+		public System.DateTime ExWorkEnd
+		{
+			get
+			{
+				return this._ExWorkEnd;
+			}
+			set
+			{
+				if ((this._ExWorkEnd != value))
+				{
+					this.OnExWorkEndChanging(value);
+					this.SendPropertyChanging();
+					this._ExWorkEnd = value;
+					this.SendPropertyChanged("ExWorkEnd");
+					this.OnExWorkEndChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ExWorkRemark", DbType="NVarChar(1000)")]
+		public string ExWorkRemark
+		{
+			get
+			{
+				return this._ExWorkRemark;
+			}
+			set
+			{
+				if ((this._ExWorkRemark != value))
+				{
+					this.OnExWorkRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._ExWorkRemark = value;
+					this.SendPropertyChanged("ExWorkRemark");
+					this.OnExWorkRemarkChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblPerson_tblExWork", Storage="_tblPerson", ThisKey="PersonID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public tblPerson tblPerson
+		{
+			get
+			{
+				return this._tblPerson.Entity;
+			}
+			set
+			{
+				tblPerson previousValue = this._tblPerson.Entity;
+				if (((previousValue != value) 
+							|| (this._tblPerson.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblPerson.Entity = null;
+						previousValue.tblExWork.Remove(this);
+					}
+					this._tblPerson.Entity = value;
+					if ((value != null))
+					{
+						value.tblExWork.Add(this);
+						this._PersonID = value.PersonID;
+					}
+					else
+					{
+						this._PersonID = default(int);
+					}
+					this.SendPropertyChanged("tblPerson");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

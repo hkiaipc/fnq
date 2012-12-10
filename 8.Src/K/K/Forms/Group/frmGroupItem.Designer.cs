@@ -34,6 +34,8 @@
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.btnDeletePerson = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.cmbWorkDefine = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // okButton
@@ -99,11 +101,30 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
             // 
+            // cmbWorkDefine
+            // 
+            this.cmbWorkDefine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWorkDefine.FormattingEnabled = true;
+            this.cmbWorkDefine.Location = new System.Drawing.Point(124, 252);
+            this.cmbWorkDefine.Name = "cmbWorkDefine";
+            this.cmbWorkDefine.Size = new System.Drawing.Size(150, 20);
+            this.cmbWorkDefine.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(12, 255);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "班次:";
+            // 
             // frmGroupItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 232);
+            this.ClientSize = new System.Drawing.Size(366, 339);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbWorkDefine);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnDeletePerson);
             this.Controls.Add(this.btnAddPerson);
@@ -121,6 +142,8 @@
             this.Controls.SetChildIndex(this.btnAddPerson, 0);
             this.Controls.SetChildIndex(this.btnDeletePerson, 0);
             this.Controls.SetChildIndex(this.listView1, 0);
+            this.Controls.SetChildIndex(this.cmbWorkDefine, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +157,7 @@
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.Button btnDeletePerson;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ComboBox cmbWorkDefine;
+        private System.Windows.Forms.Label label2;
     }
 }

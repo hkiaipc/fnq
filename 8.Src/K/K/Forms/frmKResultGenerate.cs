@@ -57,5 +57,10 @@ namespace K.Forms
             }
         }
 
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
