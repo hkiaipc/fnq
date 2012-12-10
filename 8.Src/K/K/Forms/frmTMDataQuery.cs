@@ -156,8 +156,8 @@ namespace K.Forms
                     where q.TmDataDT >= this.Begin && q.TmDataDT < this.End
                         && q.tblDevice.tblStation.StationID == this.SelectedStationID
                     select q;
-
-                ds = r;
+                DataTable t = ConvertToDataTable(r.ToList());
+                ds = t;
             }
             if (this.SelectedQueryStyleEnum == QueryStyleEnum.ByPerson)
             {
@@ -179,8 +179,24 @@ namespace K.Forms
 
         private DataTable ConvertToDataTable(IList<tblTmData> list)
         {
-            //list[0].tblTM.TmSN 
-            return null;
+            DataTable tbl = new DataTable();
+
+            tbl.Columns.Add("StationName", typeof(string));
+            tbl.Columns.Add("PersonName", typeof(string));
+            tbl.Columns.Add("TMSN", typeof(string));
+            tbl.Columns.Add("DT", typeof(DateTime));
+
+            foreach (tblTmData item in list)
+            {
+                DataRow row = tbl.NewRow();
+                tbl.Rows.Add ( 
+                    item.tblDevice.tblStation.StationName ,
+                    item.tblTM.tblPerson.First ().PersonName ,
+                    item.tblTM.TmSN ,
+                    item.TmDataDT );
+            }
+
+            return tbl;
         }
 
         private int GetSelectedPersonTMID(DB db)
