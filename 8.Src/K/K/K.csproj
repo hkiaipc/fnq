@@ -129,6 +129,7 @@
     <Compile Include="Forms\WD\frmWorkDefineItem.Designer.cs">
       <DependentUpon>frmWorkDefineItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="KResultGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmKResultGenerate.resx">
@@ -230,7 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Code\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

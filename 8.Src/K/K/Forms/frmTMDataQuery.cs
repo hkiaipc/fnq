@@ -191,7 +191,7 @@ namespace K.Forms
                 DataRow row = tbl.NewRow();
                 tbl.Rows.Add ( 
                     item.tblDevice.tblStation.StationName ,
-                    item.tblTM.tblPerson.First ().PersonName ,
+                    item.tblTM.tblPerson.Count > 0 ? item.tblTM.tblPerson.First().PersonName : string.Empty,
                     item.tblTM.TmSN ,
                     item.TmDataDT );
             }
@@ -205,7 +205,7 @@ namespace K.Forms
                     where q.PersonID == SelectedPersonID
                     select q.TmID;
 
-            if (r.Count() > 0)
+            if (r.Count() > 0 && r.First() != null)
             {
                 return (int)r.First();
             }

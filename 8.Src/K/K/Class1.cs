@@ -537,15 +537,17 @@ namespace K
         Lose = 4,
         Leave = 5,
         Out = 6,
+        Rest = 7,
+        None = 999,
     }
 
-    class KResult
-    {
-    }
+    //class KResult
+    //{
+    //}
 
-    class KResultCollection : Collection<KResult>
-    {
-    }
+    //class KResultCollection : Collection<KResult>
+    //{
+    //}
 
     class Tm : IDBase
     {
