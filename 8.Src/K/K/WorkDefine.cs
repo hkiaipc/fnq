@@ -94,6 +94,24 @@ namespace K
         #endregion //Remark
 
 
+        static public WorkDefine Create(CycleTypeEnum cycleType)
+        {
+            WorkDefine r = null;
+            switch (cycleType)
+            {
+                case CycleTypeEnum.Week :
+                    r = new WeekWorkDefine();
+                    break;
+
+                case CycleTypeEnum.UserDefine :
+                    r = new UserWorkDefine();
+                    break;
+
+                default:
+                    throw new ArgumentException(cycleType.ToString());
+            }
+            return r;
+        }
         //#region CycleType
         ///// <summary>
         ///// 

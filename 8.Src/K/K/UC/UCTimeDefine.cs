@@ -31,11 +31,11 @@ namespace K.UC
         } private CycleTypeEnum _cycleType = CycleTypeEnum.Week;
         #endregion //CycleType
 
-        #region CycleDayCount
+        #region DayOfCycle
         /// <summary>
         /// 
         /// </summary>
-        public int CycleDayCount
+        public int DayOfCycle
         {
             get
             {
@@ -45,7 +45,7 @@ namespace K.UC
             {
                 if (value < 1)
                 {
-                    throw new ArgumentOutOfRangeException("CycleDayCount");
+                    throw new ArgumentOutOfRangeException("DayOfCycle");
                 }
                 if (value != _cycleDayCount)
                 {
@@ -54,7 +54,7 @@ namespace K.UC
                 }
             }
         } private int _cycleDayCount = 7;
-        #endregion //CycleDayCount
+        #endregion //DayOfCycle
 
         /// <summary>
         /// 
@@ -94,16 +94,15 @@ namespace K.UC
             if (this.CycleType == CycleTypeEnum.Week)
             {
                 KeyValueCollection kvs = new KeyValueCollection();
-                string[] weekNames = new string[] { 
-                    "星期一", "星期二", "星期三", 
-                    "星期四", "星期五", "星期六", "星期日" };
+                //string[] weekNames = new string[] { 
+                //    "星期一", "星期二", "星期三", 
+                //    "星期四", "星期五", "星期六", "星期日" };
 
-                for (int i = 0; i < weekNames.Length; i++)
-                {
-                    kvs.Add(new KeyValue(weekNames[i], i));
-                }
+                //for (int i = 0; i < weekNames.Length; i++)
+                //{
+                //    kvs.Add(new KeyValue(weekNames[i], i));
+                //}
 
-                /*
                 kvs.Add(new KeyValue("星期一", DayOfWeek.Monday));
                 kvs.Add(new KeyValue("星期二", DayOfWeek.Tuesday));
                 kvs.Add(new KeyValue("星期三", DayOfWeek.Wednesday));
@@ -111,7 +110,6 @@ namespace K.UC
                 kvs.Add(new KeyValue("星期五", DayOfWeek.Friday));
                 kvs.Add(new KeyValue("星期六", DayOfWeek.Saturday));
                 kvs.Add(new KeyValue("星期日", DayOfWeek.Sunday));
-                */
 
                 ds = kvs;
             }
@@ -119,7 +117,7 @@ namespace K.UC
             else if (this.CycleType == CycleTypeEnum.UserDefine)
             {
                 KeyValueCollection kvs = new KeyValueCollection();
-                for (int i = 0; i < this.CycleDayCount; i++)
+                for (int i = 0; i < this.DayOfCycle; i++)
                 {
                     string key = string.Format("第{0}天", i + 1);
                     int value = i;
@@ -150,7 +148,7 @@ namespace K.UC
                     // TODO:
                     //
                     this.CycleType = CycleTypeEnum.UserDefine;
-                    this.CycleDayCount = userWD.DayOfCycle;
+                    this.DayOfCycle = userWD.DayOfCycle;
                 }
             }
         } private WorkDefine _workDefine;
@@ -173,19 +171,76 @@ namespace K.UC
 
         internal TimeDefine CreateTimeDefineByUI()
         {
+            TimeDefine r = null;
+            if (this.CycleType == CycleTypeEnum.Week)
+            {
+                WeekTimeDefine weekTD = TimeDefine.CreateWeekTimeDefine(
+                    this.GetBeginDayOfWeek(),
+                    this.dtpBegin.Value.TimeOfDay,
+                    this.GetEndDayOfWeek(),
+                    this.dtpEnd.Value.TimeOfDay);
+                r = weekTD;
 
-                // TODO:
-                //
+            }
+
+            if (this.CycleType == CycleTypeEnum.UserDefine)
+            {
+                UserTimeDefine userTD = TimeDefine.CreateUserTimeDefine(
+                    this.DayOfCycle,
+                    this.GetBeginDayOffset(),
+                    this.dtpBegin.Value.TimeOfDay,
+                    this.GetEndDayOffSet(),
+                    this.dtpEnd.Value.TimeOfDay);
+                r = userTD;
+            }
+            // TODO:
+            //
             //TimeDefine td = new TimeDefine();
             //td.DayOffset = (int)this.cmbDayOffset.SelectedValue;
             //td.Begin = this.dtpBegin.Value.TimeOfDay;
             //td.End = this.dtpEnd.Value.TimeOfDay;
 
             //return td;
-            return null;
+            Debug.Assert(r != null);
+            return r;
         }
 
-     
+        private int GetBeginDayOffset()
+        {
+            return (int)this.cmbDayOffset.SelectedValue;
+        }
 
+        private int GetEndDayOffSet()
+        {
+            if (this.dtpEnd.Value.TimeOfDay <= this.dtpBegin.Value.TimeOfDay)
+            {
+                int n = GetBeginDayOffset();
+                return (n + 1) % this.DayOfCycle;
+            }
+            else
+            {
+                return GetBeginDayOffset();
+            }
+        }
+
+        private DayOfWeek GetEndDayOfWeek()
+        {
+            if (this.dtpEnd.Value.TimeOfDay <= this.dtpBegin.Value.TimeOfDay)
+            {
+                int n = (int)GetBeginDayOfWeek();
+                return (DayOfWeek)((n + 1) % 7);
+            }
+            else
+            {
+                return GetBeginDayOfWeek();
+            }
+        }
+
+        private DayOfWeek GetBeginDayOfWeek()
+        {
+            return (DayOfWeek)this.cmbDayOffset.SelectedValue;
+        }
+
+        
     }
 }

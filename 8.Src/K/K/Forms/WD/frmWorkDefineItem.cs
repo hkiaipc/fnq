@@ -153,13 +153,14 @@ namespace K.Forms.WD
                 //
                 this.flowLayoutPanel1.Controls.Clear();
 
-                if (this.WorkDefine != null)
-                {
+                //if (this.WorkDefine != null)
+                //{
 
-                // TODO:
+                // 
                 //
-                    //this.WorkDefine.CycleType = SelectedCycleType;
-                }
+                //this.WorkDefine.CycleType = SelectedCycleType;
+                this.WorkDefine = WorkDefine.Create(this.SelectedCycleType);
+                //}
             }
 
             _cycleTypeLastIndex = this.cmbCycle.SelectedIndex;
@@ -235,15 +236,17 @@ namespace K.Forms.WD
         /// <returns></returns>
         private WorkDefine CreateWorkDefine()
         {
-            WorkDefine wd = new WorkDefine();
+            //WorkDefine wd = new WorkDefine();
+            WorkDefine wd = WorkDefine.Create(this.SelectedCycleType);
             wd.Name = this.txtWorkDefineName.Text.Trim();
+            wd.Remark = "";
 
-                // TODO:
-                //
-            //wd.CycleType = this.SelectedCycleType;
-
-            //wd.DayOfCycle = this.SelectedCycleDayCount;
-            //wd.StartDateTime = this.StartDateTime;
+            if (wd is UserWorkDefine)
+            {
+                UserWorkDefine userWD = wd as UserWorkDefine;
+                userWD.DayOfCycle = this.SelectedCycleDayCount;
+                userWD.StartDateTime = this.StartDateTime;
+            }
 
             SetTimeDefines(wd);
             return wd;
