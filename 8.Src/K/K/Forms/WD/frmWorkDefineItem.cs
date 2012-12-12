@@ -223,7 +223,7 @@ namespace K.Forms.WD
                 c => c.WorkDefineID == this.TblWorkDefine.WorkDefineID
                 );
 
-            tblWd.WorkDefineContext = WorkDefineBase.Serialize(CreateWorkDefine());
+            tblWd.WorkDefineContext = WorkDefine.Serialize(CreateWorkDefine());
             db.SubmitChanges();
         }
         #endregion //Edit
@@ -233,9 +233,9 @@ namespace K.Forms.WD
         /// 
         /// </summary>
         /// <returns></returns>
-        private WorkDefineBase CreateWorkDefine()
+        private WorkDefine CreateWorkDefine()
         {
-            WorkDefineBase wd = new WorkDefineBase();
+            WorkDefine wd = new WorkDefine();
             wd.Name = this.txtWorkDefineName.Text.Trim();
 
                 // TODO:
@@ -265,10 +265,10 @@ namespace K.Forms.WD
             //wd.StartDateTime = this.StartDateTime;
 
             //SetTimeDefines(wd);
-            WorkDefineBase wd = CreateWorkDefine();
+            WorkDefine wd = CreateWorkDefine();
 
             tblWorkDefine tblWorkDefine = new tblWorkDefine();
-            tblWorkDefine.WorkDefineContext = WorkDefineBase.Serialize(wd);
+            tblWorkDefine.WorkDefineContext = WorkDefine.Serialize(wd);
 
             DB db = DBFactory.GetDB();
             db.tblWorkDefine.InsertOnSubmit(tblWorkDefine);
@@ -278,7 +278,7 @@ namespace K.Forms.WD
         #endregion //Add
 
         #region SetTimeDefines
-        private void SetTimeDefines(WorkDefineBase wd)
+        private void SetTimeDefines(WorkDefine wd)
         {
             foreach (Control c in this.flowLayoutPanel1.Controls)
             {
@@ -346,7 +346,7 @@ namespace K.Forms.WD
             {
                 _tblWorkDefine = value;
 
-                WorkDefineBase wd = WorkDefineBase.Deserialize(_tblWorkDefine.WorkDefineContext);
+                WorkDefine wd = WorkDefine.Deserialize(_tblWorkDefine.WorkDefineContext);
                 this.WorkDefine = wd;
             }
         } private tblWorkDefine _tblWorkDefine;
@@ -356,7 +356,7 @@ namespace K.Forms.WD
         /// <summary>
         /// 
         /// </summary>
-        internal WorkDefineBase WorkDefine
+        internal WorkDefine WorkDefine
         {
             get { return _workDefine; }
             set
@@ -391,7 +391,7 @@ namespace K.Forms.WD
                 UC.UCTimeDefine ucTd = CreateTimeDefineControl(_workDefine, td);
                 this.flowLayoutPanel1.Controls.Add(ucTd);
             }
-        } private WorkDefineBase _workDefine;
+        } private WorkDefine _workDefine;
         #endregion //FillWorkDefine
 
         #region CreateTimeDefineControl
@@ -401,7 +401,7 @@ namespace K.Forms.WD
         /// <param name="wd"></param>
         /// <param name="td"></param>
         /// <returns></returns>
-        private K.UC.UCTimeDefine CreateTimeDefineControl(WorkDefineBase wd, TimeDefine td)
+        private K.UC.UCTimeDefine CreateTimeDefineControl(WorkDefine wd, TimeDefine td)
         {
             UC.UCTimeDefine ucTd = new K.UC.UCTimeDefine();
             ucTd.WorkDefine = wd;

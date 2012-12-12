@@ -6,21 +6,21 @@ using System.Xml.Serialization;
 namespace K
 {
     [Serializable]
-    public class WorkDefineBase
+    public class WorkDefine
     {
-        static public string Serialize(WorkDefineBase wd)
+        static public string Serialize(WorkDefine wd)
         {
-            XmlSerializer s = new XmlSerializer(typeof(WorkDefineBase));
+            XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
             StringWriter sw = new StringWriter();
             s.Serialize(sw, wd);
             return sw.ToString();
         }
 
-        static public WorkDefineBase Deserialize(string context)
+        static public WorkDefine Deserialize(string context)
         {
-            XmlSerializer s = new XmlSerializer(typeof(WorkDefineBase));
+            XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
             StringReader sr = new StringReader(context);
-            WorkDefineBase wd = s.Deserialize(sr) as WorkDefineBase;
+            WorkDefine wd = s.Deserialize(sr) as WorkDefine;
 
             Debug.Assert(wd != null, "Deserialize WorkDefine error");
             return wd;
@@ -115,12 +115,12 @@ namespace K
     /// <summary>
     /// 
     /// </summary>
-    public class WeekWorkDefine : WorkDefineBase
+    public class WeekWorkDefine : WorkDefine
     {
 
     }
 
-    public class UserWorkDefine : WorkDefineBase
+    public class UserWorkDefine : WorkDefine
     {
         #region DayOfCycle
         /// <summary>

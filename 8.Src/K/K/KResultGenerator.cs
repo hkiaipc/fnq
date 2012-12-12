@@ -141,7 +141,7 @@ namespace K
             // TODO: get timedefines
             //
             //workDefine.WorkDefineContext 
-            WorkDefineBase wd = WorkDefineBase.Deserialize(tblWD.WorkDefineContext);
+            WorkDefine wd = WorkDefine.Deserialize(tblWD.WorkDefineContext);
 
             throw new NotImplementedException();
             // TODO: Generate standard time collection
@@ -161,12 +161,12 @@ namespace K
             //return timeStandards;
         }
 
-        private TimeStandardCollection GenerateWeekTimeStandards(WorkDefineBase wd, DateTime monthForGenerator)
+        private TimeStandardCollection GenerateWeekTimeStandards(WorkDefine wd, DateTime monthForGenerator)
         {
             throw new NotImplementedException();
         }
 
-        private TimeStandardCollection GenerateUserDefineTimeStandards(WorkDefineBase wd, DateTime monthForGenerator)
+        private TimeStandardCollection GenerateUserDefineTimeStandards(WorkDefine wd, DateTime monthForGenerator)
         {
             throw new NotImplementedException();
         }

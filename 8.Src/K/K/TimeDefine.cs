@@ -148,9 +148,9 @@ namespace K
             return r;
         }
 
-        static public UserTimeDefine CreateUserTimeDefine(int beginDayOffset, TimeSpan begin, int endDayOffset, TimeSpan end)
+        static public UserTimeDefine CreateUserTimeDefine(int dayOfCycle, int beginDayOffset, TimeSpan begin, int endDayOffset, TimeSpan end)
         {
-            UserTimeDefine r = new UserTimeDefine();
+            UserTimeDefine r = new UserTimeDefine(dayOfCycle);
             r.BeginDayOffset = beginDayOffset;
             r.Begin = begin;
             r.EndDayOffset = endDayOffset;
@@ -159,6 +159,7 @@ namespace K
         }
     }
 
+    [Serializable]
     public class WeekTimeDefine : TimeDefine 
     {
         #region BeginWeek
@@ -202,8 +203,18 @@ namespace K
         }
     }
 
+    [Serializable]
     public class UserTimeDefine : TimeDefine 
     {
+        public UserTimeDefine ( int dayOfCycle )
+        {
+            if (dayOfCycle < 1)
+            {
+                throw new ArgumentOutOfRangeException("dayOfCycle must >= 1");
+            }
+            this._dayOfCycle = dayOfCycle ;
+        }
+
         #region BeginDayOffset
         /// <summary>
         /// 
@@ -216,7 +227,15 @@ namespace K
             }
             set
             {
-                _beginDayOffset = value;
+                if (value >= 0 && value < this._dayOfCycle)
+                {
+                    _beginDayOffset = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException(
+                        string.Format("BeginDayOffset must in [0, {0})", this._dayOfCycle));
+                }
             }
         } private int _beginDayOffset;
         #endregion //BeginDayOffset
@@ -233,11 +252,18 @@ namespace K
             }
             set
             {
-                _endDayOffset = value;
+                if (value >= 0 && value < this._dayOfCycle)
+                {
+                    _endDayOffset = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException(
+                        string.Format("EndDayOffset must in [0, {0})", this._dayOfCycle));
+                }
             }
         } private int _endDayOffset;
         #endregion //EndDayOffset
-
 
         public override bool IsCrossDay
         {
@@ -246,6 +272,19 @@ namespace K
                 return this.BeginDayOffset != this.EndDayOffset;
             }
         }
+
+#region DayOfCycle
+/// <summary>
+/// 
+/// </summary>
+public int DayOfCycle
+{
+	get
+	{
+		return _dayOfCycle;
+	}
+} private int _dayOfCycle;
+#endregion //DayOfCycle
 
     }
 
