@@ -247,7 +247,41 @@ namespace K
 
         internal override TimeStandardCollection CreateTimeStandards(DateTime month)
         {
-            throw new NotImplementedException();
+            TimeStandardCollection r = new TimeStandardCollection();
+
+            DateTime monthStart = new DateTime(month.Year, month.Month, month.Day);
+            DateTime startDT = monthStart - TimeSpan.FromTicks(
+                (monthStart - this.StartDateTime).Ticks % TimeSpan.FromDays(this.DayOfCycle).Ticks);
+
+            DateTime dt = startDT;
+            int exitMonth = month.Month + 1;
+            if (exitMonth > 12)
+            {
+                exitMonth -= 12;
+            }
+
+            do
+            {
+                foreach (TimeDefine td in this.TimeDefines)
+                {
+                    UserTimeDefine userTD = (UserTimeDefine)td;
+                    DateTime b1 = dt + TimeSpan.FromDays ( userTD.BeginDayOffset) + userTD.Begin;
+                    DateTime e1 = dt + TimeSpan.FromDays(userTD.EndDayOffset) + userTD.End; 
+                        // + (userTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
+
+                    if (b1.Month == month.Month)
+                    {
+                        TimeStandard s = new TimeStandard(TimeStandard.TypeEnum.Work);
+                        s.Begin = b1;
+                        s.End = e1;
+                        s.DayOfWeek = b1.DayOfWeek;
+
+                        r.Add(s);
+                    }
+                }
+            }
+            while (dt.Month != exitMonth);
+            return r;
         }
     }
 
