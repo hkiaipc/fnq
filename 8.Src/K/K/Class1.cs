@@ -572,6 +572,7 @@ namespace K
         } private string _sN;
         #endregion //SN
 
+
         #region TmDatas
         /// <summary>
         /// 
