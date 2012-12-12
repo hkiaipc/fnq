@@ -142,8 +142,9 @@ namespace K
             //
             //workDefine.WorkDefineContext 
             WorkDefine wd = WorkDefine.Deserialize(tblWD.WorkDefineContext);
+            return wd.CreateTimeStandards(monthForGenerator);
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
             // TODO: Generate standard time collection
             // 
             //if (wd.CycleType == CycleTypeEnum.Week)
@@ -464,24 +465,42 @@ namespace K
         StopWorkEarly,
     }
 
+
     internal class TimeStandard
     {
-        #region Date
-        /// <summary>
-        /// 
-        /// </summary>
-        public DateTime Date
+        internal TimeStandard(TypeEnum typeEnum)
         {
-            get
-            {
-                return _date;
-            }
-            set
-            {
-                _date = value;
-            }
-        } private DateTime _date;
-        #endregion //Date
+            this.Type = typeEnum;           
+        }
+
+        internal enum TypeEnum
+        {
+            Work,
+            Rest,
+        }
+
+        internal TypeEnum Type
+        {
+            get { return _typeEnum; }
+            set { _typeEnum = value; }
+        } private TypeEnum _typeEnum;
+
+        //#region Date
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public DateTime Date
+        //{
+        //    get
+        //    {
+        //        return _date;
+        //    }
+        //    set
+        //    {
+        //        _date = value;
+        //    }
+        //} private DateTime _date;
+        //#endregion //Date
 
         #region DayOfWeek
         /// <summary>

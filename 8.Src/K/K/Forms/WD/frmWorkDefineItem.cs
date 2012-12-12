@@ -383,11 +383,29 @@ namespace K.Forms.WD
             //
             this.txtWorkDefineName.Text = _workDefine.Name;
 
-                // TODO:
-                //
-            //this.cmbCycle.SelectedIndex = (int)_workDefine.CycleType;
-            //this.cmbCycleDayCount.SelectedValue = _workDefine.DayOfCycle;
-            //this.dtpStart.Value = _workDefine.StartDateTime;
+            CycleTypeEnum cycleType = CycleTypeEnum.UserDefine;
+
+            if (_workDefine is WeekWorkDefine)
+            {
+                cycleType = CycleTypeEnum.Week;
+            }
+            else if (_workDefine is UserWorkDefine)
+            {
+                cycleType = CycleTypeEnum.UserDefine;
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
+
+            this.cmbCycle.SelectedIndex = (int)cycleType ;
+
+            if (_workDefine is UserWorkDefine)
+            {
+                UserWorkDefine userWD = (UserWorkDefine)_workDefine;
+                this.cmbCycleDayCount.SelectedValue = userWD.DayOfCycle;
+                this.dtpStart.Value = userWD.StartDateTime;
+            }
 
             foreach (TimeDefine td in _workDefine.TimeDefines)
             {
@@ -424,9 +442,7 @@ namespace K.Forms.WD
         {
             this.flowLayoutPanel1.Controls.Clear();
 
-                // TODO:
-                //
-            //this.WorkDefine.DayOfCycle = this.SelectedCycleDayCount;
+            ((UserWorkDefine)this.WorkDefine).DayOfCycle = this.SelectedCycleDayCount;
         }
         #endregion //cmbCycleDayCount_SelectedIndexChanged
     }

@@ -163,9 +163,20 @@ namespace K.UC
                 this.dtpBegin.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.Begin);
                 this.dtpEnd.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.End);
 
-                // TODO:
-                //
-                //this.cmbDayOffset.SelectedValue = _timeDefine.DayOffset;
+                if (_timeDefine is WeekTimeDefine)
+                {
+                    WeekTimeDefine weekTD = (WeekTimeDefine)_timeDefine;
+                    this.cmbDayOffset.SelectedValue = weekTD.BeginWeek;
+                }
+                else if (_timeDefine is UserTimeDefine)
+                {
+                    UserTimeDefine userTD = (UserTimeDefine)_timeDefine;
+                    this.cmbDayOffset.SelectedValue = userTD.BeginDayOffset;
+                }
+                else
+                {
+                    throw new InvalidOperationException();
+                }
             }
         } private TimeDefine _timeDefine;
 
@@ -193,8 +204,6 @@ namespace K.UC
                     this.dtpEnd.Value.TimeOfDay);
                 r = userTD;
             }
-            // TODO:
-            //
             //TimeDefine td = new TimeDefine();
             //td.DayOffset = (int)this.cmbDayOffset.SelectedValue;
             //td.Begin = this.dtpBegin.Value.TimeOfDay;

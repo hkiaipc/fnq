@@ -6,8 +6,41 @@ using System.Xml.Serialization;
 namespace K
 {
     [Serializable]
-    public class WorkDefine
+    abstract public class WorkDefine
     {
+
+        #region Create WorkDefine
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cycleType"></param>
+        /// <returns></returns>
+        static public WorkDefine Create(CycleTypeEnum cycleType)
+        {
+            WorkDefine r = null;
+            switch (cycleType)
+            {
+                case CycleTypeEnum.Week:
+                    r = new WeekWorkDefine();
+                    break;
+
+                case CycleTypeEnum.UserDefine:
+                    r = new UserWorkDefine();
+                    break;
+
+                default:
+                    throw new ArgumentException(cycleType.ToString());
+            }
+            return r;
+        }
+        #endregion //
+
+        #region Serialize
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wd"></param>
+        /// <returns></returns>
         static public string Serialize(WorkDefine wd)
         {
             XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
@@ -15,7 +48,14 @@ namespace K
             s.Serialize(sw, wd);
             return sw.ToString();
         }
+        #endregion //Serialize
 
+        #region Deserialize
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         static public WorkDefine Deserialize(string context)
         {
             XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
@@ -26,7 +66,11 @@ namespace K
             return wd;
 
         }
+        #endregion //Deserialize
 
+        protected WorkDefine()
+        {
+        }
 
         #region Name
         /// <summary>
@@ -48,8 +92,6 @@ namespace K
             }
         } private string _name;
         #endregion //Name
-
-
 
         #region TimeDefines
         /// <summary>
@@ -93,26 +135,7 @@ namespace K
         } private string _remark;
         #endregion //Remark
 
-
-        static public WorkDefine Create(CycleTypeEnum cycleType)
-        {
-            WorkDefine r = null;
-            switch (cycleType)
-            {
-                case CycleTypeEnum.Week :
-                    r = new WeekWorkDefine();
-                    break;
-
-                case CycleTypeEnum.UserDefine :
-                    r = new UserWorkDefine();
-                    break;
-
-                default:
-                    throw new ArgumentException(cycleType.ToString());
-            }
-            return r;
-        }
-        //#region CycleType
+        #region //CycleType
         ///// <summary>
         ///// 
         ///// </summary>
@@ -127,7 +150,9 @@ namespace K
         //        _cycleType = value;
         //    }
         //} private CycleTypeEnum _cycleType = CycleTypeEnum.Week;
-        //#endregion //CycleType
+        #endregion //CycleType
+
+        abstract internal TimeStandardCollection CreateTimeStandards(DateTime month);
     }
 
     /// <summary>
@@ -135,7 +160,51 @@ namespace K
     /// </summary>
     public class WeekWorkDefine : WorkDefine
     {
+        private TimeStandard CreateTimeStandard(DateTime day)
+        {
+            TimeStandard r = null;
+            foreach (TimeDefine td in this.TimeDefines)
+            {
+                WeekTimeDefine weekTD = (WeekTimeDefine)td;
+                if (weekTD.BeginWeek == day.DayOfWeek)
+                {
+                    r = new TimeStandard(TimeStandard.TypeEnum.Work);
+                    r.Begin = day + weekTD.Begin;
+                    r.End = day + weekTD.End + (weekTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
+                    r.DayOfWeek = day.DayOfWeek;
 
+                    break;
+                }
+                else
+                {
+
+                }
+            }
+            if (r == null)
+            {
+                r = new TimeStandard(TimeStandard.TypeEnum.Rest);
+                r.Begin = day;
+                r.End = day;
+                r.DayOfWeek = day.DayOfWeek;
+            }
+            return r;
+        }
+
+        internal override TimeStandardCollection CreateTimeStandards(DateTime month)
+        {
+            TimeStandardCollection r = new TimeStandardCollection();
+
+            DateTime dt = new DateTime(month.Year, month.Month, month.Day);
+
+            do
+            {
+                TimeStandard s = CreateTimeStandard(dt);
+                r.Add(s);
+                dt += TimeSpan.FromDays(1d);
+            } while (dt.Month != month.Month);
+
+            return r;
+        }
     }
 
     public class UserWorkDefine : WorkDefine
@@ -175,6 +244,11 @@ namespace K
         } private DateTime _startDateTime = DateTime.Parse("2000-01-01");
         #endregion //StartDateTime
 
+
+        internal override TimeStandardCollection CreateTimeStandards(DateTime month)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

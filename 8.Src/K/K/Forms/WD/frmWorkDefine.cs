@@ -37,7 +37,7 @@ namespace K.Forms.WD
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmWorkDefineItem f = new frmWorkDefineItem();
-            f.WorkDefine = new WorkDefine();
+            f.WorkDefine = WorkDefine.Create(CycleTypeEnum.Week);
             f.IsAdd = true;
             if (f.ShowDialog() == DialogResult.OK)
             {
