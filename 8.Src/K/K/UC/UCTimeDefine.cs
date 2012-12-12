@@ -160,18 +160,25 @@ namespace K.UC
 
                 this.dtpBegin.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.Begin);
                 this.dtpEnd.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.End);
-                this.cmbDayOffset.SelectedValue = _timeDefine.DayOffset;
+
+                // TODO:
+                //
+                //this.cmbDayOffset.SelectedValue = _timeDefine.DayOffset;
             }
         } private TimeDefine _timeDefine;
 
         internal TimeDefine CreateTimeDefineByUI()
         {
-            TimeDefine td = new TimeDefine();
-            td.DayOffset = (int)this.cmbDayOffset.SelectedValue;
-            td.Begin = this.dtpBegin.Value.TimeOfDay;
-            td.End = this.dtpEnd.Value.TimeOfDay;
 
-            return td;
+                // TODO:
+                //
+            //TimeDefine td = new TimeDefine();
+            //td.DayOffset = (int)this.cmbDayOffset.SelectedValue;
+            //td.Begin = this.dtpBegin.Value.TimeOfDay;
+            //td.End = this.dtpEnd.Value.TimeOfDay;
+
+            //return td;
+            return null;
         }
 
      

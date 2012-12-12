@@ -6,8 +6,12 @@ using System.Xml.Serialization;
 namespace K
 {
     [Serializable]
-    public class TimeDefine
+    abstract public class TimeDefine
     {
+        protected TimeDefine()
+        {
+        }
+
         #region Begin
         /// <summary>
         /// 
@@ -82,57 +86,166 @@ namespace K
         #endregion //EndDT
 
 
-        #region DayOffset
-        /// <summary>
-        /// 
-        /// </summary>
-        public int DayOffset
-        {
-            get
-            {
-                return _dayOffset;
-            }
-            set
-            {
-                _dayOffset = value;
-            }
-        } private int _dayOffset;
-        #endregion //DayOffset
+        //#region DayOffset
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public int DayOffset
+        //{
+        //    get
+        //    {
+        //        return _dayOffset;
+        //    }
+        //    set
+        //    {
+        //        _dayOffset = value;
+        //    }
+        //} private int _dayOffset;
+        //#endregion //DayOffset
 
         #region IsCrossDay
         /// <summary>
         /// 
         /// </summary>
-        public bool IsCrossDay
-        {
-            get
-            {
-                return this.Begin >= this.End;
-            }
-            //set
-            //{
-            //_isCrossDay = value;
-            //}
-        } //private bool _isCrossDay;
+        public abstract bool IsCrossDay {get ;}
+        //{
+        //    get
+        //    {
+        //        return this.Begin >= this.End;
+        //    }
+        //    //set
+        //    //{
+        //    //_isCrossDay = value;
+        //    //}
+        //} //private bool _isCrossDay;
         #endregion //IsCrossDay
 
-        #region Hold
+        //#region Hold
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public TimeSpan Hold
+        //{
+        //    get
+        //    {
+        //        TimeSpan ts = this.Begin - this.End;
+        //        if (IsCrossDay)
+        //        {
+        //            ts += TimeSpan.Parse("24:00:00");
+        //        }
+        //        return ts;
+        //    }
+        //}
+        //#endregion //Hold
+        static public WeekTimeDefine CreateWeekTimeDefine(DayOfWeek beginWeek, TimeSpan begin, DayOfWeek endWeek, TimeSpan end)
+        {
+            WeekTimeDefine r = new WeekTimeDefine();
+            r.BeginWeek = beginWeek;
+            r.Begin = begin;
+            r.EndWeek = endWeek;
+            r.End = end;
+
+            return r;
+        }
+
+        static public UserTimeDefine CreateUserTimeDefine(int beginDayOffset, TimeSpan begin, int endDayOffset, TimeSpan end)
+        {
+            UserTimeDefine r = new UserTimeDefine();
+            r.BeginDayOffset = beginDayOffset;
+            r.Begin = begin;
+            r.EndDayOffset = endDayOffset;
+            r.End = end;
+            return r;
+        }
+    }
+
+    public class WeekTimeDefine : TimeDefine 
+    {
+        #region BeginWeek
         /// <summary>
         /// 
         /// </summary>
-        public TimeSpan Hold
+        public DayOfWeek BeginWeek
         {
             get
             {
-                TimeSpan ts = this.Begin - this.End;
-                if (IsCrossDay)
-                {
-                    ts += TimeSpan.Parse("24:00:00");
-                }
-                return ts;
+                return _beginWeek;
+            }
+            set
+            {
+                _beginWeek = value;
+            }
+        } private DayOfWeek _beginWeek;
+        #endregion //BeginWeek
+
+        #region EndWeek
+        /// <summary>
+        /// 
+        /// </summary>
+        public DayOfWeek EndWeek
+        {
+            get
+            {
+                return _endWeek;
+            }
+            set
+            {
+                _endWeek = value;
+            }
+        } private DayOfWeek _endWeek;
+        #endregion //EndWeek
+
+
+        public override bool IsCrossDay
+        {
+            get { return this.BeginWeek != this.EndWeek; }
+        }
+    }
+
+    public class UserTimeDefine : TimeDefine 
+    {
+        #region BeginDayOffset
+        /// <summary>
+        /// 
+        /// </summary>
+        public int BeginDayOffset
+        {
+            get
+            {
+                return _beginDayOffset;
+            }
+            set
+            {
+                _beginDayOffset = value;
+            }
+        } private int _beginDayOffset;
+        #endregion //BeginDayOffset
+
+        #region EndDayOffset
+        /// <summary>
+        /// 
+        /// </summary>
+        public int EndDayOffset
+        {
+            get
+            {
+                return _endDayOffset;
+            }
+            set
+            {
+                _endDayOffset = value;
+            }
+        } private int _endDayOffset;
+        #endregion //EndDayOffset
+
+
+        public override bool IsCrossDay
+        {
+            get
+            {
+                return this.BeginDayOffset != this.EndDayOffset;
             }
         }
-        #endregion //Hold
 
     }
 

@@ -53,27 +53,30 @@ namespace K
     {
         static public bool IsOverlapped(TimeDefine td1, TimeDefine td2)
         {
-            // TODO: check timedefine overlapped
-            //
-            TimeSpan td1Begin = td1.Begin + TimeSpan.FromDays(td1.DayOffset);
-            TimeSpan td1End = td1.End + TimeSpan.FromDays(td1.DayOffset);
-            if (td1.IsCrossDay)
-            {
-                td1End += TimeSpan.FromDays(1d);
-            }
 
-            TimeSpan td2Begin = td2.Begin + TimeSpan.FromDays(td2.DayOffset);
-            TimeSpan td2End = td2.End + TimeSpan.FromDays(td2.DayOffset);
-            if (td2.IsCrossDay)
-            {
-                td2End += TimeSpan.FromDays(1d);
-            }
+                // TODO:
+                //
+            //// TODO: check timedefine overlapped
+            ////
+            //TimeSpan td1Begin = td1.Begin + TimeSpan.FromDays(td1.DayOffset);
+            //TimeSpan td1End = td1.End + TimeSpan.FromDays(td1.DayOffset);
+            //if (td1.IsCrossDay)
+            //{
+            //    td1End += TimeSpan.FromDays(1d);
+            //}
 
-            if ((td2Begin >= td1Begin && td2Begin <= td1End) ||
-                (td2End >= td1Begin && td2End <= td1End))
-            {
-                return true;
-            }
+            //TimeSpan td2Begin = td2.Begin + TimeSpan.FromDays(td2.DayOffset);
+            //TimeSpan td2End = td2.End + TimeSpan.FromDays(td2.DayOffset);
+            //if (td2.IsCrossDay)
+            //{
+            //    td2End += TimeSpan.FromDays(1d);
+            //}
+
+            //if ((td2Begin >= td1Begin && td2Begin <= td1End) ||
+            //    (td2End >= td1Begin && td2End <= td1End))
+            //{
+            //    return true;
+            //}
 
             return false;
         }
