@@ -155,7 +155,10 @@ namespace K.Forms.WD
 
                 if (this.WorkDefine != null)
                 {
-                    this.WorkDefine.CycleType = SelectedCycleType;
+
+                // TODO:
+                //
+                    //this.WorkDefine.CycleType = SelectedCycleType;
                 }
             }
 
@@ -220,7 +223,7 @@ namespace K.Forms.WD
                 c => c.WorkDefineID == this.TblWorkDefine.WorkDefineID
                 );
 
-            tblWd.WorkDefineContext = WorkDefine.Serialize(CreateWorkDefine());
+            tblWd.WorkDefineContext = WorkDefineBase.Serialize(CreateWorkDefine());
             db.SubmitChanges();
         }
         #endregion //Edit
@@ -230,15 +233,17 @@ namespace K.Forms.WD
         /// 
         /// </summary>
         /// <returns></returns>
-        private WorkDefine CreateWorkDefine()
+        private WorkDefineBase CreateWorkDefine()
         {
-            WorkDefine wd = new WorkDefine();
+            WorkDefineBase wd = new WorkDefineBase();
             wd.Name = this.txtWorkDefineName.Text.Trim();
 
-            wd.CycleType = this.SelectedCycleType;
+                // TODO:
+                //
+            //wd.CycleType = this.SelectedCycleType;
 
-            wd.DayOfCycle = this.SelectedCycleDayCount;
-            wd.StartDateTime = this.StartDateTime;
+            //wd.DayOfCycle = this.SelectedCycleDayCount;
+            //wd.StartDateTime = this.StartDateTime;
 
             SetTimeDefines(wd);
             return wd;
@@ -260,10 +265,10 @@ namespace K.Forms.WD
             //wd.StartDateTime = this.StartDateTime;
 
             //SetTimeDefines(wd);
-            WorkDefine wd = CreateWorkDefine();
+            WorkDefineBase wd = CreateWorkDefine();
 
             tblWorkDefine tblWorkDefine = new tblWorkDefine();
-            tblWorkDefine.WorkDefineContext = WorkDefine.Serialize(wd);
+            tblWorkDefine.WorkDefineContext = WorkDefineBase.Serialize(wd);
 
             DB db = DBFactory.GetDB();
             db.tblWorkDefine.InsertOnSubmit(tblWorkDefine);
@@ -273,7 +278,7 @@ namespace K.Forms.WD
         #endregion //Add
 
         #region SetTimeDefines
-        private void SetTimeDefines(WorkDefine wd)
+        private void SetTimeDefines(WorkDefineBase wd)
         {
             foreach (Control c in this.flowLayoutPanel1.Controls)
             {
@@ -341,7 +346,7 @@ namespace K.Forms.WD
             {
                 _tblWorkDefine = value;
 
-                WorkDefine wd = WorkDefine.Deserialize(_tblWorkDefine.WorkDefineContext);
+                WorkDefineBase wd = WorkDefineBase.Deserialize(_tblWorkDefine.WorkDefineContext);
                 this.WorkDefine = wd;
             }
         } private tblWorkDefine _tblWorkDefine;
@@ -351,7 +356,7 @@ namespace K.Forms.WD
         /// <summary>
         /// 
         /// </summary>
-        internal WorkDefine WorkDefine
+        internal WorkDefineBase WorkDefine
         {
             get { return _workDefine; }
             set
@@ -374,16 +379,19 @@ namespace K.Forms.WD
             // fill
             //
             this.txtWorkDefineName.Text = _workDefine.Name;
-            this.cmbCycle.SelectedIndex = (int)_workDefine.CycleType;
-            this.cmbCycleDayCount.SelectedValue = _workDefine.DayOfCycle;
-            this.dtpStart.Value = _workDefine.StartDateTime;
+
+                // TODO:
+                //
+            //this.cmbCycle.SelectedIndex = (int)_workDefine.CycleType;
+            //this.cmbCycleDayCount.SelectedValue = _workDefine.DayOfCycle;
+            //this.dtpStart.Value = _workDefine.StartDateTime;
 
             foreach (TimeDefine td in _workDefine.TimeDefines)
             {
                 UC.UCTimeDefine ucTd = CreateTimeDefineControl(_workDefine, td);
                 this.flowLayoutPanel1.Controls.Add(ucTd);
             }
-        } private WorkDefine _workDefine;
+        } private WorkDefineBase _workDefine;
         #endregion //FillWorkDefine
 
         #region CreateTimeDefineControl
@@ -393,7 +401,7 @@ namespace K.Forms.WD
         /// <param name="wd"></param>
         /// <param name="td"></param>
         /// <returns></returns>
-        private K.UC.UCTimeDefine CreateTimeDefineControl(WorkDefine wd, TimeDefine td)
+        private K.UC.UCTimeDefine CreateTimeDefineControl(WorkDefineBase wd, TimeDefine td)
         {
             UC.UCTimeDefine ucTd = new K.UC.UCTimeDefine();
             ucTd.WorkDefine = wd;
@@ -412,7 +420,10 @@ namespace K.Forms.WD
         private void cmbCycleDayCount_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.flowLayoutPanel1.Controls.Clear();
-            this.WorkDefine.DayOfCycle = this.SelectedCycleDayCount;
+
+                // TODO:
+                //
+            //this.WorkDefine.DayOfCycle = this.SelectedCycleDayCount;
         }
         #endregion //cmbCycleDayCount_SelectedIndexChanged
     }

@@ -135,7 +135,7 @@ namespace K.UC
 
         }
 
-        internal WorkDefine WorkDefine
+        internal WorkDefineBase WorkDefine
         {
             get { return _workDefine; }
             set
@@ -144,10 +144,12 @@ namespace K.UC
 
                 _workDefine = value;
 
-                this.CycleType = _workDefine.CycleType;
-                this.CycleDayCount = _workDefine.DayOfCycle;
+                // TODO:
+                //
+                //this.CycleType = _workDefine.CycleType;
+                //this.CycleDayCount = _workDefine.DayOfCycle;
             }
-        } private WorkDefine _workDefine;
+        } private WorkDefineBase _workDefine;
 
         internal TimeDefine TimeDefine
         {

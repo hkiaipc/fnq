@@ -216,12 +216,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="TimeDefine.cs" />
+    <Compile Include="TimeDefineCollection.cs" />
     <Compile Include="UC\UCTimeDefine.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UC\UCTimeDefine.Designer.cs">
       <DependentUpon>UCTimeDefine.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkDefine.cs" />
+    <Compile Include="WorkDefineCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KDB\KDB.csproj">

@@ -136,14 +136,41 @@ namespace K
 
         }
 
-        private TimeStandardCollection GenerateTimeStandards(tblWorkDefine workDefine, DateTime monthForGenerator)
+        private TimeStandardCollection GenerateTimeStandards(tblWorkDefine tblWD, DateTime monthForGenerator)
         {
             // TODO: get timedefines
             //
-            TimeDefineCollection timeDefines = null;
-            TimeStandardCollection timeStandards = new TimeStandardCollection();
-            return timeStandards;
+            //workDefine.WorkDefineContext 
+            WorkDefineBase wd = WorkDefineBase.Deserialize(tblWD.WorkDefineContext);
+
+            throw new NotImplementedException();
+            // TODO: Generate standard time collection
+            // 
+            //if (wd.CycleType == CycleTypeEnum.Week)
+            //{
+            //    return GenerateWeekTimeStandards(wd, monthForGenerator);
+            //}
+            //else if (wd.CycleType == CycleTypeEnum.UserDefine)
+            //{
+            //    return GenerateUserDefineTimeStandards(wd, monthForGenerator);
+            //}
+            //throw new InvalidCastException(wd.CycleType.ToString());
+
+            //TimeDefineCollection timeDefines = wd.TimeDefines[0];
+            //TimeStandardCollection timeStandards = new TimeStandardCollection();
+            //return timeStandards;
         }
+
+        private TimeStandardCollection GenerateWeekTimeStandards(WorkDefineBase wd, DateTime monthForGenerator)
+        {
+            throw new NotImplementedException();
+        }
+
+        private TimeStandardCollection GenerateUserDefineTimeStandards(WorkDefineBase wd, DateTime monthForGenerator)
+        {
+            throw new NotImplementedException();
+        }
+
 
         ///// <summary>
         ///// 
@@ -748,6 +775,7 @@ namespace K
             }
         } private DateTime _practiceEnd;
         #endregion //PracticeEnd
+
         #region Remark
         /// <summary>
         /// 
