@@ -13,21 +13,48 @@ namespace K
 {
     internal class TimeStandard
     {
-        internal TimeStandard(TypeEnum typeEnum)
-        {
-            this.Type = typeEnum;
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
         internal enum TypeEnum
         {
             Work,
-                Rest,
+            Rest,
         }
+
+        static internal TimeStandard CreateRestTimeStandard()
+        {
+            return new TimeStandard(TypeEnum.Rest, DateTime.MinValue, DateTime.MinValue + TimeSpan.FromDays(1d));
+        }
+
+        static internal TimeStandard CreateWorkTimeStandard(DateTime begin, DateTime end)
+        {
+            return new TimeStandard(TypeEnum.Work, begin, end);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="typeEnum"></param>
+        /// <param name="dayOfWeek"></param>
+        /// <param name="begin"></param>
+        /// <param name="end"></param>
+        private TimeStandard(TypeEnum typeEnum, DateTime begin, DateTime end)
+        {
+            Debug.Assert(end > begin);
+            //Debug.Assert(dayOfWeek == begin.DayOfWeek);
+
+            this._typeEnum = typeEnum;
+            //this._dayOfWeek = dayOfWeek;
+            this._begin = begin;
+            this._end = end;
+        }
+
 
         internal TypeEnum Type
         {
             get { return _typeEnum; }
-            set { _typeEnum = value; }
+            //set { _typeEnum = value; }
         } private TypeEnum _typeEnum;
 
         //#region Date
@@ -47,7 +74,7 @@ namespace K
         //} private DateTime _date;
         //#endregion //Date
 
-#region DayOfWeek
+        #region DayOfWeek
         /// <summary>
         /// 
         /// </summary>
@@ -55,16 +82,17 @@ namespace K
         {
             get
             {
-                return _dayOfWeek;
+                //return _dayOfWeek;
+                return _begin.DayOfWeek;
             }
-            set
-            {
-                _dayOfWeek = value;
-            }
-        } private DayOfWeek _dayOfWeek;
-#endregion //DayOfWeek
+            //set
+            //{
+            //    _dayOfWeek = value;
+            //}
+        } //private DayOfWeek _dayOfWeek;
+        #endregion //DayOfWeek
 
-#region Begin
+        #region Begin
         /// <summary>
         /// 
         /// </summary>
@@ -74,14 +102,14 @@ namespace K
             {
                 return _begin;
             }
-            set
-            {
-                _begin = value;
-            }
+            //set
+            //{
+            //    _begin = value;
+            //}
         } private DateTime _begin;
-#endregion //Begin
+        #endregion //Begin
 
-#region End
+        #region End
         /// <summary>
         /// 
         /// </summary>
@@ -91,12 +119,12 @@ namespace K
             {
                 return _end;
             }
-            set
-            {
-                _end = value;
-            }
+            //set
+            //{
+            //    _end = value;
+            //}
         } private DateTime _end;
-#endregion //End
+        #endregion //End
 
         /// <summary>
         /// 

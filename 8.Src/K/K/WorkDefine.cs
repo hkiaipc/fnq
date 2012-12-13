@@ -225,10 +225,13 @@ namespace K
                 WeekTimeDefine weekTD = (WeekTimeDefine)td;
                 if (weekTD.BeginWeek == day.DayOfWeek)
                 {
-                    r = new TimeStandard(TimeStandard.TypeEnum.Work);
-                    r.Begin = day + weekTD.Begin;
-                    r.End = day + weekTD.End + (weekTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
-                    r.DayOfWeek = day.DayOfWeek;
+                    //r = new TimeStandard(TimeStandard.TypeEnum.Work);
+                    //r.Begin = day + weekTD.Begin;
+                    DateTime b = day + weekTD.Begin ;
+                    //r.End = day + weekTD.End + (weekTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
+                    DateTime e = day + weekTD.End + (weekTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
+                    //r.DayOfWeek = day.DayOfWeek;
+                    r = TimeStandard.CreateWorkTimeStandard(b, e);
 
                     break;
                 }
@@ -239,10 +242,11 @@ namespace K
             }
             if (r == null)
             {
-                r = new TimeStandard(TimeStandard.TypeEnum.Rest);
-                r.Begin = day;
-                r.End = day;
-                r.DayOfWeek = day.DayOfWeek;
+                //r = new TimeStandard(TimeStandard.TypeEnum.Rest);
+                //r.Begin = day;
+                //r.End = day;
+                //r.DayOfWeek = day.DayOfWeek;
+                r = TimeStandard.CreateRestTimeStandard();
             }
             return r;
         }
@@ -312,10 +316,11 @@ namespace K
 
                     if (b1.Month == month.Month)
                     {
-                        TimeStandard s = new TimeStandard(TimeStandard.TypeEnum.Work);
-                        s.Begin = b1;
-                        s.End = e1;
-                        s.DayOfWeek = b1.DayOfWeek;
+                        //TimeStandard s = new TimeStandard(TimeStandard.TypeEnum.Work);
+                        //s.Begin = b1;
+                        //s.End = e1;
+                        //s.DayOfWeek = b1.DayOfWeek;
+                        TimeStandard s = TimeStandard.CreateWorkTimeStandard(b1, e1);
 
                         r.Add(s);
                     }
