@@ -82,12 +82,19 @@ namespace K.Forms.WD
             tblWorkDefine wd = this.GetSelectedWorkDefine();
             if (wd != null)
             {
-                if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
-                {
-
                     DB db = DBFactory.GetDB();
                     tblWorkDefine temp = db.tblWorkDefine.Single(
                         c => c.WorkDefineID == wd.WorkDefineID);
+
+                    if (temp.tblGroup.Count > 0)
+                    {
+                        string msg = "该班次正在被使用, 无法删除";
+                        NUnit.UiKit.UserMessage.DisplayFailure(msg);
+                        return;
+                    }
+
+                if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
+                {
 
                     db.tblWorkDefine.DeleteOnSubmit(temp);
 
