@@ -32,7 +32,7 @@
             this.cmbPerson = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -70,15 +70,15 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "成员:";
             // 
-            // dateTimePicker1
+            // dtpMonth
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(118, 98);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 21);
-            this.dateTimePicker1.TabIndex = 25;
+            this.dtpMonth.CustomFormat = "yyyy-MM";
+            this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMonth.Location = new System.Drawing.Point(118, 98);
+            this.dtpMonth.Name = "dtpMonth";
+            this.dtpMonth.ShowUpDown = true;
+            this.dtpMonth.Size = new System.Drawing.Size(121, 21);
+            this.dtpMonth.TabIndex = 25;
             // 
             // label3
             // 
@@ -105,7 +105,7 @@
             this.ClientSize = new System.Drawing.Size(654, 458);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpMonth);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbPerson);
@@ -123,7 +123,7 @@
         private System.Windows.Forms.ComboBox cmbPerson;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpMonth;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnGenerate;
     }

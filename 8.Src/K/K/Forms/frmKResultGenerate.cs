@@ -59,7 +59,14 @@ namespace K.Forms
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            DateTime month = new DateTime(
+                this.dtpMonth.Value.Year,
+                this.dtpMonth.Value.Month,
+                1);
 
+            DB db = DBFactory.GetDB();
+            KResultGenerator gen = new KResultGenerator(db, month);
+            GroupResultCollection grs = gen.Generate();
         }
 
     }

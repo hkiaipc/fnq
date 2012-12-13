@@ -53,6 +53,11 @@ namespace K.Forms
 
         private bool CheckInput()
         {
+            if (this.txtGroupName.Text.Trim().Length == 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("TODO: group name null");
+                return false;
+            }
             if (this.cmbWorkDefine.SelectedItem == null)
             {
                 NUnit.UiKit.UserMessage.DisplayFailure("TODO: must select workdefine");

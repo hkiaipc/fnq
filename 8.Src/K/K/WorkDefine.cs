@@ -258,7 +258,7 @@ namespace K
                 TimeStandard s = CreateTimeStandard(dt);
                 r.Add(s);
                 dt += TimeSpan.FromDays(1d);
-            } while (dt.Month != month.Month);
+            } while (dt.Month == month.Month);
 
             return r;
         }

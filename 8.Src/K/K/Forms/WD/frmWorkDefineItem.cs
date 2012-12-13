@@ -208,15 +208,23 @@ namespace K.Forms.WD
                 return;
             }
 
+            WorkDefine wd = CreateWorkDefine();
+
+            if (wd.TimeDefines.Count == 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("TODO: time defines count == 0");
+                return;
+            }
+
             try
             {
                 if (IsAdd)
                 {
-                    Add();
+                    Add(wd);
                 }
                 else
                 {
-                    Edit();
+                    Edit(wd);
                 }
             }
             catch (KConfigException kex)
@@ -234,7 +242,7 @@ namespace K.Forms.WD
         /// <summary>
         /// 
         /// </summary>
-        private void Edit()
+        private void Edit(WorkDefine wd )
         {
             DB db = DBFactory.GetDB();
             tblWorkDefine tblWd = db.tblWorkDefine.First(
@@ -242,7 +250,7 @@ namespace K.Forms.WD
                 );
 
             tblWd.WorkDefineName = this.txtWorkDefineName.Text.Trim();
-            tblWd.WorkDefineContext = WorkDefine.Serialize(CreateWorkDefine());
+            tblWd.WorkDefineContext = WorkDefine.Serialize(wd);
             db.SubmitChanges();
         }
         #endregion //Edit
@@ -275,7 +283,7 @@ namespace K.Forms.WD
         /// <summary>
         /// 
         /// </summary>
-        private void Add()
+        private bool Add(WorkDefine wd)
         {
             //WorkDefine wd = this.WorkDefine;
             //wd.Name = this.txtWorkDefineName.Text.Trim();
@@ -286,7 +294,8 @@ namespace K.Forms.WD
             //wd.StartDateTime = this.StartDateTime;
 
             //SetTimeDefines(wd);
-            WorkDefine wd = CreateWorkDefine();
+            //WorkDefine wd = CreateWorkDefine();
+
 
             tblWorkDefine tblWorkDefine = new tblWorkDefine();
             tblWorkDefine.WorkDefineName = wd.Name;
@@ -296,6 +305,8 @@ namespace K.Forms.WD
             db.tblWorkDefine.InsertOnSubmit(tblWorkDefine);
 
             db.SubmitChanges();
+
+            return true;
         }
         #endregion //Add
 
@@ -342,6 +353,8 @@ namespace K.Forms.WD
                 NUnit.UiKit.UserMessage.DisplayFailure("名称不能为空");
                 return false;
             }
+
+            
 
             return true;
         }

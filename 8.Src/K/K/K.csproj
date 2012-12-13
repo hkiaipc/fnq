@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="DateTimeRange.cs" />
     <Compile Include="Forms\frmKResultGenerate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,7 +135,11 @@
     <Compile Include="Forms\WD\frmWorkDefineItem.Designer.cs">
       <DependentUpon>frmWorkDefineItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupResult.cs" />
+    <Compile Include="GroupResultCollection.cs" />
     <Compile Include="KResultGenerator.cs" />
+    <Compile Include="PersonResult.cs" />
+    <Compile Include="PersonResultCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmKResultGenerate.resx">
@@ -215,14 +221,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PunchInDateTimeRangeEnum.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="tblLeaveEx.cs" />
     <Compile Include="Test\Test.cs" />
     <Compile Include="TimeDefine.cs" />
     <Compile Include="TimeDefineCollection.cs" />
+    <Compile Include="TimeResult.cs" />
+    <Compile Include="TimeResultCollection.cs" />
+    <Compile Include="TimeStandard.cs" />
+    <Compile Include="TimeStandardCollection.cs" />
     <Compile Include="UC\UCTimeDefine.cs">
       <SubType>UserControl</SubType>
     </Compile>

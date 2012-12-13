@@ -58,5 +58,24 @@ namespace K.Forms
             tblGroup g = this.dataGridView1.Rows[r].DataBoundItem as tblGroup;
             return g;
         }
+
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            tblGroup gp = GetSelectedGroup();
+            if (gp != null)
+            {
+                if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
+                {
+                    DB db = DBFactory.GetDB();
+                    tblGroup target = db.tblGroup.Single(c => c.GroupID == gp.GroupID);
+
+                    db.tblGroup.DeleteOnSubmit(target);
+                    db.SubmitChanges();
+
+                    Fill();
+                }
+            }
+        }
     }
 }
