@@ -23,28 +23,84 @@ namespace K.Forms.WD
             InitializeComponent();
             //this.flowLayoutPanel1.SetFlowBreak(this.flowLayoutPanel1, false);
             BindCycleType();
+            BindCycleDayCount();
         }
         #endregion //frmWorkDefineItem
 
-        #region BindCycleType
-        void BindCycleType()
+        #region frmWorkDefineItem_Load
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmWorkDefineItem_Load(object sender, EventArgs e)
         {
-            this.cmbCycle.DisplayMember = "Key";
-            this.cmbCycle.ValueMember = "Value";
+            this.cmbCycleType.SelectedIndex = 0;
 
-            this.cmbCycle.DataSource = GetCycleTypeDataSource();
+            if (this._workDefine != null)
+            {
+                FillWorkDefineInfo();
+            }
+
+            VisibleOrInvisibleControls();
+
+            this.cmbCycleType.SelectedIndexChanged += new EventHandler(cmbCycleType_SelectedIndexChanged);
+            this.cmbCycleDayCount.SelectedIndexChanged += new EventHandler(cmbCycleDayCount_SelectedIndexChanged);
+
         }
-        #endregion //BindCycleType
 
-        #region GetCycleTypeDataSource
-        object GetCycleTypeDataSource()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbCycleType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VisibleOrInvisibleControls();
+
+            if (_cycleTypeLastIndex != this.cmbCycleType.SelectedIndex)
+            {
+                // clear time defines
+                //
+                this.flowLayoutPanel1.Controls.Clear();
+
+                //if (this.WorkDefine != null)
+                //{
+
+                // 
+                //
+                //this.WorkDefine.CycleType = SelectedCycleType;
+                this.WorkDefine = this.CreateWorkDefine();
+                //}
+            }
+
+            _cycleTypeLastIndex = this.cmbCycleType.SelectedIndex;
+        }
+
+        private void VisibleOrInvisibleControls()
+        {
+            this.cmbCycleDayCount.Visible = (this.SelectedCycleType == CycleTypeEnum.UserDefine);
+            this.dtpStart.Visible = (this.SelectedCycleType == CycleTypeEnum.UserDefine);
+            this.lblStart.Visible = (this.SelectedCycleType == CycleTypeEnum.UserDefine);
+        }
+        #endregion //frmWorkDefineItem_Load
+
+        #region BindCycleType
+        /// <summary>
+        /// 
+        /// </summary>
+        void BindCycleType()
         {
             KeyValueCollection kvs = new KeyValueCollection();
             kvs.Add(new KeyValue("周", CycleTypeEnum.Week));
             kvs.Add(new KeyValue("自定义", CycleTypeEnum.UserDefine));
-            return kvs;
+
+            this.cmbCycleType.DisplayMember = "Key";
+            this.cmbCycleType.ValueMember = "Value";
+
+            this.cmbCycleType.DataSource = kvs;
         }
-        #endregion //GetCycleTypeDataSource
+        #endregion //BindCycleType
 
         #region btnAdd_Click
         /// <summary>
@@ -73,7 +129,7 @@ namespace K.Forms.WD
         {
             get
             {
-                return (CycleTypeEnum)this.cmbCycle.SelectedIndex;
+                return (CycleTypeEnum)this.cmbCycleType.SelectedIndex;
             }
             //set { }
         }
@@ -98,30 +154,23 @@ namespace K.Forms.WD
         }
         #endregion //SelectedCycleDayCount
 
-        #region frmWorkDefineItem_Load
-        private void frmWorkDefineItem_Load(object sender, EventArgs e)
-        {
-            this.cmbCycle.SelectedIndex = 0;
-            FillCycleDayCount();
-            FillWorkDefine();
-        }
-        #endregion //frmWorkDefineItem_Load
 
         #region GetUserDefineCycleDayCount
         int GetUserDefineCycleDayCount()
         {
             return (int)this.cmbCycleDayCount.SelectedValue;
 
-        #region FillCycleDayCount
         }
         #endregion //GetUserDefineCycleDayCount
+
+        #region BindCycleDayCount
         /// <summary>
         /// 
         /// </summary>
-        void FillCycleDayCount()
+        void BindCycleDayCount()
         {
             KeyValueCollection kvs = new KeyValueCollection();
-
+            
             for (int i = 1; i < 11; i++)
             {
                 kvs.Add(new KeyValue(string.Format("{0}天", i), i));
@@ -131,41 +180,9 @@ namespace K.Forms.WD
             this.cmbCycleDayCount.ValueMember = "Value";
             this.cmbCycleDayCount.DataSource = kvs;
         }
-        #endregion //FillCycleDayCount
-
-        #region cmbCycle_SelectedIndexChanged
+        #endregion //BindCycleDayCount
 
         int _cycleTypeLastIndex = -1;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cmbCycle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.cmbCycleDayCount.Visible = (this.SelectedCycleType == CycleTypeEnum.UserDefine);
-            this.dtpStart.Visible = (this.SelectedCycleType == CycleTypeEnum.UserDefine);
-            this.lblStart.Visible = (this.SelectedCycleType == CycleTypeEnum.UserDefine);
-
-            if (_cycleTypeLastIndex != this.cmbCycle.SelectedIndex)
-            {
-                // clear time defines
-                //
-                this.flowLayoutPanel1.Controls.Clear();
-
-                //if (this.WorkDefine != null)
-                //{
-
-                // 
-                //
-                //this.WorkDefine.CycleType = SelectedCycleType;
-                this.WorkDefine = WorkDefine.Create(this.SelectedCycleType);
-                //}
-            }
-
-            _cycleTypeLastIndex = this.cmbCycle.SelectedIndex;
-        }
-        #endregion //cmbCycle_SelectedIndexChanged
 
         #region btnDelete_Click
         private void btnDelete_Click(object sender, EventArgs e)
@@ -224,6 +241,7 @@ namespace K.Forms.WD
                 c => c.WorkDefineID == this.TblWorkDefine.WorkDefineID
                 );
 
+            tblWd.WorkDefineName = this.txtWorkDefineName.Text.Trim();
             tblWd.WorkDefineContext = WorkDefine.Serialize(CreateWorkDefine());
             db.SubmitChanges();
         }
@@ -271,6 +289,7 @@ namespace K.Forms.WD
             WorkDefine wd = CreateWorkDefine();
 
             tblWorkDefine tblWorkDefine = new tblWorkDefine();
+            tblWorkDefine.WorkDefineName = wd.Name;
             tblWorkDefine.WorkDefineContext = WorkDefine.Serialize(wd);
 
             DB db = DBFactory.GetDB();
@@ -349,7 +368,17 @@ namespace K.Forms.WD
             {
                 _tblWorkDefine = value;
 
-                WorkDefine wd = WorkDefine.Deserialize(_tblWorkDefine.WorkDefineContext);
+
+                WorkDefine wd = null;
+                try
+                {
+                    wd = WorkDefine.Deserialize(_tblWorkDefine.WorkDefineContext);
+                }
+                catch (Exception ex)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+                    wd = new WeekWorkDefine();
+                }
                 this.WorkDefine = wd;
             }
         } private tblWorkDefine _tblWorkDefine;
@@ -377,14 +406,15 @@ namespace K.Forms.WD
         /// <summary>
         /// 
         /// </summary>
-        private void FillWorkDefine()
+        private void FillWorkDefineInfo()
         {
             // fill
             //
             this.txtWorkDefineName.Text = _workDefine.Name;
 
+            // get cycle type
+            //
             CycleTypeEnum cycleType = CycleTypeEnum.UserDefine;
-
             if (_workDefine is WeekWorkDefine)
             {
                 cycleType = CycleTypeEnum.Week;
@@ -398,8 +428,10 @@ namespace K.Forms.WD
                 throw new InvalidOperationException();
             }
 
-            this.cmbCycle.SelectedIndex = (int)cycleType ;
+            this.cmbCycleType.SelectedIndex = (int)cycleType;
 
+            //
+            //
             if (_workDefine is UserWorkDefine)
             {
                 UserWorkDefine userWD = (UserWorkDefine)_workDefine;
@@ -442,7 +474,10 @@ namespace K.Forms.WD
         {
             this.flowLayoutPanel1.Controls.Clear();
 
-            ((UserWorkDefine)this.WorkDefine).DayOfCycle = this.SelectedCycleDayCount;
+            if (this.WorkDefine is UserWorkDefine)
+            {
+                ((UserWorkDefine)this.WorkDefine).DayOfCycle = this.SelectedCycleDayCount;
+            }
         }
         #endregion //cmbCycleDayCount_SelectedIndexChanged
     }

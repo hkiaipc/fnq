@@ -206,6 +206,10 @@ namespace K
     [Serializable]
     public class UserTimeDefine : TimeDefine 
     {
+        public UserTimeDefine()
+        {
+        }
+
         public UserTimeDefine ( int dayOfCycle )
         {
             if (dayOfCycle < 1)
@@ -214,6 +218,23 @@ namespace K
             }
             this._dayOfCycle = dayOfCycle ;
         }
+
+        #region DayOfCycle
+        /// <summary>
+        /// 
+        /// </summary>
+        public int DayOfCycle
+        {
+            get
+            {
+                return _dayOfCycle;
+            }
+            set
+            {
+                _dayOfCycle = value;
+            }
+        } private int _dayOfCycle;
+        #endregion //DayOfCycle
 
         #region BeginDayOffset
         /// <summary>
@@ -252,14 +273,15 @@ namespace K
             }
             set
             {
-                if (value >= 0 && value < this._dayOfCycle)
+                //if (value >= 0 && value < this._dayOfCycle)
+                if (value >= 0 && value < this.DayOfCycle )
                 {
                     _endDayOffset = value;
                 }
                 else
                 {
                     throw new ArgumentOutOfRangeException(
-                        string.Format("EndDayOffset must in [0, {0})", this._dayOfCycle));
+                        string.Format("EndDayOffset must in [0, {0})", this.DayOfCycle));
                 }
             }
         } private int _endDayOffset;
@@ -273,18 +295,6 @@ namespace K
             }
         }
 
-#region DayOfCycle
-/// <summary>
-/// 
-/// </summary>
-public int DayOfCycle
-{
-	get
-	{
-		return _dayOfCycle;
-	}
-} private int _dayOfCycle;
-#endregion //DayOfCycle
 
     }
 

@@ -6,6 +6,40 @@ using System.Xml.Serialization;
 namespace K
 {
     [Serializable]
+    [XmlInclude(typeof(WeekWorkDefine))]
+    [XmlInclude(typeof(UserWorkDefine))]
+    [XmlInclude(typeof(WeekTimeDefine))]
+    [XmlInclude(typeof(UserTimeDefine))]
+    public class SerializableObject
+    {
+        public SerializableObject ()
+        {
+        }
+
+        public SerializableObject(object obj)
+        {
+            this.Object = obj;
+        }
+
+        #region Object
+        /// <summary>
+        /// 
+        /// </summary>
+        public object Object
+        {
+            get
+            {
+                return _object;
+            }
+            set
+            {
+                _object = value;
+            }
+        } private object _object;
+        #endregion //Object
+    }
+
+    [Serializable]
     abstract public class WorkDefine
     {
 
@@ -43,9 +77,9 @@ namespace K
         /// <returns></returns>
         static public string Serialize(WorkDefine wd)
         {
-            XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
+            XmlSerializer s = new XmlSerializer(typeof(SerializableObject));
             StringWriter sw = new StringWriter();
-            s.Serialize(sw, wd);
+            s.Serialize(sw, new SerializableObject(wd));
             return sw.ToString();
         }
         #endregion //Serialize
@@ -58,9 +92,13 @@ namespace K
         /// <returns></returns>
         static public WorkDefine Deserialize(string context)
         {
-            XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
+            // TODO: 
+            //
+            //XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
+            XmlSerializer s = new XmlSerializer(typeof(SerializableObject));
             StringReader sr = new StringReader(context);
-            WorkDefine wd = s.Deserialize(sr) as WorkDefine;
+            SerializableObject serObject = s.Deserialize(sr) as SerializableObject;
+            WorkDefine wd = serObject.Object as WorkDefine ;
 
             Debug.Assert(wd != null, "Deserialize WorkDefine error");
             return wd;
@@ -93,6 +131,23 @@ namespace K
         } private string _name;
         #endregion //Name
 
+        #region DayOfCycle
+        /// <summary>
+        /// 
+        /// </summary>
+        public int DayOfCycle
+        {
+            get
+            {
+                return _dayOfCycle;
+            }
+            set
+            {
+                Debug.Assert(_dayOfCycle >= 1);
+                _dayOfCycle = value;
+            }
+        } private int _dayOfCycle = 7;
+        #endregion //DayOfCycle
         #region TimeDefines
         /// <summary>
         /// 
@@ -152,12 +207,14 @@ namespace K
         //} private CycleTypeEnum _cycleType = CycleTypeEnum.Week;
         #endregion //CycleType
 
+
         abstract internal TimeStandardCollection CreateTimeStandards(DateTime month);
     }
 
     /// <summary>
     /// 
     /// </summary>
+    [Serializable]
     public class WeekWorkDefine : WorkDefine
     {
         private TimeStandard CreateTimeStandard(DateTime day)
@@ -207,25 +264,9 @@ namespace K
         }
     }
 
+    [Serializable]
     public class UserWorkDefine : WorkDefine
     {
-        #region DayOfCycle
-        /// <summary>
-        /// 
-        /// </summary>
-        public int DayOfCycle
-        {
-            get
-            {
-                return _dayOfCycle;
-            }
-            set
-            {
-                Debug.Assert(_dayOfCycle >= 1);
-                _dayOfCycle = value;
-            }
-        } private int _dayOfCycle = 7;
-        #endregion //DayOfCycle
 
         #region StartDateTime
         /// <summary>

@@ -53,11 +53,12 @@ namespace K.Forms.WD
         /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            tblWorkDefine wd = GetSelectedWorkDefine();
-            if (wd != null)
+            tblWorkDefine tblWD = GetSelectedWorkDefine();
+            if (tblWD != null)
             {
                 frmWorkDefineItem f = new frmWorkDefineItem();
-                f.TblWorkDefine = wd;
+
+                f.TblWorkDefine = tblWD;
                 f.IsAdd = false;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
@@ -90,7 +91,15 @@ namespace K.Forms.WD
 
                     db.tblWorkDefine.DeleteOnSubmit(temp);
 
-                    db.SubmitChanges();
+                    try
+                    {
+                        db.SubmitChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        NUnit.UiKit.UserMessage.DisplayFailure(ex.ToString());
+                        return;
+                    }
 
                     Fill();
                 }

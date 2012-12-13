@@ -31,7 +31,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.txtWorkDefineName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbCycle = new System.Windows.Forms.ComboBox();
+            this.cmbCycleType = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -74,15 +74,14 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "周期:";
             // 
-            // cmbCycle
+            // cmbCycleTyp
             // 
-            this.cmbCycle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCycle.FormattingEnabled = true;
-            this.cmbCycle.Location = new System.Drawing.Point(131, 39);
-            this.cmbCycle.Name = "cmbCycle";
-            this.cmbCycle.Size = new System.Drawing.Size(150, 20);
-            this.cmbCycle.TabIndex = 24;
-            this.cmbCycle.SelectedIndexChanged += new System.EventHandler(this.cmbCycle_SelectedIndexChanged);
+            this.cmbCycleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCycleType.FormattingEnabled = true;
+            this.cmbCycleType.Location = new System.Drawing.Point(131, 39);
+            this.cmbCycleType.Name = "cmbCycleTyp";
+            this.cmbCycleType.Size = new System.Drawing.Size(150, 20);
+            this.cmbCycleType.TabIndex = 24;
             // 
             // btnAdd
             // 
@@ -136,7 +135,6 @@
             this.cmbCycleDayCount.Name = "cmbCycleDayCount";
             this.cmbCycleDayCount.Size = new System.Drawing.Size(100, 20);
             this.cmbCycleDayCount.TabIndex = 30;
-            this.cmbCycleDayCount.SelectedIndexChanged += new System.EventHandler(this.cmbCycleDayCount_SelectedIndexChanged);
             // 
             // lblStart
             // 
@@ -168,7 +166,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.cmbCycle);
+            this.Controls.Add(this.cmbCycleType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtWorkDefineName);
@@ -180,7 +178,7 @@
             this.Controls.SetChildIndex(this.txtWorkDefineName, 0);
             this.Controls.SetChildIndex(this.lblName, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.cmbCycle, 0);
+            this.Controls.SetChildIndex(this.cmbCycleType, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnDelete, 0);
@@ -198,7 +196,7 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtWorkDefineName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbCycle;
+        private System.Windows.Forms.ComboBox cmbCycleType;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
