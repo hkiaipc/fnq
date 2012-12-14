@@ -22,9 +22,9 @@ namespace K
             Rest,
         }
 
-        static internal TimeStandard CreateRestTimeStandard()
+        static internal TimeStandard CreateRestTimeStandard(DateTime day)
         {
-            return new TimeStandard(TypeEnum.Rest, DateTime.MinValue, DateTime.MinValue + TimeSpan.FromDays(1d));
+            return new TimeStandard(TypeEnum.Rest, day.Date, day.Date + TimeSpan.FromDays(1d));
         }
 
         static internal TimeStandard CreateWorkTimeStandard(DateTime begin, DateTime end)
@@ -41,7 +41,7 @@ namespace K
         /// <param name="end"></param>
         private TimeStandard(TypeEnum typeEnum, DateTime begin, DateTime end)
         {
-            Debug.Assert(end > begin);
+            Debug.Assert(end >= begin);
 
             this._typeEnum = typeEnum;
             this._begin = begin;

@@ -94,7 +94,7 @@ namespace K
         {
             // TODO: 
             //
-            //XmlSerializer s = new XmlSerializer(typeof(WorkDefine));
+            //XmlSerializer _kResultEnumNameMap = new XmlSerializer(typeof(WorkDefine));
             XmlSerializer s = new XmlSerializer(typeof(SerializableObject));
             StringReader sr = new StringReader(context);
             SerializableObject serObject = s.Deserialize(sr) as SerializableObject;
@@ -246,7 +246,7 @@ namespace K
                 //r.Begin = day;
                 //r.End = day;
                 //r.DayOfWeek = day.DayOfWeek;
-                r = TimeStandard.CreateRestTimeStandard();
+                r = TimeStandard.CreateRestTimeStandard(day);
             }
             return r;
         }
@@ -316,10 +316,10 @@ namespace K
 
                     if (b1.Month == month.Month)
                     {
-                        //TimeStandard s = new TimeStandard(TimeStandard.TypeEnum.Work);
-                        //s.Begin = b1;
-                        //s.End = e1;
-                        //s.DayOfWeek = b1.DayOfWeek;
+                        //TimeStandard _kResultEnumNameMap = new TimeStandard(TimeStandard.TypeEnum.Work);
+                        //_kResultEnumNameMap.Begin = b1;
+                        //_kResultEnumNameMap.End = e1;
+                        //_kResultEnumNameMap.DayOfWeek = b1.DayOfWeek;
                         TimeStandard s = TimeStandard.CreateWorkTimeStandard(b1, e1);
 
                         r.Add(s);

@@ -17,7 +17,7 @@ namespace K
         /// </summary>
         /// <param name="pr"></param>
         /// <returns></returns>
-        internal DataTable ToPersonResultDataTable(PersonResult pr)
+        static internal DataTable ToPersonResultDataTable(PersonResult pr)
         {
             DataTable t = CreatePersonResultDataTable();
             foreach (TimeResult tr in pr.TimeResults)
@@ -28,6 +28,8 @@ namespace K
                     pr.TblPerson.PersonName,
                     std.Begin,
                     std.End,
+
+                    GetTimeStandardTypeName(std.Type),
 
                     GetWeekString(std.DayOfWeek ),
                     //GetResultEnumString(tr.KResultEnum ),
@@ -43,9 +45,16 @@ namespace K
             return t;
         }
 
-        private string GetResultEnumString(KResultEnum kResultEnum)
+        /// <summary>
+        /// 
+        /// </summary>
+        static private string[] _timeStandardTypeNames = new string[] { "工", "休" };
+        static private string GetTimeStandardTypeName(TimeStandard.TypeEnum tp)
         {
-            object[] s = new object[]{
+            return _timeStandardTypeNames[(int)tp];
+        }
+
+        static private object[] _kResultEnumNameMap = new object[]{
                 KResultEnum.Normal,"正常",
                 KResultEnum.Later,"迟到",
                 KResultEnum.Early,"早退",
@@ -59,12 +68,15 @@ namespace K
                 KResultEnum.None,"未打卡",
             };
 
-            for (int i = 0; i < s.Length; i += 2)
+        static private string GetResultEnumString(KResultEnum kResultEnum)
+        {
+
+            for (int i = 0; i < _kResultEnumNameMap.Length; i += 2)
             {
-                KResultEnum k = (KResultEnum)s[i];
+                KResultEnum k = (KResultEnum)_kResultEnumNameMap[i];
                 if (k == kResultEnum)
                 {
-                    return (string)s[i + 1];
+                    return (string)_kResultEnumNameMap[i + 1];
                 }
             }
             return kResultEnum.ToString();
@@ -75,7 +87,7 @@ namespace K
         /// </summary>
         /// <param name="dayOfWeek"></param>
         /// <returns></returns>
-        private object GetWeekString(DayOfWeek dayOfWeek)
+        static private object GetWeekString(DayOfWeek dayOfWeek)
         {
             string[] weekNames = new string[] { 
                     "星期日", "星期一", "星期二", "星期三", 
@@ -85,7 +97,7 @@ namespace K
             return weekNames[(int)dayOfWeek];
         }
 
-        private DataTable CreatePersonResultDataTable()
+        static private DataTable CreatePersonResultDataTable()
         {
             DataTable t = new DataTable();
             DataColumnCollection s = t.Columns;
@@ -93,9 +105,10 @@ namespace K
             s.Add("PersonName", typeof(string));
             s.Add("StandardBegin", typeof(DateTime));
             s.Add("StandardEnd", typeof(DateTime));
-
+            s.Add("Type", typeof(string));
             s.Add("Week", typeof(string));
-            //s.Add("Result", typeof(string));
+            
+            //_kResultEnumNameMap.Add("Result", typeof(string));
             s.Add("PracticeBegin", typeof(DateTime));
             s.Add("PracticeEnd", typeof(DateTime));
 

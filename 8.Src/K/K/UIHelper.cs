@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,32 +10,39 @@ namespace K
 {
     internal class UIHelper
     {
-        internal UCGroupResults Create(GroupResultCollection gpResults)
+        static internal UCGroupResults Create(GroupResultCollection gpResults)
         {
             UCGroupResults r = new UCGroupResults();
 
             foreach (GroupResult gr in gpResults)
             {
                 UCPersonResults ucPrs = Create(gr);
-                TabPage page = new TabPage("name");
+                ucPrs.Dock = DockStyle.Fill;
+
+                string gpName = gr.TblGroup.GroupName;
+                TabPage page = new TabPage(gpName);
+
                 page.Controls.Add(ucPrs);
+
                 r.TabC.TabPages.Add(page);
             }
             return r;
         }
 
-        private UCPersonResults Create(GroupResult gr)
+        static private UCPersonResults Create(GroupResult gr)
         {
             UCPersonResults r = new UCPersonResults();
             foreach ( PersonResult pr in gr.PersonResults )
             {
-                TabPage page = new TabPage("p -name");
-                page.Controls.Add(
-                    new UCPersonResult(
-                        new ResultDataTableConverter().ToPersonResultDataTable(
-                            pr)
-                            )
-                            );
+                DataTable tbl = ResultDataTableConverter.ToPersonResultDataTable(pr);
+                UCPersonResult ucPr = new UCPersonResult(tbl);
+                ucPr.Dock = DockStyle.Fill;
+
+                string personName = pr.TblPerson.PersonName;
+
+                TabPage page = new TabPage(personName);
+                page.Controls.Add(ucPr);
+
                 r.TabC.TabPages.Add(page);
             }
 

@@ -68,7 +68,7 @@ namespace K.Forms
             KResultGenerator gen = new KResultGenerator(db, month);
             GroupResultCollection grs = gen.Generate();
 
-            Control c = new UIHelper().Create(grs);
+            Control c =  UIHelper.Create(grs);
 
             this.Controls.Add(c);
         }

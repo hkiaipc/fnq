@@ -29,41 +29,16 @@
         private void InitializeComponent()
         {
             this.tabGroupResults = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabGroupResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabGroupResults
             // 
-            this.tabGroupResults.Controls.Add(this.tabPage1);
-            this.tabGroupResults.Controls.Add(this.tabPage2);
             this.tabGroupResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabGroupResults.Location = new System.Drawing.Point(0, 0);
             this.tabGroupResults.Name = "tabGroupResults";
             this.tabGroupResults.SelectedIndex = 0;
             this.tabGroupResults.Size = new System.Drawing.Size(565, 413);
             this.tabGroupResults.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(557, 388);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 21);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 75);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // UCGroupResults
             // 
@@ -72,7 +47,6 @@
             this.Controls.Add(this.tabGroupResults);
             this.Name = "UCGroupResults";
             this.Size = new System.Drawing.Size(565, 413);
-            this.tabGroupResults.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -80,7 +54,5 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabGroupResults;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
     }
 }
