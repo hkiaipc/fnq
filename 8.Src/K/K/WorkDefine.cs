@@ -225,12 +225,8 @@ namespace K
                 WeekTimeDefine weekTD = (WeekTimeDefine)td;
                 if (weekTD.BeginWeek == day.DayOfWeek)
                 {
-                    //r = new TimeStandard(TimeStandard.TypeEnum.Work);
-                    //r.Begin = day + weekTD.Begin;
                     DateTime b = day + weekTD.Begin ;
-                    //r.End = day + weekTD.End + (weekTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
                     DateTime e = day + weekTD.End + (weekTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
-                    //r.DayOfWeek = day.DayOfWeek;
                     r = TimeStandard.CreateWorkTimeStandard(b, e);
 
                     break;
@@ -242,10 +238,6 @@ namespace K
             }
             if (r == null)
             {
-                //r = new TimeStandard(TimeStandard.TypeEnum.Rest);
-                //r.Begin = day;
-                //r.End = day;
-                //r.DayOfWeek = day.DayOfWeek;
                 r = TimeStandard.CreateRestTimeStandard(day);
             }
             return r;
@@ -305,28 +297,26 @@ namespace K
                 exitMonth -= 12;
             }
 
+            int n = 0;
+            DateTime b1 = DateTime.MinValue;
+            DateTime e1 = DateTime.MinValue;
             do
             {
                 foreach (TimeDefine td in this.TimeDefines)
                 {
                     UserTimeDefine userTD = (UserTimeDefine)td;
-                    DateTime b1 = dt + TimeSpan.FromDays ( userTD.BeginDayOffset) + userTD.Begin;
-                    DateTime e1 = dt + TimeSpan.FromDays(userTD.EndDayOffset) + userTD.End; 
-                        // + (userTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
+                    b1 = dt + TimeSpan.FromDays(n * this.DayOfCycle) + TimeSpan.FromDays(userTD.BeginDayOffset) + userTD.Begin;
+                    e1 = dt + TimeSpan.FromDays(n * this.DayOfCycle) + TimeSpan.FromDays(userTD.EndDayOffset) + userTD.End; 
 
                     if (b1.Month == month.Month)
                     {
-                        //TimeStandard _kResultEnumNameMap = new TimeStandard(TimeStandard.TypeEnum.Work);
-                        //_kResultEnumNameMap.Begin = b1;
-                        //_kResultEnumNameMap.End = e1;
-                        //_kResultEnumNameMap.DayOfWeek = b1.DayOfWeek;
                         TimeStandard s = TimeStandard.CreateWorkTimeStandard(b1, e1);
-
                         r.Add(s);
                     }
                 }
+                n++;
             }
-            while (dt.Month != exitMonth);
+            while (b1.Month != exitMonth);
             return r;
         }
     }

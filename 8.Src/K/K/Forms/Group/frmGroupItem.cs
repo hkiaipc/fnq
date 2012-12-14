@@ -76,6 +76,8 @@ namespace K.Forms
 
             db.tblGroup.InsertOnSubmit(g);
             db.SubmitChanges();
+
+            Associate(g, GetPersonListFromListView());
         }
 
 
@@ -91,6 +93,7 @@ namespace K.Forms
             group.tblWorkDefine = GetSelectedWorkDefine(db);
 
             db.SubmitChanges();
+            Associate(group, GetPersonListFromListView());
 
         }
 
@@ -179,8 +182,41 @@ namespace K.Forms
             if (f.ShowDialog() == DialogResult.OK)
             {
                 List<tblPerson> list = f.SelectedPersons;
-                Associate(this.TblGroup, list);
+                AddPersonListToListView(list);
+
+                //Associate(this.TblGroup, list);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="persons"></param>
+        private void AddPersonListToListView(List<tblPerson> persons)
+        {
+            foreach (tblPerson p in persons)
+            {
+                if (ExistInListView(p))
+                {
+                    continue;
+                }
+
+                ListViewItem lvi = CreateLVI(p);
+                this.listView1.Items.Add(lvi);
+            }
+        }
+
+        private bool ExistInListView(tblPerson  p)
+        {
+            foreach (ListViewItem lvi in this.listView1.Items)
+            {
+                tblPerson person = lvi.Tag as tblPerson;
+                if (person.PersonID == p.PersonID)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -190,6 +226,8 @@ namespace K.Forms
         /// <param name="list"></param>
         private void Associate(tblGroup tblGroup, List<tblPerson> list)
         {
+            Debug.Assert(tblGroup != null);
+
             DB db = DBFactory.GetDB();
 
             var r = from q in db.tblGroup
@@ -232,6 +270,17 @@ namespace K.Forms
         {
             List<tblPerson> list = GetSelectedPersonList();
             UnAssociate(list);
+
+            foreach (tblPerson person in list)
+            {
+                foreach (ListViewItem lvi in this.listView1.Items)
+                {
+                    if (lvi.Tag == person)
+                    {
+                        lvi.Remove();
+                    }
+                }
+            }
         }
 
         private List<tblPerson> GetSelectedPersonList()
@@ -247,6 +296,19 @@ namespace K.Forms
                 }
             }
             return list;
+        }
+
+        private List<tblPerson> GetPersonListFromListView()
+        {
+            List<tblPerson> list = new List<tblPerson>();
+            foreach (ListViewItem lvi in this.listView1.Items)
+            {
+                tblPerson person = lvi.Tag as tblPerson;
+                Debug.Assert(person != null);
+                list.Add(person);
+            }
+            return list;
+
         }
     }
 }

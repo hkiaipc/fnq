@@ -7,6 +7,23 @@ using Xdgk.Common;
 
 namespace K
 {
+    internal class ResultDataTableColumnNames
+    {
+        internal const string
+            PersonName = "人员",
+            StandardBegin = "上班时间",
+            StandardEnd = "下班时间",
+
+            Type = "工休",
+            Week = "星期",
+            PracticeBegin = "上班打卡",
+
+            PracticeEnd = "下班打卡",
+            StartWorkResult = "上班",
+            StopWorkResult = "下班",
+
+            Remark = "备注";
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -26,23 +43,44 @@ namespace K
 
                 object[] values = new object[] { 
                     pr.TblPerson.PersonName,
-                    std.Begin,
-                    std.End,
+                    DateTimeToString(std.Begin),
+                    DateTimeToString(std.End),
 
                     GetTimeStandardTypeName(std.Type),
 
                     GetWeekString(std.DayOfWeek ),
                     //GetResultEnumString(tr.KResultEnum ),
-                    tr.PracticeBegin,
-                    tr.PracticeEnd,
+                    DateTimeToString(tr.PracticeBegin),
+                    DateTimeToString(tr.PracticeEnd),
 
-                    GetResultEnumString(tr.StartWorkResult),
-                    GetResultEnumString(tr.StopWorkResult),
+                    GetResultEnumString(std.Type, tr.StartWorkResult),
+                    GetResultEnumString(std.Type, tr.StopWorkResult),
                     tr.Remark 
                 };
                 t.Rows.Add(values);
             }
             return t;
+        }
+
+        static private string DateTimeToString(DateTime dt)
+        {
+            if (dt == DateTime.MinValue)
+            {
+                return string.Empty;
+            }
+            return dt.ToString();
+        }
+
+        static private string DateTimeToString(TimeStandard.TypeEnum type, DateTime dt)
+        {
+            if (type == TimeStandard.TypeEnum.Work)
+            {
+                return dt.ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         /// <summary>
@@ -68,18 +106,29 @@ namespace K
                 KResultEnum.None,"未打卡",
             };
 
-        static private string GetResultEnumString(KResultEnum kResultEnum)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="kResultEnum"></param>
+        /// <returns></returns>
+        static private string GetResultEnumString(TimeStandard.TypeEnum type, KResultEnum kResultEnum)
         {
-
-            for (int i = 0; i < _kResultEnumNameMap.Length; i += 2)
+            if (type == TimeStandard.TypeEnum.Work)
             {
-                KResultEnum k = (KResultEnum)_kResultEnumNameMap[i];
-                if (k == kResultEnum)
+                for (int i = 0; i < _kResultEnumNameMap.Length; i += 2)
                 {
-                    return (string)_kResultEnumNameMap[i + 1];
+                    KResultEnum k = (KResultEnum)_kResultEnumNameMap[i];
+                    if (k == kResultEnum)
+                    {
+                        return (string)_kResultEnumNameMap[i + 1];
+                    }
                 }
+                return kResultEnum.ToString();
             }
-            return kResultEnum.ToString();
+            else
+            {
+                return string.Empty;
+            }
         }
 
         /// <summary>
@@ -102,19 +151,18 @@ namespace K
             DataTable t = new DataTable();
             DataColumnCollection s = t.Columns;
 
-            s.Add("PersonName", typeof(string));
-            s.Add("StandardBegin", typeof(DateTime));
-            s.Add("StandardEnd", typeof(DateTime));
-            s.Add("Type", typeof(string));
-            s.Add("Week", typeof(string));
+            s.Add(ResultDataTableColumnNames.PersonName, typeof(string));
+            s.Add(ResultDataTableColumnNames.StandardBegin, typeof(string));
+            s.Add(ResultDataTableColumnNames.StandardEnd, typeof(string));
+            s.Add(ResultDataTableColumnNames.Type, typeof(string));
+            s.Add(ResultDataTableColumnNames.Week, typeof(string));
             
-            //_kResultEnumNameMap.Add("Result", typeof(string));
-            s.Add("PracticeBegin", typeof(DateTime));
-            s.Add("PracticeEnd", typeof(DateTime));
+            s.Add(ResultDataTableColumnNames.PracticeBegin, typeof(string));
+            s.Add(ResultDataTableColumnNames.PracticeEnd, typeof(string));
 
-            s.Add("StartWorkResult", typeof(string));
-            s.Add("StopWorkResult", typeof(string));
-            s.Add("Remark", typeof(string));
+            s.Add(ResultDataTableColumnNames.StartWorkResult, typeof(string));
+            s.Add(ResultDataTableColumnNames.StopWorkResult, typeof(string));
+            s.Add(ResultDataTableColumnNames.Remark, typeof(string));
 
             return t;
         }

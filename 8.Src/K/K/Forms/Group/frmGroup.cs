@@ -65,6 +65,11 @@ namespace K.Forms
             tblGroup gp = GetSelectedGroup();
             if (gp != null)
             {
+                if (gp.tblPerson.Count > 0)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure("该部门包含人员, 不能删除");
+                    return;
+                }
                 if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
                 {
                     DB db = DBFactory.GetDB();

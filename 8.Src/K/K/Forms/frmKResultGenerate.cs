@@ -59,6 +59,10 @@ namespace K.Forms
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            // clear panel
+            //
+            this.panel1.Controls.Clear();
+
             DateTime month = new DateTime(
                 this.dtpMonth.Value.Year,
                 this.dtpMonth.Value.Month,
@@ -69,8 +73,14 @@ namespace K.Forms
             GroupResultCollection grs = gen.Generate();
 
             Control c =  UIHelper.Create(grs);
+            c.Dock = DockStyle.Fill;
 
-            this.Controls.Add(c);
+            this.panel1.Controls.Add(c);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

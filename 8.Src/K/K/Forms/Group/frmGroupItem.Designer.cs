@@ -40,12 +40,12 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(124, 199);
+            this.okButton.Location = new System.Drawing.Point(124, 225);
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(202, 199);
+            this.cancelButton.Location = new System.Drawing.Point(202, 225);
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // lblName
@@ -65,15 +65,15 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Location = new System.Drawing.Point(12, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 22;
-            this.label1.Text = "成员:";
+            this.label1.Text = "人员:";
             // 
             // btnAddPerson
             // 
-            this.btnAddPerson.Location = new System.Drawing.Point(280, 33);
+            this.btnAddPerson.Location = new System.Drawing.Point(280, 59);
             this.btnAddPerson.Name = "btnAddPerson";
             this.btnAddPerson.Size = new System.Drawing.Size(75, 23);
             this.btnAddPerson.TabIndex = 23;
@@ -83,7 +83,7 @@
             // 
             // btnDeletePerson
             // 
-            this.btnDeletePerson.Location = new System.Drawing.Point(280, 62);
+            this.btnDeletePerson.Location = new System.Drawing.Point(280, 88);
             this.btnDeletePerson.Name = "btnDeletePerson";
             this.btnDeletePerson.Size = new System.Drawing.Size(75, 23);
             this.btnDeletePerson.TabIndex = 24;
@@ -94,7 +94,7 @@
             // listView1
             // 
             this.listView1.CheckBoxes = true;
-            this.listView1.Location = new System.Drawing.Point(124, 33);
+            this.listView1.Location = new System.Drawing.Point(124, 59);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(150, 160);
             this.listView1.TabIndex = 25;
@@ -105,14 +105,14 @@
             // 
             this.cmbWorkDefine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWorkDefine.FormattingEnabled = true;
-            this.cmbWorkDefine.Location = new System.Drawing.Point(124, 252);
+            this.cmbWorkDefine.Location = new System.Drawing.Point(124, 33);
             this.cmbWorkDefine.Name = "cmbWorkDefine";
             this.cmbWorkDefine.Size = new System.Drawing.Size(150, 20);
             this.cmbWorkDefine.TabIndex = 26;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 255);
+            this.label2.Location = new System.Drawing.Point(12, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 23);
             this.label2.TabIndex = 27;
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 339);
+            this.ClientSize = new System.Drawing.Size(367, 259);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbWorkDefine);
             this.Controls.Add(this.listView1);
@@ -132,7 +132,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtGroupName);
             this.Name = "frmGroupItem";
-            this.Text = "frmGroupItem";
+            this.Text = "部门";
             this.Load += new System.EventHandler(this.frmGroupItem_Load);
             this.Controls.SetChildIndex(this.okButton, 0);
             this.Controls.SetChildIndex(this.txtGroupName, 0);

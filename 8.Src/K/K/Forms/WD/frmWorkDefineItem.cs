@@ -208,7 +208,16 @@ namespace K.Forms.WD
                 return;
             }
 
-            WorkDefine wd = CreateWorkDefine();
+            WorkDefine wd = null;
+            try
+            {
+                wd = CreateWorkDefine();
+            }
+            catch (KConfigException kex)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(kex.Message);
+                return;
+            }
 
             if (wd.TimeDefines.Count == 0)
             {
@@ -216,21 +225,13 @@ namespace K.Forms.WD
                 return;
             }
 
-            try
+            if (IsAdd)
             {
-                if (IsAdd)
-                {
-                    Add(wd);
-                }
-                else
-                {
-                    Edit(wd);
-                }
+                Add(wd);
             }
-            catch (KConfigException kex)
+            else
             {
-                NUnit.UiKit.UserMessage.DisplayFailure(kex.Message);
-                return;
+                Edit(wd);
             }
 
             this.DialogResult = DialogResult.OK;
