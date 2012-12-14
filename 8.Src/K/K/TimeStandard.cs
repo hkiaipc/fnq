@@ -42,10 +42,8 @@ namespace K
         private TimeStandard(TypeEnum typeEnum, DateTime begin, DateTime end)
         {
             Debug.Assert(end > begin);
-            //Debug.Assert(dayOfWeek == begin.DayOfWeek);
 
             this._typeEnum = typeEnum;
-            //this._dayOfWeek = dayOfWeek;
             this._begin = begin;
             this._end = end;
         }
@@ -54,25 +52,8 @@ namespace K
         internal TypeEnum Type
         {
             get { return _typeEnum; }
-            //set { _typeEnum = value; }
         } private TypeEnum _typeEnum;
 
-        //#region Date
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //public DateTime Date
-        //{
-        //    get
-        //    {
-        //        return _date;
-        //    }
-        //    set
-        //    {
-        //        _date = value;
-        //    }
-        //} private DateTime _date;
-        //#endregion //Date
 
         #region DayOfWeek
         /// <summary>
@@ -82,14 +63,9 @@ namespace K
         {
             get
             {
-                //return _dayOfWeek;
                 return _begin.DayOfWeek;
             }
-            //set
-            //{
-            //    _dayOfWeek = value;
-            //}
-        } //private DayOfWeek _dayOfWeek;
+        } 
         #endregion //DayOfWeek
 
         #region Begin
@@ -102,10 +78,6 @@ namespace K
             {
                 return _begin;
             }
-            //set
-            //{
-            //    _begin = value;
-            //}
         } private DateTime _begin;
         #endregion //Begin
 
@@ -119,10 +91,6 @@ namespace K
             {
                 return _end;
             }
-            //set
-            //{
-            //    _end = value;
-            //}
         } private DateTime _end;
         #endregion //End
 
@@ -133,6 +101,11 @@ namespace K
         /// <returns></returns>
         public DateTimeRange GetPunchInDateTimeRange(PunchInDateTimeRangeEnum type)
         {
+            if (this.Type == TypeEnum.Rest)
+            {
+                return DateTimeRange.RestDateTimeRange;
+            }
+
             DateTimeRange range = null;
             if (_dict.ContainsKey(type))
             {
@@ -141,6 +114,7 @@ namespace K
 
             if (range == null)
             {
+
                 switch (type)
                 {
                     case PunchInDateTimeRangeEnum.StartWorkNormal:
@@ -162,7 +136,6 @@ namespace K
                     default:
                         throw new InvalidOperationException(type.ToString());
                 }
-                //range = new DateTimeRange(
                 _dict[type] = range;
             }
             return range;
@@ -199,7 +172,7 @@ namespace K
                 {
                     // TODO: leave type
                     //
-                    r.KResultEnum = KResultEnum.Leave;
+                    //r.KResultEnum = KResultEnum.Leave;
                     r.Remark = leave.LeaveType.ToString() + leave.LeaveRemark;
                     break;
                 }

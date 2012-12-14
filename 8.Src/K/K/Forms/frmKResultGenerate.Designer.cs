@@ -40,7 +40,7 @@
             // cmbGroup
             // 
             this.cmbGroup.FormattingEnabled = true;
-            this.cmbGroup.Location = new System.Drawing.Point(118, 24);
+            this.cmbGroup.Location = new System.Drawing.Point(521, 351);
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.Size = new System.Drawing.Size(121, 20);
             this.cmbGroup.TabIndex = 0;
@@ -49,14 +49,14 @@
             // cmbPerson
             // 
             this.cmbPerson.FormattingEnabled = true;
-            this.cmbPerson.Location = new System.Drawing.Point(118, 57);
+            this.cmbPerson.Location = new System.Drawing.Point(521, 384);
             this.cmbPerson.Name = "cmbPerson";
             this.cmbPerson.Size = new System.Drawing.Size(121, 20);
             this.cmbPerson.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 27);
+            this.label1.Location = new System.Drawing.Point(415, 354);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 23;
@@ -64,7 +64,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 60);
+            this.label2.Location = new System.Drawing.Point(415, 387);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 23);
             this.label2.TabIndex = 24;
@@ -74,7 +74,7 @@
             // 
             this.dtpMonth.CustomFormat = "yyyy-MM";
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(118, 98);
+            this.dtpMonth.Location = new System.Drawing.Point(521, 425);
             this.dtpMonth.Name = "dtpMonth";
             this.dtpMonth.ShowUpDown = true;
             this.dtpMonth.Size = new System.Drawing.Size(121, 21);
@@ -82,7 +82,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(12, 102);
+            this.label3.Location = new System.Drawing.Point(415, 429);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 26;
@@ -90,7 +90,7 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(333, 24);
+            this.btnGenerate.Location = new System.Drawing.Point(550, 322);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 27;

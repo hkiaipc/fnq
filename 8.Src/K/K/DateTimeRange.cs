@@ -13,6 +13,10 @@ namespace K
 {
     public class DateTimeRange
     {
+        static public readonly DateTimeRange RestDateTimeRange = new DateTimeRange(
+            DateTime.MinValue, 
+            DateTime.MinValue + TimeSpan.FromDays(1d));
+
         public DateTimeRange(DateTime begin, DateTime end)
         {
             if (begin > end)
@@ -23,7 +27,7 @@ namespace K
             this._end = end;
         }
 
-#region Begin
+        #region Begin
         /// <summary>
         /// 
         /// </summary>
@@ -33,14 +37,10 @@ namespace K
             {
                 return _begin;
             }
-            //set
-            //{
-            //    _begin = value;
-            //}
         } private DateTime _begin;
-#endregion //Begin
+        #endregion //Begin
 
-#region End
+        #region End
         /// <summary>
         /// 
         /// </summary>
@@ -50,12 +50,8 @@ namespace K
             {
                 return _end;
             }
-            //set
-            //{
-            //    _end = value;
-            //}
         } private DateTime _end;
-#endregion //End
+        #endregion //End
 
         /// <summary>
         /// 

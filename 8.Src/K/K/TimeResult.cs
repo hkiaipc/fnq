@@ -13,7 +13,7 @@ namespace K
 {
     internal class TimeResult
     {
-#region TimeStandard
+        #region TimeStandard
         /// <summary>
         /// 
         /// </summary>
@@ -28,9 +28,9 @@ namespace K
                 _timeStandard = value;
             }
         } private TimeStandard _timeStandard;
-#endregion //TimeStandard
+        #endregion //TimeStandard
 
-#region StartWorkResult
+        #region StartWorkResult
         /// <summary>
         /// 
         /// </summary>
@@ -45,9 +45,9 @@ namespace K
                 _startWorkResult = value;
             }
         } private KResultEnum _startWorkResult;
-#endregion //StartWorkResult
+        #endregion //StartWorkResult
 
-#region StopWorkResult
+        #region StopWorkResult
         /// <summary>
         /// 
         /// </summary>
@@ -62,26 +62,26 @@ namespace K
                 _stopWorkResult = value;
             }
         } private KResultEnum _stopWorkResult;
-#endregion //StopWorkResult
+        #endregion //StopWorkResult
 
-#region KQResultEnum
-        /// <summary>
-        /// 
-        /// </summary>
-        public KResultEnum KResultEnum
-        {
-            get
-            {
-                return _kResultEnum;
-            }
-            set
-            {
-                _kResultEnum = value;
-            }
-        } private KResultEnum _kResultEnum;
-#endregion //KQResultEnum
+        //#region KQResultEnum
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public KResultEnum KResultEnum
+        //{
+        //    get
+        //    {
+        //        return _kResultEnum;
+        //    }
+        //    set
+        //    {
+        //        _kResultEnum = value;
+        //    }
+        //} private KResultEnum _kResultEnum;
+        //#endregion //KQResultEnum
 
-#region PracticeBegin
+        #region PracticeBegin
         /// <summary>
         /// 
         /// </summary>
@@ -96,9 +96,9 @@ namespace K
                 _practiceBegin = value;
             }
         } private DateTime _practiceBegin;
-#endregion //PracticeBegin
+        #endregion //PracticeBegin
 
-#region PracticeEnd
+        #region PracticeEnd
         /// <summary>
         /// 
         /// </summary>
@@ -113,9 +113,9 @@ namespace K
                 _practiceEnd = value;
             }
         } private DateTime _practiceEnd;
-#endregion //PracticeEnd
+        #endregion //PracticeEnd
 
-#region Remark
+        #region Remark
         /// <summary>
         /// 
         /// </summary>
@@ -134,7 +134,7 @@ namespace K
                 _remark = value;
             }
         } private string _remark;
-#endregion //Remark
+        #endregion //Remark
     }
 
 }

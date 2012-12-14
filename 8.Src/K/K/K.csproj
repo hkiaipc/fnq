@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog, Version=1.0.0.505, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\GlobalAssembly\NLog\.NET Framework 2.0\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\GlobalAssembly\NUnit\nunit.framework.dll</HintPath>
@@ -204,6 +208,18 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCGroupResults.resx">
+      <DependentUpon>UCGroupResults.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCPersonResult.resx">
+      <DependentUpon>UCPersonResult.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCPersonResults.resx">
+      <DependentUpon>UCPersonResults.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC\UCTimeDefine.resx">
       <DependentUpon>UCTimeDefine.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -212,6 +228,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -222,6 +241,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PunchInDateTimeRangeEnum.cs" />
+    <Compile Include="ResultDataTableConverter.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -235,12 +255,31 @@
     <Compile Include="TimeResultCollection.cs" />
     <Compile Include="TimeStandard.cs" />
     <Compile Include="TimeStandardCollection.cs" />
+    <Compile Include="UC\UCGroupResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCGroupResults.Designer.cs">
+      <DependentUpon>UCGroupResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCPersonResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCPersonResult.Designer.cs">
+      <DependentUpon>UCPersonResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCPersonResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCPersonResults.Designer.cs">
+      <DependentUpon>UCPersonResults.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\UCTimeDefine.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UC\UCTimeDefine.Designer.cs">
       <DependentUpon>UCTimeDefine.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIHelper.cs" />
     <Compile Include="WorkDefine.cs" />
     <Compile Include="WorkDefineCollection.cs" />
   </ItemGroup>

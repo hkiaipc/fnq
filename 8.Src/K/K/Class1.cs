@@ -237,13 +237,16 @@ namespace K
         Normal = 0,
         Later = 1,
         Early = 2,
+
         LaterEarly = 3,
         Lose = 4,
         Leave = 5,
+
         Out = 6,
         Rest = 7,
         None = 999,
     }
+
 
     //class KResult
     //{
