@@ -54,5 +54,38 @@ namespace K.Test
             Assert.IsFalse(b);
         }
     }
+
+
+    [TestFixture]
+    public class TestDateTimeHelper
+    {
+        [Test]
+        public void TestNextMonth()
+        {
+            DateTime month = new DateTime(2012, 11, 3);
+            DateTime r = DateTimeHelper.NextMonth(month);
+            Console.WriteLine(r);
+            Assert.AreEqual(2012, r.Year);
+            Assert.AreEqual(12, r.Month);
+            Assert.AreEqual(1, r.Day);
+            Assert.AreEqual(0, r.Hour);
+            Assert.AreEqual(0, r.Minute);
+            Assert.AreEqual(0, r.Second);
+
+
+            month = new DateTime(2012, 12, 4);
+            r = DateTimeHelper.NextMonth(month);
+            Console.WriteLine(r);
+
+            Assert.AreEqual(2013, r.Year);
+            Assert.AreEqual(1, r.Month);
+            Assert.AreEqual(1, r.Day);
+            Assert.AreEqual(0, r.Hour);
+            Assert.AreEqual(0, r.Minute);
+            Assert.AreEqual(0, r.Second);
+
+
+        }
+    }
 }
 #endif

@@ -233,7 +233,12 @@ namespace K
         /// <returns></returns>
         public bool IsInTime(DateTime dt)
         {
-            return dt >= this.Begin && dt <= this.End;
+            return dt >= this.Begin && dt < this.End;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1} ~ {2}, {3}", this.DayOfWeek, this.Begin, this.End, this.Type);
         }
     }
 

@@ -260,6 +260,10 @@ namespace K
         }
     }
 
+    
+    /// <summary>
+    /// 
+    /// </summary>
     [Serializable]
     public class UserWorkDefine : WorkDefine
     {
@@ -281,7 +285,12 @@ namespace K
         } private DateTime _startDateTime = DateTime.Parse("2000-01-01");
         #endregion //StartDateTime
 
-
+        #region CreateTimeStandards
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
         internal override TimeStandardCollection CreateTimeStandards(DateTime month)
         {
             TimeStandardCollection r = new TimeStandardCollection();
@@ -306,7 +315,7 @@ namespace K
                 {
                     UserTimeDefine userTD = (UserTimeDefine)td;
                     b1 = dt + TimeSpan.FromDays(n * this.DayOfCycle) + TimeSpan.FromDays(userTD.BeginDayOffset) + userTD.Begin;
-                    e1 = dt + TimeSpan.FromDays(n * this.DayOfCycle) + TimeSpan.FromDays(userTD.EndDayOffset) + userTD.End; 
+                    e1 = dt + TimeSpan.FromDays(n * this.DayOfCycle) + TimeSpan.FromDays(userTD.EndDayOffset) + userTD.End;
 
                     if (b1.Month == month.Month)
                     {
@@ -317,7 +326,85 @@ namespace K
                 n++;
             }
             while (b1.Month != exitMonth);
+            TimeStandardCollection rests = CreateMonthTimeStandarsWithRest(month);
+            r = Merge(rests, r);
             return r;
+        }
+        #endregion //CreateTimeStandards
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        private TimeStandardCollection CreateMonthTimeStandarsWithRest(DateTime month)
+        {
+            TimeStandardCollection r = new TimeStandardCollection();
+            DateTime b = new DateTime(month.Year, month.Month, 1);
+            DateTime e = CreateNextMonth(month);
+
+            while (b < e)
+            {
+                TimeStandard s = TimeStandard.CreateRestTimeStandard(b);
+                r.Add(s);
+                b += TimeSpan.FromDays(1d);
+            }
+            return r;
+        }
+
+        private TimeStandardCollection Merge(TimeStandardCollection rests, TimeStandardCollection works)
+        {
+            TimeStandardCollection r = new TimeStandardCollection();
+            foreach (TimeStandard iRest in rests)
+            {
+                bool added = false;
+                //if (item.begin
+                foreach (TimeStandard iWork in works)
+                {
+                    if (iRest.IsInTime(iWork.Begin))
+                    {
+                        r.Add(iWork);
+                        added = true;
+                    }
+                }
+                if (!added)
+                {
+                    r.Add(iRest);
+                }
+            }
+            return r;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        private DateTime CreateNextMonth(DateTime month)
+        {
+            return DateTimeHelper.NextMonth(month);
+        }
+    }
+
+    public class DateTimeHelper
+    {
+        private DateTimeHelper ()
+        {
+        }
+
+        static public DateTime NextMonth(DateTime month)
+        {
+            int y = month.Year;
+            int m = month.Month + 1;
+            if (m > 12)
+            {
+                m -= 12;
+                y += 1;
+            }
+            DateTime r = new DateTime(y, m, 1);
+
+            return r;
+
         }
     }
 
