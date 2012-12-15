@@ -20,6 +20,17 @@ namespace K.Forms
             ByPerson,
         }
 
+        public frmTMDataQuery(string personName, DateTime b, DateTime e)
+            : this()
+        {
+            this.cmbQueryStyle.SelectedIndex = 1;
+            this.cmbPerson.Text = personName;
+            this.dtpBegin.Value = b;
+            this.dtpEnd.Value = e;
+
+            Query();
+        }
+
         public frmTMDataQuery()
         {
             InitializeComponent();

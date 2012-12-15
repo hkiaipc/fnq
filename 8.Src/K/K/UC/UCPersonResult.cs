@@ -1,4 +1,5 @@
 ﻿using System;
+using K.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -21,9 +22,25 @@ namespace K.UC
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex > 0)
+            {
+                DataRowView vrow = this.dataGridView1.Rows[e.RowIndex].DataBoundItem as DataRowView ;
+                DataRow row = vrow.Row;// as DataRow;
 
+                string personName = row[ResultDataTableColumnNames.PersonName].ToString();
+                string sb = row[ResultDataTableColumnNames.StandardBegin].ToString();
+
+                DateTime b = DateTime.Parse(sb);
+
+                b = new DateTime(b.Year, b.Month, 1);
+                DateTime end = DateTimeHelper.NextMonth(b);
+
+                frmTMDataQuery f = new frmTMDataQuery(personName, b, end);
+                f.ShowDialog();
+            }
         }
+
     }
 }
