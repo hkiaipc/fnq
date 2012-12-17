@@ -26,21 +26,10 @@ namespace KDB.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=KQ;User ID=sa;Password=sa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=fngrdb2012;User ID=sa;Password=sa")]
         public string KQConnectionString {
             get {
                 return ((string)(this["KQConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=KQ;Persist Security Info=True;User ID=sa;Password=s" +
-            "a")]
-        public string KQConnectionString1 {
-            get {
-                return ((string)(this["KQConnectionString1"]));
             }
         }
     }

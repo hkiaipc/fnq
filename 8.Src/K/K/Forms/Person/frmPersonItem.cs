@@ -45,19 +45,50 @@ namespace K.Forms
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
+            DB db = DBFactory.GetDB();
+            if (!CheckInput(db))
+            {
+                return;
+            }
+
             if (IsAdd())
             {
-                Add();
+                Add(db);
             }
             else
             {
-                Edit();
+                Edit(db);
             }
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        tblTM GetSelectedTm(DB db)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckInput(DB db)
+        {
+            if ( this.txtPersonName.Text.Trim().Length == 0 )
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("名称不能为空");
+                return false;
+            }
+
+            if (GetSelectedTm(db) == null)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("请选择TM卡");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        private tblTM GetSelectedTm(DB db)
         {
             if (this.txtTM.Text.Trim().Length == 0)
             {
@@ -76,9 +107,9 @@ namespace K.Forms
         /// <summary>
         /// 
         /// </summary>
-        private void Edit()
+        private void Edit(DB db)
         {
-            DB db = DBFactory.GetDB();
+            //DB db = DBFactory.GetDB();
 
             var r = from q in db.tblPerson
                     where q.PersonID == this.TblPerson.PersonID
@@ -95,9 +126,9 @@ namespace K.Forms
         /// <summary>
         /// 
         /// </summary>
-        private void Add()
+        private void Add(DB db)
         {
-            DB db = DBFactory.GetDB();
+            //DB db = DBFactory.GetDB();
 
             tblPerson p = new tblPerson();
             p.PersonName = this.txtPersonName.Text;

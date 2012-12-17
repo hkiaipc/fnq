@@ -55,12 +55,12 @@ namespace K.Forms
         {
             if (this.txtGroupName.Text.Trim().Length == 0)
             {
-                NUnit.UiKit.UserMessage.DisplayFailure("TODO: group name null");
+                NUnit.UiKit.UserMessage.DisplayFailure("部门名称不能为空");
                 return false;
             }
             if (this.cmbWorkDefine.SelectedItem == null)
             {
-                NUnit.UiKit.UserMessage.DisplayFailure("TODO: must select workdefine");
+                NUnit.UiKit.UserMessage.DisplayFailure("必须选择班次");
                 return false;
             }
             return true;

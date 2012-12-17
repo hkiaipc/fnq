@@ -37,12 +37,12 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(186, 111);
+            this.okButton.Location = new System.Drawing.Point(186, 95);
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(274, 111);
+            this.cancelButton.Location = new System.Drawing.Point(274, 95);
             // 
             // lblName
             // 
@@ -65,12 +65,14 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Tm卡:";
+            this.label1.Text = "TM卡:";
             // 
             // txtTM
             // 
+            this.txtTM.BackColor = System.Drawing.Color.White;
             this.txtTM.Location = new System.Drawing.Point(118, 33);
             this.txtTM.Name = "txtTM";
+            this.txtTM.ReadOnly = true;
             this.txtTM.Size = new System.Drawing.Size(150, 21);
             this.txtTM.TabIndex = 24;
             // 
@@ -88,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 147);
+            this.ClientSize = new System.Drawing.Size(358, 129);
             this.Controls.Add(this.btnTmSelect);
             this.Controls.Add(this.txtTM);
             this.Controls.Add(this.label1);

@@ -52,8 +52,13 @@ namespace K.Forms
             DataTable r = CreateDataTable();
             foreach (var item in list)
             {
+                string groupName = string.Empty;
+                if (item.tblGroup != null)
+                {
+                    groupName = item.tblGroup.GroupName;
+                }
                 object[] values = new object[] {
-                    item.PersonName, item.tblTM.TmSN , item.tblGroup.GroupName , item
+                    item.PersonName, item.tblTM.TmSN , groupName , item
                 };
                 r.Rows.Add(values);
             }

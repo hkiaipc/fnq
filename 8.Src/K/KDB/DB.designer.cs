@@ -63,7 +63,7 @@ namespace KDB
     #endregion
 		
 		public DB() : 
-				base(global::KDB.Properties.Settings.Default.KQConnectionString1, mappingSource)
+				base(global::KDB.Properties.Settings.Default.KQConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

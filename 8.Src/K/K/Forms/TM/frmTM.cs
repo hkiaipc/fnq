@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using KDB;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,11 +73,16 @@ namespace K.Forms.TM
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmTMItem f = new frmTMItem();
-            f.TblTM = GetSelectedTM();
-            if (f.ShowDialog() == DialogResult.OK)
+            if (this.dataGridView1.CurrentRow != null)
             {
-                Fill();
+                Debug.Assert(GetSelectedTM() != null);
+
+                frmTMItem f = new frmTMItem();
+                f.TblTM = GetSelectedTM();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Fill();
+                }
             }
         }
 
@@ -86,6 +92,10 @@ namespace K.Forms.TM
         /// <returns></returns>
         private tblTM GetSelectedTM()
         {
+            if (this.dataGridView1.CurrentRow == null)
+            {
+                return null;
+            }
             DataRowView v = this.dataGridView1.CurrentRow.DataBoundItem as DataRowView;
             tblTM tm = v["tblTM"] as tblTM;
             return tm;
@@ -103,12 +113,12 @@ namespace K.Forms.TM
                 return;
             }
 
-                tblTM tm = GetSelectedTM();
-                if (tm.tblPerson.Count > 0)
-                {
-                    NUnit.UiKit.UserMessage.DisplayFailure("TM卡已经分配给人员, 不能删除");
-                    return;
-                }
+            tblTM tm = GetSelectedTM();
+            if (tm.tblPerson.Count > 0)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("TM卡已经分配给人员, 不能删除");
+                return;
+            }
 
             if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
             {

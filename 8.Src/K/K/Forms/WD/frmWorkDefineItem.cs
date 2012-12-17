@@ -221,7 +221,7 @@ namespace K.Forms.WD
 
             if (wd.TimeDefines.Count == 0)
             {
-                NUnit.UiKit.UserMessage.DisplayFailure("TODO: time defines count == 0");
+                NUnit.UiKit.UserMessage.DisplayFailure("详细内容不能为空");
                 return;
             }
 
