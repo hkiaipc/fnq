@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using K.Forms;
 using K.Forms.TM;
@@ -18,40 +13,72 @@ namespace K
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="formType"></param>
+        /// <returns></returns>
+        private Form ActivateMdiForm(Type formType)
+        {
+            Form r = null;
+            foreach ( Form item in this.MdiChildren )
+            {
+                if (item.GetType() == formType)
+                {
+                    r = item;
+                    break;
+                }
+            }
+
+            if (r == null)
+            {
+                r = (Form)Activator.CreateInstance(formType);
+                r.MdiParent = this;
+            }
+
+            r.Show();
+            r.Activate();
+            return r;
+        }
+
         private void mnuGroup_Click(object sender, EventArgs e)
         {
-            Forms.frmGroup f = new K.Forms.frmGroup();
-            f.ShowDialog();
+            ActivateMdiForm(typeof(frmGroup));
         }
 
         private void mnuPerson_Click(object sender, EventArgs e)
         {
-            frmPerson f = new frmPerson();
-            f.ShowDialog();
+            ActivateMdiForm(typeof(frmPerson));
         }
 
         private void mnuTM_Click(object sender, EventArgs e)
         {
-            frmTM f = new frmTM();
-            f.ShowDialog();
+            ActivateMdiForm(typeof(frmTM));
         }
 
         private void mnuWorkDefine_Click(object sender, EventArgs e)
         {
-            frmWorkDefine f = new frmWorkDefine();
-            f.ShowDialog();
+            ActivateMdiForm(typeof(frmWorkDefine));
         }
 
         private void mnuKResult_Click(object sender, EventArgs e)
         {
-            frmKResultGenerate f = new frmKResultGenerate();
-            f.ShowDialog();
+            ActivateMdiForm(typeof(frmKResultGenerate));
         }
 
         private void mnuQuery_Click(object sender, EventArgs e)
         {
-            frmTMDataQuery f = new frmTMDataQuery();
-            f.ShowDialog();
+            ActivateMdiForm(typeof(frmTMDataQuery));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
