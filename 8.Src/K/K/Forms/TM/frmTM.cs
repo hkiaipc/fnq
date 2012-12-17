@@ -15,6 +15,7 @@ namespace K.Forms.TM
         public frmTM()
         {
             InitializeComponent();
+            this.dataGridView1.AutoGenerateColumns = false;
         }
 
         private void frmTM_Load(object sender, EventArgs e)
@@ -32,7 +33,32 @@ namespace K.Forms.TM
             var r = from q in db.tblTM
                     select q;
 
-            this.dataGridView1.DataSource = r;
+            this.dataGridView1.DataSource = ConvertToDataTable(r.ToList ());
+        }
+
+        private object ConvertToDataTable(List<tblTM> list)
+        {
+            DataTable t = new DataTable();
+            t.Columns.Add("TM", typeof(string));
+            t.Columns.Add("PersonName", typeof(string));
+            t.Columns.Add("tblTM", typeof(object));
+
+            foreach (var item in list)
+            {
+
+                object[] values = new object[] { item.TmSN, GetPersonName(item),item };
+                t.Rows.Add(values);
+            }
+            return t;
+        }
+
+        private object GetPersonName(tblTM item)
+        {
+            if (item.tblPerson.Count > 0)
+            {
+                return item.tblPerson[0].PersonName;
+            }
+            return string.Empty;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -60,7 +86,8 @@ namespace K.Forms.TM
         /// <returns></returns>
         private tblTM GetSelectedTM()
         {
-            tblTM tm = this.dataGridView1.CurrentRow.DataBoundItem as tblTM;
+            DataRowView v = this.dataGridView1.CurrentRow.DataBoundItem as DataRowView;
+            tblTM tm = v["tblTM"] as tblTM;
             return tm;
         }
 
@@ -76,9 +103,15 @@ namespace K.Forms.TM
                 return;
             }
 
+                tblTM tm = GetSelectedTM();
+                if (tm.tblPerson.Count > 0)
+                {
+                    NUnit.UiKit.UserMessage.DisplayFailure("TM卡已经分配给人员, 不能删除");
+                    return;
+                }
+
             if (NUnit.UiKit.UserMessage.Ask(Strings.SureDelete) == DialogResult.Yes)
             {
-                tblTM tm = GetSelectedTM();
                 DB db = DBFactory.GetDB();
                 var r = from q in db.tblTM 
                         where q.TmID == tm.TmID 

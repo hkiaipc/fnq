@@ -15,6 +15,7 @@ namespace K.Forms.WD
         public frmWorkDefine()
         {
             InitializeComponent();
+            this.dataGridView1.AutoGenerateColumns = false;
         }
 
         private void frmWorkDefine_Load(object sender, EventArgs e)
@@ -31,7 +32,41 @@ namespace K.Forms.WD
             var r = from q in db.tblWorkDefine
                     select q;
 
-            this.dataGridView1.DataSource = r;
+            this.dataGridView1.DataSource = ConvertToDataTable(r.ToList ());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private object ConvertToDataTable(List<tblWorkDefine> list)
+        {
+            DataTable r = new DataTable();
+            r.Columns.Add("WorkDefineName", typeof(string));
+            r.Columns.Add("GroupName", typeof(string));
+            r.Columns.Add("tblWorkDefine", typeof(object));
+
+
+            foreach (var item in list)
+            {
+                object[] values = new object[] { item.WorkDefineName, GetGroupName(item), item };
+                r.Rows.Add(values);
+            }
+            return r;
+        }
+
+        private object GetGroupName(tblWorkDefine item)
+        {
+            string r = string.Empty;
+            if (item.tblGroup.Count > 0)
+            {
+                foreach (tblGroup g in item.tblGroup)
+                {
+                    r += g.GroupName + ";";
+                }
+            }
+            return r;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -71,7 +106,8 @@ namespace K.Forms.WD
         {
             if (this.dataGridView1.CurrentRow != null)
             {
-                return this.dataGridView1.CurrentRow.DataBoundItem as tblWorkDefine;
+                DataRowView v = this.dataGridView1.CurrentRow.DataBoundItem as DataRowView ;
+                return v["tblWorkDefine"] as tblWorkDefine;
             }
             return null;
         }

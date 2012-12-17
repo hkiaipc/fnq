@@ -15,6 +15,7 @@ namespace K.Forms
         public frmPerson()
         {
             InitializeComponent();
+            this.dataGridView1.AutoGenerateColumns = false;
         }
 
         /// <summary>
@@ -43,7 +44,30 @@ namespace K.Forms
                     orderby q.PersonName
                     select q;
 
-            this.dataGridView1.DataSource = r;
+            this.dataGridView1.DataSource = ConverToDataTable(r.ToList());
+        }
+
+        private object ConverToDataTable(List<tblPerson> list)
+        {
+            DataTable r = CreateDataTable();
+            foreach (var item in list)
+            {
+                object[] values = new object[] {
+                    item.PersonName, item.tblTM.TmSN , item.tblGroup.GroupName , item
+                };
+                r.Rows.Add(values);
+            }
+            return r;
+        }
+
+        private DataTable CreateDataTable()
+        {
+            DataTable r = new DataTable();
+            r.Columns.Add("PersonName", typeof(string));
+            r.Columns.Add("TM", typeof(string));
+            r.Columns.Add("GroupName", typeof(string));
+            r.Columns.Add("tblPerson", typeof(object));
+            return r;
         }
 
         /// <summary>
@@ -72,7 +96,8 @@ namespace K.Forms
         /// <returns></returns>
         private tblPerson GetSelectedPerson()
         {
-            tblPerson p = this.dataGridView1.CurrentRow.DataBoundItem as tblPerson;
+            DataRowView v = this.dataGridView1.CurrentRow.DataBoundItem as DataRowView;
+            tblPerson p = v["tblPerson"] as tblPerson;
             return p;
         }
 

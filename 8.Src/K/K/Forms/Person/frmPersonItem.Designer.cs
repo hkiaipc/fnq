@@ -95,7 +95,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtPersonName);
             this.Name = "frmPersonItem";
-            this.Text = "tblPersonItem";
+            this.Text = "人员";
             this.Load += new System.EventHandler(this.frmPersonItem_Load);
             this.Controls.SetChildIndex(this.okButton, 0);
             this.Controls.SetChildIndex(this.cancelButton, 0);

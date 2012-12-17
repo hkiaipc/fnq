@@ -33,17 +33,17 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(62, 239);
+            this.okButton.Location = new System.Drawing.Point(14, 214);
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(150, 239);
+            this.cancelButton.Location = new System.Drawing.Point(102, 214);
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(62, 12);
+            this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(200, 196);
             this.listView1.TabIndex = 20;
@@ -54,10 +54,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 320);
+            this.ClientSize = new System.Drawing.Size(228, 246);
             this.Controls.Add(this.listView1);
             this.Name = "frmTMSelect";
-            this.Text = "frmTMSelect";
+            this.Text = "TM卡选择";
             this.Load += new System.EventHandler(this.frmTMSelect_Load);
             this.Controls.SetChildIndex(this.okButton, 0);
             this.Controls.SetChildIndex(this.cancelButton, 0);

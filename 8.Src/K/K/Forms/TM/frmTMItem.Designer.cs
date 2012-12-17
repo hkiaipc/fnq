@@ -34,12 +34,12 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(120, 237);
+            this.okButton.Location = new System.Drawing.Point(110, 66);
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(208, 237);
+            this.cancelButton.Location = new System.Drawing.Point(198, 66);
             // 
             // txtTM
             // 
@@ -60,11 +60,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 273);
+            this.ClientSize = new System.Drawing.Size(292, 99);
             this.Controls.Add(this.txtTM);
             this.Controls.Add(this.label1);
             this.Name = "frmTMItem";
-            this.Text = "frmTMItem";
+            this.Text = "TM卡";
             this.Load += new System.EventHandler(this.frmTMItem_Load);
             this.Controls.SetChildIndex(this.okButton, 0);
             this.Controls.SetChildIndex(this.cancelButton, 0);

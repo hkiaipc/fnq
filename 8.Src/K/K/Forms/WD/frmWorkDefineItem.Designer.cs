@@ -74,12 +74,12 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "周期:";
             // 
-            // cmbCycleTyp
+            // cmbCycleType
             // 
             this.cmbCycleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCycleType.FormattingEnabled = true;
             this.cmbCycleType.Location = new System.Drawing.Point(131, 39);
-            this.cmbCycleType.Name = "cmbCycleTyp";
+            this.cmbCycleType.Name = "cmbCycleType";
             this.cmbCycleType.Size = new System.Drawing.Size(150, 20);
             this.cmbCycleType.TabIndex = 24;
             // 
@@ -171,7 +171,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtWorkDefineName);
             this.Name = "frmWorkDefineItem";
-            this.Text = "frmWorkDefineItem";
+            this.Text = "班次";
             this.Load += new System.EventHandler(this.frmWorkDefineItem_Load);
             this.Controls.SetChildIndex(this.okButton, 0);
             this.Controls.SetChildIndex(this.cancelButton, 0);
