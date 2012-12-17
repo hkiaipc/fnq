@@ -34,6 +34,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TmRemark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +81,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TM,
-            this.PersonName});
+            this.PersonName,
+            this.TmRemark});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -101,6 +103,13 @@
             this.PersonName.HeaderText = "人员";
             this.PersonName.Name = "PersonName";
             this.PersonName.ReadOnly = true;
+            // 
+            // TmRemark
+            // 
+            this.TmRemark.DataPropertyName = "TmRemark";
+            this.TmRemark.HeaderText = "备注";
+            this.TmRemark.Name = "TmRemark";
+            this.TmRemark.ReadOnly = true;
             // 
             // frmTM
             // 
@@ -127,5 +136,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TM;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TmRemark;
     }
 }

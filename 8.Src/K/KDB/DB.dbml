@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Database Name="KQ" Class="DB" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+<Database Name="fngrdb2012" Class="DB" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=fngrdb2012;User ID=sa" SettingsObjectName="KDB.Properties.Settings" SettingsPropertyName="KQConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tblWorkDefine" Member="tblWorkDefine">
     <Type Name="tblWorkDefine">
@@ -51,22 +51,14 @@
       <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.tblTM" Member="tblTM">
-    <Type Name="tblTM">
-      <Column Name="TmID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TmSN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="tblTM_tblPerson" Member="tblPerson" OtherKey="TmID" Type="tblPerson" />
-      <Association Name="tblTM_tblTmData" Member="tblTmData" OtherKey="TmID" Type="tblTmData" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblTmData" Member="tblTmData">
     <Type Name="tblTmData">
       <Column Name="DeviceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TmDataID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TmID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TmDataDT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="tblTM_tblTmData" Member="tblTM" ThisKey="TmID" Type="tblTM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="tblDevice_tblTmData" Member="tblDevice" ThisKey="DeviceID" Type="tblDevice" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="tblTM_tblTmData" Member="tblTM" ThisKey="TmID" Type="tblTM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tblDevice" Member="tblDevice">
@@ -102,6 +94,15 @@
       <Column Name="ExWorkEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="ExWorkRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Association Name="tblPerson_tblExWork" Member="tblPerson" ThisKey="PersonID" Type="tblPerson" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblTM" Member="tblTM">
+    <Type Name="tblTM">
+      <Column Name="TmID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TmSN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TmRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="tblTM_tblPerson" Member="tblPerson" OtherKey="TmID" Type="tblPerson" />
+      <Association Name="tblTM_tblTmData" Member="tblTmData" OtherKey="TmID" Type="tblTmData" />
     </Type>
   </Table>
 </Database>

@@ -42,12 +42,13 @@ namespace K.Forms.TM
             DataTable t = new DataTable();
             t.Columns.Add("TM", typeof(string));
             t.Columns.Add("PersonName", typeof(string));
+            t.Columns.Add("TMRemark", typeof(string));
             t.Columns.Add("tblTM", typeof(object));
 
             foreach (var item in list)
             {
 
-                object[] values = new object[] { item.TmSN, GetPersonName(item),item };
+                object[] values = new object[] { item.TmSN, GetPersonName(item), item.TmRemark, item };
                 t.Rows.Add(values);
             }
             return t;

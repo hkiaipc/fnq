@@ -52,6 +52,8 @@ namespace K.Forms.TM
             DB db = DBFactory.GetDB();
             tblTM tm = new tblTM();
             tm.TmSN = this.txtTM.Text.Trim();
+            tm.TmRemark = this.txtRemark.Text.Trim();
+
             db.tblTM.InsertOnSubmit(tm);
             db.SubmitChanges();
         }
@@ -65,6 +67,7 @@ namespace K.Forms.TM
 
             tblTM tm = r.First();
             tm.TmSN = this.txtTM.Text.Trim();
+            tm.TmRemark = this.txtRemark.Text.Trim();
 
             db.SubmitChanges();
         }

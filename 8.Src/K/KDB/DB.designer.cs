@@ -22,7 +22,7 @@ namespace KDB
 	using System;
 	
 	
-	[System.Data.Linq.Mapping.DatabaseAttribute(Name="KQ")]
+	[System.Data.Linq.Mapping.DatabaseAttribute(Name="fngrdb2012")]
 	public partial class DB : System.Data.Linq.DataContext
 	{
 		
@@ -45,9 +45,6 @@ namespace KDB
     partial void InserttblTimeDefine(tblTimeDefine instance);
     partial void UpdatetblTimeDefine(tblTimeDefine instance);
     partial void DeletetblTimeDefine(tblTimeDefine instance);
-    partial void InserttblTM(tblTM instance);
-    partial void UpdatetblTM(tblTM instance);
-    partial void DeletetblTM(tblTM instance);
     partial void InserttblTmData(tblTmData instance);
     partial void UpdatetblTmData(tblTmData instance);
     partial void DeletetblTmData(tblTmData instance);
@@ -60,6 +57,9 @@ namespace KDB
     partial void InserttblExWork(tblExWork instance);
     partial void UpdatetblExWork(tblExWork instance);
     partial void DeletetblExWork(tblExWork instance);
+    partial void InserttblTM(tblTM instance);
+    partial void UpdatetblTM(tblTM instance);
+    partial void DeletetblTM(tblTM instance);
     #endregion
 		
 		public DB() : 
@@ -132,14 +132,6 @@ namespace KDB
 			}
 		}
 		
-		public System.Data.Linq.Table<tblTM> tblTM
-		{
-			get
-			{
-				return this.GetTable<tblTM>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tblTmData> tblTmData
 		{
 			get
@@ -169,6 +161,14 @@ namespace KDB
 			get
 			{
 				return this.GetTable<tblExWork>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblTM> tblTM
+		{
+			get
+			{
+				return this.GetTable<tblTM>();
 			}
 		}
 	}
@@ -1167,148 +1167,6 @@ namespace KDB
 		}
 	}
 	
-	[Table(Name="dbo.tblTM")]
-	public partial class tblTM : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _TmID;
-		
-		private string _TmSN;
-		
-		private EntitySet<tblPerson> _tblPerson;
-		
-		private EntitySet<tblTmData> _tblTmData;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTmIDChanging(int value);
-    partial void OnTmIDChanged();
-    partial void OnTmSNChanging(string value);
-    partial void OnTmSNChanged();
-    #endregion
-		
-		public tblTM()
-		{
-			this._tblPerson = new EntitySet<tblPerson>(new Action<tblPerson>(this.attach_tblPerson), new Action<tblPerson>(this.detach_tblPerson));
-			this._tblTmData = new EntitySet<tblTmData>(new Action<tblTmData>(this.attach_tblTmData), new Action<tblTmData>(this.detach_tblTmData));
-			OnCreated();
-		}
-		
-		[Column(Storage="_TmID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int TmID
-		{
-			get
-			{
-				return this._TmID;
-			}
-			set
-			{
-				if ((this._TmID != value))
-				{
-					this.OnTmIDChanging(value);
-					this.SendPropertyChanging();
-					this._TmID = value;
-					this.SendPropertyChanged("TmID");
-					this.OnTmIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_TmSN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TmSN
-		{
-			get
-			{
-				return this._TmSN;
-			}
-			set
-			{
-				if ((this._TmSN != value))
-				{
-					this.OnTmSNChanging(value);
-					this.SendPropertyChanging();
-					this._TmSN = value;
-					this.SendPropertyChanged("TmSN");
-					this.OnTmSNChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblTM_tblPerson", Storage="_tblPerson", OtherKey="TmID")]
-		public EntitySet<tblPerson> tblPerson
-		{
-			get
-			{
-				return this._tblPerson;
-			}
-			set
-			{
-				this._tblPerson.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblTM_tblTmData", Storage="_tblTmData", OtherKey="TmID")]
-		public EntitySet<tblTmData> tblTmData
-		{
-			get
-			{
-				return this._tblTmData;
-			}
-			set
-			{
-				this._tblTmData.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblPerson(tblPerson entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblTM = this;
-		}
-		
-		private void detach_tblPerson(tblPerson entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblTM = null;
-		}
-		
-		private void attach_tblTmData(tblTmData entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblTM = this;
-		}
-		
-		private void detach_tblTmData(tblTmData entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblTM = null;
-		}
-	}
-	
 	[Table(Name="dbo.tblTmData")]
 	public partial class tblTmData : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1323,9 +1181,9 @@ namespace KDB
 		
 		private System.DateTime _TmDataDT;
 		
-		private EntityRef<tblTM> _tblTM;
-		
 		private EntityRef<tblDevice> _tblDevice;
+		
+		private EntityRef<tblTM> _tblTM;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1343,8 +1201,8 @@ namespace KDB
 		
 		public tblTmData()
 		{
-			this._tblTM = default(EntityRef<tblTM>);
 			this._tblDevice = default(EntityRef<tblDevice>);
+			this._tblTM = default(EntityRef<tblTM>);
 			OnCreated();
 		}
 		
@@ -1436,40 +1294,6 @@ namespace KDB
 			}
 		}
 		
-		[Association(Name="tblTM_tblTmData", Storage="_tblTM", ThisKey="TmID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public tblTM tblTM
-		{
-			get
-			{
-				return this._tblTM.Entity;
-			}
-			set
-			{
-				tblTM previousValue = this._tblTM.Entity;
-				if (((previousValue != value) 
-							|| (this._tblTM.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblTM.Entity = null;
-						previousValue.tblTmData.Remove(this);
-					}
-					this._tblTM.Entity = value;
-					if ((value != null))
-					{
-						value.tblTmData.Add(this);
-						this._TmID = value.TmID;
-					}
-					else
-					{
-						this._TmID = default(int);
-					}
-					this.SendPropertyChanged("tblTM");
-				}
-			}
-		}
-		
 		[Association(Name="tblDevice_tblTmData", Storage="_tblDevice", ThisKey="DeviceID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public tblDevice tblDevice
 		{
@@ -1500,6 +1324,40 @@ namespace KDB
 						this._DeviceID = default(int);
 					}
 					this.SendPropertyChanged("tblDevice");
+				}
+			}
+		}
+		
+		[Association(Name="tblTM_tblTmData", Storage="_tblTM", ThisKey="TmID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public tblTM tblTM
+		{
+			get
+			{
+				return this._tblTM.Entity;
+			}
+			set
+			{
+				tblTM previousValue = this._tblTM.Entity;
+				if (((previousValue != value) 
+							|| (this._tblTM.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblTM.Entity = null;
+						previousValue.tblTmData.Remove(this);
+					}
+					this._tblTM.Entity = value;
+					if ((value != null))
+					{
+						value.tblTmData.Add(this);
+						this._TmID = value.TmID;
+					}
+					else
+					{
+						this._TmID = default(int);
+					}
+					this.SendPropertyChanged("tblTM");
 				}
 			}
 		}
@@ -2230,6 +2088,172 @@ namespace KDB
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[Table(Name="dbo.tblTM")]
+	public partial class tblTM : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _TmID;
+		
+		private string _TmSN;
+		
+		private string _TmRemark;
+		
+		private EntitySet<tblPerson> _tblPerson;
+		
+		private EntitySet<tblTmData> _tblTmData;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTmIDChanging(int value);
+    partial void OnTmIDChanged();
+    partial void OnTmSNChanging(string value);
+    partial void OnTmSNChanged();
+    partial void OnTmRemarkChanging(string value);
+    partial void OnTmRemarkChanged();
+    #endregion
+		
+		public tblTM()
+		{
+			this._tblPerson = new EntitySet<tblPerson>(new Action<tblPerson>(this.attach_tblPerson), new Action<tblPerson>(this.detach_tblPerson));
+			this._tblTmData = new EntitySet<tblTmData>(new Action<tblTmData>(this.attach_tblTmData), new Action<tblTmData>(this.detach_tblTmData));
+			OnCreated();
+		}
+		
+		[Column(Storage="_TmID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int TmID
+		{
+			get
+			{
+				return this._TmID;
+			}
+			set
+			{
+				if ((this._TmID != value))
+				{
+					this.OnTmIDChanging(value);
+					this.SendPropertyChanging();
+					this._TmID = value;
+					this.SendPropertyChanged("TmID");
+					this.OnTmIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_TmSN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TmSN
+		{
+			get
+			{
+				return this._TmSN;
+			}
+			set
+			{
+				if ((this._TmSN != value))
+				{
+					this.OnTmSNChanging(value);
+					this.SendPropertyChanging();
+					this._TmSN = value;
+					this.SendPropertyChanged("TmSN");
+					this.OnTmSNChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_TmRemark", DbType="NVarChar(1000)")]
+		public string TmRemark
+		{
+			get
+			{
+				return this._TmRemark;
+			}
+			set
+			{
+				if ((this._TmRemark != value))
+				{
+					this.OnTmRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._TmRemark = value;
+					this.SendPropertyChanged("TmRemark");
+					this.OnTmRemarkChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblTM_tblPerson", Storage="_tblPerson", OtherKey="TmID")]
+		public EntitySet<tblPerson> tblPerson
+		{
+			get
+			{
+				return this._tblPerson;
+			}
+			set
+			{
+				this._tblPerson.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblTM_tblTmData", Storage="_tblTmData", OtherKey="TmID")]
+		public EntitySet<tblTmData> tblTmData
+		{
+			get
+			{
+				return this._tblTmData;
+			}
+			set
+			{
+				this._tblTmData.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblPerson(tblPerson entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblTM = this;
+		}
+		
+		private void detach_tblPerson(tblPerson entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblTM = null;
+		}
+		
+		private void attach_tblTmData(tblTmData entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblTM = this;
+		}
+		
+		private void detach_tblTmData(tblTmData entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblTM = null;
 		}
 	}
 }
