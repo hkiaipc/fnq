@@ -6,9 +6,9 @@ using K.Forms.WD;
 
 namespace K
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -79,6 +79,18 @@ namespace K
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void mnuSettings_Click(object sender, EventArgs e)
+        {
+            Forms.frmConfig f = new frmConfig();
+            f.ShowDialog();
+        }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            string msg = string.Format("考勤系统\r\n\r\nv{0}", Application.ProductVersion);
+            NUnit.UiKit.UserMessage.DisplayInfo(msg);
         }
     }
 }

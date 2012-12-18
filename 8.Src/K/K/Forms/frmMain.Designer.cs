@@ -1,6 +1,6 @@
 ﻿namespace K
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -30,16 +30,20 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPerson = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTM = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWorkDefine = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKResult = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuQuery = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,15 +63,29 @@
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSettings,
+            this.toolStripSeparator1,
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(57, 20);
             this.mnuFile.Text = "文件(&F)";
             // 
+            // mnuSettings
+            // 
+            this.mnuSettings.Name = "mnuSettings";
+            this.mnuSettings.Size = new System.Drawing.Size(126, 22);
+            this.mnuSettings.Text = "选项(&O)...";
+            this.mnuSettings.Click += new System.EventHandler(this.mnuSettings_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(123, 6);
+            // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuExit.Size = new System.Drawing.Size(126, 22);
             this.mnuExit.Text = "退出(&X)";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -78,6 +96,9 @@
             this.mnuPerson,
             this.mnuTM,
             this.mnuWorkDefine,
+            this.toolStripSeparator2,
+            this.mnuQuery,
+            this.toolStripSeparator3,
             this.mnuKResult});
             this.mnuOption.Name = "mnuOption";
             this.mnuOption.Size = new System.Drawing.Size(43, 20);
@@ -86,43 +107,48 @@
             // mnuGroup
             // 
             this.mnuGroup.Name = "mnuGroup";
-            this.mnuGroup.Size = new System.Drawing.Size(152, 22);
+            this.mnuGroup.Size = new System.Drawing.Size(122, 22);
             this.mnuGroup.Text = "部门";
             this.mnuGroup.Click += new System.EventHandler(this.mnuGroup_Click);
             // 
             // mnuPerson
             // 
             this.mnuPerson.Name = "mnuPerson";
-            this.mnuPerson.Size = new System.Drawing.Size(152, 22);
+            this.mnuPerson.Size = new System.Drawing.Size(122, 22);
             this.mnuPerson.Text = "人员";
             this.mnuPerson.Click += new System.EventHandler(this.mnuPerson_Click);
             // 
             // mnuTM
             // 
             this.mnuTM.Name = "mnuTM";
-            this.mnuTM.Size = new System.Drawing.Size(152, 22);
+            this.mnuTM.Size = new System.Drawing.Size(122, 22);
             this.mnuTM.Text = "TM卡";
             this.mnuTM.Click += new System.EventHandler(this.mnuTM_Click);
             // 
             // mnuWorkDefine
             // 
             this.mnuWorkDefine.Name = "mnuWorkDefine";
-            this.mnuWorkDefine.Size = new System.Drawing.Size(152, 22);
+            this.mnuWorkDefine.Size = new System.Drawing.Size(122, 22);
             this.mnuWorkDefine.Text = "班次";
             this.mnuWorkDefine.Click += new System.EventHandler(this.mnuWorkDefine_Click);
+            // 
+            // mnuQuery
+            // 
+            this.mnuQuery.Name = "mnuQuery";
+            this.mnuQuery.Size = new System.Drawing.Size(122, 22);
+            this.mnuQuery.Text = "巡更数据";
             // 
             // mnuKResult
             // 
             this.mnuKResult.Name = "mnuKResult";
-            this.mnuKResult.Size = new System.Drawing.Size(152, 22);
-            this.mnuKResult.Text = "KResult";
+            this.mnuKResult.Size = new System.Drawing.Size(122, 22);
+            this.mnuKResult.Text = "考勤结果";
             this.mnuKResult.Click += new System.EventHandler(this.mnuKResult_Click);
             // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAbout,
-            this.mnuQuery});
+            this.mnuAbout});
             this.mnuHelp.Name = "mnuHelp";
             this.mnuHelp.Size = new System.Drawing.Size(58, 20);
             this.mnuHelp.Text = "帮助(&H)";
@@ -130,17 +156,21 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(113, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(152, 22);
             this.mnuAbout.Text = "关于(&A)";
+            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
-            // mnuQuery
+            // toolStripSeparator2
             // 
-            this.mnuQuery.Name = "mnuQuery";
-            this.mnuQuery.Size = new System.Drawing.Size(113, 22);
-            this.mnuQuery.Text = "Query";
-            this.mnuQuery.Click += new System.EventHandler(this.mnuQuery_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
-            // Form1
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +178,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "frmMain";
             this.Text = "考勤系统";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -170,7 +200,11 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTM;
         private System.Windows.Forms.ToolStripMenuItem mnuWorkDefine;
         private System.Windows.Forms.ToolStripMenuItem mnuKResult;
+        private System.Windows.Forms.ToolStripMenuItem mnuSettings;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuQuery;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

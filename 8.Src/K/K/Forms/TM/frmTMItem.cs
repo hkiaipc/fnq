@@ -39,6 +39,7 @@ namespace K.Forms.TM
             if (!IsAdd())
             {
                 this.txtTM.Text = this.TblTM.TmSN;
+                this.txtRemark.Text = this.TblTM.TmRemark;
             }
         }
 

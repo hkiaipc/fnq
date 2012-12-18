@@ -1,9 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Xdgk.Common;
 
 namespace K
 {
+
+    class App : AppBase
+    {
+        public override Form MainForm
+        {
+            get 
+            {
+                if (_main == null)
+                {
+                    _main = new frmMain();
+                }
+                return _main ; 
+            }
+        }
+        private frmMain _main;
+    }
+
     static class Program
     {
         /// <summary>
@@ -12,9 +30,12 @@ namespace K
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new frmMain());
+            App app = new App();
+            //app.MainForm = 
+            app.Run();
         }
     }
 }

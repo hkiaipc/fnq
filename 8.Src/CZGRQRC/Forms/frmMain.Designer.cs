@@ -63,6 +63,8 @@
             this.mnuEMCurve = new System.Windows.Forms.MenuItem();
             this.mnuRecruitCurve = new System.Windows.Forms.MenuItem();
             this.mnuConstrastCurve = new System.Windows.Forms.MenuItem();
+            this.mnuReport = new System.Windows.Forms.MenuItem();
+            this.mnuReportDay = new System.Windows.Forms.MenuItem();
             this.mnuConfig = new System.Windows.Forms.MenuItem();
             this.mnuFont = new System.Windows.Forms.MenuItem();
             this.mnuOptions = new System.Windows.Forms.MenuItem();
@@ -90,8 +92,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.mnuReport = new System.Windows.Forms.MenuItem();
-            this.mnuReportDay = new System.Windows.Forms.MenuItem();
             this.ucAlarm1 = new FNGRQRC.UC.UCAlarm();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarPanel1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -337,6 +337,19 @@
             this.mnuConstrastCurve.Text = "对比曲线(C)...";
             this.mnuConstrastCurve.Click += new System.EventHandler(this.mnuConstrastCurve_Click);
             // 
+            // mnuReport
+            // 
+            this.mnuReport.Index = 5;
+            this.mnuReport.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mnuReportDay});
+            this.mnuReport.Text = "报表(&R)";
+            // 
+            // mnuReportDay
+            // 
+            this.mnuReportDay.Index = 0;
+            this.mnuReportDay.Text = "统计表(&T)";
+            this.mnuReportDay.Click += new System.EventHandler(this.mnuReportDay_Click);
+            // 
             // mnuConfig
             // 
             this.mnuConfig.Index = 6;
@@ -556,19 +569,6 @@
             this.splitter1.Size = new System.Drawing.Size(838, 4);
             this.splitter1.TabIndex = 11;
             this.splitter1.TabStop = false;
-            // 
-            // mnuReport
-            // 
-            this.mnuReport.Index = 5;
-            this.mnuReport.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.mnuReportDay});
-            this.mnuReport.Text = "报表(&R)";
-            // 
-            // mnuReportDay
-            // 
-            this.mnuReportDay.Index = 0;
-            this.mnuReportDay.Text = "统计表(&T)";
-            this.mnuReportDay.Click += new System.EventHandler(this.mnuReportDay_Click);
             // 
             // ucAlarm1
             // 

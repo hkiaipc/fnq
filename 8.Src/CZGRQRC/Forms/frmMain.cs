@@ -37,6 +37,8 @@ namespace FNGRQRC
             this.Text = GetMainFormText();
             this._cmdLineOpt = cmdLineOpt;
             this.mnu2Data.Visible = Config.Default.Show2DataGather;
+            this.mnuTM.Visible = false;
+            this.mnuXG.Visible = false;
         }
 
         string GetMainFormText()
