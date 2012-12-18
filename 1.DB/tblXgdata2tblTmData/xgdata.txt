@@ -1,0 +1,8 @@
+sql: 
+select deviceid, sn, dt from tblxgdata 
+inner join tblcard on tblcard.cardid = tblxgdata.cardid
+
+data:
+73	02EDC9E200000086	2012-09-07 16:29:23.000
+73	01545E1E000D0A22	2012-12-10 15:50:27.000
+73	01545E1E000D0A22	2012-12-10 15:54:31.000
