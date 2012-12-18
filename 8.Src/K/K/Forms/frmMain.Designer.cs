@@ -38,12 +38,12 @@
             this.mnuPerson = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTM = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWorkDefine = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuQuery = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuKResult = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,41 +107,52 @@
             // mnuGroup
             // 
             this.mnuGroup.Name = "mnuGroup";
-            this.mnuGroup.Size = new System.Drawing.Size(122, 22);
+            this.mnuGroup.Size = new System.Drawing.Size(152, 22);
             this.mnuGroup.Text = "部门";
             this.mnuGroup.Click += new System.EventHandler(this.mnuGroup_Click);
             // 
             // mnuPerson
             // 
             this.mnuPerson.Name = "mnuPerson";
-            this.mnuPerson.Size = new System.Drawing.Size(122, 22);
+            this.mnuPerson.Size = new System.Drawing.Size(152, 22);
             this.mnuPerson.Text = "人员";
             this.mnuPerson.Click += new System.EventHandler(this.mnuPerson_Click);
             // 
             // mnuTM
             // 
             this.mnuTM.Name = "mnuTM";
-            this.mnuTM.Size = new System.Drawing.Size(122, 22);
+            this.mnuTM.Size = new System.Drawing.Size(152, 22);
             this.mnuTM.Text = "TM卡";
             this.mnuTM.Click += new System.EventHandler(this.mnuTM_Click);
             // 
             // mnuWorkDefine
             // 
             this.mnuWorkDefine.Name = "mnuWorkDefine";
-            this.mnuWorkDefine.Size = new System.Drawing.Size(122, 22);
+            this.mnuWorkDefine.Size = new System.Drawing.Size(152, 22);
             this.mnuWorkDefine.Text = "班次";
             this.mnuWorkDefine.Click += new System.EventHandler(this.mnuWorkDefine_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuQuery
             // 
             this.mnuQuery.Name = "mnuQuery";
-            this.mnuQuery.Size = new System.Drawing.Size(122, 22);
+            this.mnuQuery.Size = new System.Drawing.Size(152, 22);
             this.mnuQuery.Text = "巡更数据";
+            this.mnuQuery.Click += new System.EventHandler(this.mnuQuery_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuKResult
             // 
             this.mnuKResult.Name = "mnuKResult";
-            this.mnuKResult.Size = new System.Drawing.Size(122, 22);
+            this.mnuKResult.Size = new System.Drawing.Size(152, 22);
             this.mnuKResult.Text = "考勤结果";
             this.mnuKResult.Click += new System.EventHandler(this.mnuKResult_Click);
             // 
@@ -156,19 +167,9 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(152, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(113, 22);
             this.mnuAbout.Text = "关于(&A)";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // frmMain
             // 

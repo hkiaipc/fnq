@@ -128,7 +128,7 @@ namespace K.Forms
                 {
                     n++;
                     xls.ActiveSheet = n;
-                    xls.SheetName = gr.TblGroup.GroupName + " " + pr.TblPerson.PersonName;
+                    xls.SheetName = GetSheetName(gr, pr);
                     DataTable tbl = ResultDataTableConverter.ToPersonResultDataTable(pr);
                     Write(xls, tbl);
                 }
@@ -136,6 +136,24 @@ namespace K.Forms
             xls.Save(file);
 
             Open(file);
+        }
+
+        private Dictionary<string, int> _sheetNameDict = new Dictionary<string, int>();
+
+        private string GetSheetName(GroupResult gr, PersonResult pr)
+        {
+            string baseName = gr.TblGroup.GroupName + " " + pr.TblPerson.PersonName;
+            string name = baseName;
+            if (_sheetNameDict.ContainsKey(baseName))
+            {
+                _sheetNameDict[baseName]++;
+                name = baseName + _sheetNameDict[baseName];
+            }
+            else
+            {
+                _sheetNameDict[baseName] = 0;
+            }
+            return name;
         }
 
         private void Open(string filename)

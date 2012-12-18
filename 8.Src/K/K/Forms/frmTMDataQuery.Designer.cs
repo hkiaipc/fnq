@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colStationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTMSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpBegin = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,10 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panPerson = new System.Windows.Forms.Panel();
             this.panStation = new System.Windows.Forms.Panel();
-            this.colStationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPersonName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTMSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panPerson.SuspendLayout();
@@ -84,6 +84,41 @@
             this.dataGridView1.Size = new System.Drawing.Size(579, 413);
             this.dataGridView1.TabIndex = 1;
             // 
+            // colStationName
+            // 
+            this.colStationName.DataPropertyName = "StationName";
+            this.colStationName.HeaderText = "站点";
+            this.colStationName.Name = "colStationName";
+            this.colStationName.ReadOnly = true;
+            this.colStationName.Width = 120;
+            // 
+            // colPersonName
+            // 
+            this.colPersonName.DataPropertyName = "PersonName";
+            this.colPersonName.HeaderText = "人员";
+            this.colPersonName.Name = "colPersonName";
+            this.colPersonName.ReadOnly = true;
+            this.colPersonName.Width = 120;
+            // 
+            // colTMSN
+            // 
+            this.colTMSN.DataPropertyName = "TMSN";
+            this.colTMSN.HeaderText = "卡号";
+            this.colTMSN.Name = "colTMSN";
+            this.colTMSN.ReadOnly = true;
+            this.colTMSN.Width = 120;
+            // 
+            // colDT
+            // 
+            this.colDT.DataPropertyName = "DT";
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colDT.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colDT.HeaderText = "时间";
+            this.colDT.Name = "colDT";
+            this.colDT.ReadOnly = true;
+            this.colDT.Width = 140;
+            // 
             // dtpBegin
             // 
             this.dtpBegin.CustomFormat = "yyyy-MM-dd HH:mm:ss";
@@ -96,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.Location = new System.Drawing.Point(6, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 3;
@@ -105,7 +140,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 65);
+            this.label2.Location = new System.Drawing.Point(4, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 5;
@@ -133,7 +168,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 122);
+            this.label3.Location = new System.Drawing.Point(4, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 7;
@@ -193,38 +228,6 @@
             this.panStation.Size = new System.Drawing.Size(160, 50);
             this.panStation.TabIndex = 13;
             // 
-            // colStationName
-            // 
-            this.colStationName.DataPropertyName = "StationName";
-            this.colStationName.HeaderText = "站点";
-            this.colStationName.Name = "colStationName";
-            this.colStationName.Width = 120;
-            // 
-            // colPersonName
-            // 
-            this.colPersonName.DataPropertyName = "PersonName";
-            this.colPersonName.HeaderText = "人员";
-            this.colPersonName.Name = "colPersonName";
-            this.colPersonName.Width = 120;
-            // 
-            // colTMSN
-            // 
-            this.colTMSN.DataPropertyName = "TMSN";
-            this.colTMSN.HeaderText = "卡号";
-            this.colTMSN.Name = "colTMSN";
-            this.colTMSN.Width = 120;
-            // 
-            // colDT
-            // 
-            this.colDT.DataPropertyName = "DT";
-            dataGridViewCellStyle8.Format = "G";
-            dataGridViewCellStyle8.NullValue = null;
-            this.colDT.DefaultCellStyle = dataGridViewCellStyle8;
-            this.colDT.HeaderText = "时间";
-            this.colDT.Name = "colDT";
-            this.colDT.ReadOnly = true;
-            this.colDT.Width = 140;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label1);
@@ -251,7 +254,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnQuery);
             this.Name = "frmTMDataQuery";
-            this.Text = "巡更查询";
+            this.Text = "巡更数据";
             this.Load += new System.EventHandler(this.frmTMDataQuery_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panPerson.ResumeLayout(false);

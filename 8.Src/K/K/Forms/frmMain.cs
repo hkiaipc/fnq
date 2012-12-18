@@ -66,11 +66,6 @@ namespace K
             ActivateMdiForm(typeof(frmKResultGenerate));
         }
 
-        private void mnuQuery_Click(object sender, EventArgs e)
-        {
-            ActivateMdiForm(typeof(frmTMDataQuery));
-        }
-
         /// <summary>
         /// 
         /// </summary>
@@ -91,6 +86,11 @@ namespace K
         {
             string msg = string.Format("考勤系统\r\n\r\nv{0}", Application.ProductVersion);
             NUnit.UiKit.UserMessage.DisplayInfo(msg);
+        }
+
+        private void mnuQuery_Click(object sender, EventArgs e)
+        {
+            ActivateMdiForm(typeof(frmTMDataQuery));
         }
     }
 }

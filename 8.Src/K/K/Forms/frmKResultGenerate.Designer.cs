@@ -44,42 +44,46 @@
             // cmbGroup
             // 
             this.cmbGroup.FormattingEnabled = true;
-            this.cmbGroup.Location = new System.Drawing.Point(65, 14);
+            this.cmbGroup.Location = new System.Drawing.Point(77, 318);
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.Size = new System.Drawing.Size(121, 20);
             this.cmbGroup.TabIndex = 0;
+            this.cmbGroup.Visible = false;
             this.cmbGroup.SelectedIndexChanged += new System.EventHandler(this.cmbGroup_SelectedIndexChanged);
             // 
             // cmbPerson
             // 
             this.cmbPerson.FormattingEnabled = true;
-            this.cmbPerson.Location = new System.Drawing.Point(65, 40);
+            this.cmbPerson.Location = new System.Drawing.Point(77, 344);
             this.cmbPerson.Name = "cmbPerson";
             this.cmbPerson.Size = new System.Drawing.Size(121, 20);
             this.cmbPerson.TabIndex = 1;
+            this.cmbPerson.Visible = false;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(9, 17);
+            this.label1.Location = new System.Drawing.Point(21, 321);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 23);
             this.label1.TabIndex = 23;
             this.label1.Text = "组:";
+            this.label1.Visible = false;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(9, 43);
+            this.label2.Location = new System.Drawing.Point(21, 347);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 23);
             this.label2.TabIndex = 24;
             this.label2.Text = "成员:";
+            this.label2.Visible = false;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dtpMonth
             // 
             this.dtpMonth.CustomFormat = "yyyy-MM";
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(65, 66);
+            this.dtpMonth.Location = new System.Drawing.Point(65, 16);
             this.dtpMonth.Name = "dtpMonth";
             this.dtpMonth.ShowUpDown = true;
             this.dtpMonth.Size = new System.Drawing.Size(121, 21);
@@ -87,7 +91,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(9, 70);
+            this.label3.Location = new System.Drawing.Point(9, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 23);
             this.label3.TabIndex = 26;
@@ -95,7 +99,7 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(123, 114);
+            this.btnGenerate.Location = new System.Drawing.Point(123, 66);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 27;
@@ -105,15 +109,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbPerson);
-            this.groupBox1.Controls.Add(this.cmbGroup);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtpMonth);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(201, 96);
+            this.groupBox1.Size = new System.Drawing.Size(201, 48);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条件";
@@ -130,7 +130,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(23, 114);
+            this.button1.Location = new System.Drawing.Point(23, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 30;
@@ -143,10 +143,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 389);
+            this.Controls.Add(this.cmbPerson);
+            this.Controls.Add(this.cmbGroup);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGenerate);
+            this.Controls.Add(this.label2);
             this.Name = "frmKResultGenerate";
             this.Text = "考勤结果";
             this.Load += new System.EventHandler(this.frmKResultGenerate_Load);
