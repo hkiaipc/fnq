@@ -12,21 +12,10 @@ namespace K
     /// <summary>
     /// 
     /// </summary>
-    public enum DateTimeRangeRelation
-    {
-        Disconnection,
-        CrossAtBegin,
-        CrossAtEnd,
-        Include,
-        BeIncluded,
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
     public class DateTimeRange
     {
+
+        #region IncludeBeginPoint
         /// <summary>
         /// 
         /// </summary>
@@ -35,7 +24,9 @@ namespace K
             get { return _includeBeginPoint; }
             set { _includeBeginPoint = value; }
         } private bool _includeBeginPoint = true;
+        #endregion //IncludeBeginPoint
 
+        #region IncludeEndPoint
         /// <summary>
         /// 
         /// </summary>
@@ -44,7 +35,9 @@ namespace K
             get { return _includeEndPoint; }
             set { _includeEndPoint = value; }
         } private bool _includeEndPoint = false;
+        #endregion //IncludeEndPoint
 
+        #region DateTimeRange
         /// <summary>
         /// 
         /// </summary>
@@ -60,6 +53,7 @@ namespace K
             this._begin = begin;
             this._end = end;
         }
+        #endregion //DateTimeRange
 
         #region Begin
         /// <summary>
@@ -87,6 +81,7 @@ namespace K
         } private DateTime _end;
         #endregion //End
 
+        #region IsEarly
         /// <summary>
         /// 
         /// </summary>
@@ -103,7 +98,9 @@ namespace K
                 return dt <= this._begin;
             }
         }
+        #endregion //IsEarly
 
+        #region IsLater
         /// <summary>
         /// 
         /// </summary>
@@ -120,7 +117,9 @@ namespace K
                 return dt >= this._end;
             }
         }
+        #endregion //IsLater
 
+        #region IsInRange
         /// <summary>
         /// 
         /// </summary>
@@ -153,8 +152,10 @@ namespace K
 
             //return dt >= Begin && dt <= End;
         }
+        #endregion //IsInRange
 
 
+        #region HasInRange
         /// <summary>
         /// 
         /// </summary>
@@ -165,7 +166,9 @@ namespace K
             DateTime outvalue;
             return HasInRange(enumerable, out outvalue);
         }
+        #endregion //HasInRange
 
+        #region HasInRange
         /// <summary>
         /// 
         /// </summary>
@@ -188,7 +191,9 @@ namespace K
             }
             return r;
         }
+        #endregion //HasInRange
 
+        #region DiscernRelation
         /// <summary>
         /// 
         /// </summary>
@@ -205,8 +210,9 @@ namespace K
             bool e = this.IsInRange(dtr.End);
 
             DateTimeRangeRelation[,] table = new DateTimeRangeRelation[2, 2] {
-                { DateTimeRangeRelation.Disconnection, DateTimeRangeRelation.CrossAtEnd },
-                { DateTimeRangeRelation.CrossAtBegin,  DateTimeRangeRelation.Include },
+                // e = false                           e = true 
+                { DateTimeRangeRelation.Disconnection, DateTimeRangeRelation.CrossAtBegin }, // b = false
+                { DateTimeRangeRelation.CrossAtEnd,    DateTimeRangeRelation.Include },      // b = true
             };
 
             DateTimeRangeRelation r = table[b ? 1 : 0, e ? 1 : 0];
@@ -221,6 +227,21 @@ namespace K
 
             return r;
         }
-    }
+        #endregion //DiscernRelation
 
+        #region ToString
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            string s = string.Format("{0}{1} ~ {2}{3}",
+                _includeBeginPoint ? '[' : '(', this._begin,
+                this._end, _includeEndPoint ? ']' : ')'
+                );
+            return s;
+        }
+        #endregion //ToString
+    }
 }

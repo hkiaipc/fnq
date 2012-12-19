@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace K.Test
 {
-    [TestFixture ]
+    [TestFixture]
     public class Test
     {
         [Test]
@@ -44,9 +44,9 @@ namespace K.Test
                 DayOfWeek.Sunday, TimeSpan.Parse("12:00:00"));
 
 
-            WeekTimeDefine d3 = TimeDefine.CreateWeekTimeDefine (
-                DayOfWeek.Monday , TimeSpan.Parse ("8:00:00"),
-                DayOfWeek.Monday , TimeSpan.Parse ("20:00:00"));
+            WeekTimeDefine d3 = TimeDefine.CreateWeekTimeDefine(
+                DayOfWeek.Monday, TimeSpan.Parse("8:00:00"),
+                DayOfWeek.Monday, TimeSpan.Parse("20:00:00"));
             bool b = TimeDefineCollection.IsOverlapped(d1, d2);
             Assert.IsTrue(b);
 
@@ -83,8 +83,52 @@ namespace K.Test
             Assert.AreEqual(0, r.Hour);
             Assert.AreEqual(0, r.Minute);
             Assert.AreEqual(0, r.Second);
+        }
+    }
 
+    [TestFixture]
+    public class TestDateTimeRange
+    {
+        DateTimeRange baseRange = new DateTimeRange(
+            DateTime.Parse("2000-1-15"), DateTime.Parse("2000-1-16"));
 
+        DateTimeRange disconnectRange = new DateTimeRange(
+            DateTime.Parse("2000-1-25"), DateTime.Parse("2000-1-26")
+            );
+
+        DateTimeRange crossBeginRange = new DateTimeRange(
+            DateTime.Parse("2000-1-14"), DateTime.Parse("2000-1-15 12:00:00")
+            );
+
+        DateTimeRange crossEndRange = new DateTimeRange(
+            DateTime.Parse("2000-1-15 12:00:00"), DateTime.Parse("2000-1-17")
+            );
+
+        DateTimeRange includeRange = new DateTimeRange(
+            DateTime.Parse("2000-1-15 12:00:00"), DateTime.Parse("2000-1-15 17:00:00")
+            );
+
+        DateTimeRange beIncludeRange = new DateTimeRange(
+            DateTime.Parse("2000-1-14"), DateTime.Parse("2000-1-17")
+            );
+
+        [Test]
+        public void Test()
+        {
+            object[] objs = new object[] {
+                    DateTimeRangeRelation.Disconnection , disconnectRange ,
+                    DateTimeRangeRelation.CrossAtBegin, crossBeginRange ,
+                    DateTimeRangeRelation.CrossAtEnd , crossEndRange ,
+                    DateTimeRangeRelation.Include , includeRange ,
+                    DateTimeRangeRelation.BeIncluded , beIncludeRange };
+
+            for (int i = 0; i < objs.Length; i += 2)
+            {
+                DateTimeRange dtr = (DateTimeRange)objs[i + 1];
+                DateTimeRangeRelation r = baseRange.DiscernRelation(dtr);
+                Console.WriteLine("{0} => {1} => {2}", baseRange, dtr, r);
+                Assert.AreEqual(objs[i], r);
+            }
         }
     }
 }
