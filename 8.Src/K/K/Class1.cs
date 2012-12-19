@@ -165,7 +165,7 @@ namespace K
     {
     }
 
-    enum LeaveEnum
+    public enum LeaveEnum
     {
         Private = 0,
         Sick = 1,

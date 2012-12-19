@@ -44,6 +44,7 @@
             this.mnuKResult = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLeave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +100,8 @@
             this.toolStripSeparator2,
             this.mnuQuery,
             this.toolStripSeparator3,
-            this.mnuKResult});
+            this.mnuKResult,
+            this.mnuLeave});
             this.mnuOption.Name = "mnuOption";
             this.mnuOption.Size = new System.Drawing.Size(43, 20);
             this.mnuOption.Text = "操作";
@@ -171,6 +173,13 @@
             this.mnuAbout.Text = "关于(&A)";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
+            // mnuLeave
+            // 
+            this.mnuLeave.Name = "mnuLeave";
+            this.mnuLeave.Size = new System.Drawing.Size(152, 22);
+            this.mnuLeave.Text = "请假";
+            this.mnuLeave.Click += new System.EventHandler(this.mnuLeave_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -206,6 +215,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuQuery;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem mnuLeave;
     }
 }
 

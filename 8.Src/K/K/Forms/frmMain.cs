@@ -92,5 +92,10 @@ namespace K
         {
             ActivateMdiForm(typeof(frmTMDataQuery));
         }
+
+        private void mnuLeave_Click(object sender, EventArgs e)
+        {
+            ActivateMdiForm(typeof(Forms.Leave.frmLeave));
+        }
     }
 }
