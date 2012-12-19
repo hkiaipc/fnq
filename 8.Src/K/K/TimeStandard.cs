@@ -103,7 +103,8 @@ namespace K
         {
             if (this.Type == TypeEnum.Rest)
             {
-                return DateTimeRange.RestDateTimeRange;
+                //return DateTimeRange.RestDateTimeRange;
+                return KQDataTimeRangeManager.RestDateTimeRange;
             }
 
             DateTimeRange range = null;
@@ -184,7 +185,7 @@ namespace K
                 DateTime dtInRange;
 
                 DateTimeRange startWorkNormalRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StartWorkNormal);
-                bool isInStartNormalRange = startWorkNormalRange.IsInRange(dateTimes, out dtInRange);
+                bool isInStartNormalRange = startWorkNormalRange.HasInRange(dateTimes, out dtInRange);
 
                 if (isInStartNormalRange)
                 {
@@ -193,7 +194,7 @@ namespace K
                 else
                 {
                     DateTimeRange startWorkLaterRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StartWorkLater);
-                    bool isInStartLaterRange = startWorkLaterRange.IsInRange(dateTimes, out dtInRange);
+                    bool isInStartLaterRange = startWorkLaterRange.HasInRange(dateTimes, out dtInRange);
                     if (isInStartLaterRange)
                     {
                         startResult = KResultEnum.Later;
@@ -206,14 +207,14 @@ namespace K
 
                 KResultEnum stopResult = KResultEnum.None;
                 DateTimeRange stopNormalRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StopWorkNormal);
-                if (stopNormalRange.IsInRange(dateTimes, out dtInRange))
+                if (stopNormalRange.HasInRange(dateTimes, out dtInRange))
                 {
                     stopResult = KResultEnum.Normal;
                 }
                 else
                 {
                     DateTimeRange stopEarlyRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StopWorkEarly);
-                    if (stopEarlyRange.IsInRange(dateTimes, out dtInRange))
+                    if (stopEarlyRange.HasInRange(dateTimes, out dtInRange))
                     {
                         stopResult = KResultEnum.Early;
                     }

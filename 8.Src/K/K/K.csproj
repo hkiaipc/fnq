@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="GroupResult.cs" />
     <Compile Include="GroupResultCollection.cs" />
+    <Compile Include="KQDataTimeRangeManager.cs" />
     <Compile Include="KResultGenerator.cs" />
     <Compile Include="PersonResult.cs" />
     <Compile Include="PersonResultCollection.cs" />
