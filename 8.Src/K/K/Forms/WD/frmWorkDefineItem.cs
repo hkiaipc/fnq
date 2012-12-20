@@ -112,9 +112,8 @@ namespace K.Forms.WD
         {
             if (this.flowLayoutPanel1.Controls.Count >= MaxControlCount)
             {
-                // TODO:
-                //
-                NUnit.UiKit.UserMessage.DisplayFailure("max");
+                string msg = "内容条数不能大于" + MaxControlCount;
+                NUnit.UiKit.UserMessage.DisplayFailure(msg);
                 return;
             }
 
@@ -215,7 +214,8 @@ namespace K.Forms.WD
             }
             catch (KConfigException kex)
             {
-                NUnit.UiKit.UserMessage.DisplayFailure(kex.Message);
+                string msg = "时间不能交叉";
+                NUnit.UiKit.UserMessage.DisplayFailure(msg);
                 return;
             }
 
@@ -347,8 +347,6 @@ namespace K.Forms.WD
         #region Verify
         private bool Verify()
         {
-            // TODO:
-            //
             if (this.txtWorkDefineName.Text.Trim().Length == 0)
             {
                 NUnit.UiKit.UserMessage.DisplayFailure("名称不能为空");

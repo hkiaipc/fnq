@@ -92,9 +92,6 @@ namespace K
         /// <returns></returns>
         static public WorkDefine Deserialize(string context)
         {
-            // TODO: 
-            //
-            //XmlSerializer _kResultEnumNameMap = new XmlSerializer(typeof(WorkDefine));
             XmlSerializer s = new XmlSerializer(typeof(SerializableObject));
             StringReader sr = new StringReader(context);
             SerializableObject serObject = s.Deserialize(sr) as SerializableObject;

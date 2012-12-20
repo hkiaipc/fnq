@@ -145,8 +145,6 @@ namespace K.UC
                 if (_workDefine is UserWorkDefine)
                 {
                     UserWorkDefine userWD = _workDefine as UserWorkDefine;
-                    // TODO:
-                    //
                     this.CycleType = CycleTypeEnum.UserDefine;
                     this.DayOfCycle = userWD.DayOfCycle;
                 }

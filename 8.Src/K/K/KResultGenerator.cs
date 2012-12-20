@@ -179,28 +179,8 @@ namespace K
         #region GenerateTimeStandards
         private TimeStandardCollection GenerateTimeStandards(tblWorkDefine tblWD, DateTime monthForGenerator)
         {
-            // TODO: get timedefines
-            //
-            //workDefine.WorkDefineContext 
             WorkDefine wd = WorkDefine.Deserialize(tblWD.WorkDefineContext);
             return wd.CreateTimeStandards(monthForGenerator);
-
-            //throw new NotImplementedException();
-            // TODO: Generate standard time collection
-            // 
-            //if (wd.CycleType == CycleTypeEnum.Week)
-            //{
-            //    return GenerateWeekTimeStandards(wd, monthForGenerator);
-            //}
-            //else if (wd.CycleType == CycleTypeEnum.UserDefine)
-            //{
-            //    return GenerateUserDefineTimeStandards(wd, monthForGenerator);
-            //}
-            //throw new InvalidCastException(wd.CycleType.ToString());
-
-            //TimeDefineCollection timeDefines = wd.TimeDefines[0];
-            //TimeStandardCollection timeStandards = new TimeStandardCollection();
-            //return timeStandards;
         }
         #endregion //GenerateTimeStandards
 

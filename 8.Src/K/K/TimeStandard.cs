@@ -199,13 +199,9 @@ namespace K
 
             foreach (tblLeave leave in leaves)
             {
-                //isLeave = leave.IsInLeave(this.Begin, this.End);
                 isLeave = leave.IsInLeave(this);
                 if (isLeave)
                 {
-                    // TODO: leave type
-                    //
-                    //r.KResultEnum = KResultEnum.Leave;
                     r.StartWorkResult = KResultEnum.Leave;
                     r.StopWorkResult = KResultEnum.Leave;
 
