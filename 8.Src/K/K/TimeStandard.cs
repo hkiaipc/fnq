@@ -13,6 +13,8 @@ namespace K
 {
     internal class TimeStandard
     {
+
+        #region TypeEnum
         /// <summary>
         /// 
         /// </summary>
@@ -21,17 +23,34 @@ namespace K
             Work,
             Rest,
         }
+        #endregion //TypeEnum
 
+        #region CreateRestTimeStandard
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="day"></param>
+        /// <returns></returns>
         static internal TimeStandard CreateRestTimeStandard(DateTime day)
         {
             return new TimeStandard(TypeEnum.Rest, day.Date, day.Date + TimeSpan.FromDays(1d));
         }
+        #endregion //CreateRestTimeStandard
 
+        #region CreateWorkTimeStandard
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="begin"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         static internal TimeStandard CreateWorkTimeStandard(DateTime begin, DateTime end)
         {
             return new TimeStandard(TypeEnum.Work, begin, end);
         }
+        #endregion //CreateWorkTimeStandard
 
+        #region TimeStandard
         /// <summary>
         /// 
         /// </summary>
@@ -47,13 +66,14 @@ namespace K
             this._begin = begin;
             this._end = end;
         }
+        #endregion //TimeStandard
 
-
+        #region Type
         internal TypeEnum Type
         {
             get { return _typeEnum; }
         } private TypeEnum _typeEnum;
-
+        #endregion //Type
 
         #region DayOfWeek
         /// <summary>
@@ -94,6 +114,7 @@ namespace K
         } private DateTime _end;
         #endregion //End
 
+        #region GetPunchInDateTimeRange
         /// <summary>
         /// 
         /// </summary>
@@ -143,38 +164,53 @@ namespace K
         }
         private Dictionary<PunchInDateTimeRangeEnum, DateTimeRange> _dict =
             new Dictionary<PunchInDateTimeRangeEnum, DateTimeRange>();
+        #endregion //GetPunchInDateTimeRange
+
+        static string[] _leaveNames = new string[] { "ÊÂ¼Ù", "²¡¼Ù" };
+        private string GetLeaveName(int leaveType)
+        {
+            if (leaveType >= 0 && leaveType <= 1)
+            {
+                return _leaveNames[leaveType];
+            }
+            else
+            {
+                return leaveType.ToString();
+            }
+        }
+
+        #region CreateTimeResult
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="leaves"></param>
         /// <param name="dateTimes"></param>
         /// <returns></returns>
-        public KResultEnum Check(List<DateTime> dateTimes)
-        {
-            // 1. has dt in begin - 2 hour then normal
-            //    not normal: has dt in begin + 2 hour then later
-            //
-            // 2. has dt in end + 2 hour then normal
-            //    not normal: has dt in end - 2 hour then early
-            // 
-            throw new NotImplementedException();
-        }
-
         public TimeResult CreateTimeResult(List<tblLeave> leaves, List<DateTime> dateTimes)
         {
             TimeResult r = new TimeResult();
             r.TimeStandard = this;
+            if (this.Type == TypeEnum.Rest)
+            {
+                return r;
+            }
 
             bool isLeave = false;
 
             foreach (tblLeave leave in leaves)
             {
-                isLeave = leave.IsInLeave(this.Begin, this.End);
+                //isLeave = leave.IsInLeave(this.Begin, this.End);
+                isLeave = leave.IsInLeave(this);
                 if (isLeave)
                 {
                     // TODO: leave type
                     //
                     //r.KResultEnum = KResultEnum.Leave;
+                    r.StartWorkResult = KResultEnum.Leave;
+                    r.StopWorkResult = KResultEnum.Leave;
+
                     r.Remark = leave.LeaveType.ToString() + leave.LeaveRemark;
+                    r.Remark = GetLeaveName(leave.LeaveType) + (leave.LeaveRemark.Length > 0 ? " : " + leave.LeaveRemark : "");
                     break;
                 }
             }
@@ -226,7 +262,9 @@ namespace K
 
             return r;
         }
+        #endregion //CreateTimeResult
 
+        #region IsInTime
         /// <summary>
         /// 
         /// </summary>
@@ -236,11 +274,18 @@ namespace K
         {
             return dt >= this.Begin && dt < this.End;
         }
+        #endregion //IsInTime
 
+        #region ToString
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("{0}, {1} ~ {2}, {3}", this.DayOfWeek, this.Begin, this.End, this.Type);
         }
+        #endregion //ToString
     }
 
 }

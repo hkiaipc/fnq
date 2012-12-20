@@ -38,15 +38,10 @@ namespace K
         /// </summary>
         internal GroupResultCollection Generate()
         {
-            //_kResults = new KResultCollection();
             GroupResultCollection groupResults = new GroupResultCollection();
 
             foreach (tblGroup gp in _db.tblGroup.ToList())
             {
-                //foreach (tblPerson p in gp.tblPerson.ToList())
-                //{
-
-                //}
                 GroupResult gpResult = GenerateGroupResult(gp);
                 groupResults.Add(gpResult);
             }
@@ -65,17 +60,19 @@ namespace K
             Debug.Assert(gp.tblWorkDefine != null);
 
             GroupResult gpResult = new GroupResult();
-            //foreach (tblPerson person in gp.tblPerson)
-            //{
             gpResult.TblGroup = gp;
             List<tblPerson> persons = gp.tblPerson.ToList();
             gpResult.PersonResults = GeneratePersonResultCollection(persons);
-            //}
             return gpResult;
         }
         #endregion //GenerateGroupResult
 
         #region GeneratePersonResultCollection
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="persons"></param>
+        /// <returns></returns>
         private PersonResultCollection GeneratePersonResultCollection(List<tblPerson> persons)
         {
             PersonResultCollection r = new PersonResultCollection();
@@ -127,16 +124,25 @@ namespace K
         #endregion //GetMonthEndDT
 
         #region GenerateTimeResultCollection
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
         private TimeResultCollection GenerateTimeResultCollection(tblPerson person)
         {
+            _log.Debug("generate for: " + person.PersonName);
+
             tblWorkDefine workDefine = person.tblGroup.tblWorkDefine;
-            DateTime monthBeginDT = GetMonthBeginDT ();
-            DateTime monthEndDT = GetMonthEndDT ();
+            DateTime monthBeginDT = GetMonthBeginDT();
+            DateTime monthEndDT = GetMonthEndDT();
 
             var vLeaves = from q in _db.tblLeave
                           where q.PersonID == person.PersonID && q.LeaveBegin >= monthBeginDT && q.LeaveBegin < monthEndDT
                           select q;
             List<tblLeave> leaves = vLeaves.ToList();
+
+            _log.Debug("leaves count: " + leaves.Count);
 
             var vTmDatas = from q2 in _db.tblTmData
                            where q2.TmID == person.TmID && q2.TmDataDT >= monthBeginDT && q2.TmDataDT < monthEndDT

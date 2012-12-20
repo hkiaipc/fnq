@@ -42,9 +42,10 @@
             this.mnuQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuKResult = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLeave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuLeave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(434, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(432, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -97,11 +98,12 @@
             this.mnuPerson,
             this.mnuTM,
             this.mnuWorkDefine,
+            this.toolStripSeparator4,
+            this.mnuLeave,
             this.toolStripSeparator2,
             this.mnuQuery,
             this.toolStripSeparator3,
-            this.mnuKResult,
-            this.mnuLeave});
+            this.mnuKResult});
             this.mnuOption.Name = "mnuOption";
             this.mnuOption.Size = new System.Drawing.Size(43, 20);
             this.mnuOption.Text = "操作";
@@ -158,6 +160,13 @@
             this.mnuKResult.Text = "考勤结果";
             this.mnuKResult.Click += new System.EventHandler(this.mnuKResult_Click);
             // 
+            // mnuLeave
+            // 
+            this.mnuLeave.Name = "mnuLeave";
+            this.mnuLeave.Size = new System.Drawing.Size(152, 22);
+            this.mnuLeave.Text = "请假";
+            this.mnuLeave.Click += new System.EventHandler(this.mnuLeave_Click);
+            // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -173,18 +182,16 @@
             this.mnuAbout.Text = "关于(&A)";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
-            // mnuLeave
+            // toolStripSeparator4
             // 
-            this.mnuLeave.Name = "mnuLeave";
-            this.mnuLeave.Size = new System.Drawing.Size(152, 22);
-            this.mnuLeave.Text = "请假";
-            this.mnuLeave.Click += new System.EventHandler(this.mnuLeave_Click);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 424);
+            this.ClientSize = new System.Drawing.Size(432, 422);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -216,6 +223,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem mnuLeave;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
 

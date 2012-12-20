@@ -81,8 +81,6 @@ namespace K.Forms
             c.Dock = DockStyle.Fill;
 
             this.panel1.Controls.Add(c);
-
-
         }
 
         /// <summary>
