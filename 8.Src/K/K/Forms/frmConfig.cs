@@ -25,14 +25,16 @@ namespace K.Forms
         private void frmConfig_Load(object sender, EventArgs e)
         {
             Config cfg = Config.Default ;
-            this.dtpNormalTimeSpan.Value = DateTime.Parse("2000-1-1") + cfg.NormalTimeSpan;
+            this.dtpNormalStartWorkTimeSpan.Value = DateTime.Parse("2000-1-1") + cfg.NormalStartWorkTimeSpan;
+            this.dtpNormalStopWorkTimeSpan.Value = DateTime.Parse("2000-1-1") + cfg.NormalStopWorkTimeSpan;
             this.dtpLaterEarlyTimeSpan.Value = DateTime.Parse("2000-1-1") + cfg.LaterEarlyTimeSpan;
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
             Config cfg = Config.Default;
-            cfg.NormalTimeSpan = this.dtpNormalTimeSpan.Value.TimeOfDay;
+            cfg.NormalStartWorkTimeSpan = this.dtpNormalStartWorkTimeSpan.Value.TimeOfDay;
+            cfg.NormalStopWorkTimeSpan = this.dtpNormalStopWorkTimeSpan.Value.TimeOfDay;
             cfg.LaterEarlyTimeSpan = this.dtpLaterEarlyTimeSpan.Value.TimeOfDay;
 
             cfg.Save();

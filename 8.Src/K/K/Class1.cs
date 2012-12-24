@@ -23,7 +23,6 @@ namespace K
         Private = 0,
         Sick = 1,
         Vacation = 2,
-        //Out = 3,
     }
 
     enum KResultEnum

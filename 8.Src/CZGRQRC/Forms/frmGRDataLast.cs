@@ -164,7 +164,6 @@ namespace FNGRQRC
         }
         #endregion //MarkLastDateTime
 
-
         #region HasExceptionValue
         /// <summary>
         /// 

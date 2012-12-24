@@ -21,6 +21,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_280E44C0509A42A4BA9A5DC95D62D096"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2AEFCF4EDF584625A680F00B2B892A2B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2BE5CD791C68682189948E6F8AC4B242"
         "OwnerKey" = "8:_FA0DF5CCC28343AFB6DD14CC5467D136"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,6 +47,12 @@
         {
         "MsmKey" = "8:_494FCD2A35038173B3B79BE430717EDD"
         "OwnerKey" = "8:_FA0DF5CCC28343AFB6DD14CC5467D136"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_55EEC93DEE404ACC8E4160E62602F2EB"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,6 +148,12 @@
         "Entry"
         {
         "MsmKey" = "8:_D4B8B8C17E3C4B4C875B1F7E418E50AF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D5AEF7A87C3E42B9AECE3A03D301468C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -318,6 +342,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_280E44C0509A42A4BA9A5DC95D62D096"
+            {
+            "SourcePath" = "8:..\\CZGRQRC\\bin\\Debug\\RT\\Day.xls"
+            "TargetName" = "8:Day.xls"
+            "Tag" = "8:"
+            "Folder" = "8:_83B4F7049723410586368AEF5054A144"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2AEFCF4EDF584625A680F00B2B892A2B"
+            {
+            "SourcePath" = "8:..\\CZGRQRC\\bin\\Debug\\fngrqrc.exe.config"
+            "TargetName" = "8:fngrqrc.exe.config"
+            "Tag" = "8:"
+            "Folder" = "8:_B868F86BC9ED4B088845401DD2C4EAD1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2BE5CD791C68682189948E6F8AC4B242"
             {
             "AssemblyRegister" = "3:1"
@@ -409,6 +473,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55EEC93DEE404ACC8E4160E62602F2EB"
+            {
+            "SourcePath" = "8:..\\CZGRQRC\\bin\\Debug\\RT\\StationCost.xls"
+            "TargetName" = "8:StationCost.xls"
+            "Tag" = "8:"
+            "Folder" = "8:_83B4F7049723410586368AEF5054A144"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5FEE07E8BF275B41795B0EB1EED78F6A"
@@ -626,6 +710,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D5AEF7A87C3E42B9AECE3A03D301468C"
+            {
+            "SourcePath" = "8:..\\CZGRQRC\\bin\\Debug\\RT\\FirstStationCost.xls"
+            "TargetName" = "8:FirstStationCost.xls"
+            "Tag" = "8:"
+            "Folder" = "8:_83B4F7049723410586368AEF5054A144"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FA0DF5CCC28343AFB6DD14CC5467D136"
             {
             "AssemblyRegister" = "3:1"
@@ -702,6 +806,17 @@
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_7E72DC2DD3914993A10E66B1EAFD91DF"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_83B4F7049723410586368AEF5054A144"
+                    {
+                    "Name" = "8:RT"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_FAC10422F3A24835BB4106E5F4332464"
                         "Folders"
                         {
                         }

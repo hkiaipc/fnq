@@ -35,6 +35,9 @@ namespace K.Forms.Leave
             this.cmbPerson.DataSource = r;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void BindDataSources()
         {
             DB db = DBFactory.GetDB();
@@ -43,9 +46,12 @@ namespace K.Forms.Leave
             this.cmbGroup.ValueMember = "GroupID";
             this.cmbGroup.DataSource = db.tblGroup;
 
+            // leave data source
+            //
             KeyValueCollection kvs = new KeyValueCollection();
             kvs.Add(new KeyValue("事假", LeaveEnum.Private));
             kvs.Add(new KeyValue("病假", LeaveEnum.Sick));
+            kvs.Add(new KeyValue("休假", LeaveEnum.Vacation));
 
             this.cmbType.DisplayMember = "Key";
             this.cmbType.ValueMember = "Value";

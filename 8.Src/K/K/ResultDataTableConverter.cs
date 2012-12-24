@@ -19,9 +19,10 @@ namespace K
             PracticeBegin = "上班打卡",
 
             PracticeEnd = "下班打卡",
+            WorkTimeSpan = "工作时长",
             StartWorkResult = "上班",
-            StopWorkResult = "下班",
 
+            StopWorkResult = "下班",
             Remark = "备注";
     }
     /// <summary>
@@ -47,19 +48,31 @@ namespace K
                     DateTimeToString(std.End),
 
                     GetTimeStandardTypeName(std.Type),
-
                     GetWeekString(std.DayOfWeek ),
                     //GetResultEnumString(tr.KResultEnum ),
                     DateTimeToString(tr.PracticeBegin),
+
                     DateTimeToString(tr.PracticeEnd),
+                    GetWorkTimeSpanString(tr),
 
                     GetResultEnumString(std.Type, tr.StartWorkResult),
+
                     GetResultEnumString(std.Type, tr.StopWorkResult),
                     tr.Remark 
                 };
                 t.Rows.Add(values);
             }
             return t;
+        }
+
+        private static string GetWorkTimeSpanString(TimeResult tr)
+        {
+            if (tr.TimeStandard.Type == TimeStandard.TypeEnum.Rest)
+                //|| tr.StartWorkResult == KResultEnum.Leave)
+            {
+                return string.Empty;
+            }
+            return tr.WorkTimeSpan.ToString ();
         }
 
         static private string DateTimeToString(DateTime dt)
@@ -154,13 +167,15 @@ namespace K
             s.Add(ResultDataTableColumnNames.PersonName, typeof(string));
             s.Add(ResultDataTableColumnNames.StandardBegin, typeof(string));
             s.Add(ResultDataTableColumnNames.StandardEnd, typeof(string));
+
             s.Add(ResultDataTableColumnNames.Type, typeof(string));
             s.Add(ResultDataTableColumnNames.Week, typeof(string));
-            
             s.Add(ResultDataTableColumnNames.PracticeBegin, typeof(string));
-            s.Add(ResultDataTableColumnNames.PracticeEnd, typeof(string));
 
+            s.Add(ResultDataTableColumnNames.PracticeEnd, typeof(string));
+            s.Add(ResultDataTableColumnNames.WorkTimeSpan, typeof(string));
             s.Add(ResultDataTableColumnNames.StartWorkResult, typeof(string));
+
             s.Add(ResultDataTableColumnNames.StopWorkResult, typeof(string));
             s.Add(ResultDataTableColumnNames.Remark, typeof(string));
 

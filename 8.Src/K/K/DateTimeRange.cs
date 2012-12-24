@@ -14,6 +14,11 @@ namespace K
     /// </summary>
     public class DateTimeRange
     {
+        public enum PriorityEnum
+        {
+            PriorityFirst,
+            PriorityLast,
+        }
 
         #region IncludeBeginPoint
         /// <summary>
@@ -169,6 +174,7 @@ namespace K
         #endregion //HasInRange
 
         #region HasInRange
+
         /// <summary>
         /// 
         /// </summary>
@@ -177,21 +183,47 @@ namespace K
         /// <returns></returns>
         public bool HasInRange(IEnumerable<DateTime> enumerable, out DateTime dtInRange)
         {
-            bool r = false;
+            return HasInRange(enumerable, PriorityEnum.PriorityFirst, out dtInRange);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="enumerable"></param>
+        /// <param name="dtInRange"></param>
+        /// <returns></returns>
+        public bool HasInRange(IEnumerable<DateTime> enumerable, PriorityEnum priority, out DateTime dtInRange)
+        {
             dtInRange = DateTime.MinValue;
 
+            IEnumerable<DateTime> r = this.GetInRange(enumerable);
+            bool has = r.Count() > 0;
+            if (has)
+            {
+                dtInRange = priority == PriorityEnum.PriorityFirst ? r.First() : r.Last();
+            }
+
+            return has;
+        }
+        #endregion //HasInRange
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="enumerable"></param>
+        /// <returns></returns>
+        public IEnumerable<DateTime> GetInRange(IEnumerable<DateTime> enumerable)
+        {
+            List<DateTime> r = new List<DateTime>();
             foreach (DateTime dt in enumerable)
             {
                 if (IsInRange(dt))
                 {
-                    r = true;
-                    dtInRange = dt;
-                    break;
+                    r.Add(dt);
                 }
             }
-            return r;
+            return r; 
         }
-        #endregion //HasInRange
 
         #region DiscernRelation
         /// <summary>

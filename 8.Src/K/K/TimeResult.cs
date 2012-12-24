@@ -115,6 +115,16 @@ namespace K
         } private DateTime _practiceEnd;
         #endregion //PracticeEnd
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public TimeSpan WorkTimeSpan
+        {
+            get
+            {
+                return this.PracticeEnd - PracticeBegin;
+            }
+        }
         #region Remark
         /// <summary>
         /// 

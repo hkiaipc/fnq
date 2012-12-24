@@ -140,7 +140,7 @@ namespace K
                 switch (type)
                 {
                     case PunchInDateTimeRangeEnum.StartWorkNormal:
-                        range = new DateTimeRange(this.Begin - Config.Default.NormalTimeSpan, this.Begin);
+                        range = new DateTimeRange(this.Begin - Config.Default.NormalStartWorkTimeSpan, this.Begin);
                         break;
 
                     case PunchInDateTimeRangeEnum.StartWorkLater:
@@ -148,7 +148,7 @@ namespace K
                         break;
 
                     case PunchInDateTimeRangeEnum.StopWorkNormal:
-                        range = new DateTimeRange(this.End, this.End + Config.Default.NormalTimeSpan);
+                        range = new DateTimeRange(this.End, this.End + Config.Default.NormalStopWorkTimeSpan);
                         break;
 
                     case PunchInDateTimeRangeEnum.StopWorkEarly:
@@ -166,7 +166,7 @@ namespace K
             new Dictionary<PunchInDateTimeRangeEnum, DateTimeRange>();
         #endregion //GetPunchInDateTimeRange
 
-        static string[] _leaveNames = new string[] { "ÊÂ¼Ù", "²¡¼Ù" };
+        static string[] _leaveNames = new string[] { "ÊÂ¼Ù", "²¡¼Ù", "ÐÝ¼Ù" };
         private string GetLeaveName(int leaveType)
         {
             if (leaveType >= 0 && leaveType <= 1)
@@ -192,6 +192,8 @@ namespace K
             r.TimeStandard = this;
             if (this.Type == TypeEnum.Rest)
             {
+                r.StartWorkResult = KResultEnum.Rest;
+                r.StopWorkResult = KResultEnum.Rest;
                 return r;
             }
 
@@ -217,7 +219,7 @@ namespace K
                 DateTime dtInRange;
 
                 DateTimeRange startWorkNormalRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StartWorkNormal);
-                bool isInStartNormalRange = startWorkNormalRange.HasInRange(dateTimes, out dtInRange);
+                bool isInStartNormalRange = startWorkNormalRange.HasInRange(dateTimes, DateTimeRange.PriorityEnum.PriorityFirst, out dtInRange);
 
                 if (isInStartNormalRange)
                 {
@@ -226,7 +228,7 @@ namespace K
                 else
                 {
                     DateTimeRange startWorkLaterRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StartWorkLater);
-                    bool isInStartLaterRange = startWorkLaterRange.HasInRange(dateTimes, out dtInRange);
+                    bool isInStartLaterRange = startWorkLaterRange.HasInRange(dateTimes, DateTimeRange.PriorityEnum.PriorityFirst, out dtInRange);
                     if (isInStartLaterRange)
                     {
                         startResult = KResultEnum.Later;
@@ -239,14 +241,14 @@ namespace K
 
                 KResultEnum stopResult = KResultEnum.None;
                 DateTimeRange stopNormalRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StopWorkNormal);
-                if (stopNormalRange.HasInRange(dateTimes, out dtInRange))
+                if (stopNormalRange.HasInRange(dateTimes, DateTimeRange.PriorityEnum.PriorityLast, out dtInRange))
                 {
                     stopResult = KResultEnum.Normal;
                 }
                 else
                 {
                     DateTimeRange stopEarlyRange = this.GetPunchInDateTimeRange(PunchInDateTimeRangeEnum.StopWorkEarly);
-                    if (stopEarlyRange.HasInRange(dateTimes, out dtInRange))
+                    if (stopEarlyRange.HasInRange(dateTimes, DateTimeRange.PriorityEnum.PriorityLast, out dtInRange))
                     {
                         stopResult = KResultEnum.Early;
                     }

@@ -28,74 +28,99 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpNormalTimeSpan = new System.Windows.Forms.DateTimePicker();
+            this.dtpNormalStartWorkTimeSpan = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpLaterEarlyTimeSpan = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
+            this.dtpNormalStopWorkTimeSpan = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(11, 128);
+            this.okButton.Location = new System.Drawing.Point(11, 159);
+            this.okButton.TabIndex = 6;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(99, 128);
+            this.cancelButton.Location = new System.Drawing.Point(98, 159);
+            this.cancelButton.TabIndex = 7;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // dtpNormalTimeSpan
+            // dtpNormalStartWorkTimeSpan
             // 
-            this.dtpNormalTimeSpan.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpNormalTimeSpan.Location = new System.Drawing.Point(12, 31);
-            this.dtpNormalTimeSpan.Name = "dtpNormalTimeSpan";
-            this.dtpNormalTimeSpan.Size = new System.Drawing.Size(150, 21);
-            this.dtpNormalTimeSpan.TabIndex = 19;
+            this.dtpNormalStartWorkTimeSpan.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpNormalStartWorkTimeSpan.Location = new System.Drawing.Point(12, 31);
+            this.dtpNormalStartWorkTimeSpan.Name = "dtpNormalStartWorkTimeSpan";
+            this.dtpNormalStartWorkTimeSpan.Size = new System.Drawing.Size(159, 21);
+            this.dtpNormalStartWorkTimeSpan.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 12);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "正常上(下)班时间范围:";
+            this.label1.Size = new System.Drawing.Size(107, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "正常上班时间范围:";
             // 
             // dtpLaterEarlyTimeSpan
             // 
             this.dtpLaterEarlyTimeSpan.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpLaterEarlyTimeSpan.Location = new System.Drawing.Point(12, 84);
+            this.dtpLaterEarlyTimeSpan.Location = new System.Drawing.Point(12, 132);
             this.dtpLaterEarlyTimeSpan.Name = "dtpLaterEarlyTimeSpan";
-            this.dtpLaterEarlyTimeSpan.Size = new System.Drawing.Size(150, 21);
-            this.dtpLaterEarlyTimeSpan.TabIndex = 21;
+            this.dtpLaterEarlyTimeSpan.Size = new System.Drawing.Size(159, 21);
+            this.dtpLaterEarlyTimeSpan.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 69);
+            this.label2.Location = new System.Drawing.Point(12, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 12);
-            this.label2.TabIndex = 22;
+            this.label2.TabIndex = 4;
             this.label2.Text = "迟到(早退)时间范围:";
+            // 
+            // dtpNormalStopWorkTimeSpan
+            // 
+            this.dtpNormalStopWorkTimeSpan.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpNormalStopWorkTimeSpan.Location = new System.Drawing.Point(11, 80);
+            this.dtpNormalStopWorkTimeSpan.Name = "dtpNormalStopWorkTimeSpan";
+            this.dtpNormalStopWorkTimeSpan.Size = new System.Drawing.Size(159, 21);
+            this.dtpNormalStopWorkTimeSpan.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "正常下班时间范围:";
             // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(183, 167);
+            this.ClientSize = new System.Drawing.Size(186, 199);
+            this.Controls.Add(this.dtpNormalStopWorkTimeSpan);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpLaterEarlyTimeSpan);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dtpNormalTimeSpan);
+            this.Controls.Add(this.dtpNormalStartWorkTimeSpan);
             this.Controls.Add(this.label1);
             this.Name = "frmConfig";
             this.Text = "选项";
             this.Load += new System.EventHandler(this.frmConfig_Load);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.dtpNormalTimeSpan, 0);
+            this.Controls.SetChildIndex(this.dtpNormalStartWorkTimeSpan, 0);
             this.Controls.SetChildIndex(this.okButton, 0);
             this.Controls.SetChildIndex(this.cancelButton, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.dtpLaterEarlyTimeSpan, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.dtpNormalStopWorkTimeSpan, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,9 +128,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dtpNormalTimeSpan;
+        private System.Windows.Forms.DateTimePicker dtpNormalStartWorkTimeSpan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpLaterEarlyTimeSpan;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpNormalStopWorkTimeSpan;
+        private System.Windows.Forms.Label label3;
     }
 }

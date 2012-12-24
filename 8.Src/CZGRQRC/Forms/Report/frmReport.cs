@@ -33,6 +33,10 @@ namespace FNGRQRC.Forms
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
+            new FirstStationExporter(this.dtpBegin.Value,
+                       this.dtpEnd.Value).Export();
+            return;
+
             using (new CP.Windows.Forms.WaitCursor())
             {
                 new XfDayReportExporter(this.dtpBegin.Value, this.dtpEnd.Value).Export();
