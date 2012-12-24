@@ -33,27 +33,19 @@ namespace FNGRQRC.Forms
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            new XfDayReportExporter(this.dtpBegin.Value, this.dtpEnd.Value).Export();
-            return;
-
-            //if (false)
-            //{
-            //    new StationRangeDataExporter(this.dtpBegin.Value,
-            //        this.dtpEnd.Value).Export();
-            //}
-            //else
-            //{
-            //    new FirstStationExporter(this.dtpBegin.Value,
-            //        this.dtpEnd.Value).Export();
-            //}
+            using (new CP.Windows.Forms.WaitCursor())
+            {
+                new XfDayReportExporter(this.dtpBegin.Value, this.dtpEnd.Value).Export();
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmReport_Load(object sender, EventArgs e)
         {
-
         }
-
-
     }
-
 }

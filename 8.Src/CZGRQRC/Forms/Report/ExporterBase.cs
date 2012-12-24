@@ -10,6 +10,7 @@ namespace FNGRQRC.Forms
     abstract class ExporterBase
     {
 
+        #region SetCellValues
         /// <summary>
         /// 
         /// </summary>
@@ -39,6 +40,9 @@ namespace FNGRQRC.Forms
 
             return col - 1;
         }
+        #endregion //SetCellValues
+
+        #region SetCellValues
         /// <summary>
         /// 
         /// </summary>
@@ -49,6 +53,8 @@ namespace FNGRQRC.Forms
         {
             SetCellValues(xls, startPoint.X, startPoint.Y, enumerable);
         }
+        #endregion //SetCellValues
+
         #region NumberOfDot
         /// <summary>
         /// 
@@ -66,6 +72,7 @@ namespace FNGRQRC.Forms
         } private int _numberOfDot = 2;
         #endregion //NumberOfDot
 
+        #region Format
         internal object Format(object value)
         {
             if (value is double ||
@@ -80,6 +87,9 @@ namespace FNGRQRC.Forms
                 return value;
             }
         }
+        #endregion //Format
+
+        #region ExporterBase
         /// <summary>
         /// 
         /// </summary>
@@ -90,7 +100,9 @@ namespace FNGRQRC.Forms
             this.B = b;
             this.E = e;
         }
+        #endregion //ExporterBase
 
+        #region Open
         internal void Open(string filename)
         {
             ProcessStartInfo si = new ProcessStartInfo(filename);
@@ -108,7 +120,9 @@ namespace FNGRQRC.Forms
             }
             process.Dispose();
         }
+        #endregion //Open
 
+        #region SetCellValue
         internal void SetCellValue(XlsFile xls, Rectangle area, object value, bool hasBorder)
         {
             xls.SetCellValue(area.Top, area.Left, value);
@@ -117,12 +131,16 @@ namespace FNGRQRC.Forms
                 SetBorder(xls, area, hasBorder);
             }
         }
+        #endregion //SetCellValue
+
+        #region SetCellValue
         internal void SetCellValue(XlsFile xls, Point pt, object value)
         {
             SetCellValue(xls, pt.X, pt.Y, value);
         }
+        #endregion //SetCellValue
 
-
+        #region SetCellValue
         internal void SetCellValue(XlsFile xls, int row, int col, object value)
         {
             xls.SetCellValue(row, col,
@@ -130,7 +148,9 @@ namespace FNGRQRC.Forms
 
             SetBorder(xls, row, col);
         }
+        #endregion //SetCellValue
 
+        #region MergeCells
         internal void MergeCells(XlsFile xls, int row, int col, int colCount, bool hasBorder)
         {
             xls.MergeCells(row, col, row, col + colCount - 1);
@@ -139,11 +159,14 @@ namespace FNGRQRC.Forms
                 SetBorder(xls, row, col, row, col + colCount - 1);
             }
         }
+        #endregion //MergeCells
 
+        #region MergeCells
         internal void MergeCells(XlsFile xls, int row, int col, int colCount)
         {
             MergeCells(xls, row, col, colCount, false);
         }
+        #endregion //MergeCells
 
         #region CellFormat
         /// <summary>
@@ -187,11 +210,13 @@ namespace FNGRQRC.Forms
         #endregion //MergedCellFormat
 
 
+        #region SetBorder
         internal void SetBorder(XlsFile xls, int row, int col, int row2, int col2)
         {
             int xf = GetMergedCellFormat(xls);
             xls.SetCellFormat(row, col, row2, col2, xf);
         }
+        #endregion //SetBorder
 
         //private int GetThinBorderXF(XlsFile xls)
         //{
@@ -210,6 +235,7 @@ namespace FNGRQRC.Forms
 
         //} private int _thinBorderXF = -1;
 
+        #region SetBorder
         internal void SetBorder(XlsFile xls, int row, int col)
         {
             TFlxFormat format = xls.GetDefaultFormat;
@@ -222,7 +248,9 @@ namespace FNGRQRC.Forms
             int xf = xls.AddFormat(format);
             xls.SetCellFormat(row, col, xf);
         }
+        #endregion //SetBorder
 
+        #region SetBorder
         internal void SetBorder(XlsFile xls, Rectangle area, bool has)
         {
             TFlxBorderStyle borderStyle = TFlxBorderStyle.None;
@@ -243,7 +271,9 @@ namespace FNGRQRC.Forms
             //int xf = GetThinBorderXF(xls);
             xls.SetCellFormat(area.Top, area.Left, area.Bottom - 1, area.Right - 1, xf);
         }
+        #endregion //SetBorder
 
+        #region SetBorder
         internal void SetBorder(XlsFile xls, Rectangle area, bool has, THFlxAlignment hAlignment)
         {
             TFlxBorderStyle borderStyle = TFlxBorderStyle.None;
@@ -271,7 +301,9 @@ namespace FNGRQRC.Forms
             //int xf = GetThinBorderXF(xls);
             xls.SetCellFormat(area.Top, area.Left, area.Bottom - 1, area.Right - 1, xf);
         }
+        #endregion //SetBorder
 
+        #region MergeCells
         /// <summary>
         /// 
         /// </summary>
@@ -283,9 +315,14 @@ namespace FNGRQRC.Forms
             xls.SetCellFormat(area.Top, area.Left, area.Bottom - 1, area.Right - 1, 
                 GetMergedCellFormat(xls));
         }
+        #endregion //MergeCells
 
+        #region Export
+        /// <summary>
+        /// 
+        /// </summary>
         abstract internal void Export();
-
+        #endregion //Export
         #region B
         /// <summary>
         /// 

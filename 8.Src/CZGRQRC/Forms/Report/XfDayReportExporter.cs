@@ -1,21 +1,18 @@
 using System;
-using System.Collections;
-using System.IO;
-using System.Diagnostics;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
-using CZGRWEBDBI;
-using FlexCel;
 using FlexCel.XlsAdapter;
 using FNGRQRC.Forms.Report;
 
 
 namespace FNGRQRC.Forms
 {
+    /// <summary>
+    /// 
+    /// </summary>
     internal class XfDayReportExporter : ExporterBase
     {
         /// <summary>
@@ -23,13 +20,11 @@ namespace FNGRQRC.Forms
         /// </summary>
         internal class Config
         {
-            static internal Rectangle TitleArea = new Rectangle(1, 1, ColumnCount, 1),
+            #region Members
+            static internal Rectangle 
+                TitleArea = new Rectangle(1, 1, ColumnCount, 1),
                 FirstStationTitleArea = new Rectangle(1, 3, ColumnCount, 1)
                 ;
-
-            //static internal Point
-            //    Range = new Point(2, ColumnCount)
-            //    ;
 
             internal const int ColumnCount = 12,
                 StationTitleColumn = 1,
@@ -49,10 +44,24 @@ namespace FNGRQRC.Forms
                 "序号", "站名", "一次供温", "一次回温", "二次供温", "二次回温", "一次供压", 
                 "一次回压", "二次供压", "二次回压", "一次瞬时流量", "阀门开度"
             };
-
-
+            #endregion //Members
         }
 
+        #region Members
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _xlsPath = Path.Combine(
+                Application.StartupPath,
+                "RT\\Day.xls");
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private XlsFile _xls;
+        #endregion //Members
+
+        #region Constructor
         /// <summary>
         /// 
         /// </summary>
@@ -62,28 +71,21 @@ namespace FNGRQRC.Forms
             : base(b, e)
         {
         }
+        #endregion //Constructor
 
-        private string _xlsPath = Path.Combine(
-                Application.StartupPath,
-                "RT\\Day.xls");
-
-        private XlsFile _xls;
-
+        #region Export
         /// <summary>
         /// 
         /// </summary>
         internal override void Export()
         {
             _xls = new XlsFile();
-            _xls.Open(_xlsPath);
+            //_xls.Open(_xlsPath);
+            _xls.NewFile (1);
 
-            //_xls.SetCellValue (Config.
             SetCellValue(_xls, Config.TitleArea,
                 string.Format(ReportStrings.Title, B, E), false);
             MergeCells(_xls, Config.TitleArea);
-
-            //SetCellValue(_xls, Config.Range, "TODO: 2012-1-1");
-
 
             // set first column names
             //
@@ -95,9 +97,9 @@ namespace FNGRQRC.Forms
             _xls.Save(filename);
             Open(filename);
         }
+        #endregion //Export
 
-
-
+        #region ExportStations
         /// <summary>
         /// 
         /// </summary>
@@ -112,9 +114,6 @@ namespace FNGRQRC.Forms
             });
 
             int row = startRow;
-            //_xls.SetCellValue(row, Config.TitleColumn, ReportStrings.StationTitle);
-            //SetCellValue(_xls, row, Config.TitleColumn, ReportStrings.StationTitle);
-            //MergeCells(_xls, row, Config.TitleColumn, Config.ColumnCount);
             Rectangle a = new Rectangle(1, row, Config.ColumnCount, 1);
             SetCellValue(_xls, a, ReportStrings.StationTitle, true);
             MergeCells(_xls, a);
@@ -122,15 +121,6 @@ namespace FNGRQRC.Forms
 
             row++;
 
-            // 
-            //
-            //int colOffset = 1;
-            //for (int i = 0; i < Config.StationColumnNames.Length; i++)
-            //{
-            //    string v = Config.StationColumnNames[i];
-            //    int col = colOffset + i;
-            //    _xls.SetCellValue(row, col, v);
-            //}
             SetCellValues(_xls, row, 1, Config.StationColumnNames);
             row++;
 
@@ -144,8 +134,7 @@ namespace FNGRQRC.Forms
                 string street = dr["street"].ToString().Trim();
                 if (street != lastStreetName)
                 {
-                    //SetCellValue(_xls, row, 1, street);
-                    //MergeCells(_xls, row, 1, Config.ColumnCount);
+                    lastStreetName = street;
                     Rectangle area = new Rectangle(1, row, Config.ColumnCount, 1);
                     SetCellValue(_xls, area, street, true);
                     MergeCells(_xls, area);
@@ -153,8 +142,6 @@ namespace FNGRQRC.Forms
                     row++;
                 }
 
-                //_xls.SetCellValue(row, 1, no++);
-                //SetCellValue(_xls, row, 1, no++);
                 List<object> valueList = new List<object>();
                 valueList.Add(no++);
 
@@ -163,8 +150,6 @@ namespace FNGRQRC.Forms
                     object value = dr[columnNameList[i]];
                     value = Format(value);
                     int col = Config.StationDataColumnOffset + i;
-                    //_xls.SetCellValue(row, col, value);
-                    //SetCellValue(_xls, row, col, value);
                     valueList.Add(value);
                 }
                 SetCellValues(_xls, row, 1, valueList);
@@ -173,7 +158,9 @@ namespace FNGRQRC.Forms
 
             return row;
         }
+        #endregion //ExportStations
 
+        #region ExportFirst
         /// <summary>
         /// 
         /// </summary>
@@ -206,9 +193,6 @@ namespace FNGRQRC.Forms
                 List<object> valueList = new List<object>();
                 valueList.Add(no++);
 
-                //_xls.SetCellValue(row, Config.NoColumn, no++);
-                //SetCellValue(_xls, row, Config.NoColumn, no++);
-
                 for (int i = 0; i < columnNameList.Count; i++)
                 {
                     string colName = columnNameList[i];
@@ -218,11 +202,7 @@ namespace FNGRQRC.Forms
                     }
                     else
                     {
-                        //int col = Config.FirstDataColumnOffset + i;
                         object val = Format(dr[colName]);
-                        //_xls.SetCellValue(row, col, val);
-
-                        //SetCellValue(_xls, row, col, val);
                         valueList.Add(val);
                     }
 
@@ -235,6 +215,7 @@ namespace FNGRQRC.Forms
             startRow = row;
             return startRow;
         }
+        #endregion //ExportFirst
     }
 
 }

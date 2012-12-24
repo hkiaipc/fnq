@@ -13,7 +13,7 @@
           value="NHibernate.Connection.DriverConnectionProvider" />
         <add
           key="connection.connection_string"
-          value="Data Source=.;Initial Catalog=fngrdb2012;User ID=sa;Pwd=sa" />
+          value="Data Source=.;Initial Catalog=fngr20121221;User ID=sa;Pwd=sa" />
         <add
           key="proxyfactory.factory_class"
           value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" />
