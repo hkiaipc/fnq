@@ -35,7 +35,8 @@ namespace K
             foreach ( PersonResult pr in gr.PersonResults )
             {
                 DataTable tbl = ResultDataTableConverter.ToPersonResultDataTable(pr);
-                UCPersonResult ucPr = new UCPersonResult(tbl);
+                TimeSpan ts = pr.CalcSumOfWorkTimeSpan();
+                UCPersonResult ucPr = new UCPersonResult(tbl, ts);
                 ucPr.Dock = DockStyle.Fill;
 
                 string personName = pr.TblPerson.PersonName;

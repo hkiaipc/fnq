@@ -1,19 +1,11 @@
-
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
 using KDB;
-using Xdgk.Common;
-
 
 namespace K
 {
     internal class PersonResult
     {
-#region TblPerson
+        #region TblPerson
         /// <summary>
         /// 
         /// </summary>
@@ -28,9 +20,9 @@ namespace K
                 _tblPerson = value;
             }
         } private tblPerson _tblPerson;
-#endregion //TblPerson
+        #endregion //TblPerson
 
-#region TimeResults
+        #region TimeResults
         /// <summary>
         /// 
         /// </summary>
@@ -49,8 +41,21 @@ namespace K
                 _timeResults = value;
             }
         } private TimeResultCollection _timeResults;
-#endregion //TimeResults
+        #endregion //TimeResults
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        internal TimeSpan CalcSumOfWorkTimeSpan()
+        {
+            TimeSpan r = TimeSpan.Zero ;
+            foreach (var item in this.TimeResults )
+            {
+                r += item.WorkTimeSpan;
+            }
+            return r;
+        }
     }
 
 }

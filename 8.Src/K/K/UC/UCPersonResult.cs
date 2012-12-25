@@ -12,10 +12,12 @@ namespace K.UC
 {
     public partial class UCPersonResult : UserControl
     {
-        public UCPersonResult(DataTable tbl)
+        public UCPersonResult(DataTable tbl, TimeSpan sumOfWorkTimeSpan)
         {
             InitializeComponent();
             this.dataGridView1.DataSource = tbl;
+
+            this.label1.Text = string.Format("累计工作时长: {0}", sumOfWorkTimeSpan);
         }
         public UCPersonResult()
         {

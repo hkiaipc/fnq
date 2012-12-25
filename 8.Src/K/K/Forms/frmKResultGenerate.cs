@@ -128,7 +128,7 @@ namespace K.Forms
                     xls.ActiveSheet = n;
                     xls.SheetName = GetSheetName(gr, pr);
                     DataTable tbl = ResultDataTableConverter.ToPersonResultDataTable(pr);
-                    Write(xls, tbl);
+                    Write(xls, tbl, pr.CalcSumOfWorkTimeSpan());
                 }
             }
             xls.Save(file);
@@ -172,7 +172,7 @@ namespace K.Forms
             process.Dispose();
         }
 
-        private void Write(XlsFile xls, DataTable tbl)
+        private void Write(XlsFile xls, DataTable tbl, TimeSpan ts)
         {
             int r = 1, c = 1;
             foreach ( DataColumn col in tbl.Columns )
@@ -192,6 +192,8 @@ namespace K.Forms
                 }
                 r++;
             }
+
+            xls.SetCellValue(r, 1, string.Format("累计工作时长: {0}", ts));
         }
 
         private int GetPersonCount()

@@ -57,6 +57,7 @@ namespace K.Forms
         {
             DB db = DBFactory.GetDB();
             var r = from q in db.tblStation
+                    where q.tblDevice.Any(c=> c.DeviceType == "xgdevice")
                     orderby q.StationName
                     select q;
 
