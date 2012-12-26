@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colStationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,11 +43,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbPerson = new System.Windows.Forms.ComboBox();
             this.cmbStation = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblGroup = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panPerson = new System.Windows.Forms.Panel();
             this.panStation = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbGroup = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panPerson.SuspendLayout();
             this.panStation.SuspendLayout();
@@ -56,10 +58,10 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(97, 237);
+            this.btnQuery.Location = new System.Drawing.Point(112, 327);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
-            this.btnQuery.TabIndex = 0;
+            this.btnQuery.TabIndex = 2;
             this.btnQuery.Text = "查询";
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
@@ -111,9 +113,9 @@
             // colDT
             // 
             this.colDT.DataPropertyName = "DT";
-            dataGridViewCellStyle1.Format = "G";
-            dataGridViewCellStyle1.NullValue = null;
-            this.colDT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Format = "G";
+            dataGridViewCellStyle7.NullValue = null;
+            this.colDT.DefaultCellStyle = dataGridViewCellStyle7;
             this.colDT.HeaderText = "时间";
             this.colDT.Name = "colDT";
             this.colDT.ReadOnly = true;
@@ -126,7 +128,7 @@
             this.dtpBegin.Location = new System.Drawing.Point(6, 32);
             this.dtpBegin.Name = "dtpBegin";
             this.dtpBegin.Size = new System.Drawing.Size(150, 21);
-            this.dtpBegin.TabIndex = 2;
+            this.dtpBegin.TabIndex = 1;
             // 
             // label1
             // 
@@ -134,7 +136,7 @@
             this.label1.Location = new System.Drawing.Point(6, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 12);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 0;
             this.label1.Text = "开始时间:";
             // 
             // label2
@@ -143,7 +145,7 @@
             this.label2.Location = new System.Drawing.Point(4, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 12);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 2;
             this.label2.Text = "结束时间:";
             // 
             // dtpEnd
@@ -153,7 +155,7 @@
             this.dtpEnd.Location = new System.Drawing.Point(6, 80);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(150, 21);
-            this.dtpEnd.TabIndex = 4;
+            this.dtpEnd.TabIndex = 3;
             // 
             // cmbQueryStyle
             // 
@@ -162,7 +164,7 @@
             this.cmbQueryStyle.Location = new System.Drawing.Point(6, 137);
             this.cmbQueryStyle.Name = "cmbQueryStyle";
             this.cmbQueryStyle.Size = new System.Drawing.Size(150, 20);
-            this.cmbQueryStyle.TabIndex = 6;
+            this.cmbQueryStyle.TabIndex = 5;
             this.cmbQueryStyle.SelectedIndexChanged += new System.EventHandler(this.cmbQueryStyle_SelectedIndexChanged);
             // 
             // label3
@@ -171,17 +173,17 @@
             this.label3.Location = new System.Drawing.Point(4, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 12);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 4;
             this.label3.Text = "方式:";
             // 
             // cmbPerson
             // 
             this.cmbPerson.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerson.FormattingEnabled = true;
-            this.cmbPerson.Location = new System.Drawing.Point(3, 17);
+            this.cmbPerson.Location = new System.Drawing.Point(3, 55);
             this.cmbPerson.Name = "cmbPerson";
             this.cmbPerson.Size = new System.Drawing.Size(150, 20);
-            this.cmbPerson.TabIndex = 8;
+            this.cmbPerson.TabIndex = 3;
             // 
             // cmbStation
             // 
@@ -190,16 +192,16 @@
             this.cmbStation.Location = new System.Drawing.Point(3, 17);
             this.cmbStation.Name = "cmbStation";
             this.cmbStation.Size = new System.Drawing.Size(150, 20);
-            this.cmbStation.TabIndex = 9;
+            this.cmbStation.TabIndex = 1;
             // 
-            // label4
+            // lblGroup
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 12);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "人员:";
+            this.lblGroup.AutoSize = true;
+            this.lblGroup.Location = new System.Drawing.Point(1, 2);
+            this.lblGroup.Name = "lblGroup";
+            this.lblGroup.Size = new System.Drawing.Size(35, 12);
+            this.lblGroup.TabIndex = 0;
+            this.lblGroup.Text = "部门:";
             // 
             // label5
             // 
@@ -207,17 +209,19 @@
             this.label5.Location = new System.Drawing.Point(1, 2);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 12);
-            this.label5.TabIndex = 11;
+            this.label5.TabIndex = 0;
             this.label5.Text = "站点:";
             // 
             // panPerson
             // 
+            this.panPerson.Controls.Add(this.cmbGroup);
+            this.panPerson.Controls.Add(this.lblGroup);
             this.panPerson.Controls.Add(this.cmbPerson);
-            this.panPerson.Controls.Add(this.label4);
+            this.panPerson.Controls.Add(this.label6);
             this.panPerson.Location = new System.Drawing.Point(3, 219);
             this.panPerson.Name = "panPerson";
-            this.panPerson.Size = new System.Drawing.Size(160, 50);
-            this.panPerson.TabIndex = 12;
+            this.panPerson.Size = new System.Drawing.Size(160, 84);
+            this.panPerson.TabIndex = 7;
             // 
             // panStation
             // 
@@ -226,24 +230,43 @@
             this.panStation.Location = new System.Drawing.Point(3, 163);
             this.panStation.Name = "panStation";
             this.panStation.Size = new System.Drawing.Size(160, 50);
-            this.panStation.TabIndex = 13;
+            this.panStation.TabIndex = 6;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpEnd);
+            this.groupBox1.Controls.Add(this.dtpBegin);
+            this.groupBox1.Controls.Add(this.cmbQueryStyle);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.panStation);
-            this.groupBox1.Controls.Add(this.dtpBegin);
             this.groupBox1.Controls.Add(this.panPerson);
-            this.groupBox1.Controls.Add(this.dtpEnd);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cmbQueryStyle);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(175, 219);
-            this.groupBox1.TabIndex = 14;
+            this.groupBox1.Size = new System.Drawing.Size(175, 309);
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条件";
+            // 
+            // cmbGroup
+            // 
+            this.cmbGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGroup.FormattingEnabled = true;
+            this.cmbGroup.Location = new System.Drawing.Point(3, 17);
+            this.cmbGroup.Name = "cmbGroup";
+            this.cmbGroup.Size = new System.Drawing.Size(150, 20);
+            this.cmbGroup.TabIndex = 1;
+            this.cmbGroup.SelectedIndexChanged += new System.EventHandler(this.cmbGroup_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 12);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "人员:";
             // 
             // frmTMDataQuery
             // 
@@ -279,7 +302,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbPerson;
         private System.Windows.Forms.ComboBox cmbStation;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblGroup;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panPerson;
         private System.Windows.Forms.Panel panStation;
@@ -288,5 +311,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTMSN;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDT;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbGroup;
     }
 }

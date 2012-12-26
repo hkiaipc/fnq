@@ -14,37 +14,85 @@ namespace K.Forms
     public partial class frmTMDataQuery : Form
     {
 
+        #region QueryStyleEnum
         private enum QueryStyleEnum
         {
             ByStation,
             ByPerson,
         }
+        #endregion //QueryStyleEnum
 
+        #region frmTMDataQuery
         public frmTMDataQuery(string personName, DateTime b, DateTime e)
             : this()
         {
             this.cmbQueryStyle.SelectedIndex = 1;
+            this.SelectedGroupID = GetGroupIDByPersonName(personName);
             this.cmbPerson.Text = personName;
             this.dtpBegin.Value = b;
             this.dtpEnd.Value = e;
 
             Query();
         }
+        #endregion //frmTMDataQuery
 
+        private int GetGroupIDByPersonName(string personName)
+        {
+            DB db = DBFactory.GetDB();
+            tblPerson p= db.tblPerson.First(c => c.PersonName == personName);
+            return p.tblGroup.GroupID;
+            
+        }
+
+
+        #region frmTMDataQuery
         public frmTMDataQuery()
         {
             InitializeComponent();
             this.Begin = DateTime.Now.Date.AddDays(-1d);
             this.End = DateTime.Now.Date;
+            BindGroup();
             BindQueryStyle();
             BindStation();
-            BindPerson();
+            //BindPerson();
         }
+        #endregion //frmTMDataQuery
 
-        private void BindPerson()
+        #region frmTMDataQuery_Load
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmTMDataQuery_Load(object sender, EventArgs e)
+        {
+            this.panPerson.Location = this.panStation.Location;
+        }
+        #endregion //frmTMDataQuery_Load
+
+        #region BindGroup
+        /// <summary>
+        /// 
+        /// </summary>
+        private void BindGroup()
+        {
+            DB db = DBFactory.GetDB();
+            var r = from q in db.tblGroup
+                    orderby q.GroupName
+                    select q;
+
+            this.cmbGroup.DisplayMember = "GroupName";
+            this.cmbGroup.ValueMember = "GroupID";
+            this.cmbGroup.DataSource = r;
+        }
+        #endregion //BindGroup
+
+        #region BindPerson
+        private void BindPerson(int groupID)
         {
             DB db = DBFactory.GetDB();
             var r = from q in db.tblPerson
+                    where q.tblGroup.GroupID == groupID 
                     orderby q.PersonName
                     select q;
 
@@ -52,7 +100,9 @@ namespace K.Forms
             this.cmbPerson.ValueMember = "PersonID";
             this.cmbPerson.DataSource = r;
         }
+        #endregion //BindPerson
 
+        #region BindStation
         private void BindStation()
         {
             DB db = DBFactory.GetDB();
@@ -65,7 +115,9 @@ namespace K.Forms
             this.cmbStation.ValueMember = "StationID";
             this.cmbStation.DataSource = r;
         }
+        #endregion //BindStation
 
+        #region BindQueryStyle
         private void BindQueryStyle()
         {
             KeyValueCollection kvs = new KeyValueCollection();
@@ -76,20 +128,18 @@ namespace K.Forms
             this.cmbQueryStyle.ValueMember = "Value";
             this.cmbQueryStyle.DataSource = kvs;
         }
+        #endregion //BindQueryStyle
 
-
-        private void frmTMDataQuery_Load(object sender, EventArgs e)
-        {
-            this.panPerson.Location = this.panStation.Location;
-        }
-
+        #region cmbQueryStyle_SelectedIndexChanged
         private void cmbQueryStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
             QueryStyleEnum style = this.SelectedQueryStyleEnum;
             this.panPerson.Visible = style == QueryStyleEnum.ByPerson;
             this.panStation.Visible = style == QueryStyleEnum.ByStation;
         }
+        #endregion //cmbQueryStyle_SelectedIndexChanged
 
+        #region SelectedQueryStyleEnum
         /// <summary>
         /// 
         /// </summary>
@@ -104,19 +154,25 @@ namespace K.Forms
                 this.cmbQueryStyle.SelectedValue = value;
             }
         }
+        #endregion //SelectedQueryStyleEnum
 
+        #region Begin
         public DateTime Begin
         {
             get { return this.dtpBegin.Value; }
             set { this.dtpBegin.Value = value; }
         }
+        #endregion //Begin
 
+        #region End
         public DateTime End
         {
             get { return this.dtpEnd.Value; }
             set { this.dtpEnd.Value = value; }
         }
+        #endregion //End
 
+        #region SelectedPersonID
         public int SelectedPersonID
         {
             get 
@@ -138,7 +194,26 @@ namespace K.Forms
                 }
             }
         }
+        #endregion //SelectedPersonID
 
+        public int SelectedGroupID
+        {
+            get
+            {
+                if (this.cmbGroup.Items.Count == 0)
+                {
+                    return -1;
+                }
+                return (int)this.cmbGroup.SelectedValue;
+            }
+            set 
+            {
+                this.cmbGroup.SelectedValue = value;
+            }
+
+        }
+
+        #region SelectedStationID
         public int SelectedStationID
         {
             get {
@@ -157,7 +232,9 @@ namespace K.Forms
 
             }
         }
+        #endregion //SelectedStationID
 
+        #region Query
         private void Query()
         {
             DB db = DBFactory.GetDB();
@@ -188,7 +265,9 @@ namespace K.Forms
 
             this.dataGridView1.DataSource = ds;
         }
+        #endregion //Query
 
+        #region ConvertToDataTable
         private DataTable ConvertToDataTable(IList<tblTmData> list)
         {
             DataTable tbl = new DataTable();
@@ -210,7 +289,9 @@ namespace K.Forms
 
             return tbl;
         }
+        #endregion //ConvertToDataTable
 
+        #region GetSelectedPersonTMID
         private int GetSelectedPersonTMID(DB db)
         {
             var r = from q in db.tblPerson
@@ -227,10 +308,31 @@ namespace K.Forms
             }
 
         }
+        #endregion //GetSelectedPersonTMID
 
+        #region btnQuery_Click
         private void btnQuery_Click(object sender, EventArgs e)
         {
             this.Query();
+        }
+        #endregion //btnQuery_Click
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedGroupID = this.SelectedGroupID;
+            if (selectedGroupID == -1)
+            {
+                return;
+            }
+            else
+            {
+                BindPerson(selectedGroupID);
+            }
         }
     }
 }

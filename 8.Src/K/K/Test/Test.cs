@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using KDB;
 
 namespace K.Test
 {
@@ -129,6 +130,41 @@ namespace K.Test
                 Console.WriteLine("{0} => {1} => {2}", baseRange, dtr, r);
                 Assert.AreEqual(objs[i], r);
             }
+        }
+    }
+
+
+    [TestFixture]
+    public class TestLinqObjectEqual
+    {
+        [Test]
+        public void FromSameDB()
+        {
+            DB db = DBFactory.GetDB();
+            tblGroup v1 = db.tblGroup.First();
+            tblGroup v2 = db.tblGroup.ToList()[0];
+            Console.WriteLine("{0} {1}", v1.GroupName, v1.GroupID);
+            Assert.AreEqual(v1.GroupID, v2.GroupID);
+
+            Assert.AreEqual(v1, v2);
+            Assert.AreSame(v1, v2);
+        }
+
+        [Test]
+        public void FromDiffDB()
+        {
+            DB db1 = DBFactory.GetDB();
+            DB db2 = DBFactory.GetDB();
+
+            tblGroup v1 = db1.tblGroup.First();
+            tblGroup v2 = db2.tblGroup.First();
+            Console.WriteLine("v1: {0} {1}", v1.GroupName, v1.GroupID);
+            Console.WriteLine("v2: {0} {1}", v2.GroupName, v2.GroupID);
+
+            Assert.AreEqual(v1.GroupID, v2.GroupID);
+            //Assert.AreEqual(v1, v2);
+            Assert.AreNotEqual(v1, v2);
+            Assert.AreNotSame(v1, v2);
         }
     }
 }
