@@ -214,6 +214,7 @@ namespace K.Forms.WD
             }
             catch (KConfigException kex)
             {
+                Console.WriteLine(kex.Message);
                 string msg = "时间不能交叉";
                 NUnit.UiKit.UserMessage.DisplayFailure(msg);
                 return;

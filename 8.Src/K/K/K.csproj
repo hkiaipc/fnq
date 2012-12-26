@@ -65,6 +65,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="DateTimeHelper.cs" />
     <Compile Include="DateTimeRange.cs" />
     <Compile Include="DateTimeRangeRelation.cs" />
     <Compile Include="Forms\frmConfig.cs">
@@ -280,6 +281,7 @@
     </Compile>
     <Compile Include="PunchInDateTimeRangeEnum.cs" />
     <Compile Include="ResultDataTableConverter.cs" />
+    <Compile Include="SerializableObject.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -318,6 +320,8 @@
       <DependentUpon>UCTimeDefine.cs</DependentUpon>
     </Compile>
     <Compile Include="UIHelper.cs" />
+    <Compile Include="UserWorkDefine.cs" />
+    <Compile Include="WeekWorkDefine.cs" />
     <Compile Include="WorkDefine.cs" />
     <Compile Include="WorkDefineCollection.cs" />
   </ItemGroup>

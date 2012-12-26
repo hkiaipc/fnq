@@ -30,6 +30,11 @@ namespace K.Forms
             this.dtpLaterEarlyTimeSpan.Value = DateTime.Parse("2000-1-1") + cfg.LaterEarlyTimeSpan;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
             Config cfg = Config.Default;
@@ -42,6 +47,11 @@ namespace K.Forms
             this.Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();

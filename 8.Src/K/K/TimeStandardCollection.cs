@@ -1,19 +1,22 @@
-
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using KDB;
 using Xdgk.Common;
-
 
 namespace K
 {
     internal class TimeStandardCollection : Collection<TimeStandard>
     {
 
-    }
+        public void Add(TimeStandardCollection value)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException("value");
+            }
 
+            foreach (TimeStandard item in value)
+            {
+                this.Add(item);
+            }
+        }
+    }
 }
