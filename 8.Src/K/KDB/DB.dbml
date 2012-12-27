@@ -15,6 +15,7 @@
       <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="WorkDefineID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="tblGroup_tblPerson" Member="tblPerson" OtherKey="GroupID" Type="tblPerson" />
+      <Association Name="tblGroup_tblGroupStation" Member="tblGroupStation" OtherKey="GroupID" Type="tblGroupStation" />
       <Association Name="tblWorkDefine_tblGroup" Member="tblWorkDefine" ThisKey="WorkDefineID" Type="tblWorkDefine" IsForeignKey="true" />
     </Type>
   </Table>
@@ -83,6 +84,7 @@
       <Column Name="StationRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Column Name="StationCPConfig" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Association Name="tblStation_tblDevice" Member="tblDevice" OtherKey="StationID" Type="tblDevice" />
+      <Association Name="tblStation_tblGroupStation" Member="tblGroupStation" OtherKey="StationID" Type="tblGroupStation" />
     </Type>
   </Table>
   <Table Name="dbo.tblExWork" Member="tblExWork">
@@ -103,6 +105,15 @@
       <Column Name="TmRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
       <Association Name="tblTM_tblPerson" Member="tblPerson" OtherKey="TmID" Type="tblPerson" />
       <Association Name="tblTM_tblTmData" Member="tblTmData" OtherKey="TmID" Type="tblTmData" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblGroupStation" Member="tblGroupStation">
+    <Type Name="tblGroupStation">
+      <Column Name="GroupStationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblGroup_tblGroupStation" Member="tblGroup" ThisKey="GroupID" Type="tblGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="tblStation_tblGroupStation" Member="tblStation" ThisKey="StationID" Type="tblStation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

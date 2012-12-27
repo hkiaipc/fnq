@@ -5,28 +5,34 @@ using System.Linq;
 using System.Windows.Forms;
 using KDB;
 
-
 namespace K.Forms
 {
     public partial class frmGroupItem : NUnit.UiKit.SettingsDialogBase 
     {
 
+        #region TblGroup
         public tblGroup TblGroup
         {
             get { return _tblGroup; }
             set { _tblGroup = value; }
         } private tblGroup _tblGroup;
+        #endregion //TblGroup
 
+        #region frmGroupItem
         public frmGroupItem()
         {
             InitializeComponent();
         }
+        #endregion //frmGroupItem
 
+        #region cancelButton_Click
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }
+        #endregion //cancelButton_Click
 
+        #region okButton_Click
         /// <summary>
         /// 
         /// </summary>
@@ -50,7 +56,9 @@ namespace K.Forms
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+        #endregion //okButton_Click
 
+        #region CheckInput
         private bool CheckInput()
         {
             if (this.txtGroupName.Text.Trim().Length == 0)
@@ -65,7 +73,9 @@ namespace K.Forms
             }
             return true;
         }
+        #endregion //CheckInput
 
+        #region Add
         void Add()
         {
             DB db = DBFactory.GetDB();
@@ -79,8 +89,9 @@ namespace K.Forms
 
             Associate(g, GetPersonListFromListView());
         }
+        #endregion //Add
 
-
+        #region Edit
         void Edit()
         {
             DB db = DBFactory.GetDB();
@@ -96,7 +107,9 @@ namespace K.Forms
             Associate(group, GetPersonListFromListView());
 
         }
+        #endregion //Edit
 
+        #region GetSelectedWorkDefine
         tblWorkDefine GetSelectedWorkDefine(DB db)
         {
             tblWorkDefine wd = db.tblWorkDefine.First(
@@ -104,7 +117,9 @@ namespace K.Forms
             Debug.Assert(wd != null);
             return wd;
         }
+        #endregion //GetSelectedWorkDefine
 
+        #region IsAdd
         /// <summary>
         /// 
         /// </summary>
@@ -113,7 +128,9 @@ namespace K.Forms
         {
             return this._tblGroup == null;
         }
+        #endregion //IsAdd
 
+        #region frmGroupItem_Load
         /// <summary>
         /// 
         /// </summary>
@@ -125,7 +142,9 @@ namespace K.Forms
             Fill();
             
         }
+        #endregion //frmGroupItem_Load
 
+        #region BindWorkDefineSource
         private void BindWorkDefineSource()
         {
             DB db = DBFactory.GetDB();
@@ -139,7 +158,9 @@ namespace K.Forms
 
                      
         }
+        #endregion //BindWorkDefineSource
 
+        #region Fill
         private void Fill()
         {
             if (this.TblGroup != null)
@@ -165,9 +186,26 @@ namespace K.Forms
                 {
                     this.cmbWorkDefine.SelectedValue = wd.WorkDefineID;
                 }
+
+                //
+                //
+                var vStations = from q1 in this.TblGroup.tblGroupStation
+                                orderby q1.tblStation.StationName
+                                select q1.tblStation;
+                //this.lvStation.DataBindings.Add("StationName", vStations, "StationID");
+                this.lvStation.Items.Clear();
+                foreach (tblStation item in vStations.ToList())
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = item.StationName;
+                    lvi.Tag = item;
+                    this.listView1.Items.Add(lvi);
+                }
             }
         }
+        #endregion //Fill
 
+        #region CreateLVI
         private ListViewItem CreateLVI(tblPerson person)
         {
             ListViewItem lvi = new ListViewItem();
@@ -175,7 +213,9 @@ namespace K.Forms
             lvi.Tag = person;
             return lvi;
         }
+        #endregion //CreateLVI
 
+        #region btnAddPerson_Click
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
             frmPersonSelect f = new frmPersonSelect();
@@ -187,7 +227,9 @@ namespace K.Forms
                 //Associate(this.TblGroup, list);
             }
         }
+        #endregion //btnAddPerson_Click
 
+        #region AddPersonListToListView
         /// <summary>
         /// 
         /// </summary>
@@ -205,7 +247,9 @@ namespace K.Forms
                 this.listView1.Items.Add(lvi);
             }
         }
+        #endregion //AddPersonListToListView
 
+        #region ExistInListView
         private bool ExistInListView(tblPerson  p)
         {
             foreach (ListViewItem lvi in this.listView1.Items)
@@ -218,7 +262,9 @@ namespace K.Forms
             }
             return false;
         }
+        #endregion //ExistInListView
 
+        #region Associate
         /// <summary>
         /// 
         /// </summary>
@@ -246,7 +292,9 @@ namespace K.Forms
             }
             db.SubmitChanges();
         }
+        #endregion //Associate
 
+        #region UnAssociate
         private void UnAssociate(List<tblPerson> list)
         {
             DB db = DBFactory.GetDB();
@@ -260,7 +308,9 @@ namespace K.Forms
             }
             db.SubmitChanges();
         }
+        #endregion //UnAssociate
 
+        #region btnDeletePerson_Click
         /// <summary>
         /// 
         /// </summary>
@@ -282,7 +332,9 @@ namespace K.Forms
                 }
             }
         }
+        #endregion //btnDeletePerson_Click
 
+        #region GetSelectedPersonList
         private List<tblPerson> GetSelectedPersonList()
         {
             List<tblPerson> list = new List<tblPerson>();
@@ -297,7 +349,9 @@ namespace K.Forms
             }
             return list;
         }
+        #endregion //GetSelectedPersonList
 
+        #region GetPersonListFromListView
         private List<tblPerson> GetPersonListFromListView()
         {
             List<tblPerson> list = new List<tblPerson>();
@@ -309,6 +363,17 @@ namespace K.Forms
             }
             return list;
 
+        }
+        #endregion //GetPersonListFromListView
+
+        private void btnAddStation_Click(object sender, EventArgs e)
+        {
+            frmStationSelect f = new frmStationSelect();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+// TODO:
+                //
+            }
         }
     }
 }
