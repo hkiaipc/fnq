@@ -289,8 +289,8 @@
     </Compile>
     <Compile Include="tblLeaveEx.cs" />
     <Compile Include="Test\Test.cs" />
-    <Compile Include="TimeDefine.cs" />
-    <Compile Include="TimeDefineCollection.cs" />
+    <Compile Include="TimeDefine\TimeDefine.cs" />
+    <Compile Include="TimeDefine\TimeDefineCollection.cs" />
     <Compile Include="TimeResult.cs" />
     <Compile Include="TimeResultCollection.cs" />
     <Compile Include="TimeStandard.cs" />
@@ -320,10 +320,12 @@
       <DependentUpon>UCTimeDefine.cs</DependentUpon>
     </Compile>
     <Compile Include="UIHelper.cs" />
-    <Compile Include="UserWorkDefine.cs" />
-    <Compile Include="WeekWorkDefine.cs" />
-    <Compile Include="WorkDefine.cs" />
-    <Compile Include="WorkDefineCollection.cs" />
+    <Compile Include="TimeDefine\UserTimeDefine.cs" />
+    <Compile Include="WorkDefine\UserWorkDefine.cs" />
+    <Compile Include="TimeDefine\WeekTimeDefine.cs" />
+    <Compile Include="WorkDefine\WeekWorkDefine.cs" />
+    <Compile Include="WorkDefine\WorkDefine.cs" />
+    <Compile Include="WorkDefine\WorkDefineCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KDB\KDB.csproj">

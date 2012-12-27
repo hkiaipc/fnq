@@ -36,15 +36,6 @@ namespace K.Forms
         }
         #endregion //frmTMDataQuery
 
-        private int GetGroupIDByPersonName(string personName)
-        {
-            DB db = DBFactory.GetDB();
-            tblPerson p= db.tblPerson.First(c => c.PersonName == personName);
-            return p.tblGroup.GroupID;
-            
-        }
-
-
         #region frmTMDataQuery
         public frmTMDataQuery()
         {
@@ -92,7 +83,7 @@ namespace K.Forms
         {
             DB db = DBFactory.GetDB();
             var r = from q in db.tblPerson
-                    where q.tblGroup.GroupID == groupID 
+                    where q.tblGroup.GroupID == groupID
                     orderby q.PersonName
                     select q;
 
@@ -107,7 +98,7 @@ namespace K.Forms
         {
             DB db = DBFactory.GetDB();
             var r = from q in db.tblStation
-                    where q.tblDevice.Any(c=> c.DeviceType == "xgdevice")
+                    where q.tblDevice.Any(c => c.DeviceType == "xgdevice")
                     orderby q.StationName
                     select q;
 
@@ -175,7 +166,7 @@ namespace K.Forms
         #region SelectedPersonID
         public int SelectedPersonID
         {
-            get 
+            get
             {
                 if (this.cmbPerson.Items.Count == 0)
                 {
@@ -196,6 +187,7 @@ namespace K.Forms
         }
         #endregion //SelectedPersonID
 
+        #region SelectedGroupID
         public int SelectedGroupID
         {
             get
@@ -206,24 +198,37 @@ namespace K.Forms
                 }
                 return (int)this.cmbGroup.SelectedValue;
             }
-            set 
+            set
             {
                 this.cmbGroup.SelectedValue = value;
             }
 
         }
+        #endregion //SelectedGroupID
+
+        #region GetGroupIDByPersonName
+        private int GetGroupIDByPersonName(string personName)
+        {
+            DB db = DBFactory.GetDB();
+            tblPerson p = db.tblPerson.First(c => c.PersonName == personName);
+            return p.tblGroup.GroupID;
+
+        }
+        #endregion //GetGroupIDByPersonName
 
         #region SelectedStationID
         public int SelectedStationID
         {
-            get {
+            get
+            {
                 if (this.cmbStation.Items.Count == 0)
                 {
                     return -1;
                 }
                 return (int)this.cmbStation.SelectedValue;
             }
-            set {
+            set
+            {
                 try
                 {
                     this.cmbStation.SelectedValue = value;
@@ -242,9 +247,9 @@ namespace K.Forms
             if (this.SelectedQueryStyleEnum == QueryStyleEnum.ByStation)
             {
                 var r = from q in db.tblTmData
-                    where q.TmDataDT >= this.Begin && q.TmDataDT < this.End
-                        && q.tblDevice.tblStation.StationID == this.SelectedStationID
-                    select q;
+                        where q.TmDataDT >= this.Begin && q.TmDataDT < this.End
+                            && q.tblDevice.tblStation.StationID == this.SelectedStationID
+                        select q;
                 DataTable t = ConvertToDataTable(r.ToList());
                 ds = t;
             }
@@ -257,10 +262,10 @@ namespace K.Forms
                         where q.TmDataDT >= this.Begin && q.TmDataDT < this.End
                             && q.tblTM.TmID == tmID
                         select q;
-                        //select new { datetetttt = q.TmDataDT,
-                        //snnn= q.tblTM.TmSN };
+                //select new { datetetttt = q.TmDataDT,
+                //snnn= q.tblTM.TmSN };
                 DataTable t = ConvertToDataTable(r.ToList());
-                ds = t ;
+                ds = t;
             }
 
             this.dataGridView1.DataSource = ds;
@@ -280,11 +285,11 @@ namespace K.Forms
             foreach (tblTmData item in list)
             {
                 DataRow row = tbl.NewRow();
-                tbl.Rows.Add ( 
-                    item.tblDevice.tblStation.StationName ,
+                tbl.Rows.Add(
+                    item.tblDevice.tblStation.StationName,
                     item.tblTM.tblPerson.Count > 0 ? item.tblTM.tblPerson.First().PersonName : string.Empty,
-                    item.tblTM.TmSN ,
-                    item.TmDataDT );
+                    item.tblTM.TmSN,
+                    item.TmDataDT);
             }
 
             return tbl;
@@ -317,6 +322,7 @@ namespace K.Forms
         }
         #endregion //btnQuery_Click
 
+        #region cmbGroup_SelectedIndexChanged
         /// <summary>
         /// 
         /// </summary>
@@ -334,5 +340,6 @@ namespace K.Forms
                 BindPerson(selectedGroupID);
             }
         }
+        #endregion //cmbGroup_SelectedIndexChanged
     }
 }

@@ -10,6 +10,7 @@ namespace KDB
         static public KDB.DB GetDB()
         {
             DB db = new DB();
+            db.Log = Console.Out;
             return db;
         }
     }
