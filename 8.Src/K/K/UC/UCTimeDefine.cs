@@ -1,18 +1,35 @@
 ﻿using System;
 using System.Diagnostics;
-using Xdgk.Common;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using Xdgk.Common;
 
 namespace K.UC
 {
     public partial class UCTimeDefine : UserControl
     {
+
+        #region UCTimeDefine
+        /// <summary>
+        /// 
+        /// </summary>
+        public UCTimeDefine()
+        {
+            InitializeComponent();
+            FillDayOffset();
+        }
+        #endregion //UCTimeDefine
+
+        #region UCTimeDefine_Load
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UCTimeDefine_Load(object sender, EventArgs e)
+        {
+        }
+        #endregion //UCTimeDefine_Load
+
         #region CycleType
         /// <summary>
         /// 
@@ -56,24 +73,7 @@ namespace K.UC
         } private int _cycleDayCount = 7;
         #endregion //DayOfCycle
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public UCTimeDefine()
-        {
-            InitializeComponent();
-            FillDayOffset();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UCTimeDefine_Load(object sender, EventArgs e)
-        {
-        }
-
+        #region FillDayOffset
         /// <summary>
         /// 
         /// </summary>
@@ -83,7 +83,9 @@ namespace K.UC
             this.cmbDayOffset.ValueMember = "Value";
             this.cmbDayOffset.DataSource = GetDayOffsetDataSource();
         }
+        #endregion //FillDayOffset
 
+        #region GetDayOffsetDataSource
         /// <summary>
         /// 
         /// </summary>
@@ -94,15 +96,6 @@ namespace K.UC
             if (this.CycleType == CycleTypeEnum.Week)
             {
                 KeyValueCollection kvs = new KeyValueCollection();
-                //string[] weekNames = new string[] { 
-                //    "星期一", "星期二", "星期三", 
-                //    "星期四", "星期五", "星期六", "星期日" };
-
-                //for (int i = 0; i < weekNames.Length; i++)
-                //{
-                //    kvs.Add(new KeyValue(weekNames[i], i));
-                //}
-
                 kvs.Add(new KeyValue("星期一", DayOfWeek.Monday));
                 kvs.Add(new KeyValue("星期二", DayOfWeek.Tuesday));
                 kvs.Add(new KeyValue("星期三", DayOfWeek.Wednesday));
@@ -127,12 +120,16 @@ namespace K.UC
             }
             return ds;
         }
+        #endregion //GetDayOffsetDataSource
 
+        #region dtpEnd_ValueChanged
         private void dtpEnd_ValueChanged(object sender, EventArgs e)
         {
 
         }
+        #endregion //dtpEnd_ValueChanged
 
+        #region WorkDefine
         internal WorkDefine WorkDefine
         {
             get { return _workDefine; }
@@ -150,16 +147,24 @@ namespace K.UC
                 }
             }
         } private WorkDefine _workDefine;
+        #endregion //WorkDefine
 
+        #region TimeDefine
         internal TimeDefine TimeDefine
         {
-            get { return _timeDefine; }
+            get
+            {
+                return _timeDefine;
+            }
             set
             {
                 _timeDefine = value;
 
                 this.dtpBegin.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.Begin);
                 this.dtpEnd.Value = TimeSpanHelper.TimeSpanToDateTime(_timeDefine.End);
+
+                this.dtpBeginTimeSpan.Value = DateTimeHelper.ConvertToDateTime(_timeDefine.NormalBeginTimeSpan);
+                this.dtpEndTimeSpan.Value = DateTimeHelper.ConvertToDateTime(_timeDefine.NormalEndTimeSpan);
 
                 if (_timeDefine is WeekTimeDefine)
                 {
@@ -177,7 +182,9 @@ namespace K.UC
                 }
             }
         } private TimeDefine _timeDefine;
+        #endregion //TimeDefine
 
+        #region CreateTimeDefineByUI
         internal TimeDefine CreateTimeDefineByUI()
         {
             TimeDefine r = null;
@@ -187,7 +194,10 @@ namespace K.UC
                     this.GetBeginDayOfWeek(),
                     this.dtpBegin.Value.TimeOfDay,
                     this.GetEndDayOfWeek(),
-                    this.dtpEnd.Value.TimeOfDay);
+                    this.dtpEnd.Value.TimeOfDay,
+                    
+                    this.dtpBeginTimeSpan.Value.TimeOfDay,
+                    this.dtpEndTimeSpan.Value.TimeOfDay);
                 r = weekTD;
 
             }
@@ -199,7 +209,9 @@ namespace K.UC
                     this.GetBeginDayOffset(),
                     this.dtpBegin.Value.TimeOfDay,
                     this.GetEndDayOffSet(),
-                    this.dtpEnd.Value.TimeOfDay);
+                    this.dtpEnd.Value.TimeOfDay,
+                    this.dtpBeginTimeSpan.Value.TimeOfDay,
+                    this.dtpEndTimeSpan.Value.TimeOfDay);
                 r = userTD;
             }
             //TimeDefine td = new TimeDefine();
@@ -211,12 +223,16 @@ namespace K.UC
             Debug.Assert(r != null);
             return r;
         }
+        #endregion //CreateTimeDefineByUI
 
+        #region GetBeginDayOffset
         private int GetBeginDayOffset()
         {
             return (int)this.cmbDayOffset.SelectedValue;
         }
+        #endregion //GetBeginDayOffset
 
+        #region GetEndDayOffSet
         private int GetEndDayOffSet()
         {
             if (this.dtpEnd.Value.TimeOfDay <= this.dtpBegin.Value.TimeOfDay)
@@ -229,7 +245,9 @@ namespace K.UC
                 return GetBeginDayOffset();
             }
         }
+        #endregion //GetEndDayOffSet
 
+        #region GetEndDayOfWeek
         private DayOfWeek GetEndDayOfWeek()
         {
             if (this.dtpEnd.Value.TimeOfDay <= this.dtpBegin.Value.TimeOfDay)
@@ -242,12 +260,13 @@ namespace K.UC
                 return GetBeginDayOfWeek();
             }
         }
+        #endregion //GetEndDayOfWeek
 
+        #region GetBeginDayOfWeek
         private DayOfWeek GetBeginDayOfWeek()
         {
             return (DayOfWeek)this.cmbDayOffset.SelectedValue;
         }
-
-        
+        #endregion //GetBeginDayOfWeek
     }
 }

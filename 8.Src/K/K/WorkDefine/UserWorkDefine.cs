@@ -63,7 +63,8 @@ namespace K
 
                     if (b1.Month == month.Month)
                     {
-                        TimeStandard s = TimeStandard.CreateWorkTimeStandard(b1, e1);
+                        TimeStandard s = TimeStandard.CreateWorkTimeStandard(b1, e1,
+                            userTD.NormalBeginTimeSpan, userTD.NormalEndTimeSpan);
                         r.Add(s);
                     }
                 }

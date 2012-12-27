@@ -33,7 +33,8 @@ namespace K
         /// <returns></returns>
         static internal TimeStandard CreateRestTimeStandard(DateTime day)
         {
-            return new TimeStandard(TypeEnum.Rest, day.Date, day.Date + TimeSpan.FromDays(1d));
+            return new TimeStandard(TypeEnum.Rest, day.Date, day.Date + TimeSpan.FromDays(1d),
+                TimeSpan.Zero, TimeSpan.Zero);
         }
         #endregion //CreateRestTimeStandard
 
@@ -44,9 +45,10 @@ namespace K
         /// <param name="begin"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        static internal TimeStandard CreateWorkTimeStandard(DateTime begin, DateTime end)
+        static internal TimeStandard CreateWorkTimeStandard(DateTime begin, DateTime end, 
+            TimeSpan normalBeginTimeSpan, TimeSpan normalEndTimeSpan)
         {
-            return new TimeStandard(TypeEnum.Work, begin, end);
+            return new TimeStandard(TypeEnum.Work, begin, end, normalBeginTimeSpan, normalEndTimeSpan);
         }
         #endregion //CreateWorkTimeStandard
 
@@ -58,13 +60,16 @@ namespace K
         /// <param name="dayOfWeek"></param>
         /// <param name="begin"></param>
         /// <param name="end"></param>
-        private TimeStandard(TypeEnum typeEnum, DateTime begin, DateTime end)
+        private TimeStandard(TypeEnum typeEnum, DateTime begin, DateTime end, TimeSpan normalBeginTimeSpan, TimeSpan normalEndTimeSpan)
         {
             Debug.Assert(end >= begin);
 
             this._typeEnum = typeEnum;
             this._begin = begin;
             this._end = end;
+
+            this.NormalBeginTimeSpan = normalBeginTimeSpan;
+            this.NormalEndTimeSpan = normalEndTimeSpan;
         }
         #endregion //TimeStandard
 
@@ -114,6 +119,41 @@ namespace K
         } private DateTime _end;
         #endregion //End
 
+        #region NormalBeginTimeSpan
+        /// <summary>
+        /// 
+        /// </summary>
+        public TimeSpan NormalBeginTimeSpan
+        {
+            get
+            {
+                return _normalBeginTimeSpan;
+            }
+            set
+            {
+                _normalBeginTimeSpan = value;
+            }
+        } private TimeSpan _normalBeginTimeSpan;
+        #endregion //NormalBeginTimeSpan
+
+        #region NormalEndTimeSpan
+        /// <summary>
+        /// 
+        /// </summary>
+        public TimeSpan NormalEndTimeSpan
+        {
+            get
+            {
+                return _normalEndTimeSpan;
+            }
+            set
+            {
+                _normalEndTimeSpan = value;
+            }
+        } private TimeSpan _normalEndTimeSpan;
+        #endregion //NormalEndTimeSpan
+
+
         #region GetPunchInDateTimeRange
         /// <summary>
         /// 
@@ -140,7 +180,7 @@ namespace K
                 switch (type)
                 {
                     case PunchInDateTimeRangeEnum.StartWorkNormal:
-                        range = new DateTimeRange(this.Begin - Config.Default.NormalStartWorkTimeSpan, this.Begin);
+                        range = new DateTimeRange(this.Begin - this.NormalBeginTimeSpan, this.Begin);
                         break;
 
                     case PunchInDateTimeRangeEnum.StartWorkLater:
@@ -148,7 +188,7 @@ namespace K
                         break;
 
                     case PunchInDateTimeRangeEnum.StopWorkNormal:
-                        range = new DateTimeRange(this.End, this.End + Config.Default.NormalStopWorkTimeSpan);
+                        range = new DateTimeRange(this.End, this.End + this.NormalEndTimeSpan);
                         break;
 
                     case PunchInDateTimeRangeEnum.StopWorkEarly:

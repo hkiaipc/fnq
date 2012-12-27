@@ -28,7 +28,8 @@ namespace K
                 {
                     DateTime b = day + weekTD.Begin;
                     DateTime e = day + weekTD.End + (weekTD.IsCrossDay ? TimeSpan.FromDays(1d) : TimeSpan.Zero);
-                    TimeStandard r = TimeStandard.CreateWorkTimeStandard(b, e);
+                    TimeStandard r = TimeStandard.CreateWorkTimeStandard(b, e, weekTD.NormalBeginTimeSpan,
+                        weekTD.NormalEndTimeSpan);
                     timeStandards.Add(r);
                 }
                 else

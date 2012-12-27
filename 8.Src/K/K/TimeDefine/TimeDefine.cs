@@ -84,6 +84,16 @@ namespace K
         #endregion //EndDT
 
         #region NormalBeginTimeSpanString
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlIgnore]
+        public TimeSpan NormalBeginTimeSpan
+        {
+            get { return TimeSpan.Parse(this.NormalBeginTimeSpanString); }
+            set { this.NormalBeginTimeSpanString = value.ToString(); }
+        }
         /// <summary>
         /// 正常上班提前时间
         /// </summary>
@@ -96,6 +106,12 @@ namespace K
         #endregion //NormalBeginTimeSpanString
 
         #region NormalEndTimeSpanString
+        [XmlIgnore]
+        public TimeSpan NormalEndTimeSpan
+        {
+            get { return TimeSpan.Parse(this.NormalEndTimeSpanString); }
+            set { this.NormalEndTimeSpanString = value.ToString(); }
+        }
         /// <summary>
         /// 正常下班延后时间
         /// </summary>
@@ -123,7 +139,10 @@ namespace K
         /// <param name="endWeek"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        static public WeekTimeDefine CreateWeekTimeDefine(DayOfWeek beginWeek, TimeSpan begin, DayOfWeek endWeek, TimeSpan end)
+        static public WeekTimeDefine CreateWeekTimeDefine(
+            DayOfWeek beginWeek, TimeSpan begin, 
+            DayOfWeek endWeek, TimeSpan end,
+            TimeSpan beginTimeSpan, TimeSpan endTimeSpan)
         {
             WeekTimeDefine r = new WeekTimeDefine();
             r.BeginWeek = beginWeek;
@@ -131,6 +150,8 @@ namespace K
             r.EndWeek = endWeek;
             r.End = end;
 
+            r.NormalBeginTimeSpan = beginTimeSpan;
+            r.NormalEndTimeSpan = endTimeSpan;
             return r;
         }
         #endregion //CreateWeekTimeDefine
@@ -145,13 +166,20 @@ namespace K
         /// <param name="endDayOffset"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        static public UserTimeDefine CreateUserTimeDefine(int dayOfCycle, int beginDayOffset, TimeSpan begin, int endDayOffset, TimeSpan end)
+        static public UserTimeDefine CreateUserTimeDefine(
+            int dayOfCycle, 
+            int beginDayOffset, TimeSpan begin, 
+            int endDayOffset, TimeSpan end,
+            TimeSpan beginTimeSpan, TimeSpan endTimeSpan)
         {
             UserTimeDefine r = new UserTimeDefine(dayOfCycle);
             r.BeginDayOffset = beginDayOffset;
             r.Begin = begin;
             r.EndDayOffset = endDayOffset;
             r.End = end;
+
+            r.NormalBeginTimeSpan = beginTimeSpan;
+            r.NormalEndTimeSpan = endTimeSpan;
             return r;
         }
         #endregion //CreateUserTimeDefine

@@ -34,7 +34,16 @@ namespace K
             DateTime r = new DateTime(y, m, 1);
 
             return r;
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ts"></param>
+        /// <returns></returns>
+        static public DateTime ConvertToDateTime(TimeSpan ts)
+        {
+            return DateTime.Parse("2000-01-01") + ts;
         }
     }
 
