@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.btnDeletePerson = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvPerson = new System.Windows.Forms.ListView();
             this.cmbWorkDefine = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lvStation = new System.Windows.Forms.ListView();
@@ -95,15 +95,15 @@
             this.btnDeletePerson.UseVisualStyleBackColor = true;
             this.btnDeletePerson.Click += new System.EventHandler(this.btnDeletePerson_Click);
             // 
-            // listView1
+            // lvPerson
             // 
-            this.listView1.CheckBoxes = true;
-            this.listView1.Location = new System.Drawing.Point(124, 59);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(150, 160);
-            this.listView1.TabIndex = 25;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.lvPerson.CheckBoxes = true;
+            this.lvPerson.Location = new System.Drawing.Point(124, 59);
+            this.lvPerson.Name = "lvPerson";
+            this.lvPerson.Size = new System.Drawing.Size(150, 160);
+            this.lvPerson.TabIndex = 25;
+            this.lvPerson.UseCompatibleStateImageBehavior = false;
+            this.lvPerson.View = System.Windows.Forms.View.List;
             // 
             // cmbWorkDefine
             // 
@@ -148,6 +148,7 @@
             this.btnDeleteStation.TabIndex = 31;
             this.btnDeleteStation.Text = "删除";
             this.btnDeleteStation.UseVisualStyleBackColor = true;
+            this.btnDeleteStation.Click += new System.EventHandler(this.btnDeleteStation_Click);
             // 
             // btnAddStation
             // 
@@ -170,7 +171,7 @@
             this.Controls.Add(this.lvStation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbWorkDefine);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvPerson);
             this.Controls.Add(this.btnDeletePerson);
             this.Controls.Add(this.btnAddPerson);
             this.Controls.Add(this.label1);
@@ -186,7 +187,7 @@
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.btnAddPerson, 0);
             this.Controls.SetChildIndex(this.btnDeletePerson, 0);
-            this.Controls.SetChildIndex(this.listView1, 0);
+            this.Controls.SetChildIndex(this.lvPerson, 0);
             this.Controls.SetChildIndex(this.cmbWorkDefine, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.lvStation, 0);
@@ -205,7 +206,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.Button btnDeletePerson;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvPerson;
         private System.Windows.Forms.ComboBox cmbWorkDefine;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView lvStation;

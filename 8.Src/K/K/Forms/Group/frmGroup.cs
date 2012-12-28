@@ -68,8 +68,9 @@ namespace K.Forms
         {
             if (IsSelectedRow())
             {
-                frmGroupItem f = new frmGroupItem();
-                f.TblGroup = GetSelectedGroup();
+                int groupID = GetSelectedGroup().GroupID;
+                frmGroupItem f = new frmGroupItem(groupID );
+                //f.TblGroup = GetSelectedGroup();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     Fill();

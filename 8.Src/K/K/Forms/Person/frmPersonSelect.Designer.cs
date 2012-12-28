@@ -40,11 +40,11 @@
             // 
             this.cancelButton.Location = new System.Drawing.Point(140, 214);
             // 
-            // listView1
+            // lvPerson
             // 
             this.listView1.CheckBoxes = true;
             this.listView1.Location = new System.Drawing.Point(12, 12);
-            this.listView1.Name = "listView1";
+            this.listView1.Name = "lvPerson";
             this.listView1.Size = new System.Drawing.Size(200, 196);
             this.listView1.TabIndex = 19;
             this.listView1.UseCompatibleStateImageBehavior = false;

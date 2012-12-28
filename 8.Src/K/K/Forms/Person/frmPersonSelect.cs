@@ -13,9 +13,14 @@ namespace K.Forms
 {
     public partial class frmPersonSelect : NUnit.UiKit.SettingsDialogBase
     {
-        public frmPersonSelect()
+        private List<tblPerson> _personList;
+
+        public frmPersonSelect(List<tblPerson> personList)
         {
+            Debug.Assert(personList != null);
             InitializeComponent();
+
+            _personList = personList;
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -24,8 +29,11 @@ namespace K.Forms
             {
                 if (lvi.Checked)
                 {
-                    Debug.Assert(lvi.Tag as tblPerson != null);
-                    this.SelectedPersons.Add(lvi.Tag as tblPerson);
+                    //Debug.Assert(lvi.Tag as tblPerson != null);
+                    tblPerson p = lvi.Tag as tblPerson;
+                    this.SelectedPersons.Add(p);
+
+                    this._personList.Remove(p);
                 }
             }
 
@@ -51,15 +59,24 @@ namespace K.Forms
         /// <param name="e"></param>
         private void frmPersonSelect_Load(object sender, EventArgs e)
         {
-            DB d = DBFactory.GetDB();
-            var r = from q in d.tblPerson
-                    where q.GroupID == null 
-                    orderby q.PersonName 
-                    select q;
+            //DB d = this._db;
+            //var r = from q in d.tblPerson
+            //        //where q.GroupID == null 
+            //        where q.tblGroup == null
+            //        orderby q.PersonName 
+            //        select q;
 
-            foreach (tblPerson p in r.ToList())
+            //Console.WriteLine("get person count: " + r.ToList ().Count );
+            //Console.WriteLine(r.ToList());
+
+            this.listView1.Items.Clear();
+            foreach (tblPerson p in _personList )
             {
+                //Console.WriteLine(p.PersonName + " : " + (p.tblGroup == null ? "null" : p.tblGroup.GroupName));
+                //if (p.tblGroup == null)
+                //{
                 this.listView1.Items.Add(CreateLVI(p));
+                //}
             }
         }
 
