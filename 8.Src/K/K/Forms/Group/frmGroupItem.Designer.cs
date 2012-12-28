@@ -44,12 +44,14 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(124, 225);
+            this.okButton.Location = new System.Drawing.Point(124, 418);
+            this.okButton.TabIndex = 12;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(202, 225);
+            this.cancelButton.Location = new System.Drawing.Point(202, 418);
+            this.cancelButton.TabIndex = 13;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // lblName
@@ -57,7 +59,7 @@
             this.lblName.Location = new System.Drawing.Point(12, 9);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(100, 23);
-            this.lblName.TabIndex = 19;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "名称:";
             // 
             // txtGroupName
@@ -65,14 +67,14 @@
             this.txtGroupName.Location = new System.Drawing.Point(124, 6);
             this.txtGroupName.Name = "txtGroupName";
             this.txtGroupName.Size = new System.Drawing.Size(150, 21);
-            this.txtGroupName.TabIndex = 20;
+            this.txtGroupName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(12, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 22;
+            this.label1.TabIndex = 4;
             this.label1.Text = "人员:";
             // 
             // btnAddPerson
@@ -80,7 +82,7 @@
             this.btnAddPerson.Location = new System.Drawing.Point(280, 59);
             this.btnAddPerson.Name = "btnAddPerson";
             this.btnAddPerson.Size = new System.Drawing.Size(75, 23);
-            this.btnAddPerson.TabIndex = 23;
+            this.btnAddPerson.TabIndex = 6;
             this.btnAddPerson.Text = "添加";
             this.btnAddPerson.UseVisualStyleBackColor = true;
             this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
@@ -90,7 +92,7 @@
             this.btnDeletePerson.Location = new System.Drawing.Point(280, 88);
             this.btnDeletePerson.Name = "btnDeletePerson";
             this.btnDeletePerson.Size = new System.Drawing.Size(75, 23);
-            this.btnDeletePerson.TabIndex = 24;
+            this.btnDeletePerson.TabIndex = 7;
             this.btnDeletePerson.Text = "删除";
             this.btnDeletePerson.UseVisualStyleBackColor = true;
             this.btnDeletePerson.Click += new System.EventHandler(this.btnDeletePerson_Click);
@@ -101,7 +103,7 @@
             this.lvPerson.Location = new System.Drawing.Point(124, 59);
             this.lvPerson.Name = "lvPerson";
             this.lvPerson.Size = new System.Drawing.Size(150, 160);
-            this.lvPerson.TabIndex = 25;
+            this.lvPerson.TabIndex = 5;
             this.lvPerson.UseCompatibleStateImageBehavior = false;
             this.lvPerson.View = System.Windows.Forms.View.List;
             // 
@@ -112,50 +114,50 @@
             this.cmbWorkDefine.Location = new System.Drawing.Point(124, 33);
             this.cmbWorkDefine.Name = "cmbWorkDefine";
             this.cmbWorkDefine.Size = new System.Drawing.Size(150, 20);
-            this.cmbWorkDefine.TabIndex = 26;
+            this.cmbWorkDefine.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(12, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 23);
-            this.label2.TabIndex = 27;
+            this.label2.TabIndex = 2;
             this.label2.Text = "班次:";
             // 
             // lvStation
             // 
             this.lvStation.CheckBoxes = true;
-            this.lvStation.Location = new System.Drawing.Point(124, 255);
+            this.lvStation.Location = new System.Drawing.Point(124, 225);
             this.lvStation.Name = "lvStation";
-            this.lvStation.Size = new System.Drawing.Size(150, 160);
-            this.lvStation.TabIndex = 28;
+            this.lvStation.Size = new System.Drawing.Size(150, 187);
+            this.lvStation.TabIndex = 9;
             this.lvStation.UseCompatibleStateImageBehavior = false;
             this.lvStation.View = System.Windows.Forms.View.List;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(12, 255);
+            this.label3.Location = new System.Drawing.Point(12, 225);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 29;
+            this.label3.TabIndex = 8;
             this.label3.Text = "站点:";
             // 
             // btnDeleteStation
             // 
-            this.btnDeleteStation.Location = new System.Drawing.Point(280, 284);
+            this.btnDeleteStation.Location = new System.Drawing.Point(280, 254);
             this.btnDeleteStation.Name = "btnDeleteStation";
             this.btnDeleteStation.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteStation.TabIndex = 31;
+            this.btnDeleteStation.TabIndex = 11;
             this.btnDeleteStation.Text = "删除";
             this.btnDeleteStation.UseVisualStyleBackColor = true;
             this.btnDeleteStation.Click += new System.EventHandler(this.btnDeleteStation_Click);
             // 
             // btnAddStation
             // 
-            this.btnAddStation.Location = new System.Drawing.Point(280, 255);
+            this.btnAddStation.Location = new System.Drawing.Point(280, 225);
             this.btnAddStation.Name = "btnAddStation";
             this.btnAddStation.Size = new System.Drawing.Size(75, 23);
-            this.btnAddStation.TabIndex = 30;
+            this.btnAddStation.TabIndex = 10;
             this.btnAddStation.Text = "添加";
             this.btnAddStation.UseVisualStyleBackColor = true;
             this.btnAddStation.Click += new System.EventHandler(this.btnAddStation_Click);
@@ -164,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 502);
+            this.ClientSize = new System.Drawing.Size(367, 452);
             this.Controls.Add(this.btnDeleteStation);
             this.Controls.Add(this.btnAddStation);
             this.Controls.Add(this.label3);
