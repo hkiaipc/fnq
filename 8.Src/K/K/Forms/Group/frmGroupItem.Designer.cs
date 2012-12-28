@@ -40,18 +40,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnDeleteStation = new System.Windows.Forms.Button();
             this.btnAddStation = new System.Windows.Forms.Button();
+            this.chkSpecialStation = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(124, 418);
-            this.okButton.TabIndex = 12;
+            this.okButton.Location = new System.Drawing.Point(124, 454);
+            this.okButton.TabIndex = 13;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(202, 418);
-            this.cancelButton.TabIndex = 13;
+            this.cancelButton.Location = new System.Drawing.Point(202, 454);
+            this.cancelButton.TabIndex = 14;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // lblName
@@ -127,46 +128,61 @@
             // lvStation
             // 
             this.lvStation.CheckBoxes = true;
-            this.lvStation.Location = new System.Drawing.Point(124, 225);
+            this.lvStation.Enabled = false;
+            this.lvStation.Location = new System.Drawing.Point(124, 261);
             this.lvStation.Name = "lvStation";
             this.lvStation.Size = new System.Drawing.Size(150, 187);
-            this.lvStation.TabIndex = 9;
+            this.lvStation.TabIndex = 10;
             this.lvStation.UseCompatibleStateImageBehavior = false;
             this.lvStation.View = System.Windows.Forms.View.List;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(12, 225);
+            this.label3.Location = new System.Drawing.Point(12, 261);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 8;
+            this.label3.TabIndex = 9;
             this.label3.Text = "站点:";
             // 
             // btnDeleteStation
             // 
-            this.btnDeleteStation.Location = new System.Drawing.Point(280, 254);
+            this.btnDeleteStation.Enabled = false;
+            this.btnDeleteStation.Location = new System.Drawing.Point(280, 290);
             this.btnDeleteStation.Name = "btnDeleteStation";
             this.btnDeleteStation.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteStation.TabIndex = 11;
+            this.btnDeleteStation.TabIndex = 12;
             this.btnDeleteStation.Text = "删除";
             this.btnDeleteStation.UseVisualStyleBackColor = true;
             this.btnDeleteStation.Click += new System.EventHandler(this.btnDeleteStation_Click);
             // 
             // btnAddStation
             // 
-            this.btnAddStation.Location = new System.Drawing.Point(280, 225);
+            this.btnAddStation.Enabled = false;
+            this.btnAddStation.Location = new System.Drawing.Point(280, 261);
             this.btnAddStation.Name = "btnAddStation";
             this.btnAddStation.Size = new System.Drawing.Size(75, 23);
-            this.btnAddStation.TabIndex = 10;
+            this.btnAddStation.TabIndex = 11;
             this.btnAddStation.Text = "添加";
             this.btnAddStation.UseVisualStyleBackColor = true;
             this.btnAddStation.Click += new System.EventHandler(this.btnAddStation_Click);
+            // 
+            // chkSpecialStation
+            // 
+            this.chkSpecialStation.AutoSize = true;
+            this.chkSpecialStation.Location = new System.Drawing.Point(124, 239);
+            this.chkSpecialStation.Name = "chkSpecialStation";
+            this.chkSpecialStation.Size = new System.Drawing.Size(72, 16);
+            this.chkSpecialStation.TabIndex = 8;
+            this.chkSpecialStation.Text = "指定站点";
+            this.chkSpecialStation.UseVisualStyleBackColor = true;
+            this.chkSpecialStation.CheckedChanged += new System.EventHandler(this.chkSpecialStation_CheckedChanged);
             // 
             // frmGroupItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 452);
+            this.ClientSize = new System.Drawing.Size(366, 486);
+            this.Controls.Add(this.chkSpecialStation);
             this.Controls.Add(this.btnDeleteStation);
             this.Controls.Add(this.btnAddStation);
             this.Controls.Add(this.label3);
@@ -196,6 +212,7 @@
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.btnAddStation, 0);
             this.Controls.SetChildIndex(this.btnDeleteStation, 0);
+            this.Controls.SetChildIndex(this.chkSpecialStation, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +232,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDeleteStation;
         private System.Windows.Forms.Button btnAddStation;
+        private System.Windows.Forms.CheckBox chkSpecialStation;
     }
 }

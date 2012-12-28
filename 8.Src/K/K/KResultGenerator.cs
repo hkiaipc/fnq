@@ -1,4 +1,5 @@
 ﻿using System;
+using Xdgk.Common;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -144,10 +145,15 @@ namespace K
 
             _log.Debug("leaves count: " + leaves.Count);
 
+            List<int> deviceIDList = this.GetDeviceIDList(person);
+
+            bool specialStation = person.tblGroup.GroupSpecialStation ;
+
             var vTmDatas = from q2 in _db.tblTmData
+                           where (!specialStation) || (specialStation && deviceIDList.Contains(q2.DeviceID))
                            where q2.TmID == person.TmID && q2.TmDataDT >= monthBeginDT && q2.TmDataDT < monthEndDT
-                           orderby q2.TmDataDT 
-                           select q2.TmDataDT ;
+                           orderby q2.TmDataDT
+                           select q2.TmDataDT;
 
             List<DateTime> datetimes = vTmDatas.ToList();
 
@@ -163,6 +169,30 @@ namespace K
             return timeResults;
         }
         #endregion //GenerateTimeResultCollection
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        private List<int> GetDeviceIDList(tblPerson person)
+        {
+            List<int> r = new List<int>();
+            if (person.tblGroup.GroupSpecialStation)
+            {
+                foreach (var gs in person.tblGroup.tblGroupStation)
+                {
+                    foreach (var d in gs.tblStation.tblDevice)
+                    {
+                        if (StringHelper.Equal(d.DeviceType, "xgDevice"))
+                        {
+                            r.Add(d.DeviceID);
+                        }
+                    }
+                }
+            }
+            return r;
+        }
 
         #region GenerateTimeResult
         /// <summary>

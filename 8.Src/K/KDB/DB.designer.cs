@@ -33,9 +33,6 @@ namespace KDB
     partial void InserttblWorkDefine(tblWorkDefine instance);
     partial void UpdatetblWorkDefine(tblWorkDefine instance);
     partial void DeletetblWorkDefine(tblWorkDefine instance);
-    partial void InserttblGroup(tblGroup instance);
-    partial void UpdatetblGroup(tblGroup instance);
-    partial void DeletetblGroup(tblGroup instance);
     partial void InserttblLeave(tblLeave instance);
     partial void UpdatetblLeave(tblLeave instance);
     partial void DeletetblLeave(tblLeave instance);
@@ -63,6 +60,9 @@ namespace KDB
     partial void InserttblGroupStation(tblGroupStation instance);
     partial void UpdatetblGroupStation(tblGroupStation instance);
     partial void DeletetblGroupStation(tblGroupStation instance);
+    partial void InserttblGroup(tblGroup instance);
+    partial void UpdatetblGroup(tblGroup instance);
+    partial void DeletetblGroup(tblGroup instance);
     #endregion
 		
 		public DB() : 
@@ -100,14 +100,6 @@ namespace KDB
 			get
 			{
 				return this.GetTable<tblWorkDefine>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tblGroup> tblGroup
-		{
-			get
-			{
-				return this.GetTable<tblGroup>();
 			}
 		}
 		
@@ -180,6 +172,14 @@ namespace KDB
 			get
 			{
 				return this.GetTable<tblGroupStation>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblGroup> tblGroup
+		{
+			get
+			{
+				return this.GetTable<tblGroup>();
 			}
 		}
 	}
@@ -319,213 +319,6 @@ namespace KDB
 		{
 			this.SendPropertyChanging();
 			entity.tblWorkDefine = null;
-		}
-	}
-	
-	[Table(Name="dbo.tblGroup")]
-	public partial class tblGroup : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _GroupID;
-		
-		private string _GroupName;
-		
-		private System.Nullable<int> _WorkDefineID;
-		
-		private EntitySet<tblPerson> _tblPerson;
-		
-		private EntitySet<tblGroupStation> _tblGroupStation;
-		
-		private EntityRef<tblWorkDefine> _tblWorkDefine;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnGroupIDChanging(int value);
-    partial void OnGroupIDChanged();
-    partial void OnGroupNameChanging(string value);
-    partial void OnGroupNameChanged();
-    partial void OnWorkDefineIDChanging(System.Nullable<int> value);
-    partial void OnWorkDefineIDChanged();
-    #endregion
-		
-		public tblGroup()
-		{
-			this._tblPerson = new EntitySet<tblPerson>(new Action<tblPerson>(this.attach_tblPerson), new Action<tblPerson>(this.detach_tblPerson));
-			this._tblGroupStation = new EntitySet<tblGroupStation>(new Action<tblGroupStation>(this.attach_tblGroupStation), new Action<tblGroupStation>(this.detach_tblGroupStation));
-			this._tblWorkDefine = default(EntityRef<tblWorkDefine>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_GroupID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int GroupID
-		{
-			get
-			{
-				return this._GroupID;
-			}
-			set
-			{
-				if ((this._GroupID != value))
-				{
-					this.OnGroupIDChanging(value);
-					this.SendPropertyChanging();
-					this._GroupID = value;
-					this.SendPropertyChanged("GroupID");
-					this.OnGroupIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_GroupName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string GroupName
-		{
-			get
-			{
-				return this._GroupName;
-			}
-			set
-			{
-				if ((this._GroupName != value))
-				{
-					this.OnGroupNameChanging(value);
-					this.SendPropertyChanging();
-					this._GroupName = value;
-					this.SendPropertyChanged("GroupName");
-					this.OnGroupNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_WorkDefineID", DbType="Int")]
-		public System.Nullable<int> WorkDefineID
-		{
-			get
-			{
-				return this._WorkDefineID;
-			}
-			set
-			{
-				if ((this._WorkDefineID != value))
-				{
-					if (this._tblWorkDefine.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnWorkDefineIDChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineID = value;
-					this.SendPropertyChanged("WorkDefineID");
-					this.OnWorkDefineIDChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblGroup_tblPerson", Storage="_tblPerson", OtherKey="GroupID")]
-		public EntitySet<tblPerson> tblPerson
-		{
-			get
-			{
-				return this._tblPerson;
-			}
-			set
-			{
-				this._tblPerson.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblGroup_tblGroupStation", Storage="_tblGroupStation", OtherKey="GroupID")]
-		public EntitySet<tblGroupStation> tblGroupStation
-		{
-			get
-			{
-				return this._tblGroupStation;
-			}
-			set
-			{
-				this._tblGroupStation.Assign(value);
-			}
-		}
-		
-		[Association(Name="tblWorkDefine_tblGroup", Storage="_tblWorkDefine", ThisKey="WorkDefineID", IsForeignKey=true)]
-		public tblWorkDefine tblWorkDefine
-		{
-			get
-			{
-				return this._tblWorkDefine.Entity;
-			}
-			set
-			{
-				tblWorkDefine previousValue = this._tblWorkDefine.Entity;
-				if (((previousValue != value) 
-							|| (this._tblWorkDefine.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblWorkDefine.Entity = null;
-						previousValue.tblGroup.Remove(this);
-					}
-					this._tblWorkDefine.Entity = value;
-					if ((value != null))
-					{
-						value.tblGroup.Add(this);
-						this._WorkDefineID = value.WorkDefineID;
-					}
-					else
-					{
-						this._WorkDefineID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblWorkDefine");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblPerson(tblPerson entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblGroup = this;
-		}
-		
-		private void detach_tblPerson(tblPerson entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblGroup = null;
-		}
-		
-		private void attach_tblGroupStation(tblGroupStation entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblGroup = this;
-		}
-		
-		private void detach_tblGroupStation(tblGroupStation entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblGroup = null;
 		}
 	}
 	
@@ -770,9 +563,9 @@ namespace KDB
 		
 		private EntitySet<tblExWork> _tblExWork;
 		
-		private EntityRef<tblGroup> _tblGroup;
-		
 		private EntityRef<tblTM> _tblTM;
+		
+		private EntityRef<tblGroup> _tblGroup;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -792,8 +585,8 @@ namespace KDB
 		{
 			this._tblLeave = new EntitySet<tblLeave>(new Action<tblLeave>(this.attach_tblLeave), new Action<tblLeave>(this.detach_tblLeave));
 			this._tblExWork = new EntitySet<tblExWork>(new Action<tblExWork>(this.attach_tblExWork), new Action<tblExWork>(this.detach_tblExWork));
-			this._tblGroup = default(EntityRef<tblGroup>);
 			this._tblTM = default(EntityRef<tblTM>);
+			this._tblGroup = default(EntityRef<tblGroup>);
 			OnCreated();
 		}
 		
@@ -911,40 +704,6 @@ namespace KDB
 			}
 		}
 		
-		[Association(Name="tblGroup_tblPerson", Storage="_tblGroup", ThisKey="GroupID", IsForeignKey=true, DeleteRule="CASCADE")]
-		public tblGroup tblGroup
-		{
-			get
-			{
-				return this._tblGroup.Entity;
-			}
-			set
-			{
-				tblGroup previousValue = this._tblGroup.Entity;
-				if (((previousValue != value) 
-							|| (this._tblGroup.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblGroup.Entity = null;
-						previousValue.tblPerson.Remove(this);
-					}
-					this._tblGroup.Entity = value;
-					if ((value != null))
-					{
-						value.tblPerson.Add(this);
-						this._GroupID = value.GroupID;
-					}
-					else
-					{
-						this._GroupID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tblGroup");
-				}
-			}
-		}
-		
 		[Association(Name="tblTM_tblPerson", Storage="_tblTM", ThisKey="TmID", IsForeignKey=true)]
 		public tblTM tblTM
 		{
@@ -975,6 +734,40 @@ namespace KDB
 						this._TmID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("tblTM");
+				}
+			}
+		}
+		
+		[Association(Name="tblGroup_tblPerson", Storage="_tblGroup", ThisKey="GroupID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public tblGroup tblGroup
+		{
+			get
+			{
+				return this._tblGroup.Entity;
+			}
+			set
+			{
+				tblGroup previousValue = this._tblGroup.Entity;
+				if (((previousValue != value) 
+							|| (this._tblGroup.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblGroup.Entity = null;
+						previousValue.tblPerson.Remove(this);
+					}
+					this._tblGroup.Entity = value;
+					if ((value != null))
+					{
+						value.tblPerson.Add(this);
+						this._GroupID = value.GroupID;
+					}
+					else
+					{
+						this._GroupID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblGroup");
 				}
 			}
 		}
@@ -2336,9 +2129,9 @@ namespace KDB
 		
 		private int _StationID;
 		
-		private EntityRef<tblGroup> _tblGroup;
-		
 		private EntityRef<tblStation> _tblStation;
+		
+		private EntityRef<tblGroup> _tblGroup;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2354,8 +2147,8 @@ namespace KDB
 		
 		public tblGroupStation()
 		{
-			this._tblGroup = default(EntityRef<tblGroup>);
 			this._tblStation = default(EntityRef<tblStation>);
+			this._tblGroup = default(EntityRef<tblGroup>);
 			OnCreated();
 		}
 		
@@ -2427,40 +2220,6 @@ namespace KDB
 			}
 		}
 		
-		[Association(Name="tblGroup_tblGroupStation", Storage="_tblGroup", ThisKey="GroupID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public tblGroup tblGroup
-		{
-			get
-			{
-				return this._tblGroup.Entity;
-			}
-			set
-			{
-				tblGroup previousValue = this._tblGroup.Entity;
-				if (((previousValue != value) 
-							|| (this._tblGroup.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblGroup.Entity = null;
-						previousValue.tblGroupStation.Remove(this);
-					}
-					this._tblGroup.Entity = value;
-					if ((value != null))
-					{
-						value.tblGroupStation.Add(this);
-						this._GroupID = value.GroupID;
-					}
-					else
-					{
-						this._GroupID = default(int);
-					}
-					this.SendPropertyChanged("tblGroup");
-				}
-			}
-		}
-		
 		[Association(Name="tblStation_tblGroupStation", Storage="_tblStation", ThisKey="StationID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public tblStation tblStation
 		{
@@ -2495,6 +2254,40 @@ namespace KDB
 			}
 		}
 		
+		[Association(Name="tblGroup_tblGroupStation", Storage="_tblGroup", ThisKey="GroupID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public tblGroup tblGroup
+		{
+			get
+			{
+				return this._tblGroup.Entity;
+			}
+			set
+			{
+				tblGroup previousValue = this._tblGroup.Entity;
+				if (((previousValue != value) 
+							|| (this._tblGroup.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblGroup.Entity = null;
+						previousValue.tblGroupStation.Remove(this);
+					}
+					this._tblGroup.Entity = value;
+					if ((value != null))
+					{
+						value.tblGroupStation.Add(this);
+						this._GroupID = value.GroupID;
+					}
+					else
+					{
+						this._GroupID = default(int);
+					}
+					this.SendPropertyChanged("tblGroup");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2513,6 +2306,237 @@ namespace KDB
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[Table(Name="dbo.tblGroup")]
+	public partial class tblGroup : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _GroupID;
+		
+		private string _GroupName;
+		
+		private System.Nullable<int> _WorkDefineID;
+		
+		private bool _GroupSpecialStation;
+		
+		private EntitySet<tblPerson> _tblPerson;
+		
+		private EntitySet<tblGroupStation> _tblGroupStation;
+		
+		private EntityRef<tblWorkDefine> _tblWorkDefine;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnGroupIDChanging(int value);
+    partial void OnGroupIDChanged();
+    partial void OnGroupNameChanging(string value);
+    partial void OnGroupNameChanged();
+    partial void OnWorkDefineIDChanging(System.Nullable<int> value);
+    partial void OnWorkDefineIDChanged();
+    partial void OnGroupSpecialStationChanging(bool value);
+    partial void OnGroupSpecialStationChanged();
+    #endregion
+		
+		public tblGroup()
+		{
+			this._tblPerson = new EntitySet<tblPerson>(new Action<tblPerson>(this.attach_tblPerson), new Action<tblPerson>(this.detach_tblPerson));
+			this._tblGroupStation = new EntitySet<tblGroupStation>(new Action<tblGroupStation>(this.attach_tblGroupStation), new Action<tblGroupStation>(this.detach_tblGroupStation));
+			this._tblWorkDefine = default(EntityRef<tblWorkDefine>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_GroupID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int GroupID
+		{
+			get
+			{
+				return this._GroupID;
+			}
+			set
+			{
+				if ((this._GroupID != value))
+				{
+					this.OnGroupIDChanging(value);
+					this.SendPropertyChanging();
+					this._GroupID = value;
+					this.SendPropertyChanged("GroupID");
+					this.OnGroupIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_GroupName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this.OnGroupNameChanging(value);
+					this.SendPropertyChanging();
+					this._GroupName = value;
+					this.SendPropertyChanged("GroupName");
+					this.OnGroupNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_WorkDefineID", DbType="Int")]
+		public System.Nullable<int> WorkDefineID
+		{
+			get
+			{
+				return this._WorkDefineID;
+			}
+			set
+			{
+				if ((this._WorkDefineID != value))
+				{
+					if (this._tblWorkDefine.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnWorkDefineIDChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineID = value;
+					this.SendPropertyChanged("WorkDefineID");
+					this.OnWorkDefineIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_GroupSpecialStation", DbType="Bit NOT NULL")]
+		public bool GroupSpecialStation
+		{
+			get
+			{
+				return this._GroupSpecialStation;
+			}
+			set
+			{
+				if ((this._GroupSpecialStation != value))
+				{
+					this.OnGroupSpecialStationChanging(value);
+					this.SendPropertyChanging();
+					this._GroupSpecialStation = value;
+					this.SendPropertyChanged("GroupSpecialStation");
+					this.OnGroupSpecialStationChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblGroup_tblPerson", Storage="_tblPerson", OtherKey="GroupID")]
+		public EntitySet<tblPerson> tblPerson
+		{
+			get
+			{
+				return this._tblPerson;
+			}
+			set
+			{
+				this._tblPerson.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblGroup_tblGroupStation", Storage="_tblGroupStation", OtherKey="GroupID")]
+		public EntitySet<tblGroupStation> tblGroupStation
+		{
+			get
+			{
+				return this._tblGroupStation;
+			}
+			set
+			{
+				this._tblGroupStation.Assign(value);
+			}
+		}
+		
+		[Association(Name="tblWorkDefine_tblGroup", Storage="_tblWorkDefine", ThisKey="WorkDefineID", IsForeignKey=true)]
+		public tblWorkDefine tblWorkDefine
+		{
+			get
+			{
+				return this._tblWorkDefine.Entity;
+			}
+			set
+			{
+				tblWorkDefine previousValue = this._tblWorkDefine.Entity;
+				if (((previousValue != value) 
+							|| (this._tblWorkDefine.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblWorkDefine.Entity = null;
+						previousValue.tblGroup.Remove(this);
+					}
+					this._tblWorkDefine.Entity = value;
+					if ((value != null))
+					{
+						value.tblGroup.Add(this);
+						this._WorkDefineID = value.WorkDefineID;
+					}
+					else
+					{
+						this._WorkDefineID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tblWorkDefine");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblPerson(tblPerson entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblGroup = this;
+		}
+		
+		private void detach_tblPerson(tblPerson entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblGroup = null;
+		}
+		
+		private void attach_tblGroupStation(tblGroupStation entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblGroup = this;
+		}
+		
+		private void detach_tblGroupStation(tblGroupStation entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblGroup = null;
 		}
 	}
 }

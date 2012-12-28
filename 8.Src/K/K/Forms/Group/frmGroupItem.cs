@@ -142,6 +142,7 @@ namespace K.Forms
 
             tblGroup g = this.TblGroup;
             g.GroupName = this.txtGroupName.Text.Trim();
+            g.GroupSpecialStation = this.chkSpecialStation.Checked;
             g.tblWorkDefine = GetSelectedWorkDefine(db);
             //g.tblPerson.AddRange ( this.selected
 
@@ -162,6 +163,7 @@ namespace K.Forms
 
             tblGroup group = this.TblGroup;
             group.GroupName = this.txtGroupName.Text.Trim();
+            group.GroupSpecialStation = this.chkSpecialStation.Checked;
             group.tblWorkDefine = GetSelectedWorkDefine(db);
 
             db.SubmitChanges();
@@ -226,6 +228,7 @@ namespace K.Forms
                 //this.TblGroup = rg.First();
 
                 this.txtGroupName.Text = this.TblGroup.GroupName;
+                this.chkSpecialStation.Checked = this.TblGroup.GroupSpecialStation;
 
                 FillPersonListView(this.TblGroup.tblPerson.ToList());
 
@@ -623,5 +626,17 @@ namespace K.Forms
             return _condidateStationList;
         } private List<tblStation> _condidateStationList;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkSpecialStation_CheckedChanged(object sender, EventArgs e)
+        {
+            bool b = this.chkSpecialStation.Checked;
+            this.lvStation.Enabled = b;
+            this.btnAddStation.Enabled = b;
+            this.btnDeleteStation.Enabled = b;
+        }
     }
 }

@@ -9,16 +9,6 @@
       <Association Name="tblWorkDefine_tblGroup" Member="tblGroup" OtherKey="WorkDefineID" Type="tblGroup" />
     </Type>
   </Table>
-  <Table Name="dbo.tblGroup" Member="tblGroup">
-    <Type Name="tblGroup">
-      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="tblGroup_tblPerson" Member="tblPerson" OtherKey="GroupID" Type="tblPerson" />
-      <Association Name="tblGroup_tblGroupStation" Member="tblGroupStation" OtherKey="GroupID" Type="tblGroupStation" />
-      <Association Name="tblWorkDefine_tblGroup" Member="tblWorkDefine" ThisKey="WorkDefineID" Type="tblWorkDefine" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblLeave" Member="tblLeave">
     <Type Name="tblLeave">
       <Column Name="LeaveID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -38,8 +28,8 @@
       <Column Name="TmID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="tblPerson_tblLeave" Member="tblLeave" OtherKey="PersonID" Type="tblLeave" />
       <Association Name="tblPerson_tblExWork" Member="tblExWork" OtherKey="PersonID" Type="tblExWork" />
-      <Association Name="tblGroup_tblPerson" Member="tblGroup" ThisKey="GroupID" Type="tblGroup" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="tblTM_tblPerson" Member="tblTM" ThisKey="TmID" Type="tblTM" IsForeignKey="true" />
+      <Association Name="tblGroup_tblPerson" Member="tblGroup" ThisKey="GroupID" Type="tblGroup" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.tblTimeDefine" Member="tblTimeDefine">
@@ -112,8 +102,19 @@
       <Column Name="GroupStationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="StationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="tblGroup_tblGroupStation" Member="tblGroup" ThisKey="GroupID" Type="tblGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="tblStation_tblGroupStation" Member="tblStation" ThisKey="StationID" Type="tblStation" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="tblGroup_tblGroupStation" Member="tblGroup" ThisKey="GroupID" Type="tblGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblGroup" Member="tblGroup">
+    <Type Name="tblGroup">
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupSpecialStation" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tblGroup_tblPerson" Member="tblPerson" OtherKey="GroupID" Type="tblPerson" />
+      <Association Name="tblGroup_tblGroupStation" Member="tblGroupStation" OtherKey="GroupID" Type="tblGroupStation" />
+      <Association Name="tblWorkDefine_tblGroup" Member="tblWorkDefine" ThisKey="WorkDefineID" Type="tblWorkDefine" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
