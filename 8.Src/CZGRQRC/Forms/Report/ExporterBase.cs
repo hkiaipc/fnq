@@ -33,7 +33,7 @@ namespace FNGRQRC.Forms
                 }
                 else
                 {
-                    SetCellValue(xls, row, col, val);
+                    SetCellValue(xls, row, col, val, true);
                 }
                     col++;
             }
@@ -136,17 +136,25 @@ namespace FNGRQRC.Forms
         #region SetCellValue
         internal void SetCellValue(XlsFile xls, Point pt, object value)
         {
-            SetCellValue(xls, pt.X, pt.Y, value);
+            SetCellValue(xls, pt, value, false);
+        }
+
+        internal void SetCellValue(XlsFile xls, Point pt, object value, bool hasBorder)
+        {
+            SetCellValue(xls, pt.X, pt.Y, value, hasBorder);
         }
         #endregion //SetCellValue
 
         #region SetCellValue
-        internal void SetCellValue(XlsFile xls, int row, int col, object value)
+        internal void SetCellValue(XlsFile xls, int row, int col, object value, bool hasBorder)
         {
             xls.SetCellValue(row, col,
                 Format(value));
 
-            SetBorder(xls, row, col);
+            if (hasBorder)
+            {
+                SetBorder(xls, row, col);
+            }
         }
         #endregion //SetCellValue
 

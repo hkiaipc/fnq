@@ -25,7 +25,8 @@ namespace FNGRQRC.Forms
                 StationStartRow = 5,
                                 HeatCol = 2,
                                 RecuritFluxCol = 4,
-                                StationNameCol = 1
+                                StationNameCol = 1,
+                                TotalColumns = 8
                                     ;
         }
 
@@ -45,8 +46,8 @@ namespace FNGRQRC.Forms
             xls.Open(_xlsPath);
 
             string title = string.Format(
-                    "热力站 {0}-{1} ~ {2}-{3}供热成本分析",
-                    B.Month, B.Day, E.Month, E.Day);
+                    "热力站供热成本分析 {0} ~ {1}",
+                    B, E);
 
             SetCellValue(xls, ReportConfig.Title, title);
 
@@ -77,22 +78,34 @@ namespace FNGRQRC.Forms
 
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
-                DataRow row = tbl.Rows[i];
                 int r = ReportConfig.StationStartRow + i;
-                xls.SetCellValue(r, ReportConfig.HeatCol,
-                        Math.Round(Convert.ToDouble(row["heat"]), ReportHelper.DotNumber)
-                        );
-                xls.SetCellValue(r, ReportConfig.RecuritFluxCol,
-                        Math.Round(Convert.ToDouble(row["recurite"]), ReportHelper.DotNumber)
-                        );
-                xls.SetCellValue(r, ReportConfig.StationNameCol,
-                        row["StationName"].ToString());
+
+                FillXlsRowWithEmpty(xls, r, ReportConfig.TotalColumns);
+
+                DataRow row = tbl.Rows[i];
+                SetCellValue(xls, r, ReportConfig.HeatCol,
+                        Math.Round(Convert.ToDouble(row["heat"]), ReportHelper.DotNumber),
+                        true);
+
+                SetCellValue(xls, r, ReportConfig.RecuritFluxCol,
+                        Math.Round(Convert.ToDouble(row["recurite"]), ReportHelper.DotNumber),
+                        true);
+                SetCellValue(xls,r, ReportConfig.StationNameCol,
+                        row["StationName"].ToString(), true);
             }
 
             string outputPath = Xdgk.Common.Path.GetTempFileName("xls");
             xls.Save(outputPath);
 
             Open(outputPath);
+        }
+
+        private void FillXlsRowWithEmpty(XlsFile xls, int row, int columnCount)
+        {
+            for( int c = 1; c<=columnCount ; c++)
+            {
+                SetCellValue(xls, row, c, string.Empty, true);
+            }
         }
     }
 

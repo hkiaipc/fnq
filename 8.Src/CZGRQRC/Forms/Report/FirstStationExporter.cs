@@ -15,38 +15,49 @@ namespace FNGRQRC.Forms
         {
             internal static Point
                 Title = new Point(1, 1),
-                      AVGOT = new Point(3, 3),
-                      AVGGT1 = new Point(3, 5),
-                      AVGBT1 = new Point(3, 7),
-                      AVGI1 = new Point(3, 9),
-                      DT = new Point(2, 9)
+                AVGOT = new Point(3, 3),
+                AVGGT1 = new Point(3, 5),
+                AVGBT1 = new Point(3, 7),
+                AVGI1 = new Point(3, 9),
+                DT = new Point(2, 9)
                           ;
 
             internal static int
                 StationStartRow = 5,
-                                RecuritFluxCol = 3,
-                                StationNameCol = 1
-                                    ;
+                RecuritFluxCol = 3,
+                StationNameCol = 1,
+                TotalColumns = 10;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         string _xlsPath = Path.Combine(
                 Application.StartupPath, 
                 "RT\\FirstStationCost.xls");
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="e"></param>
         internal FirstStationExporter(DateTime b, DateTime e)
             : base(b, e)
         {
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         internal override void  Export()
         {
             XlsFile xls = new XlsFile();
             xls.Open(_xlsPath);
 
             string title = string.Format(
-                    "{0}-{1} ~ {2}-{3} 热源厂成本对比",
-                    B.Month, B.Day, E.Month, E.Day);
+                    "热源厂成本对比 {0} ~ {1}",
+                    B, E);
 
             SetCellValue(xls, ReportConfig.Title, title);
             SetCellValue(xls, ReportConfig.AVGOT, ReportHelper.GetAvgOT(B, E));
@@ -59,10 +70,21 @@ namespace FNGRQRC.Forms
 
             SetCellValue(xls, ReportConfig.DT, DateTime.Now.ToString("yyyy-MM-dd"));
 
+
+            //
+            //
             DataTable tbl = ReportHelper .GetFirstRecuriteDataTable ( B,E );
 
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
+                int r = ReportConfig.StationStartRow + i;
+                // fill empty cell
+                //
+                for (int c = 1; c <= ReportConfig.TotalColumns; c++)
+                {
+                    SetCellValue(xls, r, c, null, true);
+                }
+
                 DataRow row = tbl.Rows[i];
 
                 string name = row["stationname"].ToString();
@@ -70,9 +92,11 @@ namespace FNGRQRC.Forms
                         Convert.ToDouble(row["usedr"]),
                         ReportHelper.DotNumber);
 
-                int r = ReportConfig.StationStartRow + i;
-                xls.SetCellValue(r, ReportConfig.StationNameCol, name);
-                xls.SetCellValue(r, ReportConfig.RecuritFluxCol, usedRecurit);
+                //xls.SetCellValue(r, ReportConfig.StationNameCol, name);
+                SetCellValue(xls, r, ReportConfig.StationNameCol, name, true);
+                //xls.SetCellValue(r, ReportConfig.RecuritFluxCol, usedRecurit);
+                SetCellValue(xls, r, ReportConfig.RecuritFluxCol, usedRecurit, true);
+
             }
 
 
@@ -83,8 +107,5 @@ namespace FNGRQRC.Forms
             Open(output);
 
         }
-
-
     }
-
 }

@@ -13,7 +13,7 @@ using FlexCel.XlsAdapter;
 
 namespace FNGRQRC.Forms
 {
-    public partial class frmReport : NUnit.UiKit.SettingsDialogBase 
+    public partial class frmReport : NUnit.UiKit.SettingsDialogBase
     {
         /// <summary>
         /// 
@@ -24,6 +24,7 @@ namespace FNGRQRC.Forms
 
             this.dtpBegin.Value = DateTime.Now.Date - TimeSpan.FromDays(2d);
             this.dtpEnd.Value = DateTime.Now.Date - TimeSpan.FromDays(1d);
+            this.cmbReportType.DataSource = new string[] { "热源厂成本对比报表", "热力站成本对比报表","供热运行参数报表"};
         }
 
         /// <summary>
@@ -33,13 +34,33 @@ namespace FNGRQRC.Forms
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-            new FirstStationExporter(this.dtpBegin.Value,
-                       this.dtpEnd.Value).Export();
-            return;
+            int typeIndex = this.cmbReportType.SelectedIndex;
+            if (typeIndex < 0)
+            {
+                return;
+            }
 
             using (new CP.Windows.Forms.WaitCursor())
             {
-                new XfDayReportExporter(this.dtpBegin.Value, this.dtpEnd.Value).Export();
+                switch ( typeIndex )
+                {
+                    case 0:
+                        new FirstStationExporter(this.dtpBegin.Value,
+                            this.dtpEnd.Value).Export();
+                        break;
+
+                    case 1:
+                        new StationRangeDataExporter(this.dtpBegin.Value, 
+                            this.dtpEnd.Value).Export();
+                        break;
+
+                    case 2:
+                        new XfDayReportExporter(this.dtpBegin.Value, 
+                            this.dtpEnd.Value).Export();
+                        break;
+                    default:
+                        throw new InvalidOperationException(typeIndex.ToString());
+            }
             }
         }
 
