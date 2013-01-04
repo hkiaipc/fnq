@@ -62,12 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="DateTimeHelper.cs" />
-    <Compile Include="DateTimeRange.cs" />
-    <Compile Include="DateTimeRangeRelation.cs" />
+    <Compile Include="Code\Class1.cs" />
+    <Compile Include="Code\Class2.cs" />
+    <Compile Include="Code\Config.cs" />
+    <Compile Include="Code\DateTimeHelper.cs" />
+    <Compile Include="Code\DateTimeRange.cs" />
+    <Compile Include="Code\DateTimeRangeRelation.cs" />
     <Compile Include="Forms\frmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,19 +164,19 @@
     <Compile Include="Forms\WD\frmWorkDefineItem.Designer.cs">
       <DependentUpon>frmWorkDefineItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmStationSelect.cs">
+    <Compile Include="Forms\frmStationSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmStationSelect.Designer.cs">
+    <Compile Include="Forms\frmStationSelect.Designer.cs">
       <DependentUpon>frmStationSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="GroupResult.cs" />
-    <Compile Include="GroupResultCollection.cs" />
-    <Compile Include="KQDataTimeRangeManager.cs" />
-    <Compile Include="KResultGenerator.cs" />
-    <Compile Include="PersonResult.cs" />
-    <Compile Include="PersonResultCollection.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Code\GroupResult.cs" />
+    <Compile Include="Code\GroupResultCollection.cs" />
+    <Compile Include="Code\KQDataTimeRangeManager.cs" />
+    <Compile Include="Code\KResultGenerator.cs" />
+    <Compile Include="Code\PersonResult.cs" />
+    <Compile Include="Code\PersonResultCollection.cs" />
+    <Compile Include="Code\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>
@@ -242,7 +242,7 @@
       <DependentUpon>frmWorkDefineItem.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmStationSelect.resx">
+    <EmbeddedResource Include="Forms\frmStationSelect.resx">
       <DependentUpon>frmStationSelect.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -289,22 +289,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PunchInDateTimeRangeEnum.cs" />
-    <Compile Include="ResultDataTableConverter.cs" />
-    <Compile Include="SerializableObject.cs" />
+    <Compile Include="Code\PunchInDateTimeRangeEnum.cs" />
+    <Compile Include="Code\ResultDataTableConverter.cs" />
+    <Compile Include="Code\SerializableObject.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="tblLeaveEx.cs" />
+    <Compile Include="Code\tblLeaveEx.cs" />
     <Compile Include="Test\Test.cs" />
     <Compile Include="TimeDefine\TimeDefine.cs" />
     <Compile Include="TimeDefine\TimeDefineCollection.cs" />
-    <Compile Include="TimeResult.cs" />
-    <Compile Include="TimeResultCollection.cs" />
-    <Compile Include="TimeStandard.cs" />
-    <Compile Include="TimeStandardCollection.cs" />
+    <Compile Include="Code\TimeResult.cs" />
+    <Compile Include="Code\TimeResultCollection.cs" />
+    <Compile Include="Code\TimeStandard.cs" />
+    <Compile Include="Code\TimeStandardCollection.cs" />
     <Compile Include="UC\UCGroupResults.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -329,7 +329,7 @@
     <Compile Include="UC\UCTimeDefine.Designer.cs">
       <DependentUpon>UCTimeDefine.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIHelper.cs" />
+    <Compile Include="Code\UIHelper.cs" />
     <Compile Include="TimeDefine\UserTimeDefine.cs" />
     <Compile Include="WorkDefine\UserWorkDefine.cs" />
     <Compile Include="TimeDefine\WeekTimeDefine.cs" />
@@ -342,9 +342,6 @@
       <Project>{DD6D8FE1-ECAA-44FD-84CD-BB4847B6FB24}</Project>
       <Name>KDB</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Code\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
