@@ -16,6 +16,11 @@ namespace K.UC
         {
             InitializeComponent();
             FillDayOffset();
+
+            // set default normal work range timespans
+            //
+            this.dtpBeginTimeSpan.Value = DateTimeHelper.ConvertToDateTime(Config.Default.NormalStartWorkTimeSpan);
+            this.dtpEndTimeSpan.Value = DateTimeHelper.ConvertToDateTime(Config.Default.NormalStopWorkTimeSpan);
         }
         #endregion //UCTimeDefine
 

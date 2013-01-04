@@ -113,7 +113,7 @@
             this.dtpEndTimeSpan.ShowUpDown = true;
             this.dtpEndTimeSpan.Size = new System.Drawing.Size(97, 21);
             this.dtpEndTimeSpan.TabIndex = 6;
-            this.dtpEndTimeSpan.Value = new System.DateTime(2012, 11, 21, 18, 0, 0, 0);
+            this.dtpEndTimeSpan.Value = new System.DateTime(2012, 11, 21, 0, 30, 0, 0);
             // 
             // dtpBeginTimeSpan
             // 
@@ -123,7 +123,7 @@
             this.dtpBeginTimeSpan.ShowUpDown = true;
             this.dtpBeginTimeSpan.Size = new System.Drawing.Size(97, 21);
             this.dtpBeginTimeSpan.TabIndex = 5;
-            this.dtpBeginTimeSpan.Value = new System.DateTime(2012, 11, 21, 8, 0, 0, 0);
+            this.dtpBeginTimeSpan.Value = new System.DateTime(2012, 11, 21, 0, 30, 0, 0);
             // 
             // UCTimeDefine
             // 
