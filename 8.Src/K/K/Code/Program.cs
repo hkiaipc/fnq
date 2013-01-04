@@ -30,11 +30,7 @@ namespace K
         [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmMain());
             App app = new App();
-            //app.MainForm = 
             app.Run();
         }
     }

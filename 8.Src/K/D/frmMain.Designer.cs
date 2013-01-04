@@ -78,7 +78,7 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(229, 99);
+            this.btnQuery.Location = new System.Drawing.Point(243, 114);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 3;
@@ -163,7 +163,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(231, 72);
+            this.btnAdd.Location = new System.Drawing.Point(243, 228);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -173,14 +173,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cmbStation);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dtpInsertDT);
             this.groupBox1.Location = new System.Drawing.Point(12, 143);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 103);
+            this.groupBox1.Size = new System.Drawing.Size(316, 78);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
@@ -190,12 +189,11 @@
             this.groupBox2.Controls.Add(this.dtpQuery);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.btnQuery);
             this.groupBox2.Controls.Add(this.cmbPerson);
             this.groupBox2.Controls.Add(this.cmbGroup);
             this.groupBox2.Location = new System.Drawing.Point(14, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(314, 133);
+            this.groupBox2.Size = new System.Drawing.Size(314, 104);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
@@ -204,11 +202,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 263);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnQuery);
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.ShowIcon = false;
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

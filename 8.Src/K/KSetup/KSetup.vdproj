@@ -58,12 +58,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_00D9CDC36DAFA8B39C81208155470147"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C4EF642F6A344BFC8235185E070E4966"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -91,6 +85,12 @@
         "OwnerKey" = "8:_B42287B525FD5FD36F9B1185F04ADDBD"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_00D9CDC36DAFA8B39C81208155470147"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -109,6 +109,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -125,6 +133,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -302,7 +318,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:K, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:K, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C4EF642F6A344BFC8235185E070E4966"
@@ -415,7 +431,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:KQ"
+        "ProductName" = "8:考勤系统"
         "ProductCode" = "8:{E9CD948C-9968-416C-844A-76602DF0A47F}"
         "PackageCode" = "8:{FDEB7A17-8303-48A9-932E-0C6A4A36A1E6}"
         "UpgradeCode" = "8:{AEC6B910-2C0C-4C82-8E2B-D551333BFDAE}"
@@ -430,7 +446,7 @@
         "Title" = "8:K"
         "Subject" = "8:"
         "ARPCONTACT" = "8:xd"
-        "Keywords" = "8:k v1.0.0.0"
+        "Keywords" = "8:k v1.1.0.0"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
@@ -536,6 +552,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_ACAC38426A9D4F2CA5D79262C70D0462"
+            {
+            "Name" = "8:考勤系统"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_C4EF642F6A344BFC8235185E070E4966"
+            "Folder" = "8:_0286BAC14DE6446785E9AD71223C2A53"
+            "WorkingFolder" = "8:_D9E64F26C9ED4CD09ED5F2E935C00B36"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
