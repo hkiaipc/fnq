@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Diagnostics;
 using KDB;
 using Xdgk.Common;
@@ -253,9 +254,16 @@ namespace K.Forms.WD
 
             tblWd.WorkDefineName = this.txtWorkDefineName.Text.Trim();
             tblWd.WorkDefineContext = WorkDefine.Serialize(wd);
+                //ReadWorkDefineString();
             db.SubmitChanges();
         }
         #endregion //Edit
+
+        //string ReadWorkDefineString()
+        //{
+        //    string s = File.ReadAllText("c:\\1", Encoding.Default );
+        //    return s ;
+        //}
 
         #region CreateWorkDefine
         /// <summary>

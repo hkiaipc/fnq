@@ -2,12 +2,6 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DB">
   <DataContextMoniker Name="/DB" />
   <nestedChildShapes>
-    <classShape Id="8c1f80df-2e2a-42c3-97d2-782b49320185" isExpanded="false" absoluteBounds="4.125, 6.25, 2, 0.44999999999999929">
-      <DataClassMoniker Name="/DB/tblWorkDefine" />
-      <nestedChildShapes>
-        <elementListCompartment Id="884c73eb-352d-45c8-9fb5-b138707f270b" absoluteBounds="4.1400000000000006, 6.7100000000000009, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="436b3476-06cc-41c7-8957-b9625943f0e2" isExpanded="false" absoluteBounds="6.875, 3.875, 2, 0.44999999999999929">
       <DataClassMoniker Name="/DB/tblLeave" />
       <nestedChildShapes>
@@ -117,24 +111,30 @@
         <elementListCompartment Id="4e23cbf1-ce77-40d7-9947-195f6713e31d" absoluteBounds="4.14, 4.835, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.0312475 : 4.375); (5.0312475 : 3.45)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.0312475 : 4.375); (5.0312475 : 3.45)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DB/tblGroup/tblGroup_tblPerson" />
       <nodes>
         <classShapeMoniker Id="b3bac407-b7cd-4b50-8db6-4351916b40b3" />
         <classShapeMoniker Id="5dcbc119-8e2b-4d6b-a0d9-00bec7b811ad" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.125 : 4.63025024414063); (2.875 : 4.63025024414063)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.125 : 4.63025024414063); (2.875 : 4.63025024414063)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DB/tblGroup/tblGroup_tblGroupStation" />
       <nodes>
         <classShapeMoniker Id="b3bac407-b7cd-4b50-8db6-4351916b40b3" />
         <classShapeMoniker Id="58d7ac2e-b947-4018-a091-2d78dd9635ff" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.125 : 6.25); (5.125 : 5.79984781901042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="1b1bb2ea-5411-4749-bd41-189b949eac70" absoluteBounds="4.125, 6.75, 2, 1.26050048828125">
+      <DataClassMoniker Name="/DB/tblWorkDefine" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e64ba91-0c58-4627-9d6d-4d08fa90afc7" absoluteBounds="4.14, 7.21, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.125 : 6.75); (5.125 : 5.79984781901042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DB/tblWorkDefine/tblWorkDefine_tblGroup" />
       <nodes>
-        <classShapeMoniker Id="8c1f80df-2e2a-42c3-97d2-782b49320185" />
+        <classShapeMoniker Id="1b1bb2ea-5411-4749-bd41-189b949eac70" />
         <classShapeMoniker Id="b3bac407-b7cd-4b50-8db6-4351916b40b3" />
       </nodes>
     </associationConnector>

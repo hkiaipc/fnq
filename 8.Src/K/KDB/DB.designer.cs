@@ -30,9 +30,6 @@ namespace KDB
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InserttblWorkDefine(tblWorkDefine instance);
-    partial void UpdatetblWorkDefine(tblWorkDefine instance);
-    partial void DeletetblWorkDefine(tblWorkDefine instance);
     partial void InserttblLeave(tblLeave instance);
     partial void UpdatetblLeave(tblLeave instance);
     partial void DeletetblLeave(tblLeave instance);
@@ -63,6 +60,9 @@ namespace KDB
     partial void InserttblGroup(tblGroup instance);
     partial void UpdatetblGroup(tblGroup instance);
     partial void DeletetblGroup(tblGroup instance);
+    partial void InserttblWorkDefine(tblWorkDefine instance);
+    partial void UpdatetblWorkDefine(tblWorkDefine instance);
+    partial void DeletetblWorkDefine(tblWorkDefine instance);
     #endregion
 		
 		public DB() : 
@@ -93,14 +93,6 @@ namespace KDB
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<tblWorkDefine> tblWorkDefine
-		{
-			get
-			{
-				return this.GetTable<tblWorkDefine>();
-			}
 		}
 		
 		public System.Data.Linq.Table<tblLeave> tblLeave
@@ -182,143 +174,13 @@ namespace KDB
 				return this.GetTable<tblGroup>();
 			}
 		}
-	}
-	
-	[Table(Name="dbo.tblWorkDefine")]
-	public partial class tblWorkDefine : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _WorkDefineID;
-		
-		private string _WorkDefineName;
-		
-		private string _WorkDefineContext;
-		
-		private EntitySet<tblGroup> _tblGroup;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnWorkDefineIDChanging(int value);
-    partial void OnWorkDefineIDChanged();
-    partial void OnWorkDefineNameChanging(string value);
-    partial void OnWorkDefineNameChanged();
-    partial void OnWorkDefineContextChanging(string value);
-    partial void OnWorkDefineContextChanged();
-    #endregion
-		
-		public tblWorkDefine()
-		{
-			this._tblGroup = new EntitySet<tblGroup>(new Action<tblGroup>(this.attach_tblGroup), new Action<tblGroup>(this.detach_tblGroup));
-			OnCreated();
-		}
-		
-		[Column(Storage="_WorkDefineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int WorkDefineID
+		public System.Data.Linq.Table<tblWorkDefine> tblWorkDefine
 		{
 			get
 			{
-				return this._WorkDefineID;
+				return this.GetTable<tblWorkDefine>();
 			}
-			set
-			{
-				if ((this._WorkDefineID != value))
-				{
-					this.OnWorkDefineIDChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineID = value;
-					this.SendPropertyChanged("WorkDefineID");
-					this.OnWorkDefineIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_WorkDefineName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string WorkDefineName
-		{
-			get
-			{
-				return this._WorkDefineName;
-			}
-			set
-			{
-				if ((this._WorkDefineName != value))
-				{
-					this.OnWorkDefineNameChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineName = value;
-					this.SendPropertyChanged("WorkDefineName");
-					this.OnWorkDefineNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_WorkDefineContext", DbType="NVarChar(4000) NOT NULL", CanBeNull=false)]
-		public string WorkDefineContext
-		{
-			get
-			{
-				return this._WorkDefineContext;
-			}
-			set
-			{
-				if ((this._WorkDefineContext != value))
-				{
-					this.OnWorkDefineContextChanging(value);
-					this.SendPropertyChanging();
-					this._WorkDefineContext = value;
-					this.SendPropertyChanged("WorkDefineContext");
-					this.OnWorkDefineContextChanged();
-				}
-			}
-		}
-		
-		[Association(Name="tblWorkDefine_tblGroup", Storage="_tblGroup", OtherKey="WorkDefineID")]
-		public EntitySet<tblGroup> tblGroup
-		{
-			get
-			{
-				return this._tblGroup;
-			}
-			set
-			{
-				this._tblGroup.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblGroup(tblGroup entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblWorkDefine = this;
-		}
-		
-		private void detach_tblGroup(tblGroup entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblWorkDefine = null;
 		}
 	}
 	
@@ -2537,6 +2399,144 @@ namespace KDB
 		{
 			this.SendPropertyChanging();
 			entity.tblGroup = null;
+		}
+	}
+	
+	[Table(Name="dbo.tblWorkDefine")]
+	public partial class tblWorkDefine : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _WorkDefineID;
+		
+		private string _WorkDefineName;
+		
+		private string _WorkDefineContext;
+		
+		private EntitySet<tblGroup> _tblGroup;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnWorkDefineIDChanging(int value);
+    partial void OnWorkDefineIDChanged();
+    partial void OnWorkDefineNameChanging(string value);
+    partial void OnWorkDefineNameChanged();
+    partial void OnWorkDefineContextChanging(string value);
+    partial void OnWorkDefineContextChanged();
+    #endregion
+		
+		public tblWorkDefine()
+		{
+			this._tblGroup = new EntitySet<tblGroup>(new Action<tblGroup>(this.attach_tblGroup), new Action<tblGroup>(this.detach_tblGroup));
+			OnCreated();
+		}
+		
+		[Column(Storage="_WorkDefineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int WorkDefineID
+		{
+			get
+			{
+				return this._WorkDefineID;
+			}
+			set
+			{
+				if ((this._WorkDefineID != value))
+				{
+					this.OnWorkDefineIDChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineID = value;
+					this.SendPropertyChanged("WorkDefineID");
+					this.OnWorkDefineIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_WorkDefineName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string WorkDefineName
+		{
+			get
+			{
+				return this._WorkDefineName;
+			}
+			set
+			{
+				if ((this._WorkDefineName != value))
+				{
+					this.OnWorkDefineNameChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineName = value;
+					this.SendPropertyChanged("WorkDefineName");
+					this.OnWorkDefineNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_WorkDefineContext", DbType="NText NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string WorkDefineContext
+		{
+			get
+			{
+				return this._WorkDefineContext;
+			}
+			set
+			{
+				if ((this._WorkDefineContext != value))
+				{
+					this.OnWorkDefineContextChanging(value);
+					this.SendPropertyChanging();
+					this._WorkDefineContext = value;
+					this.SendPropertyChanged("WorkDefineContext");
+					this.OnWorkDefineContextChanged();
+				}
+			}
+		}
+		
+		[Association(Name="tblWorkDefine_tblGroup", Storage="_tblGroup", OtherKey="WorkDefineID")]
+		public EntitySet<tblGroup> tblGroup
+		{
+			get
+			{
+				return this._tblGroup;
+			}
+			set
+			{
+				this._tblGroup.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblGroup(tblGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblWorkDefine = this;
+		}
+		
+		private void detach_tblGroup(tblGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblWorkDefine = null;
 		}
 	}
 }

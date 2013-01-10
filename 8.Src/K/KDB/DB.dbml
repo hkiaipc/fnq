@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="fngrdb2012" Class="DB" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=fngrdb2012;User ID=sa" SettingsObjectName="KDB.Properties.Settings" SettingsPropertyName="KQConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tblWorkDefine" Member="tblWorkDefine">
-    <Type Name="tblWorkDefine">
-      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="WorkDefineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="WorkDefineContext" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
-      <Association Name="tblWorkDefine_tblGroup" Member="tblGroup" OtherKey="WorkDefineID" Type="tblGroup" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblLeave" Member="tblLeave">
     <Type Name="tblLeave">
       <Column Name="LeaveID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -115,6 +107,14 @@
       <Association Name="tblGroup_tblPerson" Member="tblPerson" OtherKey="GroupID" Type="tblPerson" />
       <Association Name="tblGroup_tblGroupStation" Member="tblGroupStation" OtherKey="GroupID" Type="tblGroupStation" />
       <Association Name="tblWorkDefine_tblGroup" Member="tblWorkDefine" ThisKey="WorkDefineID" Type="tblWorkDefine" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblWorkDefine" Member="tblWorkDefine">
+    <Type Name="tblWorkDefine">
+      <Column Name="WorkDefineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WorkDefineName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkDefineContext" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="tblWorkDefine_tblGroup" Member="tblGroup" OtherKey="WorkDefineID" Type="tblGroup" />
     </Type>
   </Table>
 </Database>
