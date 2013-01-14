@@ -115,6 +115,7 @@ namespace K
         } private DateTime _practiceEnd;
         #endregion //PracticeEnd
 
+        #region WorkTimeSpan
         /// <summary>
         /// 
         /// </summary>
@@ -122,9 +123,42 @@ namespace K
         {
             get
             {
-                return this.PracticeEnd - PracticeBegin;
+                if (IsPracticeBeginValid())
+                {
+                    if (IsPracticeEndValid())
+                    {
+                        return this.PracticeEnd - this.PracticeBegin;
+                    }
+                    else
+                    {
+                        return this.TimeStandard.Middle - this.PracticeBegin;
+                    }
+                }
+                else
+                {
+                    if (IsPracticeEndValid())
+                    {
+                        return this.PracticeEnd - this.TimeStandard.Middle;
+                    }
+                    else
+                    {
+                        return TimeSpan.Zero;
+                    }
+                }
             }
         }
+        #endregion //WorkTimeSpan
+
+        public bool IsPracticeBeginValid()
+        {
+            return this._practiceBegin != DateTime.MinValue;
+        }
+
+        public bool IsPracticeEndValid()
+        {
+            return this._practiceEnd != DateTime.MinValue;
+        }
+
         #region Remark
         /// <summary>
         /// 

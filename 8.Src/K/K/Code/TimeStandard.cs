@@ -68,6 +68,9 @@ namespace K
             this._begin = begin;
             this._end = end;
 
+            this._middle = this._begin + TimeSpan.FromSeconds((this._end - this._begin).TotalSeconds / 2);
+
+
             this.NormalBeginTimeSpan = normalBeginTimeSpan;
             this.NormalEndTimeSpan = normalEndTimeSpan;
         }
@@ -118,6 +121,19 @@ namespace K
             }
         } private DateTime _end;
         #endregion //End
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime Middle
+        {
+            get
+            {
+                return _middle; 
+            }
+        } private DateTime _middle;
+
 
         #region NormalBeginTimeSpan
         /// <summary>
