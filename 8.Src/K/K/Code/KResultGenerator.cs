@@ -170,6 +170,7 @@ namespace K
         }
         #endregion //GenerateTimeResultCollection
 
+        #region GetDeviceIDList
         /// <summary>
         /// 
         /// </summary>
@@ -193,6 +194,7 @@ namespace K
             }
             return r;
         }
+        #endregion //GetDeviceIDList
 
         #region GenerateTimeResult
         /// <summary>

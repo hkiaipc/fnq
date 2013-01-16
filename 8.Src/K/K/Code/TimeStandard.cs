@@ -262,6 +262,7 @@ namespace K
                 {
                     r.StartWorkResult = KResultEnum.Leave;
                     r.StopWorkResult = KResultEnum.Leave;
+                    r.LeaveEnum = (LeaveEnum)leave.LeaveType;
 
                     r.Remark = leave.LeaveType.ToString() + leave.LeaveRemark;
                     r.Remark = GetLeaveName(leave.LeaveType) + (leave.LeaveRemark.Length > 0 ? " : " + leave.LeaveRemark : "");

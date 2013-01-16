@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +6,6 @@ using System.Text;
 using System.Diagnostics;
 using KDB;
 using Xdgk.Common;
-
 
 namespace K
 {
@@ -64,6 +62,28 @@ namespace K
         } private KResultEnum _stopWorkResult;
         #endregion //StopWorkResult
 
+        #region LeaveEnum
+        /// <summary>
+        /// 
+        /// </summary>
+        public LeaveEnum LeaveEnum
+        {
+            get { return _leaveEnum; }
+            set { _leaveEnum = value; }
+        } private LeaveEnum _leaveEnum;
+        #endregion //LeaveEnum
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public KResultEnum GatherResult
+        {
+            get
+            {
+                return KResultEnumMerger.Merge(
+                    this.StartWorkResult, this.StopWorkResult);
+            }
+        }
         //#region KQResultEnum
         ///// <summary>
         ///// 
@@ -149,15 +169,19 @@ namespace K
         }
         #endregion //WorkTimeSpan
 
+        #region IsPracticeBeginValid
         public bool IsPracticeBeginValid()
         {
             return this._practiceBegin != DateTime.MinValue;
         }
+        #endregion //IsPracticeBeginValid
 
+        #region IsPracticeEndValid
         public bool IsPracticeEndValid()
         {
             return this._practiceEnd != DateTime.MinValue;
         }
+        #endregion //IsPracticeEndValid
 
         #region Remark
         /// <summary>

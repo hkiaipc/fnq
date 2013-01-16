@@ -68,6 +68,7 @@
     <Compile Include="Code\DateTimeHelper.cs" />
     <Compile Include="Code\DateTimeRange.cs" />
     <Compile Include="Code\DateTimeRangeRelation.cs" />
+    <Compile Include="Code\KGatherGenerator.cs" />
     <Compile Include="Forms\frmConfig.cs">
       <SubType>Form</SubType>
     </Compile>

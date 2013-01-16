@@ -49,8 +49,8 @@ namespace K
         /// <returns></returns>
         internal TimeSpan CalcSumOfWorkTimeSpan()
         {
-            TimeSpan r = TimeSpan.Zero ;
-            foreach (var item in this.TimeResults )
+            TimeSpan r = TimeSpan.Zero;
+            foreach (var item in this.TimeResults)
             {
                 r += item.WorkTimeSpan;
             }

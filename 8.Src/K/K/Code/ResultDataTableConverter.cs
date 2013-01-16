@@ -182,4 +182,62 @@ namespace K
             return t;
         }
     }
+
+    internal class GatherDataTableConverter
+    {
+        static internal DataTable ToGatherDataTable(PersonGatherCollection personGathers)
+        {
+            DataTable tbl = CreateDataTable();
+            
+            foreach (PersonGather pg in personGathers)
+            {
+                object[] values = CreateDataRow(pg);
+                tbl.Rows.Add(values);
+            }
+            return tbl;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pg"></param>
+        /// <returns></returns>
+        private static object[] CreateDataRow(PersonGather pg)
+        {
+            List<object> list = new List<object>();
+            list.Add(pg.TblPerson.PersonName);
+
+            for (int i = 1; i <= 31; i++)
+            {
+                Gather g = pg.Gathers.FindByDay(i);
+                string gatherString = string.Empty ;
+                if (g != null)
+                {
+                    gatherString = g.GetGatherString ();
+                }
+                list.Add(gatherString);
+            }
+            list.Add(pg.Gathers.GetSumString());
+            return list.ToArray();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private static DataTable CreateDataTable()
+        {
+            
+            DataTable tbl = new DataTable();
+            tbl.Columns.Add("Person", typeof(string));
+
+            for (int i = 1; i <= 31; i++)
+            {
+                tbl.Columns.Add("c" + i, typeof(string));
+            }
+            tbl.Columns.Add("Sum", typeof(string));
+
+            return tbl;
+        }
+    }
 }
