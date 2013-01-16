@@ -229,13 +229,13 @@ namespace K
         {
             
             DataTable tbl = new DataTable();
-            tbl.Columns.Add("Person", typeof(string));
+            tbl.Columns.Add("姓名", typeof(string));
 
             for (int i = 1; i <= 31; i++)
             {
-                tbl.Columns.Add("c" + i, typeof(string));
+                tbl.Columns.Add(i.ToString(), typeof(string));
             }
-            tbl.Columns.Add("Sum", typeof(string));
+            tbl.Columns.Add("统计", typeof(string));
 
             return tbl;
         }

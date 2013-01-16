@@ -21,7 +21,7 @@ namespace K
         /// 
         /// </summary>
         /// <param name="groupResults"></param>
-        internal PersonGatherCollection Generator(GroupResultCollection groupResults)
+        static internal PersonGatherCollection Generator(GroupResultCollection groupResults)
         {
             PersonGatherCollection r = new PersonGatherCollection();
 
@@ -33,7 +33,7 @@ namespace K
             return r;
         }
 
-        private PersonGatherCollection Generator(GroupResult groupResult)
+        static private PersonGatherCollection Generator(GroupResult groupResult)
         {
             PersonGatherCollection r = new PersonGatherCollection();
             foreach (PersonResult pr in groupResult.PersonResults)
@@ -44,15 +44,15 @@ namespace K
             return r;
         }
 
-        private PersonGather Generator(PersonResult pr)
+        static private PersonGather Generator(PersonResult pr)
         {
             PersonGather pg = new PersonGather(pr.TblPerson);
 
             foreach (TimeResult tr in pr.TimeResults)
             {
                 DateTime day = tr.TimeStandard.Begin.Date;
-                Gather gather = new Gather(day, tr.GatherResult, tr.LeaveEnum);
-                pg.Gathers.Add(gather);
+                Gather gather = new Gather(day, tr.StartWorkResult, tr.StopWorkResult, tr.LeaveEnum);
+                pg.Gathers.AddorMerge(gather);
             }
             return pg;
         }
@@ -125,12 +125,14 @@ namespace K
 
     internal class Gather
     {
-        internal Gather(DateTime day, KResultEnum gatherResult, LeaveEnum leaveEnum)
+        //internal Gather(DateTime day, KResultEnum gatherResult, LeaveEnum leaveEnum)
+        internal Gather(DateTime day, KResultEnum start, KResultEnum stop, LeaveEnum leaveEnum)
         {
             Debug.Assert(day.TimeOfDay == TimeSpan.Zero);
 
             this._day = day;
-            this._kResultEnum = gatherResult;
+            //this._kResultEnum = gatherResult;
+            this.AddKResultEnumPair(start, stop);
             this._leaveEnum = leaveEnum;
         }
 
@@ -147,22 +149,22 @@ namespace K
         } private DateTime _day;
         #endregion //Day
 
-        #region KResultEnum
-        /// <summary>
-        /// 
-        /// </summary>
-        public KResultEnum KResultEnum
-        {
-            get
-            {
-                return _kResultEnum;
-            }
-            set
-            {
-                _kResultEnum = value;
-            }
-        } private KResultEnum _kResultEnum;
-        #endregion //KResultEnum
+        //#region KResultEnum
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public KResultEnum KResultEnum
+        //{
+        //    get
+        //    {
+        //        return _kResultEnum;
+        //    }
+        //    //set
+        //    //{
+        //    //    _kResultEnum = value;
+        //    //}
+        //} private KResultEnum _kResultEnum;
+        //#endregion //KResultEnum
 
         #region LeaveEnum
         /// <summary>
@@ -178,17 +180,35 @@ namespace K
         /// <summary>
         /// 
         /// </summary>
+        public List<KResultEnum> KResultEnumList
+        {
+            get { return _listKResultEnumList; }
+        } private List<KResultEnum> _listKResultEnumList = new List<KResultEnum>();
+
+        public void AddKResultEnumPair(KResultEnum start, KResultEnum stop)
+        {
+            _listKResultEnumList.Add(start);
+            _listKResultEnumList.Add(stop);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public string GetGatherString()
         {
-            if (this.KResultEnum != KResultEnum.Leave)
+            string s = string.Empty;
+            foreach (KResultEnum item in KResultEnumList)
             {
-                return GetKResultEnumName(this.KResultEnum);
+                if (item == KResultEnum.Leave)
+                {
+                    s += GetLeaveEnumName(this.LeaveEnum);
+                }
+                else
+                {
+                    s += GetKResultEnumName(item);
+                }
             }
-            else
-            {
-                return GetLeaveEnumName(this.LeaveEnum);
-            }
+            return s;
         }
 
         static private string GetKResultEnumName(KResultEnum kResultEnum)
@@ -241,6 +261,11 @@ namespace K
 
     internal class GatherCollection : Collection<Gather>
     {
+        new internal void Add(Gather gather)
+        {
+            throw new NotSupportedException();
+        }
+
         internal void AddorMerge(Gather gather)
         {
             if (gather == null)
@@ -251,12 +276,15 @@ namespace K
             Gather exist= Find(gather.Day);
             if (exist== null)
             {
-                this.Add(gather);
+                //this.Add(gather);
+                base.Add(gather);
             }
             else
             {
-                exist.KResultEnum = KResultEnumMerger.Merge(
-                   exist.KResultEnum, gather.KResultEnum); 
+                //exist.KResultEnum = KResultEnumMerger.Merge(
+                //   exist.KResultEnum, gather.KResultEnum);
+
+                exist.KResultEnumList.AddRange(gather.KResultEnumList);
             }
         }
 
@@ -265,16 +293,28 @@ namespace K
             int normal = 0, le = 0;
             foreach (Gather g in this)
             {
-                if (g.KResultEnum == KResultEnum.Normal)
+                bool added = false;
+                foreach (KResultEnum item in g.KResultEnumList)
                 {
-                    normal++;
-                }
-                else if (g.KResultEnum == KResultEnum.Later ||
-                    g.KResultEnum == KResultEnum.Early ||
-                    g.KResultEnum == KResultEnum.LaterEarly)
-                {
-                    le++;
-                    normal++;
+                    if (item == KResultEnum.Normal)
+                    {
+                        if (!added)
+                        {
+                            normal++;
+                            added = true;
+                        }
+                    }
+                    else if (item == KResultEnum.Later ||
+                        item == KResultEnum.Early ||
+                        item == KResultEnum.LaterEarly)
+                    {
+                        le++;
+                        if (!added)
+                        {
+                            normal++;
+                            added = true;
+                        }
+                    }
                 }
             }
 

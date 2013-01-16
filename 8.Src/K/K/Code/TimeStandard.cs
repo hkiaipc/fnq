@@ -225,7 +225,7 @@ namespace K
         static string[] _leaveNames = new string[] { "ÊÂ¼Ù", "²¡¼Ù", "ÐÝ¼Ù" };
         private string GetLeaveName(int leaveType)
         {
-            if (leaveType >= 0 && leaveType <= 1)
+            if (leaveType >= 0 && leaveType <= 2)
             {
                 return _leaveNames[leaveType];
             }

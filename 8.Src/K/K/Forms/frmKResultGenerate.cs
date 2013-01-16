@@ -61,6 +61,11 @@ namespace K.Forms
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             // clear panel
@@ -104,6 +109,27 @@ namespace K.Forms
             {
                 new Exporter().Export(_groupResults);
             }
+        }
+
+        /// <summary>
+        /// button gather
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (_groupResults == null)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure("未生成考勤结果, 无法统计");
+                return;
+            }
+
+            PersonGatherCollection r = KGatherGenerator.Generator(_groupResults);
+            DataTable tbl = GatherDataTableConverter.ToGatherDataTable(r);
+            tbl.ExtendedProperties["month"] = this.dtpMonth.Value;
+
+            frmGather f = new frmGather(tbl);
+            f.ShowDialog();
         }
     }
 
@@ -208,5 +234,69 @@ namespace K.Forms
             }
             return n;
         }
+    }
+
+    internal class DataTableExporter
+    {
+        private DataTable _tbl;
+        private DateTime _month;
+
+        internal DataTableExporter(DateTime month, DataTable tbl)
+        {
+            _month = month;
+            _tbl = tbl;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal void Export()
+        {
+            string file = Path.GetTempFileName("xls");
+            XlsFile xls = new XlsFile();
+            xls.NewFile();
+            string title = string.Format("鑫丰热力供热处职工人员考勤表 {0}-{1}", _month.Year, _month.Month);
+            xls.SetCellValue(1, 1, title);
+            
+            int r = 3;
+            int c = 1;
+            foreach (DataColumn col in _tbl.Columns)
+            {
+                xls.SetCellValue(r, c, col.ColumnName);
+                c++;
+            }
+
+            foreach (DataRow row in _tbl.Rows)
+            {
+                r++;
+                for (int i = 0; i < _tbl.Columns.Count; i++)
+                {
+                    xls.SetCellValue(r, i + 1, row[i]);
+                }
+            }
+            xls.Save(file);
+
+            Open(file);
+            
+        }
+
+        private void Open(string filename)
+        {
+            ProcessStartInfo si = new ProcessStartInfo(filename);
+            si.ErrorDialog = true;
+
+            Process process = new Process();
+            process.StartInfo = si;
+            try
+            {
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                NUnit.UiKit.UserMessage.DisplayFailure(ex.Message);
+            }
+            process.Dispose();
+        }
+
     }
 }
