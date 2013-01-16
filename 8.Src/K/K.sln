@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KDB", "KDB\KDB.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D", "D\D.csproj", "{7C506A09-1971-486D-A196-D24200DE7CF5}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "KSetup", "KSetup\KSetup.vdproj", "{A7A32BB4-B573-49A5-BEC0-C91A96FC5098}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{7C506A09-1971-486D-A196-D24200DE7CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C506A09-1971-486D-A196-D24200DE7CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C506A09-1971-486D-A196-D24200DE7CF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A32BB4-B573-49A5-BEC0-C91A96FC5098}.Debug|Any CPU.ActiveCfg = Debug
+		{A7A32BB4-B573-49A5-BEC0-C91A96FC5098}.Debug|Any CPU.Build.0 = Debug
+		{A7A32BB4-B573-49A5-BEC0-C91A96FC5098}.Release|Any CPU.ActiveCfg = Release
+		{A7A32BB4-B573-49A5-BEC0-C91A96FC5098}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

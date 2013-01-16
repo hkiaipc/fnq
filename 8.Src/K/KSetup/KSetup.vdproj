@@ -116,6 +116,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5"
+                    {
+                    "Name" = "8:.NET Framework 3.5"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -140,6 +153,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5"
+                    {
+                    "Name" = "8:.NET Framework 3.5"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -318,7 +344,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:K, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:K, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C4EF642F6A344BFC8235185E070E4966"
@@ -446,7 +472,7 @@
         "Title" = "8:K"
         "Subject" = "8:"
         "ARPCONTACT" = "8:xd"
-        "Keywords" = "8:k v1.1.0.0"
+        "Keywords" = "8:k v1.3.0.0"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
