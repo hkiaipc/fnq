@@ -1,3 +1,6 @@
+v1.7.0.0	2013-01-26
+	modify station cost report
+	
 v1.6.0.0	2013-01-04
 	add first station cost, station cost report
 	

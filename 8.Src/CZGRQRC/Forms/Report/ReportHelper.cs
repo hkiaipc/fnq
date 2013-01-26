@@ -146,6 +146,27 @@ namespace FNGRQRC.Forms
         /// <param name="b"></param>
         /// <param name="e"></param>
         /// <returns></returns>
+        internal static DataTable GetFirstStationAvgDataTable(DateTime b, DateTime e)
+        {
+            string s = string.Format(
+                @"select stationname, avg (ai1 ) as gt1 , avg(ai2) as bt1,
+                	avg(ai3) as gp1, avg(ai4) bp1, avg(ai5) as i1
+                from vxd100edata 
+                where dt >= '{0}' and dt < '{1}'
+                group by stationname
+                order by stationname",
+                b, e);
+
+            DataTable tbl = GetDBI().ExecuteDataTable(s);
+            return tbl;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
         internal static DataTable GetFirstRecuriteDataTable(DateTime b, DateTime e)
         {
             string s = string.Format (
